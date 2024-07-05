@@ -1,0 +1,893 @@
+{
+  "sections": {
+    "listening": {
+      "parts": [
+        {
+          "theme": "Social",
+          "type": "Dialogue",
+          "questions": [
+            {
+              "id": "L1Q1",
+              "question": "What is the main topic of the conversation?",
+              "answers": ["Weather forecast", "Travel plans", "Work schedule", "Family reunion"],
+              "audio": "In this conversation, two friends are discussing their upcoming travel plans for the summer vacation."
+            },
+            {
+              "id": "L1Q2",
+              "question": "Where are the speakers planning to go?",
+              "answers": ["Beach resort", "Mountain cabin", "European city", "National park"],
+              "audio": "We're thinking of renting a cabin in the mountains for a week. It would be a nice change from our usual beach trips."
+            },
+            {
+              "id": "L1Q3",
+              "question": "When are they planning to travel?",
+              "answers": ["Next week", "Next month", "In the summer", "During winter break"],
+              "audio": "Let's aim for the first week of July. That way, we can avoid the peak tourist season in August."
+            },
+            {
+              "id": "L1Q4",
+              "question": "What concern does one of the speakers have?",
+              "answers": ["Cost", "Weather", "Transportation", "Accommodation"],
+              "audio": "I'm a bit worried about the weather in the mountains. It can be unpredictable, even in summer."
+            },
+            {
+              "id": "L1Q5",
+              "question": "What activity do they plan to do?",
+              "answers": ["Skiing", "Hiking", "Swimming", "Sightseeing"],
+              "audio": "We should definitely go hiking. I've heard there are some beautiful trails with stunning views."
+            },
+            {
+              "id": "L1Q6",
+              "question": "How long are they planning to stay?",
+              "answers": ["3 days", "5 days", "1 week", "2 weeks"],
+              "audio": "A week should be enough time to relax and explore the area without getting bored."
+            },
+            {
+              "id": "L1Q7",
+              "question": "What does one friend suggest bringing?",
+              "answers": ["Sunscreen", "Hiking boots", "Formal clothes", "Cooking utensils"],
+              "audio": "Don't forget to pack good hiking boots. The terrain can be pretty rough in some areas."
+            },
+            {
+              "id": "L1Q8",
+              "question": "How do they plan to get there?",
+              "answers": ["By plane", "By train", "By car", "By bus"],
+              "audio": "I think driving would be the best option. We can split the cost of gas and have more flexibility once we're there."
+            },
+            {
+              "id": "L1Q9",
+              "question": "What other activity is mentioned?",
+              "answers": ["Fishing", "Rock climbing", "Birdwatching", "Canoeing"],
+              "audio": "Oh, and we could try fishing in the nearby lake. I've always wanted to learn how to fish."
+            },
+            {
+              "id": "L1Q10",
+              "question": "What do they agree to do next?",
+              "answers": ["Book flights", "Research accommodations", "Buy equipment", "Invite others"],
+              "audio": "Alright, let's start looking at cabin rentals online. We should book soon to get a good deal."
+            }
+          ]
+        },
+        {
+          "theme": "Everyday Life",
+          "type": "Monologue",
+          "questions": [
+            {
+              "id": "L2Q1",
+              "question": "What is the speaker describing?",
+              "answers": ["A recipe", "A daily routine", "A hobby", "A job"],
+              "audio": "Today, I'm going to walk you through my typical weekday routine, from morning to night."
+            },
+            {
+              "id": "L2Q2",
+              "question": "What time does the speaker wake up?",
+              "answers": ["5:30 AM", "6:00 AM", "6:30 AM", "7:00 AM"],
+              "audio": "My alarm goes off at 6:00 AM sharp every weekday morning."
+            },
+            {
+              "id": "L2Q3",
+              "question": "What does the speaker do immediately after waking up?",
+              "answers": ["Take a shower", "Check emails", "Make coffee", "Do yoga"],
+              "audio": "The first thing I do is a quick 15-minute yoga session to wake up my body and mind."
+            },
+            {
+              "id": "L2Q4",
+              "question": "What does the speaker have for breakfast?",
+              "answers": ["Cereal", "Toast and eggs", "Smoothie", "Oatmeal"],
+              "audio": "For breakfast, I usually have a bowl of oatmeal with fresh berries and a drizzle of honey."
+            },
+            {
+              "id": "L2Q5",
+              "question": "How does the speaker commute to work?",
+              "answers": ["By car", "By bus", "By bicycle", "On foot"],
+              "audio": "I'm lucky to live close to my workplace, so I typically walk to work. It takes about 20 minutes."
+            },
+            {
+              "id": "L2Q6",
+              "question": "What time does the speaker start work?",
+              "answers": ["8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM"],
+              "audio": "I start my workday at 8:30 AM, which gives me time to settle in and plan my day."
+            },
+            {
+              "id": "L2Q7",
+              "question": "What does the speaker do during lunch break?",
+              "answers": ["Eat at desk", "Go to a café", "Take a walk", "Run errands"],
+              "audio": "During my lunch break, I like to take a short walk in the nearby park to get some fresh air."
+            },
+            {
+              "id": "L2Q8",
+              "question": "What time does the speaker finish work?",
+              "answers": ["4:00 PM", "5:00 PM", "5:30 PM", "6:00 PM"],
+              "audio": "I usually wrap up my work around 5:30 PM, unless there's an urgent project."
+            },
+            {
+              "id": "L2Q9",
+              "question": "What activity does the speaker do in the evening?",
+              "answers": ["Watch TV", "Read a book", "Go to the gym", "Meet friends"],
+              "audio": "In the evening, I try to hit the gym for an hour. It helps me destress after a long day."
+            },
+            {
+              "id": "L2Q10",
+              "question": "What time does the speaker go to bed?",
+              "answers": ["9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM"],
+              "audio": "I aim to be in bed by 10:30 PM to ensure I get a full night's sleep before the next day begins."
+            }
+          ]
+        },
+        {
+          "theme": "Education",
+          "type": "Group Discussion",
+          "questions": [
+            {
+              "id": "L3Q1",
+              "question": "What is the topic of the group discussion?",
+              "answers": ["School uniforms", "Exam schedules", "Online learning", "Student exchange programs"],
+              "audio": "Today, we'll be discussing the pros and cons of implementing a student exchange program at our university."
+            },
+            {
+              "id": "L3Q2",
+              "question": "How many students are participating in the discussion?",
+              "answers": ["Two", "Three", "Four", "Five"],
+              "audio": "We have four students joining us for this discussion: Sarah, Mike, Emily, and Jason."
+            },
+            {
+              "id": "L3Q3",
+              "question": "What is the first advantage mentioned?",
+              "answers": ["Language skills", "Cultural awareness", "Academic growth", "Career opportunities"],
+              "audio": "Sarah: I think one of the main benefits is the opportunity to improve language skills in a real-world context."
+            },
+            {
+              "id": "L3Q4",
+              "question": "What concern does one student raise?",
+              "answers": ["Cost", "Safety", "Academic credits", "Homesickness"],
+              "audio": "Mike: But we need to consider the cost. Not all students can afford to study abroad for a semester."
+            },
+            {
+              "id": "L3Q5",
+              "question": "What solution is proposed for this concern?",
+              "answers": ["Fundraising", "Scholarships", "Part-time jobs", "Shorter programs"],
+              "audio": "Emily: We could look into establishing scholarships specifically for the exchange program to help with the costs."
+            },
+            {
+              "id": "L3Q6",
+              "question": "What benefit does Jason mention?",
+              "answers": ["Better grades", "New friendships", "Travel opportunities", "Resume enhancement"],
+              "audio": "Jason: Don't forget that participating in an exchange program can really boost your resume. Employers value international experience."
+            },
+            {
+              "id": "L3Q7",
+              "question": "What potential problem is discussed regarding academics?",
+              "answers": ["Different teaching styles", "Language barriers", "Course compatibility", "Grading systems"],
+              "audio": "Sarah: We need to ensure that the courses students take abroad are compatible with our curriculum. It could be problematic if credits don't transfer."
+            },
+            {
+              "id": "L3Q8",
+              "question": "What duration is suggested for the exchange program?",
+              "answers": ["One month", "One semester", "One year", "Two years"],
+              "audio": "Mike: I think a one-semester program would be ideal. It's long enough to gain real experience but not so long that it disrupts degree progress."
+            },
+            {
+              "id": "L3Q9",
+              "question": "What additional support is recommended for exchange students?",
+              "answers": ["Financial aid", "Language classes", "Cultural orientation", "Buddy system"],
+              "audio": "Emily: We should implement a buddy system, pairing exchange students with local students to help them adjust to campus life."
+            },
+            {
+              "id": "L3Q10",
+              "question": "What is the group's final recommendation?",
+              "answers": ["Implement immediately", "Conduct more research", "Start a pilot program", "Reject the idea"],
+              "audio": "Jason: Based on our discussion, I think we should recommend starting a pilot program next semester with a small group of students."
+            }
+          ]
+        },
+        {
+          "theme": "Academic",
+          "type": "Lecture",
+          "questions": [
+            {
+              "id": "L4Q1",
+              "question": "What is the main topic of the lecture?",
+              "answers": ["Global warming", "Renewable energy", "Ocean pollution", "Deforestation"],
+              "audio": "Welcome to today's lecture on renewable energy sources and their potential to address our current environmental challenges."
+            },
+            {
+              "id": "L4Q2",
+              "question": "What percentage of global energy comes from renewable sources?",
+              "answers": ["10%", "20%", "30%", "40%"],
+              "audio": "As of last year, approximately 20% of global energy consumption came from renewable sources."
+            },
+            {
+              "id": "L4Q3",
+              "question": "Which renewable energy source is described as the fastest-growing?",
+              "answers": ["Solar", "Wind", "Hydroelectric", "Geothermal"],
+              "audio": "Solar energy has been the fastest-growing renewable energy source over the past decade, with installations increasing exponentially."
+            },
+            {
+              "id": "L4Q4",
+              "question": "What is mentioned as a challenge for wind energy?",
+              "answers": ["Cost", "Noise pollution", "Land use", "Intermittency"],
+              "audio": "One of the main challenges for wind energy is its intermittency - the wind doesn't always blow when we need electricity."
+            },
+            {
+              "id": "L4Q5",
+              "question": "What technology is discussed to address energy storage?",
+              "answers": ["Flywheels", "Pumped hydro", "Batteries", "Hydrogen fuel cells"],
+              "audio": "To address the intermittency issue, advanced battery technologies are being developed to store excess energy for use during low production periods."
+            },
+            {
+              "id": "L4Q6",
+              "question": "Which country is mentioned as a leader in geothermal energy?",
+              "answers": ["United States", "China", "Iceland", "Germany"],
+              "audio": "Iceland is a world leader in geothermal energy, with over 25% of its electricity generated from geothermal sources."
+            },
+            {
+              "id": "L4Q7",
+              "question": "What is described as a potential negative impact of hydroelectric dams?",
+              "answers": ["Water pollution", "Fish migration", "Soil erosion", "Air quality"],
+              "audio": "Large hydroelectric dams can significantly impact fish migration patterns, potentially disrupting local ecosystems."
+            },
+            {
+              "id": "L4Q8",
+              "question": "What recent technological advancement in solar energy is mentioned?",
+              "answers": ["Floating panels", "Bifacial panels", "Organic photovoltaics", "Perovskite cells"],
+              "audio": "Recent advancements in perovskite solar cells have shown promising increases in efficiency and could revolutionize the solar industry."
+            },
+            {
+              "id": "L4Q9",
+              "question": "What economic benefit of renewable energy is highlighted?",
+              "answers": ["Reduced energy costs", "Job creation", "Energy independence", "Increased exports"],
+              "audio": "The renewable energy sector has become a significant source of job creation, with millions of new jobs added globally in recent years."
+            },
+            {
+              "id": "L4Q10",
+              "question": "What is the lecturer's conclusion about the future of renewable energy?",
+              "answers": ["It will replace fossil fuels entirely", "It will remain a minor energy source", "It will require significant government support", "It will become increasingly competitive"],
+              "audio": "In conclusion, while challenges remain, renewable energy sources are becoming increasingly competitive and are likely to play a dominant role in our future energy landscape."
+            }
+          ]
+        }
+      ]
+    },
+    "reading": {
+      "academic": [
+        {
+            "texts": [
+              {
+                "title": "The Evolution of Robotics",
+                "content": "Robotics has undergone remarkable advancements over the past century, transforming from simple mechanical devices to sophisticated AI-driven machines. This passage explores the fascinating journey of robotics, from its humble beginnings to its promising future.\n\nIn the early 20th century, the concept of robots was largely confined to science fiction. However, the first true robot, Unimate, was introduced in 1961, revolutionizing industrial automation. This marked the beginning of the robotics era, sparking a wave of innovations that would shape the future of technology.\n\nAs we moved into the late 20th century, robots began to evolve beyond mere mechanical arms. The integration of sensors and more advanced control systems allowed robots to interact with their environment in more complex ways. This period saw the emergence of mobile robots, capable of navigating through space autonomously.\n\nThe turn of the millennium brought about a new era in robotics with the integration of artificial intelligence. Machine learning algorithms enabled robots to adapt to new situations and learn from experience, much like humans do. This led to the development of more versatile and intelligent robots, capable of performing a wide range of tasks from surgical assistance to space exploration.\n\nToday, we stand at the cusp of a new robotics revolution. The current trends in robotics include:\n\n1. Collaborative Robots (Cobots): Designed to work alongside humans, enhancing productivity and safety in various industries.\n2. Soft Robotics: Utilizing flexible materials to create robots that can interact more safely with humans and delicate objects.\n3. Swarm Robotics: Developing large groups of simple robots that can work together to accomplish complex tasks.\n4. Nanorobotics: Exploring the potential of microscopic robots for medical and industrial applications.\n\nLooking to the future, experts predict several exciting developments in robotics:\n\n1. Enhanced AI Integration: Robots with more advanced decision-making capabilities and emotional intelligence.\n2. Biomimetic Robots: Machines that more closely mimic biological systems in both form and function.\n3. Self-Replicating Robots: Machines capable of producing copies of themselves, potentially revolutionizing space exploration and resource extraction.\n4. Quantum Robotics: Leveraging quantum computing to create robots with unprecedented processing power and problem-solving abilities.\n\nAs we continue to push the boundaries of what's possible in robotics, we must also grapple with the ethical and societal implications of these advancements. The future of robotics holds immense potential to improve our lives, but it also presents challenges that we must address as a society."
+              },
+              {
+                "title": "Climate Change and Its Impact on Global Ecosystems",
+                "content": "Climate change has emerged as one of the most critical issues of our time, with far-reaching consequences for global ecosystems. This passage examines the multifaceted effects of rising temperatures, changing precipitation patterns, and extreme weather events on various ecosystems around the world.\n\nThe Earth's climate has always been dynamic, but the rate of change observed in recent decades is unprecedented in human history. Since the Industrial Revolution, human activities, primarily the burning of fossil fuels and deforestation, have led to a significant increase in greenhouse gas concentrations in the atmosphere. This has resulted in a steady rise in global average temperatures, a phenomenon known as global warming.\n\nThe impacts of climate change on ecosystems are diverse and often interconnected:\n\n1. Arctic Tundra: This fragile ecosystem is experiencing some of the most rapid warming on Earth. As permafrost thaws, it releases stored carbon and methane, further accelerating global warming. The changing landscape is also affecting wildlife, with species like polar bears facing habitat loss.\n\n2. Coral Reefs: Rising ocean temperatures and acidification are causing widespread coral bleaching events. The loss of coral reefs not only affects marine biodiversity but also impacts coastal communities that rely on these ecosystems for food and protection from storms.\n\n3. Rainforests: Changing precipitation patterns are altering the delicate balance of tropical rainforests. More frequent and severe droughts can lead to increased fire risk and potential forest dieback, threatening biodiversity hotspots and important carbon sinks.\n\n4. Alpine Ecosystems: As temperatures rise, plant and animal species are moving to higher elevations. This upslope migration is putting pressure on high-altitude species, which may have nowhere else to go.\n\n5. Coastal Wetlands: Sea-level rise is threatening coastal wetlands, which provide crucial ecosystem services such as storm protection and carbon sequestration. Many coastal ecosystems are at risk of being submerged or eroded.\n\nThe cascading effects of these ecosystem changes are profound:\n\n1. Biodiversity Loss: As habitats change or disappear, many species are struggling to adapt, leading to potential extinctions and loss of biodiversity.\n\n2. Altered Migration Patterns: Changes in temperature and precipitation are affecting the timing of animal migrations and plant flowering, disrupting ecological relationships that have evolved over millennia.\n\n3. Increased Disease Transmission: Warmer temperatures are allowing disease vectors like mosquitoes to expand their ranges, potentially increasing the spread of infectious diseases.\n\n4. Food Web Disruptions: Changes in the abundance and distribution of species can have ripple effects throughout food webs, affecting ecosystem stability.\n\n5. Carbon Cycle Alterations: As ecosystems change, their ability to absorb and store carbon is also changing, potentially creating feedback loops that could accelerate or mitigate climate change.\n\nAddressing climate change and its impacts on ecosystems requires a multifaceted approach:\n\n1. Mitigation: Reducing greenhouse gas emissions through renewable energy adoption, improved energy efficiency, and sustainable land use practices.\n\n2. Adaptation: Developing strategies to help ecosystems and human communities adapt to unavoidable changes.\n\n3. Conservation: Protecting and restoring key ecosystems to maintain biodiversity and ecosystem services.\n\n4. Research: Continuing to study and monitor ecosystems to better understand and predict the impacts of climate change.\n\nAs we face the challenges of climate change, it is crucial to recognize the interconnectedness of global ecosystems and the vital role they play in maintaining the health of our planet. Our actions today will determine the future of these ecosystems and, by extension, our own future on Earth."
+              },
+              {
+                "title": "The Human Brain: Mysteries and Discoveries",
+                "content": "The human brain, a marvel of biological engineering, remains one of the most complex and enigmatic organs in the known universe. This passage delves into recent discoveries in neuroscience, the mysteries that continue to puzzle scientists, and the potential future breakthroughs that could revolutionize our understanding of the mind.\n\nThe complexity of the human brain is staggering. With approximately 86 billion neurons forming trillions of connections, the brain is capable of feats that far surpass even the most advanced artificial intelligence systems. Recent advancements in neuroimaging techniques, such as functional magnetic resonance imaging (fMRI) and diffusion tensor imaging (DTI), have allowed scientists to peer into the living brain with unprecedented detail, uncovering new insights into its structure and function.\n\nRecent Discoveries:\n\n1. Neuroplasticity: One of the most significant discoveries in recent decades is the brain's remarkable ability to rewire itself throughout life. This concept, known as neuroplasticity, has overturned the long-held belief that the adult brain is fixed and unchangeable. We now know that the brain can form new neural connections and even generate new neurons in certain regions, offering hope for recovery from brain injuries and potential treatments for neurological disorders.\n\n2. The Connectome: Scientists are working on mapping the complete neural network of the human brain, known as the connectome. This ambitious project aims to create a comprehensive wiring diagram of the brain, which could provide invaluable insights into how neural circuits give rise to cognition and behavior.\n\n3. The Role of Glia: Once thought to be mere support cells, glial cells are now recognized as crucial players in brain function. Astrocytes, a type of glial cell, have been found to play important roles in synaptic transmission and neuronal metabolism, challenging our understanding of how information is processed in the brain.\n\n4. Sleep and Memory Consolidation: Research has revealed the critical role of sleep in memory consolidation and learning. During sleep, the brain appears to replay and strengthen neural patterns associated with newly acquired information, helping to transfer short-term memories into long-term storage.\n\n5. The Gut-Brain Axis: An emerging area of research is exploring the bidirectional communication between the gut microbiome and the brain. This gut-brain axis may influence mood, cognition, and even neurological disorders, highlighting the complex interplay between different systems in the body.\n\nOngoing Mysteries:\n\n1. Consciousness: Perhaps the greatest mystery in neuroscience is the nature of consciousness itself. How does subjective experience arise from the physical processes in the brain? This \"hard problem of consciousness\" continues to elude scientific explanation.\n\n2. Memory Storage: While we've made progress in understanding memory formation, the exact mechanisms by which memories are stored and retrieved remain elusive. How does the brain encode and decode information across distributed neural networks?\n\n3. Individual Differences: Why do individuals with seemingly similar brain structures exhibit such vast differences in personality, cognition, and susceptibility to mental disorders? Understanding the interplay between genes, environment, and neural circuitry in shaping individual differences is an ongoing challenge.\n\n4. The Aging Brain: While we know that cognitive decline is associated with aging, the precise mechanisms underlying this process and why some individuals maintain cognitive function better than others in old age are not fully understood.\n\n5. Dreams: The purpose and mechanisms of dreaming continue to puzzle scientists. While theories abound, from memory consolidation to emotional regulation, the true function of dreams remains a mystery.\n\nFuture Breakthroughs:\n\n1. Brain-Computer Interfaces: Advancements in this field could allow direct communication between the brain and external devices, potentially restoring function to individuals with paralysis or enhancing human cognitive capabilities.\n\n2. Precision Medicine for Brain Disorders: As we gain a better understanding of the genetic and neural basis of brain disorders, we may be able to develop more targeted and effective treatments for conditions like Alzheimer's disease, schizophrenia, and depression.\n\n3. Artificial Neural Networks: Insights from neuroscience are informing the development of more advanced artificial intelligence systems, which in turn may help us better understand the principles of neural computation in the brain.\n\n4. Optogenetics and Chemogenetics: These emerging technologies allow researchers to control specific neural circuits with unprecedented precision, potentially leading to new treatments for neurological and psychiatric disorders.\n\n5. Cognitive Enhancement: As we unravel the mechanisms of learning, memory, and attention, we may develop new methods to enhance cognitive function in both healthy individuals and those with cognitive impairments.\n\nAs we continue to explore the frontiers of neuroscience, each discovery brings us closer to understanding the intricate workings of the human brain. Yet, with each answer come new questions, reminding us of the vast complexity of the organ that defines our humanity. The journey to fully understand the human brain promises to be one of the most exciting and challenging scientific endeavors of the 21st century."
+              }
+            ],
+          "questions": [
+            {
+              "id": "A1Q1",
+              "type": "multiple_choice",
+              "question": "What is the primary focus of the passage on robotics?",
+              "options": ["History of robotics", "Current trends in robotics", "Future predictions in robotics", "All of the above"]
+            },
+            {
+              "id": "A1Q2",
+              "type": "true_false",
+              "question": "The passage suggests that climate change only affects weather patterns.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "A1Q3",
+              "type": "matching_information",
+              "question": "Match the following statements with the correct passage: 1) Discusses recent discoveries in neuroscience, 2) Explores the history of robotics, 3) Examines the impact of climate change on ecosystems.",
+              "options": ["1) The Human Brain", "2) The Evolution of Robotics", "3) Climate Change and Its Impact"]
+            },
+            {
+              "id": "A1Q4",
+              "type": "summary_completion",
+              "question": "Complete the summary: The passage on climate change discusses the impact of __________ on ecosystems around the world.",
+              "options": ["rising temperatures", "human activities", "technological advancements", "natural disasters"]
+            },
+            {
+              "id": "A1Q5",
+              "type": "diagram_labeling",
+              "question": "Label the following diagram of the human brain with the appropriate terms.",
+              "options": ["Cerebrum", "Cerebellum", "Brainstem", "Hippocampus"]
+            },
+            {
+              "id": "A1Q6",
+              "type": "short_answer",
+              "question": "What are the three major sections of the human brain?"
+            },
+            {
+              "id": "A1Q7",
+              "type": "multiple_choice",
+              "question": "Which of the following is NOT a trend in modern robotics?",
+              "options": ["Increased AI integration", "Decreased automation", "Enhanced mobility", "Improved human-robot interaction"]
+            },
+            {
+              "id": "A1Q8",
+              "type": "true_false",
+              "question": "The passage on climate change states that rising temperatures are the sole cause of ecosystem changes.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "A1Q9",
+              "type": "matching_headings",
+              "question": "Match the heading with the correct paragraph: 1) Historical Background, 2) Current Trends, 3) Future Predictions.",
+              "options": ["1) The Evolution of Robotics", "2) Current Trends", "3) Future Predictions"]
+            },
+            {
+              "id": "A1Q10",
+              "type": "flowchart_completion",
+              "question": "Complete the flowchart on the development of robotics with the correct events.",
+              "options": ["Introduction of AI", "Creation of the first robot", "Advancements in sensors", "Integration into daily life"]
+            },
+            {
+              "id": "A1Q11",
+              "type": "sentence_completion",
+              "question": "The primary challenge discussed in the passage on climate change is __________.",
+              "options": ["rising sea levels", "global warming", "extreme weather", "deforestation"]
+            },
+            {
+              "id": "A1Q12",
+              "type": "table_completion",
+              "question": "Complete the table with the correct information about robotics advancements.",
+              "options": ["Year", "Advancement", "Impact"]
+            },
+            {
+              "id": "A1Q13",
+              "type": "multiple_choice",
+              "question": "What potential future breakthrough is mentioned in the passage on the human brain?",
+              "options": ["Neuroplasticity enhancement", "Memory implantation", "Consciousness transfer", "Brain-computer interfaces"]
+            },
+            {
+              "id": "A1Q14",
+              "type": "true_false",
+              "question": "The passage implies that climate change effects are irreversible.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "A1Q15",
+              "type": "matching_information",
+              "question": "Match the following research areas with the correct passage: 1) Climate impact studies, 2) Robotics development, 3) Neuroscience discoveries.",
+              "options": ["1) Climate Change and Its Impact", "2) The Evolution of Robotics", "3) The Human Brain"]
+            },
+            {
+              "id": "A1Q16",
+              "type": "diagram_completion",
+              "question": "Complete the diagram of the robotics timeline with the correct events.",
+              "options": ["Early 1900s: First robot", "1950s: AI introduction", "2000s: Advanced sensors", "2020s: Human-robot interaction"]
+            },
+            {
+              "id": "A1Q17",
+              "type": "short_answer",
+              "question": "What are the three primary focuses of the passage on the human brain?"
+            },
+            {
+              "id": "A1Q18",
+              "type": "multiple_choice",
+              "question": "Which ecosystem is most affected by climate change according to the passage?",
+              "options": ["Coral reefs", "Rainforests", "Arctic tundra", "Deserts"]
+            },
+            {
+              "id": "A1Q19",
+              "type": "true_false",
+              "question": "The passage on robotics predicts that robots will soon replace human workers entirely.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "A1Q20",
+              "type": "summary_completion",
+              "question": "Complete the summary: The passage on the human brain highlights recent discoveries and __________ that still puzzle scientists.",
+              "options": ["questions", "breakthroughs", "challenges", "solutions"]
+            },
+            {
+              "id": "A1Q21",
+              "type": "matching_headings",
+              "question": "Match the heading with the correct paragraph: 1) Neuroscientific Discoveries, 2) Mysteries of the Brain, 3) Future Potential.",
+              "options": ["1) Neuroscientific Discoveries", "2) Mysteries of the Brain", "3) Future Potential"]
+            },
+            {
+              "id": "A1Q22",
+              "type": "flowchart_completion",
+              "question": "Complete the flowchart on climate change impacts with the correct effects.",
+              "options": ["Rising temperatures", "Sea level rise", "Habitat loss", "Species migration"]
+            },
+            {
+              "id": "A1Q23",
+              "type": "multiple_choice",
+              "question": "What is the significance of AI in the evolution of robotics?",
+              "options": ["Enhances decision-making", "Reduces costs", "Increases production speed", "Decreases human involvement"]
+            },
+            {
+              "id": "A1Q24",
+              "type": "true_false",
+              "question": "The passage on the human brain suggests that all mysteries have been solved.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "A1Q25",
+              "type": "matching_information",
+              "question": "Match the following terms with their definitions: 1) Neuroplasticity, 2) AI, 3) Climate change.",
+              "options": ["1) Brain's ability to adapt", "2) Artificial intelligence", "3) Long-term weather pattern changes"]
+            },
+            {
+              "id": "A1Q26",
+              "type": "table_completion",
+              "question": "Complete the table with the correct information about climate change effects.",
+              "options": ["Impact", "Ecosystem", "Adaptation"]
+            },
+            {
+              "id": "A1Q27",
+              "type": "multiple_choice",
+              "question": "Which future prediction is discussed in the passage on robotics?",
+              "options": ["Total automation", "Human-robot collaboration", "AI takeover", "End of manual labor"]
+            },
+            {
+              "id": "A1Q28",
+              "type": "true_false",
+              "question": "The passage on climate change focuses exclusively on temperature rise.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "A1Q29",
+              "type": "summary_completion",
+              "question": "Complete the summary: The passage on robotics discusses the evolution from simple machines to __________.",
+              "options": ["AI-driven robots", "automated systems", "complex algorithms", "human-like robots"]
+            },
+            {
+              "id": "A1Q30",
+              "type": "short_answer",
+              "question": "What are the main areas of focus in the passage on the human brain?"
+            },
+            {
+              "id": "A1Q31",
+              "type": "multiple_choice",
+              "question": "Which of the following is a current trend in robotics?",
+              "options": ["Reduced complexity", "Enhanced mobility", "Lowered intelligence", "Decreased autonomy"]
+            },
+            {
+              "id": "A1Q32",
+              "type": "true_false",
+              "question": "The passage suggests that climate change has no impact on human life.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "A1Q33",
+              "type": "matching_headings",
+              "question": "Match the heading with the correct paragraph: 1) Impact on Ecosystems, 2) Causes of Climate Change, 3) Solutions and Mitigation.",
+              "options": ["1) Impact on Ecosystems", "2) Causes of Climate Change", "3) Solutions and Mitigation"]
+            },
+            {
+              "id": "A1Q34",
+              "type": "flowchart_completion",
+              "question": "Complete the flowchart on the history of robotics with the correct events.",
+              "options": ["Introduction of sensors", "Development of AI", "First robot", "Human-robot interaction"]
+            },
+            {
+              "id": "A1Q35",
+              "type": "sentence_completion",
+              "question": "The future breakthroughs in neuroscience might include __________.",
+              "options": ["memory enhancement", "cure for diseases", "mind reading", "all of the above"]
+            },
+            {
+              "id": "A1Q36",
+              "type": "table_completion",
+              "question": "Complete the table with the correct data on the evolution of robotics.",
+              "options": ["Era", "Advancement", "Impact"]
+            },
+            {
+              "id": "A1Q37",
+              "type": "multiple_choice",
+              "question": "Which area of neuroscience is discussed in the passage?",
+              "options": ["Neuroplasticity", "Brain-computer interface", "Cognitive science", "Psychiatry"]
+            },
+            {
+              "id": "A1Q38",
+              "type": "true_false",
+              "question": "The passage on robotics mentions that AI will fully replace humans.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "A1Q39",
+              "type": "matching_information",
+              "question": "Match the following impacts with the correct cause: 1) Rising sea levels, 2) Species migration, 3) Habitat loss.",
+              "options": ["1) Climate Change", "2) Ecosystem Disruption", "3) Deforestation"]
+            },
+            {
+              "id": "A1Q40",
+              "type": "diagram_completion",
+              "question": "Complete the diagram on climate change impacts with the correct information.",
+              "options": ["Temperature rise", "Sea level rise", "Weather changes", "Ecosystem disruption"]
+            }
+          ]
+        }
+      ],
+      "general": [
+        {
+          "texts": [
+            {
+              "title": "Healthy Living: Tips and Tricks",
+              "content": "Maintaining a healthy lifestyle can be challenging. This passage provides practical tips on diet, exercise, and mental well-being to help individuals lead healthier lives."
+            },
+            {
+              "title": "The Rise of Remote Work",
+              "content": "The concept of remote work has gained popularity, especially after the COVID-19 pandemic. This passage discusses the benefits and challenges of working from home and how companies are adapting to this new trend."
+            },
+            {
+              "title": "Traveling on a Budget",
+              "content": "Traveling doesn't have to be expensive. This passage offers advice on how to travel affordably, from finding cheap flights to budget-friendly accommodations and activities."
+            }
+          ],
+          "questions": [
+            {
+              "id": "G1Q1",
+              "type": "multiple_choice",
+              "question": "What is the main theme of the passage on healthy living?",
+              "options": ["Diet tips", "Exercise routines", "Mental well-being", "All of the above"]
+            },
+            {
+              "id": "G1Q2",
+              "type": "true_false",
+              "question": "The passage suggests that remote work has no challenges.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "G1Q3",
+              "type": "matching_information",
+              "question": "Match the following tips with the correct passage: 1) Budget-friendly accommodations, 2) Benefits of remote work, 3) Tips on mental well-being.",
+              "options": ["1) Traveling on a Budget", "2) The Rise of Remote Work", "3) Healthy Living"]
+            },
+            {
+              "id": "G1Q4",
+              "type": "summary_completion",
+              "question": "Complete the summary: The passage on traveling on a budget provides advice on finding __________.",
+              "options": ["cheap flights", "luxury hotels", "high-end restaurants", "expensive activities"]
+            },
+            {
+              "id": "G1Q5",
+              "type": "table_completion",
+              "question": "Complete the following table with tips from the passage on healthy living.",
+              "options": ["Diet", "Exercise", "Mental well-being"]
+            },
+            {
+              "id": "G1Q6",
+              "type": "short_answer",
+              "question": "What are the three main components of a healthy lifestyle?"
+            },
+            {
+              "id": "G1Q7",
+              "type": "multiple_choice",
+              "question": "Which of the following is NOT a benefit of remote work mentioned in the passage?",
+              "options": ["Flexibility", "Increased productivity", "Higher costs", "Better work-life balance"]
+            },
+            {
+              "id": "G1Q8",
+              "type": "true_false",
+              "question": "The passage on traveling suggests that traveling on a budget is impossible.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "G1Q9",
+              "type": "matching_headings",
+              "question": "Match the heading with the correct paragraph: 1) Diet Tips, 2) Exercise Routines, 3) Mental Well-being.",
+              "options": ["1) Diet Tips", "2) Exercise Routines", "3) Mental Well-being"]
+            },
+            {
+              "id": "G1Q10",
+              "type": "flowchart_completion",
+              "question": "Complete the flowchart on remote work benefits with the correct points.",
+              "options": ["Flexibility", "Reduced commute", "Higher productivity", "Work-life balance"]
+            },
+            {
+              "id": "G1Q11",
+              "type": "sentence_completion",
+              "question": "The primary challenge discussed in the passage on remote work is __________.",
+              "options": ["isolation", "distractions", "technology issues", "time management"]
+            },
+            {
+              "id": "G1Q12",
+              "type": "table_completion",
+              "question": "Complete the table with the correct information about budget travel tips.",
+              "options": ["Tip", "Description", "Example"]
+            },
+            {
+              "id": "G1Q13",
+              "type": "multiple_choice",
+              "question": "What is the main theme of the passage on traveling on a budget?",
+              "options": ["Saving money", "Finding luxury hotels", "Booking expensive flights", "Spending more on activities"]
+            },
+            {
+              "id": "G1Q14",
+              "type": "true_false",
+              "question": "The passage on healthy living implies that mental well-being is not important.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "G1Q15",
+              "type": "matching_information",
+              "question": "Match the following tips with the correct passage: 1) Cheap flights, 2) Benefits of remote work, 3) Tips on exercise routines.",
+              "options": ["1) Traveling on a Budget", "2) The Rise of Remote Work", "3) Healthy Living"]
+            },
+            {
+              "id": "G1Q16",
+              "type": "diagram_completion",
+              "question": "Complete the diagram on diet tips with the correct information.",
+              "options": ["Balanced diet", "Low sugar", "High fiber", "Adequate hydration"]
+            },
+            {
+              "id": "G1Q17",
+              "type": "short_answer",
+              "question": "What are the primary benefits of remote work mentioned in the passage?"
+            },
+            {
+              "id": "G1Q18",
+              "type": "multiple_choice",
+              "question": "Which remote work challenge is highlighted in the passage?",
+              "options": ["Isolation", "Increased commute", "Higher costs", "Reduced productivity"]
+            },
+            {
+              "id": "G1Q19",
+              "type": "true_false",
+              "question": "The passage suggests that traveling on a budget requires extensive planning.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "G1Q20",
+              "type": "summary_completion",
+              "question": "Complete the summary: The passage on healthy living discusses tips for __________.",
+              "options": ["diet", "exercise", "mental well-being", "all of the above"]
+            },
+            {
+              "id": "G1Q21",
+              "type": "matching_headings",
+              "question": "Match the heading with the correct paragraph: 1) Budget Travel Tips, 2) Finding Cheap Flights, 3) Affordable Accommodations.",
+              "options": ["1) Budget Travel Tips", "2) Finding Cheap Flights", "3) Affordable Accommodations"]
+            },
+            {
+              "id": "G1Q22",
+              "type": "flowchart_completion",
+              "question": "Complete the flowchart on maintaining mental well-being with the correct activities.",
+              "options": ["Meditation", "Exercise", "Healthy diet", "Adequate sleep"]
+            },
+            {
+              "id": "G1Q23",
+              "type": "multiple_choice",
+              "question": "What is a key aspect of a healthy lifestyle mentioned in the passage?",
+              "options": ["Balanced diet", "Sedentary lifestyle", "High sugar intake", "Irregular sleep"]
+            },
+            {
+              "id": "G1Q24",
+              "type": "true_false",
+              "question": "The passage on remote work suggests it has only benefits and no challenges.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "G1Q25",
+              "type": "matching_information",
+              "question": "Match the following benefits with the correct context: 1) Flexibility, 2) Reduced commute, 3) Higher productivity.",
+              "options": ["1) Remote Work", "2) Remote Work", "3) Remote Work"]
+            },
+            {
+              "id": "G1Q26",
+              "type": "table_completion",
+              "question": "Complete the table with the correct data on budget travel options.",
+              "options": ["Option", "Cost", "Benefits"]
+            },
+            {
+              "id": "G1Q27",
+              "type": "multiple_choice",
+              "question": "Which tip is NOT mentioned in the passage on traveling on a budget?",
+              "options": ["Finding luxury hotels", "Booking cheap flights", "Staying in hostels", "Using public transport"]
+            },
+            {
+              "id": "G1Q28",
+              "type": "true_false",
+              "question": "The passage on healthy living suggests ignoring mental health.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "G1Q29",
+              "type": "summary_completion",
+              "question": "Complete the summary: The passage on remote work highlights the benefits and __________.",
+              "options": ["challenges", "opportunities", "advantages", "disadvantages"]
+            },
+            {
+              "id": "G1Q30",
+              "type": "short_answer",
+              "question": "What are the main challenges of remote work mentioned in the passage?"
+            },
+            {
+              "id": "G1Q31",
+              "type": "multiple_choice",
+              "question": "Which aspect of healthy living is emphasized in the passage?",
+              "options": ["Regular exercise", "High sugar diet", "Skipping meals", "Irregular sleep patterns"]
+            },
+            {
+              "id": "G1Q32",
+              "type": "true_false",
+              "question": "The passage suggests that budget travel requires sacrificing comfort.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "G1Q33",
+              "type": "matching_headings",
+              "question": "Match the heading with the correct paragraph: 1) Tips for Healthy Living, 2) Benefits of Remote Work, 3) Traveling on a Budget.",
+              "options": ["1) Tips for Healthy Living", "2) Benefits of Remote Work", "3) Traveling on a Budget"]
+            },
+            {
+              "id": "G1Q34",
+              "type": "flowchart_completion",
+              "question": "Complete the flowchart on the benefits of remote work with the correct information.",
+              "options": ["Flexibility", "Reduced commute", "Higher productivity", "Better work-life balance"]
+            },
+            {
+              "id": "G1Q35",
+              "type": "sentence_completion",
+              "question": "The primary benefit of a balanced diet mentioned in the passage is __________.",
+              "options": ["better health", "increased energy", "weight loss", "all of the above"]
+            },
+            {
+              "id": "G1Q36",
+              "type": "table_completion",
+              "question": "Complete the table with the correct information about remote work challenges.",
+              "options": ["Challenge", "Impact", "Solution"]
+            },
+            {
+              "id": "G1Q37",
+              "type": "multiple_choice",
+              "question": "Which travel tip is highlighted in the passage on traveling on a budget?",
+              "options": ["Booking expensive flights", "Finding luxury hotels", "Using public transport", "Eating at gourmet restaurants"]
+            },
+            {
+              "id": "G1Q38",
+              "type": "true_false",
+              "question": "The passage on remote work suggests it is always easy to manage time effectively.",
+              "options": ["True", "False"]
+            },
+            {
+              "id": "G1Q39",
+              "type": "matching_information",
+              "question": "Match the following tips with the correct passage: 1) Healthy eating, 2) Remote work benefits, 3) Budget travel tips.",
+              "options": ["1) Healthy Living", "2) Remote Work", "3) Traveling on a Budget"]
+            },
+            {
+              "id": "G1Q40",
+              "type": "diagram_completion",
+              "question": "Complete the diagram on budget travel strategies with the correct information.",
+              "options": ["Find cheap flights", "Stay in hostels", "Use public transport", "Plan activities in advance"]
+            }
+          ]
+        }
+      ]
+    },
+    "writing": {
+      "essay_topics": [
+        {
+          "id": 1,
+          "type": "General Training",
+          "title": "Discuss the advantages and disadvantages of urbanization."
+        },
+        {
+          "id": 2,
+          "type": "General Training",
+          "title": "Describe a memorable event in your life and explain why it was important to you."
+        },
+        {
+          "id": 3,
+          "type": "Academic",
+          "title": "Discuss the impact of climate change on marine ecosystems."
+        },
+        {
+          "id": 4,
+          "type": "Academic",
+          "title": "Compare and contrast different approaches to urban planning in major cities."
+        }
+      ],
+      "graphs": [
+        {
+          "id": 1,
+          "type": "bar",
+          "title": "Population Growth in Major Cities (2010-2020)",
+          "data": {
+            "labels": ["Tokyo", "Istanbul", "London", "Moscow"],
+            "datasets": [
+              {
+                "label": "Population growth (in thousands)",
+                "data": [822.724, 2605, 1301, 1077],
+                "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"]
+              }
+            ]
+          }
+        },
+        {
+          "id": 2,
+          "type": "line",
+          "title": "Annual Sales Data (2015-2020)",
+          "data": {
+            "labels": ["2015", "2016", "2017", "2018", "2019", "2020"],
+            "datasets": [
+              {
+                "label": "Sales (in thousands)",
+                "data": [30, 40, 35, 50, 60, 70],
+                "borderColor": "#36A2EB",
+                "fill": false
+              }
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "type": "report",
+          "title": "Production growth of electric vehicles in various countries"
+        }
+      ],
+      "letters": [
+        {
+          "id": 1,
+          "description": "You are planning to visit a foreign country. Write a letter to a friend who lives there. In your letter:",
+          "bullet_points": [
+            "explain why you want to visit this country",
+            "ask for advice about where to go",
+            "suggest an activity you could do together"
+          ]
+        },
+        {
+          "id": 2,
+          "description": "You recently bought an item from an online store, but it arrived damaged. Write a letter to the customer service department. In your letter:",
+          "bullet_points": [
+            "describe the item you bought and when you ordered it",
+            "explain what was wrong with it when it arrived",
+            "say what you would like the company to do about it"
+          ]
+        },
+        {
+          "id": 3,
+          "description": "You are going to take a short course at a college in an English-speaking country. Write a letter to the accommodation officer. In your letter:",
+          "bullet_points": [
+            "explain when you will arrive and how long you plan to stay",
+            "describe the type of accommodation you would prefer",
+            "ask about the cost of this accommodation"
+          ]
+        }
+      ]
+    },
+    "speaking": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Describe a memorable trip you have taken.",
+          "dialogue": "Candidate: One of the most memorable trips I have taken was to the mountains. The scenery was breathtaking, and I had the opportunity to hike and explore nature. It was a refreshing escape from the hustle and bustle of city life. Examiner: What did you enjoy the most about the trip? Candidate: I enjoyed the tranquility and the chance to disconnect from technology. The fresh air and beautiful landscapes made it a truly unforgettable experience."
+        },
+        {
+          "id": 2,
+          "question": "What is your favorite book and why?",
+          "dialogue": "Candidate: My favorite book is 'To Kill a Mockingbird' by Harper Lee. It's a powerful story about justice and morality, and it has deeply influenced my perspective on social issues. Examiner: Can you tell me about a particular part of the book that stood out to you? Candidate: One part that really stood out was the trial scene, where Atticus Finch defends an innocent man. It highlights the deep-seated prejudices in society and the importance of standing up for what is right."
+        }
+      ]
+    }
+  }
+}

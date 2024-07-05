@@ -52,8 +52,8 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const leftLists = ["ReactJS", "Express", "Typescript"];
-  const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
+  const leftLists = ["", "", ""];
+  const rightLists = ["", "", ""];
 
   const [copied, setCopied] = useState(false);
 
@@ -68,8 +68,15 @@ export const BentoGridItem = ({
 
   const handleCopy = () => {
     const text = "hsu@jsmastery.pro";
-    navigator.clipboard.writeText(text);
-    setCopied(true);
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      // Simulating redirection after 1 second
+      setTimeout(() => {
+        window.location.href = "/dashboard"; // Укажите путь, на который нужно перейти
+      }, 1700);
+    }).catch(error => {
+      console.error('Failed to copy: ', error);
+    });
   };
 
   return (
@@ -182,9 +189,8 @@ export const BentoGridItem = ({
                 {/* <img src="/confetti.gif" alt="confetti" /> */}
                 <Lottie options={defaultOptions} height={200} width={400} />
               </div>
-
               <MagicButton
-                title={copied ? "Email is Copied!" : "Copy my email address"}
+                title={copied ? "Accept help" : "Accept help"}
                 icon={<IoCopyOutline />}
                 position="left"
                 handleClick={handleCopy}

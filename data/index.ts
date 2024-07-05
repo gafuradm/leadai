@@ -1,24 +1,23 @@
 export const navItems = [
-  { name: "About", link: "#about" },
-  { name: "Projects", link: "#projects" },
-  { name: "Testimonials", link: "#testimonials" },
-  { name: "Contact", link: "#contact" },
+  { name: "Home", link: "/" },
+  { name: "Reviews", link: "/reviews" },
+  { name: "Dashboard", link: "/cabinet" },
 ];
 
 export const gridItems = [
   {
     id: 1,
-    title: "I prioritize client collaboration, fostering open communication ",
+    title: "Improve your IELTS score, take the test for free and get a score and recommendations in just a few seconds ",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
-    imgClassName: "w-full h-full",
+    imgclassname: "w-48 h-auto",
     titleClassName: "justify-end",
-    img: "/b1.svg",
+    img: "",
     spareImg: "",
   },
   {
     id: 2,
-    title: "I'm very flexible with time zone communications",
+    title: "Study from anywhere in the world",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -28,8 +27,8 @@ export const gridItems = [
   },
   {
     id: 3,
-    title: "My tech stack",
-    description: "I constantly try to improve",
+    title: "Absolutely free",
+    description: "Without trial period and card binding",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-center",
@@ -38,7 +37,7 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Tech enthusiast with a passion for development.",
+    title: "Are you ready to take help from AI to prepare for IELTS?",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -49,17 +48,17 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently building a JS Animation library",
-    description: "The Inside Scoop",
+    title: "Don't have time or don't want to pay schools or tutors for IELTS preparation?",
+    description: "International English Language Testing System",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
-    img: "/b5.svg",
+    img: "/robot.png",
     spareImg: "/grid.svg",
   },
   {
     id: 6,
-    title: "Do you want to start a project together?",
+    title: "Accept free help from AI",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -72,34 +71,34 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+    title: "Preparation for exams",
+    des: "Prepare for exams, tests or interviews with Your AI Assistant Leader",
+    img: "/exams.png",
+    iconLists: [],
     link: "/ui.earth.com",
   },
   {
     id: 2,
-    title: "Yoom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
+    title: "Buy a product at the best price",
+    des: "You only need to give the name of the product, and the AI ​​will buy it",
+    img: "/market.png",
+    iconLists: [],
     link: "/ui.yoom.com",
   },
   {
     id: 3,
-    title: "AI Image SaaS - Canva Application",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
+    title: "Create websites in a few clicks",
+    des: "Now you don't need to code or hire programmers to create websites",
+    img: "/website.png",
+    iconLists: [],
     link: "/ui.aiimg.com",
   },
   {
     id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+    title: "Create content in a few clicks",
+    des: "Now AI can generate content for Instagram or YouTube for You",
+    img: "/social.jpeg",
+    iconLists: [],
     link: "/ui.apple.com",
   },
 ];
@@ -173,31 +172,31 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+    title: "We are free",
+    desc: "We truly believe that being free increases access to education and opportunity, which is why we provide free access to AI-powered IELTS preparation",
     className: "md:col-span-2",
-    thumbnail: "/exp1.svg",
+    thumbnail: "/exp3.svg",
   },
   {
     id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-    className: "md:col-span-2", // change to md:col-span-2
+    title: "We are customer-oriented",
+    desc: "We believe in quality and customer comfort, thanks to which we provide mobile and comfortable access to AI-based IELTS preparation services around the world",
+    className: "md:col-span-2",
     thumbnail: "/exp2.svg",
   },
   {
     id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp3.svg",
+    title: "Focus on speed",
+    desc: "We value your time and therefore we provide the fastest possible answers and recommendations, for example, you will wait from 1 to 13 days for the official ailts, whereas with us you will get the result in a few seconds",
+    className: "md:col-span-2",
+    thumbnail: "/rocket.png",
   },
   {
     id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
+    title: "We are flexible",
+    desc: "We strive to be flexible in order to provide you with convenient and personalized services in today's flexible world.",
     className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
+    thumbnail: "/flexibility.png",
   },
 ];
 
@@ -205,13 +204,16 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    url: "https://github.com/gafuradm"
   },
   {
     id: 2,
-    img: "/twit.svg",
+    img: "/tt.svg",
+    url: "https://www.tiktok.com/@lead_ai",
   },
   {
     id: 3,
-    img: "/link.svg",
-  },
+    img: "/ins.svg",
+    url: "https://www.instagram.com/lead_ai/"
+  }
 ];

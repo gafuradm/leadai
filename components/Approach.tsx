@@ -7,17 +7,15 @@ const Approach = () => {
   return (
     <section className="w-full py-20">
       <h1 className="heading">
-        My <span className="text-purple">approach</span>
+        What else will you get <span className="text-purple">using LeadAI?</span>
       </h1>
       {/* remove bg-white dark:bg-black */}
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         {/* add des prop */}
         <Card
-          title="Planning & Strategy"
-          icon={<AceternityIcon order="Phase 1" />}
-          des="We'll collaborate to map out your website's goals, target audience, 
-          and key functionalities. We'll discuss things like site structure, 
-          navigation, and content requirements."
+          title="Meet the new free opportunity"
+          icon={<AceternityIcon order="Free university selection" />}
+          des="LeaderAI will select a university for you based on your grades, exam results and your preferences"
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
@@ -26,11 +24,9 @@ const Approach = () => {
           />
         </Card>
         <Card
-          title="Development & Progress Update"
-          icon={<AceternityIcon order="Phase 2" />}
-          des="Once we agree on the plan, I cue my lofi playlist and dive into
-          coding. From initial sketches to polished code, I keep you updated
-          every step of the way."
+          title="Don't know where to go or where is best for you to live?"
+          icon={<AceternityIcon order="Free country selection" />}
+          des="Then take a survey from our Leader and find out where it is better for you to study"
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -48,11 +44,9 @@ const Approach = () => {
           {/* <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" /> */}
         </Card>
         <Card
-          title="Development & Launch"
-          icon={<AceternityIcon order="Phase 3" />}
-          des="This is where the magic happens! Based on the approved design, 
-          I'll translate everything into functional code, building your website
-          from the ground up."
+          title="Meet the new assistant to help applicants"
+          icon={<AceternityIcon order="Free advice and estimates" />}
+          des="You received a score but don’t know what your strengths and weaknesses are, this is not about our approach, our approach is maximum personalization and an individual approach to everyone, so we give everyone valuable advice and recommendations for correction and improvement."
         >
           <CanvasRevealEffect
             animationSpeed={3}
