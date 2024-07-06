@@ -23,7 +23,7 @@ const Footer = () => {
           Take IELTS for free right now{" "}
         </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">
-          Don't put off until tomorrow what you can do today
+          Don&apos;t put off until tomorrow what you can do today
         </p>
         <a href="/dashboard">
           <MagicButton

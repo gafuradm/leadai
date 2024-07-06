@@ -101,7 +101,7 @@ const ForgotPasswordPage = () => {
                 </div>
                 <div className="flex flex-col items-center mt-2">
                   <a href="/login" className="text-gray-400 text-sm mb-1">Remember your password?</a>
-                  <a href="/signup" className="text-gray-400 text-sm">Don't have an account yet?</a>
+                  <a href="/signup" className="text-gray-400 text-sm">Don&apos;t have an account yet?</a>
                 </div>
               </form>
             </div>

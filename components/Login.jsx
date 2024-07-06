@@ -107,7 +107,7 @@ const LoginPage = () => {
               </div>
               <div className="flex flex-col items-center space-y-2 mt-2">
                 <a href="/forgot" className="text-gray-400 text-sm mb-1">Forgot your password?</a>
-                <a href="/signup" className="text-gray-400 text-sm">Don't have an account yet?</a>
+                <a href="/signup" className="text-gray-400 text-sm">Don&apos;t have an account yet?</a>
               </div>
             </form>
           </section>
