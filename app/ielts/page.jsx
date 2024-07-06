@@ -7,7 +7,7 @@ import ListeningSection from './ListeningSection';
 import ReadingSection from './ReadingSection';
 import WritingSection from './WritingSection';
 import SpeakingSection from './SpeakingSection';
-import Results from './Results';
+import Results from './results';
 import Image from 'next/image';
 
 const testOptions = [
