@@ -32,6 +32,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head>
         <link rel="icon" href="/icon.png" sizes="any" />
         <title>LeadAI - Your AI assistant for IELTS preparation</title>
+        <meta name="keywords" content="ielts, prep, preparation, hack, pass, exam, test, ai, hsk, smart, immigration, usa, china, eu, gre, sat, toefl, programming, code, migration, ент, егэ 高考，gaokao, bachelor, undergraduate, university, college"></meta>
         <meta name="description" content="Unleash the potential of AI in IELTS, learn to correctly pass the listening, reading, writing and speaking sections, receive accurate assessments and recommendations from our AI" />
       </head>
       <body className={inter.className}>
