@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios'; // Импортируем axios для отправки HTTP-запросов
 import { fetchResults } from './chatgpt';
-
+x
 const Container = styled.div`
   max-width: 800px;
   margin: 0 auto;
@@ -166,13 +165,15 @@ const SpeakingSection = ({ onNext, timedMode }) => {
 
     // Generate the video
     try {
-      const videoResponse = await axios.post('/generate-video', {
-        text: transcript,
-        avatarId: "Angela-inblackskirt-20220820", // Укажите нужный avatarId
-        voiceId: "1bd001e7e50f421d891986aad5158bc8" // Укажите нужный voiceId
+      const videoResponse = await fetch('/generate-video', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: transcript }),
       });
 
-      const videoData = await videoResponse.data;
+      const videoData = await videoResponse.json();
       setVideoUrl(videoData.videoUrl);
     } catch (error) {
       console.error("Error generating video:", error);
