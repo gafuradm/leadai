@@ -30,7 +30,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/jsm-logo.png" sizes="any" />
+        <link rel="icon" href="/icon.png" sizes="any" />
         <title>LeadAI - Your AI assistant for IELTS preparation</title>
         <meta name="description" content="Unleash the potential of AI in IELTS, learn to correctly pass the listening, reading, writing and speaking sections, receive accurate assessments and recommendations from our AI" />
       </head>
