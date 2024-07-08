@@ -118,6 +118,28 @@ const Results = ({ answers, testType }) => {
     );
   };
 
+  const downloadResults = () => {
+    let textContent = "IELTS Test Results\n\n";
+
+    for (const section in result) {
+      if (section !== 'overallScore') {
+        textContent += `${section.charAt(0).toUpperCase() + section.slice(1)} Feedback:\n`;
+        textContent += `${result[section].feedback}\n`;
+        textContent += `Score: ${result[section].score.toFixed(1)}/40\n\n`;
+      }
+    }
+
+    textContent += `Overall Score: ${result.overallScore}/9\n`;
+
+    const blob = new Blob([textContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'results.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   if (loading) return (
     <LoadingContainer>
       <PulseLoader color="#FF69B4" />
@@ -149,13 +171,13 @@ const Results = ({ answers, testType }) => {
           </ResponsiveContainer>
         </ScoreChart>
         {testType === 'full' ? (
-  <h2>Overall Score: {result.overallScore}/9</h2>
-) : (
-  <h2>Section Score: {result[testType]?.score.toFixed(1)}/40</h2>
-)}
+          <h2>Overall Score: {result.overallScore}/9</h2>
+        ) : (
+          <h2>Section Score: {result[testType]?.score.toFixed(1)}/40</h2>
+        )}
       </Section>
       {Object.keys(result).filter(key => key !== 'overallScore').map(renderFeedback)}
-      <Button onClick={() => {}}>Download Results</Button>
+      <Button onClick={downloadResults}>Download Results</Button>
     </Container>
   );
 };
