@@ -39,6 +39,11 @@ const Button = styled.button`
   &:hover {
     background-color: #14465a;
   }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
 `;
 
 const Timer = styled.div`
@@ -49,6 +54,21 @@ const Timer = styled.div`
   margin-bottom: 20px;
 `;
 
+const Pagination = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+`;
+
+const TextSection = styled.div`
+  margin-bottom: 20px;
+`;
+
+const QuestionsSection = styled.div`
+  border-top: 2px solid #FF69B4;
+  padding-top: 20px;
+`;
+
 const ReadingSection = ({ onNext, testType, timedMode }) => {
   const [answers, setAnswers] = useState({});
   const [currentPassage, setCurrentPassage] = useState(0);
@@ -56,6 +76,10 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
   const [passages, setPassages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentTextPage, setCurrentTextPage] = useState(0);
+  const itemsPerPage = 1; // Количество вопросов на страницу
+  const textItemsPerPage = 3; // Количество абзацев текста на страницу
 
   useEffect(() => {
     const loadData = () => {
@@ -149,15 +173,25 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
       return <div>Error: Invalid passage data</div>;
     }
 
+    const startTextIndex = currentTextPage * textItemsPerPage;
+    const currentTextItems = passage.texts.slice(startTextIndex, startTextIndex + textItemsPerPage);
+
+    const startIndex = currentPage * itemsPerPage;
+    const currentItems = passage.questions.slice(startIndex, startIndex + itemsPerPage);
+
     return (
       <Section>
-        {passage.texts.map((text, index) => (
-          <div key={index}>
-            <h3>{text.title}</h3>
-            <p>{text.content}</p>
-          </div>
-        ))}
-        {passage.questions && passage.questions.map(renderQuestion)}
+        <TextSection>
+          {currentTextItems.map((text, index) => (
+            <div key={index}>
+              <h3>{text.title}</h3>
+              <p>{text.content}</p>
+            </div>
+          ))}
+        </TextSection>
+        <QuestionsSection>
+          {currentItems.map(renderQuestion)}
+        </QuestionsSection>
       </Section>
     );
   };
@@ -180,6 +214,31 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
     return <Container><p>No passages available.</p></Container>;
   }
 
+  const handlePreviousPage = () => {
+    if (currentTextPage > 0) {
+      setCurrentTextPage(currentTextPage - 1);
+    } else {
+      setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
+    }
+  };
+
+  const handleNextPage = () => {
+    const totalTextPages = Math.ceil(passages[currentPassage].texts.length / textItemsPerPage);
+    const totalQuestionPages = Math.ceil(passages[currentPassage].questions.length / itemsPerPage);
+
+    if (currentTextPage < totalTextPages - 1) {
+      setCurrentTextPage(currentTextPage + 1);
+    } else if (currentPage < totalQuestionPages - 1) {
+      setCurrentPage(currentPage + 1);
+    } else if (currentPassage < passages.length - 1) {
+      setCurrentPassage(currentPassage + 1);
+      setCurrentTextPage(0);
+      setCurrentPage(0);
+    } else {
+      handleSubmit();
+    }
+  };
+
   return (
     <Container>
       <Title>Reading Section ({testType})</Title>
@@ -190,17 +249,16 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
         </Timer>
       )}
       {renderPassage(passages[currentPassage])}
-      <Button
-        onClick={() => {
-          if (currentPassage < passages.length - 1) {
-            setCurrentPassage(currentPassage + 1);
-          } else {
-            handleSubmit();
-          }
-        }}
-      >
-        {currentPassage < passages.length - 1 ? 'Next Passage' : 'Finish'}
-      </Button>
+      <Pagination>
+        <Button onClick={handlePreviousPage} disabled={currentTextPage === 0 && currentPage === 0}>
+          Previous
+        </Button>
+        <Button
+          onClick={handleNextPage}
+        >
+          {currentTextPage < Math.ceil(passages[currentPassage].texts.length / textItemsPerPage) - 1 || currentPage < Math.ceil(passages[currentPassage].questions.length / itemsPerPage) - 1 ? 'Next Page' : currentPassage < passages.length - 1 ? 'Next Passage' : 'Finish'}
+        </Button>
+      </Pagination>
     </Container>
   );
 };

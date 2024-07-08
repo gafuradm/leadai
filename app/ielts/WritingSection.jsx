@@ -25,6 +25,12 @@ const Section = styled.div`
   margin-bottom: 20px;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+`;
+
 const Button = styled.button`
   background-color: #FF69B4;
   color: white;
@@ -60,7 +66,8 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
   const [task1, setTask1] = useState(null);
   const [task2, setTask2] = useState(null);
   const [answers, setAnswers] = useState(['', '']);
-  const [timeLeft, setTimeLeft] = useState(60 * 60); // 60 минут
+  const [timeLeft, setTimeLeft] = useState(60 * 60); // 60 minutes
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     if (testType === 'academic') {
@@ -113,42 +120,58 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
     onNext(answers);
   };
 
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handlePreviousPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
   return (
     <Container>
       <TitleStyled>Writing Section</TitleStyled>
       {timedMode && <Timer>Time left: {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</Timer>}
-      {/* Task 1 */}
-      <Section>
-        <h3>Task 1</h3>
-        {testType === 'academic' && task1 && (
-          <>
-            <p>{task1.title}</p>
-            <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
-              {task1.type === 'bar' && <Bar data={task1.data} options={{ maintainAspectRatio: true, responsive: true }} />}
-              {task1.type === 'line' && <Line data={task1.data} options={{ maintainAspectRatio: true, responsive: true }} />}
-            </div>
-          </>
-        )}
-        {testType === 'general' && task1 && (
-          <p>{task1.description}</p>
-        )}
-        <TextArea
-          value={answers[0]}
-          onChange={(e) => handleAnswerChange(0, e.target.value)}
-          placeholder="Write your answer for Task 1 here..."
-        />
-      </Section>
-      {/* Task 2 */}
-      <Section>
-        <h3>Task 2</h3>
-        {task2 && <p>{task2.title}</p>}
-        <TextArea
-          value={answers[1]}
-          onChange={(e) => handleAnswerChange(1, e.target.value)}
-          placeholder="Write your essay for Task 2 here..."
-        />
-      </Section>
-      <Button onClick={handleSubmit}>Next</Button>
+      
+      {currentPage === 0 && (
+        <Section>
+          <h3>Task 1</h3>
+          {testType === 'academic' && task1 && (
+            <>
+              <p>{task1.title}</p>
+              <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
+                {task1.type === 'bar' && <Bar data={task1.data} options={{ maintainAspectRatio: true, responsive: true }} />}
+                {task1.type === 'line' && <Line data={task1.data} options={{ maintainAspectRatio: true, responsive: true }} />}
+              </div>
+            </>
+          )}
+          {testType === 'general' && task1 && (
+            <p>{task1.description}</p>
+          )}
+          <TextArea
+            value={answers[0]}
+            onChange={(e) => handleAnswerChange(0, e.target.value)}
+            placeholder="Write your answer for Task 1 here..."
+          />
+          <Button onClick={handleNextPage}>Next</Button>
+        </Section>
+      )}
+
+      {currentPage === 1 && (
+        <Section>
+          <h3>Task 2</h3>
+          {task2 && <p>{task2.title}</p>}
+          <TextArea
+            value={answers[1]}
+            onChange={(e) => handleAnswerChange(1, e.target.value)}
+            placeholder="Write your essay for Task 2 here..."
+          />
+          <ButtonContainer>
+            <Button onClick={handlePreviousPage}>Previous</Button>
+            <Button onClick={handleSubmit}>Submit</Button>
+          </ButtonContainer>
+        </Section>
+      )}
     </Container>
   );
 };

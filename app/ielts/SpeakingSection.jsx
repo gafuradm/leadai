@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios'; // Импортируем axios для отправки HTTP-запросов
 import { fetchResults } from './chatgpt';
 
 const Container = styled.div`
@@ -70,6 +71,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   const [answers, setAnswers] = useState([]);
   const [feedback, setFeedback] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [videoUrl, setVideoUrl] = useState('');
 
   const parts = [
     {
@@ -161,6 +163,20 @@ const SpeakingSection = ({ onNext, timedMode }) => {
       console.error("Error fetching results:", error);
       setFeedback("Sorry, there was an error evaluating your answer. Please try again.");
     }
+
+    // Generate the video
+    try {
+      const videoResponse = await axios.post('/generate-video', {
+        text: transcript,
+        avatarId: "Angela-inblackskirt-20220820", // Укажите нужный avatarId
+        voiceId: "1bd001e7e50f421d891986aad5158bc8" // Укажите нужный voiceId
+      });
+
+      const videoData = await videoResponse.data;
+      setVideoUrl(videoData.videoUrl);
+    } catch (error) {
+      console.error("Error generating video:", error);
+    }
   
     setIsLoading(false);
   
@@ -192,6 +208,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
               <p>{feedback}</p>
             </Feedback>
           )}
+          {videoUrl && <video src={videoUrl} controls />}
         </Section>
       ) : (
         <p>All parts completed. Your responses have been recorded.</p>
