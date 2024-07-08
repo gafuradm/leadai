@@ -43,8 +43,8 @@ const ScoreChart = styled.div`
 `;
 
 const Feedback = styled.div`
-  background-color: #333; // Set a dark background color
-  color: white; // Ensure the text color is light
+  background-color: #333;
+  color: white;
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
@@ -70,18 +70,26 @@ const Results = ({ answers, testType }) => {
         const sections = testType === 'full' 
           ? ['listening', 'reading', 'writing', 'speaking'] 
           : [testType];
-
+  
+        const newResults = {};
+        let totalScore = 0;
+  
         for (const section of sections) {
           if (!answers[section]) {
             console.warn(`Missing data for ${section} section`);
             continue;
           }
-          const sectionResult = await fetchResults(section, answers[section]);
-          setResult(prevResult => ({
-            ...prevResult,
-            [section]: sectionResult
-          }));
+          const sectionResult = await fetchResults(section, answers[section], testType);
+          const score = parseScore(sectionResult);
+          totalScore += score;
+          newResults[section] = { feedback: sectionResult, score: score };
         }
+        
+        const overallScore = testType === 'full' 
+          ? (totalScore / sections.length).toFixed(1) 
+          : totalScore.toFixed(1);
+  
+        setResult({ ...newResults, overallScore });
       } catch (err) {
         console.error('Error in getResults:', err);
         setError(err.message);
@@ -94,68 +102,20 @@ const Results = ({ answers, testType }) => {
 
   const parseScore = (content) => {
     if (!content) return 0;
-    
-    const scoreMatch = content.match(/(\d+(\.\d+)?)\s*\/\s*9/);
-    if (scoreMatch) {
-      return parseFloat(scoreMatch[1]);
-    }
-    
-    return 0;
-  };
-
-  const convertTo40Scale = (score) => {
-    return Math.round((score / 9) * 40);
+    const scoreMatch = content.match(/Score:\s*(\d+(\.\d+)?)/);
+    return scoreMatch ? parseFloat(scoreMatch[1]) : 0;
   };
 
   const renderFeedback = (section) => {
-    const feedback = result[section];
-    const score = parseScore(feedback);
-    const recommendationsMatch = feedback.match(/List of countries and universities:\s*([\s\S]*)/);
-    const recommendations = recommendationsMatch ? recommendationsMatch[1] : '';
+    const sectionResult = result[section];
+    if (!sectionResult) return null;
     return (
       <Feedback key={section}>
         <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
-        <p>{feedback}</p>
-        <p>Score: {score.toFixed(1)}/9 ({convertTo40Scale(score)}/40)</p>
+        <p>{sectionResult.feedback}</p>
+        <p>Score: {sectionResult.score.toFixed(1)}/40</p>
       </Feedback>
     );
-  };
-
-  const downloadResults = () => {
-    const sections = testType === 'full' 
-      ? ['listening', 'reading', 'writing', 'speaking']
-      : [testType];
-
-    const scores = sections.map(section =>
-      parseScore(result[section])
-    );
-
-    let resultsText;
-
-    if (testType === 'full') {
-      const totalScore = scores.reduce((a, b) => a + b, 0);
-      const overallScore = (totalScore / 4).toFixed(1);
-      resultsText = sections.map(section =>
-        `${section.charAt(0).toUpperCase() + section.slice(1)} Feedback:
-        ${result[section] || 'No feedback available'}
-        Score: ${parseScore(result[section]).toFixed(1)}/9 (${convertTo40Scale(parseScore(result[section]))}/40)`
-      ).join('\n\n') +
-      `\n\nOverall Score:
-      ${overallScore}/9 (Total: ${totalScore.toFixed(1)}/36)`;
-    } else {
-      resultsText = `${testType.charAt(0).toUpperCase() + testType.slice(1)} Feedback:
-      ${result[testType] || 'No feedback available'}
-      Score: ${scores[0].toFixed(1)}/9 (${convertTo40Scale(scores[0])}/40)`;
-    }
-
-    const blob = new Blob([resultsText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'IELTS_Results.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
   };
 
   if (loading) return (
@@ -165,12 +125,12 @@ const Results = ({ answers, testType }) => {
   );
   if (error) return <Container><p>Error fetching results: {error}</p></Container>;
 
-  const chartData = Object.entries(result).map(([section, data]) => ({
+  const chartData = Object.entries(result)
+  .filter(([key]) => key !== 'overallScore')
+  .map(([section, data]) => ({
     name: section.charAt(0).toUpperCase() + section.slice(1),
-    score: parseScore(data)
+    score: data.score
   }));
-
-  const overallScore = chartData.reduce((sum, item) => sum + item.score, 0) / chartData.length;
 
   return (
     <Container>
@@ -181,17 +141,21 @@ const Results = ({ answers, testType }) => {
             <BarChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
-              <YAxis domain={[0, 9]} />
+              <YAxis domain={[0, 40]} />
               <Tooltip />
               <Legend />
               <Bar dataKey="score" fill="#FF69B4" />
             </BarChart>
           </ResponsiveContainer>
         </ScoreChart>
-        <h2>Overall Score: {overallScore.toFixed(1)}/9</h2>
+        {testType === 'full' ? (
+  <h2>Overall Score: {result.overallScore}/9</h2>
+) : (
+  <h2>Section Score: {result[testType]?.score.toFixed(1)}/40</h2>
+)}
       </Section>
-      {Object.keys(result).map(renderFeedback)}
-      <Button onClick={downloadResults}>Download Results</Button>
+      {Object.keys(result).filter(key => key !== 'overallScore').map(renderFeedback)}
+      <Button onClick={() => {}}>Download Results</Button>
     </Container>
   );
 };
