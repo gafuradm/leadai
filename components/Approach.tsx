@@ -6,7 +6,7 @@ import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
 const Approach = () => {
   return (
     <section className="w-full py-20">
-      <h1 className="heading">
+      <h1 className="heading text-purple">
         What else will you get <span className="text-purple">using LeadAI?</span>
       </h1>
       {/* remove bg-white dark:bg-black */}
@@ -84,7 +84,7 @@ const Card = ({
       style={{
         //   add these two
         //   you can generate the color from here https://cssgradient.io/
-        background: "rgb(4,7,29)",
+        background: "rgb(203, 172, 249)",
         backgroundColor:
           "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
       }}

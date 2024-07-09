@@ -1,4 +1,3 @@
-// components/RecentProjects.jsx
 import Link from 'next/link';
 
 export const projects = [
@@ -37,7 +36,7 @@ export const projects = [
   {
     id: 5,
     title: "IELTS Recommendations",
-    des: "Get high-quality assessments and recommendations for ielts from AI",
+    des: "Get high-quality assessments and recommendations for IELTS from AI",
     img: "/rec.jpeg",
     iconLists: [],
     link: "/ielts",
@@ -55,16 +54,22 @@ export const projects = [
 const RecentProjects = () => {
   return (
     <section id="recent-projects" className="pt-20 pb-12">
-      <h2 className="text-3xl font-bold text-center mb-8">
+      <h2 className="text-3xl font-bold text-center mb-8 text-purple">
         What can LeadAI{" "}
-        <span className="text-purple">offer You?</span></h2>
+        <span className="text-purple">offer You?</span>
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
           <Link key={project.id} href={project.link} passHref>
             <div
-              className="cursor-pointer transform hover:scale-105 transition-transform duration-300 bg-gray-800 p-6 rounded-lg shadow-lg"
+              className="cursor-pointer transform hover:scale-105 transition-transform duration-300 p-6 rounded-lg shadow-lg"
+              style={{ backgroundColor: "#cbacf9" }}
             >
-              <img src={project.img} alt={project.title} className="mb-4 w-full h-48 object-cover rounded" />
+              <img
+                src={project.img}
+                alt={project.title}
+                className="mb-4 w-full h-48 object-cover rounded"
+              />
               <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
               <p>{project.des}</p>
             </div>

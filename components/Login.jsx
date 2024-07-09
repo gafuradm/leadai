@@ -58,11 +58,11 @@ const LoginPage = () => {
         <Spotlight className="h-[80vh] w-[50vw] top-10 left-full" fill="purple" />
         <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
       </div>
-      <div className="absolute inset-0 dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2] flex items-center justify-center">
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      <div className="absolute inset-0 bg-white flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-20 backdrop-filter backdrop-blur-md" />
       </div>
       <div className="relative z-10 flex justify-center items-center min-h-screen w-full">
-        <div className="w-full max-w-sm p-6 mt-16">
+        <div className="w-full max-w-sm p-6 mt-16 bg-[#CBACF9] rounded-lg shadow-lg">
           <section>
             <div className="text-center mb-8">
               <h1 className="text-2xl font-bold mb-4">Login</h1>
@@ -74,34 +74,34 @@ const LoginPage = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500 bg-gray-700 text-white"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500 bg-white text-black"
                   placeholder="Enter Your email"
                 />
               </div>
               <div className="relative">
                 <label className="block text-lg font-medium mb-2">Password</label>
                 <div className="flex items-center">
-                  <button
-                    type="button"
-                    onClick={togglePasswordVisibility}
-                    className="mr-2"
-                  >
-                    {showPassword ? <FaEyeSlash className="text-gray-400" /> : <FaEye className="text-gray-400" />}
-                  </button>
                   <input
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500 bg-gray-700 text-white"
+                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500 bg-white text-black placeholder-left-14"
                     placeholder="Enter Your password"
                   />
+                  <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute left-2 top-9 p-1"
+                >
+                  {showPassword ? <FaEyeSlash className="text-purple" /> : <FaEye className="text-purple" />}
+                </button>
                 </div>
               </div>
               <div className="flex justify-center">
                 <MagicButton
                   title="Sign In"
                   handleClick={handleSubmit}
-                  otherClasses="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md"
+                  otherClasses="bg-red-600] hover:bg-[#B28ED9] text-white px-4 py-2 rounded-md"
                   position="left"
                 />
               </div>

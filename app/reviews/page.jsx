@@ -8,7 +8,7 @@ import Clients from "@/components/Clients";
 
 const Reviews = () => {
   return (
-    <main className="relative bg-gray-900 text-white flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5" style={{ paddingTop: "60px" }}>
+    <main className="relative bg-white text-white flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5" style={{ paddingTop: "60px" }}>
       <div className="max-w-7xl w-full">
         <FloatingNav navItems={navItems} />
         <Clients />
@@ -19,4 +19,3 @@ const Reviews = () => {
 };
 
 export default Reviews;
-

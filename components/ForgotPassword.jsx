@@ -6,7 +6,7 @@ import { auth } from "@/lib/firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MagicButton from "@/components/MagicButton";
-import { Spotlight } from "@/components/ui/Spotlight"; // Импорт компонента Spotlight
+import { Spotlight } from "@/components/ui/Spotlight";
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { fetchResults } from './chatgpt';
-x
+import HeygenAvatar from './HeygenAvatar';
+
 const Container = styled.div`
   max-width: 800px;
   margin: 0 auto;
@@ -163,22 +164,6 @@ const SpeakingSection = ({ onNext, timedMode }) => {
       setFeedback("Sorry, there was an error evaluating your answer. Please try again.");
     }
 
-    // Generate the video
-    try {
-      const videoResponse = await fetch('/generate-video', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text: transcript }),
-      });
-
-      const videoData = await videoResponse.json();
-      setVideoUrl(videoData.videoUrl);
-    } catch (error) {
-      console.error("Error generating video:", error);
-    }
-  
     setIsLoading(false);
   
     if (currentQuestion < parts[currentPart].questions.length - 1) {
@@ -197,6 +182,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
       {currentPart < parts.length ? (
         <Section>
           <h3>{parts[currentPart].name}</h3>
+          <HeygenAvatar question={parts[currentPart].questions[currentQuestion]} />
           <Question>{parts[currentPart].questions[currentQuestion]}</Question>
           <Button onClick={isRecording ? stopRecording : startRecording} disabled={isLoading}>
             {isRecording ? 'Stop Recording' : 'Start Recording'}
@@ -209,7 +195,6 @@ const SpeakingSection = ({ onNext, timedMode }) => {
               <p>{feedback}</p>
             </Feedback>
           )}
-          {videoUrl && <video src={videoUrl} controls />}
         </Section>
       ) : (
         <p>All parts completed. Your responses have been recorded.</p>

@@ -17,6 +17,7 @@
     "@tabler/icons-react": "^3.1.0",
     "@types/react-router-dom": "^5.3.3",
     "@types/three": "^0.163.0",
+    "axios": "^1.7.2",
     "chart.js": "^4.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
