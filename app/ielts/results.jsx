@@ -1,53 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import PulseLoader from 'react-spinners/PulseLoader';
+import styled from 'styled-components';
 import { fetchResults } from './chatgpt';
-import { PulseLoader } from 'react-spinners';
 
 const Container = styled.div`
-  background-color: black;
-  max-width: 800px;
-  margin: 0 auto;
   padding: 20px;
-  font-family: 'Roboto', sans-serif;
 `;
 
 const Title = styled.h1`
-  color: #FF69B4;
   text-align: center;
 `;
 
 const Section = styled.div`
-  border-radius: 8px;
-  padding: 20px;
+  margin-top: 20px;
+`;
+
+const ScoreChart = styled.div`
+  width: 100%;
+  height: 300px;
   margin-bottom: 20px;
 `;
 
-const Button = styled.button`
+const Feedback = styled.div`
+  margin-bottom: 20px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+const ActionButton = styled.button`
   background-color: #FF69B4;
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  border-radius: 5px;
 
   &:hover {
-    background-color: #14465a;
+    background-color: #FF1493;
   }
-`;
-
-const ScoreChart = styled.div`
-  height: 300px;
-  margin-bottom: 40px;
-`;
-
-const Feedback = styled.div`
-  background-color: #333;
-  color: white;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
 `;
 
 const LoadingContainer = styled.div`
@@ -79,10 +74,15 @@ const Results = ({ answers, testType }) => {
             console.warn(`Missing data for ${section} section`);
             continue;
           }
-          const sectionResult = await fetchResults(section, answers[section], testType);
-          const score = parseScore(sectionResult);
-          totalScore += score;
-          newResults[section] = { feedback: sectionResult, score: score };
+          try {
+            const sectionResult = await fetchResults(section, answers[section], testType);
+            const score = parseScore(sectionResult);
+            totalScore += score;
+            newResults[section] = { feedback: sectionResult, score: score };
+          } catch (error) {
+            setError(`Error fetching ${section} results: ${error.message}`);
+            return;
+          }
         }
         
         const overallScore = testType === 'full' 
@@ -92,7 +92,7 @@ const Results = ({ answers, testType }) => {
         setResult({ ...newResults, overallScore });
       } catch (err) {
         console.error('Error in getResults:', err);
-        setError(err.message);
+        setError(`General error fetching results: ${err.message}`);
       } finally {
         setLoading(false);
       }
@@ -109,10 +109,33 @@ const Results = ({ answers, testType }) => {
   const renderFeedback = (section) => {
     const sectionResult = result[section];
     if (!sectionResult) return null;
+    
+    // Parse the feedback content to add formatting
+    const feedbackContent = sectionResult.feedback
+      .replace(/### Detailed Feedback and Score/g, '<h3>Detailed Feedback and Score</h3>')
+      .replace(/- \*\*/g, '<li><strong>')
+      .replace(/\*\* \- /g, '</strong> - ')
+      .replace(/<li><strong>/g, '<ul><li><strong>')
+      .replace(/<\/strong> - ([^<]+)(\n|$)/g, '</strong> - $1</li>')
+      .replace(/Materials to Improve Listening Skills:/g, '<h3>Materials to Improve Listening Skills:</h3>')
+      .replace(/### Reading Practice Material/g, '<h3>Reading Practice Material</g>')
+      .replace(/### Listening Practice Script/g, '<h3>Listening Practice Script</h3>')
+      .replace(/### Writing Practice Material/g, '<h3>Writing Practice Material</h3>')
+      .replace(/### Speaking Practice Material/g, '<h3>Speaking Practice Material</h3>')
+      .replace(/\*\*Text:\*\*/g, '<h4>Text:</h4>')
+      .replace(/\*\*Comprehension Questions:\*\*/g, '<h4>Comprehension Questions:</h4>')
+      .replace(/\*\*Script:\*\*/g, '<h4>Script:</h4>')
+      .replace(/\*\*Questions:\*\*/g, '<h4>Questions:</h4>')
+      .replace(/\*\*Essay Example:\*\*/g, '<h4>Essay Example:</h4>')
+      .replace(/\*\*Letter Example:\*\*/g, '<h4>Letter Example:</h4>')
+      .replace(/\*\*Dialogue Example:\*\*/g, '<h4>Dialogue Example:</h4>')
+      .replace(/_/g, '')
+      .replace(/\n/g, '<br/>');
+
     return (
       <Feedback key={section}>
         <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
-        <p>{sectionResult.feedback}</p>
+        <div dangerouslySetInnerHTML={{ __html: feedbackContent }} />
         <p>Score: {sectionResult.score.toFixed(1)}/40</p>
       </Feedback>
     );
@@ -145,14 +168,14 @@ const Results = ({ answers, testType }) => {
       <PulseLoader color="#FF69B4" />
     </LoadingContainer>
   );
-  if (error) return <Container><p>Error fetching results: {error}</p></Container>;
+  if (error) return <Container><p>{error}</p></Container>;
 
   const chartData = Object.entries(result)
-  .filter(([key]) => key !== 'overallScore')
-  .map(([section, data]) => ({
-    name: section.charAt(0).toUpperCase() + section.slice(1),
-    score: data.score
-  }));
+    .filter(([key]) => key !== 'overallScore')
+    .map(([section, data]) => ({
+      name: section.charAt(0).toUpperCase() + section.slice(1),
+      score: data.score
+    }));
 
   return (
     <Container>
@@ -177,7 +200,9 @@ const Results = ({ answers, testType }) => {
         )}
       </Section>
       {Object.keys(result).filter(key => key !== 'overallScore').map(renderFeedback)}
-      <Button onClick={downloadResults}>Download Results</Button>
+      <ButtonContainer>
+        <ActionButton onClick={downloadResults}>Download Results</ActionButton>
+      </ButtonContainer>
     </Container>
   );
 };
