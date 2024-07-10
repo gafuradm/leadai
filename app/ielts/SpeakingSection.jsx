@@ -139,40 +139,42 @@ const SpeakingSection = ({ onNext, timedMode }) => {
 
   const stopRecording = async () => {
     setIsRecording(false);
-    setIsLoading(true);
-    
-    if (transcript.trim() === '') {
-      alert("No speech detected. Please try again.");
-      setIsLoading(false);
-      return;
-    }
-  
-    const newAnswers = [...answers, transcript];
-    setAnswers(newAnswers);
-  
-    const prompt = `Evaluate this IELTS Speaking answer for the question "${parts[currentPart].questions[currentQuestion]}". Provide brief feedback and a score out of 9:\n\nAnswer: ${transcript}`;
-    
-    try {
-      const result = await fetchResults('speaking', prompt);
-      if (typeof result === 'object' && result.feedback) {
-        setFeedback(`${result.feedback}\nScore: ${result.score}`);
-      } else {
-        setFeedback(result.toString());
-      }
-    } catch (error) {
-      console.error("Error fetching results:", error);
-      setFeedback("Sorry, there was an error evaluating your answer. Please try again.");
-    }
 
-    setIsLoading(false);
-  
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+    recognition.stop();
+    
+    // Save the answer
+    setAnswers(prevAnswers => {
+      const updatedAnswers = [...prevAnswers];
+      if (!updatedAnswers[currentPart]) {
+        updatedAnswers[currentPart] = [];
+      }
+      updatedAnswers[currentPart][currentQuestion] = transcript;
+      return updatedAnswers;
+    });
+
+    // Move to the next question or part
     if (currentQuestion < parts[currentPart].questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else if (currentPart < parts.length - 1) {
       setCurrentPart(currentPart + 1);
       setCurrentQuestion(0);
     } else {
-      onNext(newAnswers);
+      await submitAnswers();
+    }
+  };
+
+  const submitAnswers = async () => {
+    setIsLoading(true);
+    try {
+      const result = await fetchResults(answers);
+      setFeedback(result);
+    } catch (error) {
+      console.error('Error fetching results:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -181,24 +183,32 @@ const SpeakingSection = ({ onNext, timedMode }) => {
       <Title>Speaking Section</Title>
       {currentPart < parts.length ? (
         <Section>
-          <h3>{parts[currentPart].name}</h3>
-          <HeygenAvatar question={parts[currentPart].questions[currentQuestion]} />
+          <h2>{parts[currentPart].name}</h2>
           <Question>{parts[currentPart].questions[currentQuestion]}</Question>
-          <Button onClick={isRecording ? stopRecording : startRecording} disabled={isLoading}>
-            {isRecording ? 'Stop Recording' : 'Start Recording'}
-          </Button>
-          {transcript && <Transcript>Your answer: {transcript}</Transcript>}
-          {isLoading && <p>Evaluating your answer...</p>}
-          {feedback && (
+          <HeygenAvatar question={parts[currentPart].questions[currentQuestion]} />
+          {isRecording ? (
+            <Button onClick={stopRecording}>Stop Recording</Button>
+          ) : (
+            <Button onClick={startRecording}>Start Recording</Button>
+          )}
+          <Transcript>{transcript}</Transcript>
+        </Section>
+      ) : (
+        <Section>
+          <h2>Thank you for completing the Speaking Section</h2>
+          {isLoading ? (
+            <p>Loading feedback...</p>
+          ) : (
             <Feedback>
-              <h3>Feedback:</h3>
+              <h3>Feedback</h3>
               <p>{feedback}</p>
             </Feedback>
           )}
         </Section>
-      ) : (
-        <p>All parts completed. Your responses have been recorded.</p>
       )}
+      <Button onClick={onNext} disabled={isRecording}>
+        Next
+      </Button>
     </Container>
   );
 };
