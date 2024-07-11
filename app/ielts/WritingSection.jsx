@@ -117,7 +117,13 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
   };
 
   const handleSubmit = () => {
-    onNext(answers);
+    onNext({
+      answers: answers,
+      topics: {
+        task1: task1,
+        task2: task2
+      }
+    });
   };
 
   const handleNextPage = () => {
@@ -170,7 +176,7 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
             <Button onClick={handlePreviousPage}>Previous</Button>
             <Button onClick={handleSubmit}>Submit</Button>
           </ButtonContainer>
-        </Section>
+          </Section>
       )}
     </Container>
   );

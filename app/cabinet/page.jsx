@@ -29,12 +29,7 @@ const CabinetPage = () => {
   }, [router]);
 
   const tools = [
-    { name: "IELTS Preparation", route: "/ielts" },
-    { name: "SAT Preparation", route: "/sat" },
-    { name: "HSK Preparation", route: "/hsk" },
-    { name: "GRE Preparation", route: "/gre" },
-    { name: "TOEFL Preparation", route: "/toefl" },
-    { name: "Programming", route: "/prog" },
+    { name: "IELTS Preparation", route: "/ielts" }
   ];
 
   if (loading) {

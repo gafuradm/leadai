@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { fetchResults } from './chatgpt';
-import HeygenAvatar from './HeygenAvatar';
 
 const Container = styled.div`
   max-width: 800px;
@@ -139,42 +138,65 @@ const SpeakingSection = ({ onNext, timedMode }) => {
 
   const stopRecording = async () => {
     setIsRecording(false);
-
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-
-    recognition.stop();
+    setIsLoading(true);
     
-    // Save the answer
-    setAnswers(prevAnswers => {
-      const updatedAnswers = [...prevAnswers];
-      if (!updatedAnswers[currentPart]) {
-        updatedAnswers[currentPart] = [];
+    if (transcript.trim() === '') {
+      alert("No speech detected. Please try again.");
+      setIsLoading(false);
+      return;
+    }
+  
+    const newAnswers = [...answers, {
+      question: parts[currentPart].questions[currentQuestion],
+      answer: transcript
+    }];
+    setAnswers(newAnswers);
+  
+    const data = {
+      questions: [parts[currentPart].questions[currentQuestion]],
+      answers: [transcript]
+    };
+  
+    try {
+      const result = await fetchResults('speaking', data, 'partial'); // or 'full' if it's a full test
+      if (typeof result === 'object' && result.feedback) {
+        setFeedback(`${result.feedback}\nScore: ${result.score}`);
+      } else {
+        setFeedback(result.toString());
       }
-      updatedAnswers[currentPart][currentQuestion] = transcript;
-      return updatedAnswers;
-    });
+    } catch (error) {
+      console.error("Error fetching results:", error);
+      setFeedback("Sorry, there was an error evaluating your answer. Please try again.");
+    }
+    
+    // Generate the video
+    try {
+      const videoResponse = await fetch('/generate-video', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: transcript }),
+      });
 
-    // Move to the next question or part
+      const videoData = await videoResponse.json();
+      setVideoUrl(videoData.videoUrl);
+    } catch (error) {
+      console.error("Error generating video:", error);
+    }
+  
+    setIsLoading(false);
+  
     if (currentQuestion < parts[currentPart].questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else if (currentPart < parts.length - 1) {
       setCurrentPart(currentPart + 1);
       setCurrentQuestion(0);
     } else {
-      await submitAnswers();
-    }
-  };
-
-  const submitAnswers = async () => {
-    setIsLoading(true);
-    try {
-      const result = await fetchResults(answers);
-      setFeedback(result);
-    } catch (error) {
-      console.error('Error fetching results:', error);
-    } finally {
-      setIsLoading(false);
+      onNext({ 
+        questions: parts.flatMap(part => part.questions), 
+        answers: newAnswers.map(a => a.answer)
+      });
     }
   };
 
@@ -183,32 +205,24 @@ const SpeakingSection = ({ onNext, timedMode }) => {
       <Title>Speaking Section</Title>
       {currentPart < parts.length ? (
         <Section>
-          <h2>{parts[currentPart].name}</h2>
+          <h3>{parts[currentPart].name}</h3>
           <Question>{parts[currentPart].questions[currentQuestion]}</Question>
-          <HeygenAvatar question={parts[currentPart].questions[currentQuestion]} />
-          {isRecording ? (
-            <Button onClick={stopRecording}>Stop Recording</Button>
-          ) : (
-            <Button onClick={startRecording}>Start Recording</Button>
-          )}
-          <Transcript>{transcript}</Transcript>
-        </Section>
-      ) : (
-        <Section>
-          <h2>Thank you for completing the Speaking Section</h2>
-          {isLoading ? (
-            <p>Loading feedback...</p>
-          ) : (
+          <Button onClick={isRecording ? stopRecording : startRecording} disabled={isLoading}>
+            {isRecording ? 'Stop Recording' : 'Start Recording'}
+          </Button>
+          {transcript && <Transcript>Your answer: {transcript}</Transcript>}
+          {isLoading && <p>Evaluating your answer...</p>}
+          {feedback && (
             <Feedback>
-              <h3>Feedback</h3>
+              <h3>Feedback:</h3>
               <p>{feedback}</p>
             </Feedback>
           )}
+          {videoUrl && <video src={videoUrl} controls />}
         </Section>
+      ) : (
+        <p>All parts completed. Your responses have been recorded.</p>
       )}
-      <Button onClick={onNext} disabled={isRecording}>
-        Next
-      </Button>
     </Container>
   );
 };
