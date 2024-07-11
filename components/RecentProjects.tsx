@@ -54,16 +54,17 @@ export const projects = [
 const RecentProjects = () => {
   return (
     <section id="recent-projects" className="pt-20 pb-12">
-      <h2 className="text-3xl font-bold text-center mb-8 text-purple">
-        What can LeadAI{" "}
-        <span className="text-purple">offer You?</span>
-      </h2>
+      <h2 className="text-3xl font-bold text-center mb-8 text-black">
+  What can LeadAI{" "}
+  <span className="text-black">offer You?</span>
+</h2>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
           <Link key={project.id} href={project.link} passHref>
             <div
               className="cursor-pointer transform hover:scale-105 transition-transform duration-300 p-6 rounded-lg shadow-lg"
-              style={{ backgroundColor: "#cbacf9" }}
+              style={{ backgroundColor: "#810021" }}
             >
               <img
                 src={project.img}

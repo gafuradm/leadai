@@ -16,6 +16,16 @@ const Hero = () => {
 
   return (
     <div className="pb-20 pt-36 relative bg-white">
+      <style jsx>{`
+        .text-burgundy {
+          color: #800020; /* Желаемый цвет бордового */
+        }
+
+        .tilted-image {
+          transform: rotate(-355deg); /* Наклонить изображение на -5 градусов */
+          margin-top: -50px; /* Отодвинуть изображение вверх на 20 пикселей */
+        }
+      `}</style>
       <div className="flex justify-between items-center w-full px-10 absolute top-4 left-0 z-20">
         <div className="flex items-center">
           <img src="/logo1.png" alt="Logo" className="h-16" />
@@ -52,7 +62,7 @@ const Hero = () => {
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-start justify-center">
           <TextGenerateEffect
             words="Prepare for IELTS quickly and for free without registration"
-            className="text-left text-[40px] md:text-5xl lg:text-6xl"
+            className="text-left text-[40px] md:text-5xl lg:text-6xl text-burgundy"
           />
           <a href="#recent-projects" className="scroll-smooth mt-10">
             <MagicButton
@@ -63,8 +73,8 @@ const Hero = () => {
             />
           </a>
         </div>
-        <div className="hidden md:flex items-center justify-center">
-          <img src="/path/to/phone-image.png" alt="Phone with App" className="max-h-[80vh]" />
+        <div className="hidden md:flex items-center justify-center tilted-image">
+          <img src="/phone-image.jpeg" alt="Phone with App" className="max-h-[80vh]" />
         </div>
       </div>
     </div>

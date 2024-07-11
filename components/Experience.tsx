@@ -5,9 +5,9 @@ import { Button } from "./ui/MovingBorders";
 const Experience = () => {
   return (
     <div className="py-20 w-full">
-      <h1 className="heading text-purple">
+      <h1 className="heading text-black">
         Leading in IELTS is our immodest name and{" "}
-        <span className="text-purple">here&apos;s why</span>
+        <span className="text-black">here&apos;s why</span>
       </h1>
 
       <div className="w-full mt-12 grid lg:grid-cols-4 grid-cols-1 gap-10">
@@ -17,7 +17,7 @@ const Experience = () => {
             duration={Math.floor(Math.random() * 10000) + 10000}
             borderRadius="1.75rem"
             style={{
-              background: "#cbacf9",
+              background: "#810021",
               borderRadius: "1.75rem",
             }}
             className="flex-1 text-black dark:text-white border-neutral-200 dark:border-slate-800"

@@ -90,8 +90,8 @@ export const BentoGridItem = ({
       style={{
         //   add these two
         //   you can generate the color from here https://cssgradient.io/
-        background: "#cbacf9",
-        backgroundColor: "#cbacf9",
+        background: "#000000",
+        backgroundColor: "#000000",
       }}
     >
       {/* add img divs */}
