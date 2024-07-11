@@ -25,7 +25,7 @@ const Hero = () => {
             className="flex items-center space-x-2 text-gray-800"
             onClick={toggleDropdown}
           >
-            <img src="/path/to/current-flag.png" alt="Current Language" className="h-6 w-6" />
+            <img src="/uk.png" alt="Current Language" className="h-6 w-9" />
             <span>EN</span>
           </button>
           {isDropdownOpen && (
