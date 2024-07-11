@@ -41,12 +41,7 @@ const CabinetPage = () => {
   }
 
   return user ? (
-    <main className="relative flex flex-col justify-center items-center min-h-screen overflow-hidden bg-white dark:bg-black-100">
-      <div className="absolute inset-0">
-        <Spotlight className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen" fill="white" />
-        <Spotlight className="h-[80vh] w-[50vw] top-10 left-full from-gray-800 to-gray-900" fill="purple" />
-        <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
-      </div>
+    <main className="relative flex flex-col justify-center items-center min-h-screen overflow-hidden bg-black dark:bg-black-100">
       <div className="relative z-10 w-full max-w-3xl p-6 mt-16">
         <section className="rounded-lg shadow-lg p-8 bg-gray-100 dark:bg-gray-900">
           <h1 className="text-2xl font-bold mb-8 text-center">Dashboard</h1>

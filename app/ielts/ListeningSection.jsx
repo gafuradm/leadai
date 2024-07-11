@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #FF69B4;
+  color: #FFFFFF;
   text-align: center;
 `;
 
@@ -22,7 +22,7 @@ const Section = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #FF69B4;
+  background-color: #800120;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -43,7 +43,7 @@ const Button = styled.button`
 const Timer = styled.div`
   font-size: 24px;
   font-weight: bold;
-  color: #FF69B4;
+  color: #800120;
   text-align: center;
   margin-bottom: 20px;
 `;
@@ -57,6 +57,12 @@ const AnswerOption = styled.label`
   display: block;
   margin-bottom: 10px;
   cursor: pointer;
+`;
+
+const Pagination = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 `;
 
 const ListeningSection = ({ onNext, timedMode }) => {
@@ -134,6 +140,16 @@ const ListeningSection = ({ onNext, timedMode }) => {
     setHasPlayed(false);
   };
 
+  const moveToPreviousQuestion = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(prevIndex => prevIndex - 1);
+    } else if (currentPart > 0) {
+      setCurrentPart(prevPart => prevPart - 1);
+      setCurrentQuestionIndex(ieltsData.sections.listening.parts[currentPart - 1].questions.length - 1);
+    }
+    setHasPlayed(false);
+  };
+
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -165,9 +181,14 @@ const ListeningSection = ({ onNext, timedMode }) => {
           </AnswerOption>
         ))}
       </Section>
-      <Button onClick={moveToNextQuestion}>
-        {currentPart === 3 && currentQuestionIndex === 9 ? 'Finish' : 'Next Question'}
-      </Button>
+      <Pagination>
+        <Button onClick={moveToPreviousQuestion} disabled={currentPart === 0 && currentQuestionIndex === 0}>
+          Previous
+        </Button>
+        <Button onClick={moveToNextQuestion}>
+          {currentPart === 3 && currentQuestionIndex === 9 ? 'Finish' : 'Next Question'}
+        </Button>
+      </Pagination>
     </Container>
   );
 };

@@ -33,7 +33,7 @@ const ButtonContainer = styled.div`
 `;
 
 const ActionButton = styled.button`
-  background-color: #FF69B4;
+  background-color: #800120;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -53,7 +53,7 @@ const LoadingContainer = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #FF69B4;
+  background-color: #800120;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -302,7 +302,7 @@ const Results = ({ answers, testType }) => {
 
   if (loading) return (
     <LoadingContainer>
-      <PulseLoader color="#FF69B4" />
+      <PulseLoader color="#FFFFFF" />
     </LoadingContainer>
   );
   if (error) return <Container><p>{error}</p></Container>;
@@ -326,7 +326,7 @@ const Results = ({ answers, testType }) => {
               <YAxis domain={[0, 40]} />
               <Tooltip />
               <Legend />
-              <Bar dataKey="score" fill="#FF69B4" />
+              <Bar dataKey="score" fill="#FFFFFF" />
             </BarChart>
           </ResponsiveContainer>
         </ScoreChart>

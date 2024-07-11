@@ -8,10 +8,8 @@ import { useRouter } from "next/navigation";
 import MagicButton from "@/components/MagicButton";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Spotlight } from "@/components/ui/Spotlight";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { FloatingNav } from "@/components/ui/FloatingNavbar";
 
 const DashboardPage = () => {
   const [user, setUser] = useState(null);
@@ -66,7 +64,7 @@ const DashboardPage = () => {
   }, [router]);
 
   const handleAvatarChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0]; // Corrected file index
     if (file) {
       setAvatarFile(file);
       const reader = new FileReader();
@@ -120,28 +118,14 @@ const DashboardPage = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const navItems = [
-    { name: "Home", link: "/" },
-    { name: "Reviews", link: "/reviews" },
-    { name: "Dashboard", link: "/dashboard" },
-  ];
-
   return (
-    <main className="relative flex justify-center items-center min-h-screen overflow-hidden">
+    <main className="relative flex justify-center items-center min-h-screen">
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-      <div className="absolute inset-0">
-        <Spotlight className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen" fill="white" />
-        <Spotlight className="h-[80vh] w-[50vw] top-10 left-full" fill="purple" />
-        <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
-      </div>
-      <div className="absolute inset-0 dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2] flex items-center justify-center">
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-      </div>
       <div className="relative z-10 flex justify-center items-center min-h-screen w-full">
         <div className="w-full max-w-sm p-6 mt-16">
           <section>
             <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold mb-4">{name}</h1>
+              <h1 className="text-2xl font-bold mb-4 text-white">{name}</h1>
             </div>
             <div className="space-y-6">
               <div className="flex flex-col items-center mb-6">
@@ -162,7 +146,7 @@ const DashboardPage = () => {
                   />
                 </label>
                 <div className="mb-4 w-full">
-                  <label className="block text-lg font-medium">Username</label>
+                  <label className="block text-lg font-medium text-white">Username</label>
                   <input
                     type="text"
                     value={name}
@@ -171,7 +155,7 @@ const DashboardPage = () => {
                   />
                 </div>
                 <div className="mb-4 w-full">
-                  <label className="block text-lg font-medium">Email</label>
+                  <label className="block text-lg font-medium text-white">Email</label>
                   <input
                     type="email"
                     value={email}
@@ -180,22 +164,24 @@ const DashboardPage = () => {
                   />
                 </div>
                 <div className="mb-4 w-full relative">
-                  <label className="block text-lg font-medium">New Password</label>
-                  <div className="relative flex items-center">
-                    <button
-                      type="button"
-                      onClick={togglePasswordVisibility}
-                      className="mr-2 text-gray-400 hover:text-white"
-                    >
-                      {showPassword ? <FaEyeSlash /> : <FaEye />}
-                    </button>
+                  <label className="block text-lg font-medium text-white">New Password</label>
+                  <div className="relative">
+                    <div class="flex items-center">
                     <input
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500 bg-gray-700 text-white"
+                      className="w-full px-4 py-2 pr-10 border rounded-lg focus:outline-none focus:border-indigo-500 bg-gray-700 text-white"
                       placeholder="Enter your new password"
                     />
+                    <button
+                      type="button"
+                      onClick={togglePasswordVisibility}
+                      className="absolute left-2 top-9 p-1"
+                    >
+                      {showPassword ? <FaEyeSlash className="text-gray-400" /> : <FaEye className="text-gray-400" />}
+                    </button>
+                    </div>
                   </div>
                 </div>
                 <MagicButton

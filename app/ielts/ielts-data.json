@@ -334,10 +334,10 @@
               "options": ["True", "False"]
             },
             {
-              "id": "A1Q9",
+              "id": "A1Q21",
               "type": "matching_headings",
-              "question": "Match the heading with the correct paragraph: 1) Historical Background, 2) Current Trends, 3) Future Predictions.",
-              "options": ["1) The Evolution of Robotics", "2) Current Trends", "3) Future Predictions"]
+              "question": "Match the heading with the correct paragraph: 1) Neuroscientific Discoveries, 2) Mysteries of the Brain, 3) Future Potential.",
+              "headings": ["1) Neuroscientific Discoveries", "2) Mysteries of the Brain", "3) Future Potential"]
             },
             {
               "id": "A1Q10",
@@ -528,353 +528,567 @@
       ],
       "general": [
         {
-          "texts": [
+        "texts": [
+        {
+        "title": "Healthy Living: Tips and Tricks",
+        "content": "Maintaining a healthy lifestyle can be challenging. This passage provides practical tips on diet, exercise, and mental well-being to help individuals lead healthier lives."
+        },
+        {
+        "title": "The Rise of Remote Work",
+        "content": "The concept of remote work has gained popularity, especially after the COVID-19 pandemic. This passage discusses the benefits and challenges of working from home and how companies are adapting to this new trend."
+        },
+        {
+        "title": "Traveling on a Budget",
+        "content": "Traveling doesn't have to be expensive. This passage offers advice on how to travel affordably, from finding cheap flights to budget-friendly accommodations and activities."
+        },
+        {
+        "title": "Neuroscientific Discoveries",
+        "content": "Recent neuroscientific discoveries have shed light on how the brain functions. This passage explores some of the latest findings and their implications for understanding human cognition."
+        },
+        {
+        "title": "Mysteries of the Brain",
+        "content": "The brain remains one of the most mysterious organs. This passage delves into intriguing mysteries about the brain, including its complexities and unanswered questions."
+        },
+        {
+        "title": "Future Potential",
+        "content": "The future holds exciting possibilities for neuroscience. This passage speculates on potential advancements in the field and their potential impact on society."
+        },
+        {
+        "title": "Impact on Ecosystems",
+        "content": "Climate change continues to have profound effects on ecosystems worldwide. This passage examines the various impacts of climate change on biodiversity, habitats, and ecological systems."
+        },
+        {
+        "title": "Causes of Climate Change",
+        "content": "Understanding the causes of climate change is crucial for addressing this global issue. This passage explores the primary factors contributing to climate change, such as greenhouse gas emissions and deforestation."
+        },
+        {
+        "title": "Solutions and Mitigation",
+        "content": "Addressing climate change requires effective solutions and mitigation strategies. This passage discusses potential measures to reduce greenhouse gas emissions, adapt to environmental changes, and promote sustainability."
+        }
+        ],
+        "questions": [
+        {
+        "id": "G1Q1",
+        "type": "multiple_choice",
+        "question": "What is the main theme of the passage on healthy living?",
+        "options": ["Diet tips", "Exercise routines", "Mental well-being", "All of the above"]
+        },
+        {
+        "id": "G1Q2",
+        "type": "true_false",
+        "question": "The passage suggests that remote work has no challenges.",
+        "options": ["True", "False"]
+        },
+        {
+        "id": "G1Q3",
+        "type": "matching_information",
+        "question": "Match the following tips with the correct passage: 1) Budget-friendly accommodations, 2) Benefits of remote work, 3) Tips on mental well-being.",
+        "options": ["1) Traveling on a Budget", "2) The Rise of Remote Work", "3) Healthy Living"]
+        },
+        {
+        "id": "G1Q4",
+        "type": "summary_completion",
+        "question": "Complete the summary: The passage on traveling on a budget provides advice on finding __________.",
+        "options": ["cheap flights", "luxury hotels", "high-end restaurants", "expensive activities"]
+        },
+        {
+        "id": "G1Q5",
+        "type": "table_completion",
+        "question": "Complete the following table with tips from the passage on healthy living.",
+        "options": ["Diet", "Exercise", "Mental well-being"]
+        },
+        {
+        "id": "G1Q6",
+        "type": "short_answer",
+        "question": "What are the three main components of a healthy lifestyle?"
+        },
+        {
+        "id": "G1Q7",
+        "type": "multiple_choice",
+        "question": "Which of the following is NOT a benefit of remote work mentioned in the passage?",
+        "options": ["Flexibility", "Increased productivity", "Higher costs", "Better work-life balance"]
+        },
+        {
+        "id": "G1Q8",
+        "type": "true_false",
+        "question": "The passage on traveling suggests that traveling on a budget is impossible.",
+        "options": ["True", "False"]
+        },
+        {
+        "id": "G1Q9",
+        "type": "matching_headings",
+        "question": "Match the heading with the correct paragraph: 1) Diet Tips, 2) Exercise Routines, 3) Mental Well-being.",
+        "options": ["1) Diet Tips", "2) Exercise Routines", "3) Mental Well-being"]
+        },
+        {
+        "id": "G1Q10",
+        "type": "flowchart_completion",
+        "question": "Complete the flowchart on remote work benefits with the correct points.",
+        "options": ["Flexibility", "Reduced commute", "Higher productivity", "Work-life balance"]
+        },
+        {
+        "id": "G1Q11",
+        "type": "sentence_completion",
+        "question": "The primary challenge discussed in the passage on remote work is __________.",
+        "options": ["isolation", "distractions", "technology issues", "time management"]
+        },
+        {
+        "id": "G1Q12",
+        "type": "table_completion",
+        "question": "Complete the table with the correct information about budget travel tips.",
+        "options": ["Tip", "Description", "Example"]
+        },
+        {
+        "id": "G1Q13",
+        "type": "multiple_choice",
+        "question": "What is the main theme of the passage on traveling on a budget?",
+        "options": ["Saving money", "Finding luxury hotels", "Booking expensive flights", "Spending more on activities"]
+        },
+        {
+        "id": "G1Q14",
+        "type": "true_false",
+        "question": "The passage on healthy living implies that mental well-being is not important.",
+        "options": ["True", "False"]
+        },
+        {
+        "id": "G1Q15",
+        "type": "matching_information",
+        "question": "Match the following tips with the correct passage: 1) Cheap flights, 2) Benefits of remote work, 3) Tips on exercise routines.",
+        "options": ["1) Traveling on a Budget", "2) The Rise of Remote Work", "3) Healthy Living"]
+        },
+        {
+        "id": "G1Q16",
+        "type": "diagram_completion",
+        "question": "Complete the diagram on diet tips with the correct information.",
+        "options": ["Balanced diet", "Low sugar", "High fiber", "Adequate hydration"]
+        },
+        {
+        "id": "G1Q17",
+        "type": "short_answer",
+        "question": "What are the primary benefits of remote work mentioned in the passage?"
+        },
+        {
+        "id": "G1Q18",
+        "type": "multiple_choice",
+        "question": "Which remote work challenge is highlighted in the passage?",
+        "options": ["Isolation", "Increased commute", "Higher costs", "Reduced productivity"]
+        },
+        {
+        "id": "G1Q19",
+        "type": "true_false",
+        "question": "The passage suggests that traveling on a budget requires extensive planning.",
+        "options": ["True", "False"]
+        },
+        {
+        "id": "G1Q20",
+        "type": "summary_completion",
+        "question": "Complete the summary: The passage on healthy living discusses tips for __________.",
+        "options": ["diet", "exercise", "mental well-being", "all of the above"]
+        },
+        {
+        "id": "G1Q21",
+        "type": "matching_headings",
+        "question": "Match the heading with the correct paragraph: 1) Budget Travel Tips, 2) Finding Cheap Flights, 3) Affordable Accommodations.",
+        "options": ["1) Budget Travel Tips", "2) Finding Cheap Flights", "3) Affordable Accommodations"]
+        },
+        {
+        "id": "G1Q22",
+        "type": "flowchart_completion",
+        "question": "Complete the flowchart on maintaining mental well-being with the correct activities.",
+        "options": ["Meditation", "Exercise", "Healthy diet", "Adequate sleep"]
+        },
+        {
+        "id": "G1Q23",
+        "type": "multiple_choice",
+        "question": "What is a key aspect of a healthy lifestyle mentioned in the passage?",
+        "options": ["Balanced diet", "Sedentary lifestyle", "High sugar intake", "Irregular sleep"]
+        },
+        {
+        "id": "G1Q24",
+        "type": "true_false",
+        "question": "The passage on remote work suggests it has only benefits and no challenges.",
+        "options": ["True", "False"]
+        },
+        {
+        "id": "G1Q25",
+        "type": "matching_information",
+        "question": "Match the following benefits with the correct context: 1) Flexibility, 2) Reduced commute, 3) Higher productivity.",
+        "options": ["1) Remote Work", "2) Remote Work", "3) Remote Work"]
+        },
+        {
+        "id": "G1Q26",
+        "type": "table_completion",
+        "question": "Complete the table with information from the passage on neuroscientific discoveries.",
+        "options": ["Discovery", "Implication", "Research"]
+        },
+        {
+        "id": "G1Q27",
+        "type": "sentence_completion",
+        "question": "The passage on climate change discusses the impact of global warming on __________.",
+        "options": ["ecosystems", "urbanization", "technology", "economic growth"]
+        },
+        {
+        "id": "G1Q28",
+        "type": "diagram_completion",
+        "question": "Complete the diagram on the causes of climate change with the correct factors.",
+        "options": ["Greenhouse gas emissions", "Deforestation", "Industrial activities", "Urbanization"]
+        },
+        {
+        "id": "G1Q29",
+        "type": "short_answer",
+        "question": "What are the potential solutions discussed in the passage on climate change?"
+        },
+        {
+        "id": "G1Q30",
+        "type": "multiple_choice",
+        "question": "What is the main focus of the passage on solutions and mitigation?",
+        "options": ["Reducing greenhouse gas emissions", "Increasing industrial activities", "Expanding urbanization", "Promoting deforestation"]
+        },
+        {
+        "id": "G1Q31",
+        "type": "true_false",
+        "question": "The passage on neuroscientific discoveries suggests that the brain is fully understood.",
+        "options": ["True", "False"]
+        },
+        {
+          "id": "G1Q32",
+          "type": "matching_information",
+          "question": "Match the following impacts with the correct context: 1) Biodiversity, 2) Habitats, 3) Ecological systems.",
+          "options": ["1) Impact on Ecosystems", "2) Impact on Ecosystems", "3) Impact on Ecosystems"]
+          },
+          {
+          "id": "G1Q33",
+          "type": "summary_completion",
+          "question": "Complete the summary: The passage on causes of climate change explores the primary factors such as __________.",
+          "options": ["greenhouse gas emissions", "deforestation", "industrial activities", "urbanization"]
+          },
+          {
+          "id": "G1Q34",
+          "type": "table_completion",
+          "question": "Complete the table with information from the passage on solutions and mitigation.",
+          "options": ["Measure", "Description", "Impact"]
+          },
+          {
+          "id": "G1Q35",
+          "type": "multiple_choice",
+          "question": "What is the main theme of the passage on impacts on ecosystems?",
+          "options": ["Climate change effects", "Biodiversity conservation", "Habitat preservation", "Urbanization impact"]
+          },
+          {
+          "id": "G1Q36",
+          "type": "true_false",
+          "question": "The passage on causes of climate change suggests that greenhouse gas emissions have no impact.",
+          "options": ["True", "False"]
+          },
+          {
+          "id": "G1Q37",
+          "type": "matching_headings",
+          "question": "Match the heading with the correct paragraph: 1) Greenhouse Gas Emissions, 2) Deforestation Impact, 3) Urbanization Challenges.",
+          "options": ["1) Causes of Climate Change", "2) Impact on Ecosystems", "3) Solutions and Mitigation"]
+          },
+          {
+          "id": "G1Q38",
+          "type": "flowchart_completion",
+          "question": "Complete the flowchart on biodiversity conservation with the correct points.",
+          "options": ["Habitat preservation", "Species protection", "Ecological balance", "Environmental policies"]
+          },
+          {
+          "id": "G1Q39",
+          "type": "multiple_choice",
+          "question": "Which factor is NOT discussed as a cause of climate change in the passage?",
+          "options": ["Industrial activities", "Deforestation", "Greenhouse gas emissions", "Natural disasters"]
+          },
+          {
+          "id": "G1Q40",
+          "type": "true_false",
+          "question": "The passage on solutions and mitigation implies that climate change is irreversible.",
+          "options": ["True", "False"]
+          }
+        ]
+        }
+        ]
+        },
+        "writing": {
+          "essay_topics": [
             {
-              "title": "Healthy Living: Tips and Tricks",
-              "content": "Maintaining a healthy lifestyle can be challenging. This passage provides practical tips on diet, exercise, and mental well-being to help individuals lead healthier lives."
+              "id": 1,
+              "type": "General Training",
+              "title": "Discuss the advantages and disadvantages of urbanization."
             },
             {
-              "title": "The Rise of Remote Work",
-              "content": "The concept of remote work has gained popularity, especially after the COVID-19 pandemic. This passage discusses the benefits and challenges of working from home and how companies are adapting to this new trend."
+              "id": 2,
+              "type": "General Training",
+              "title": "Describe a memorable event in your life and explain why it was important to you."
             },
             {
-              "title": "Traveling on a Budget",
-              "content": "Traveling doesn't have to be expensive. This passage offers advice on how to travel affordably, from finding cheap flights to budget-friendly accommodations and activities."
+              "id": 3,
+              "type": "Academic",
+              "title": "Discuss the impact of climate change on marine ecosystems."
+            },
+            {
+              "id": 4,
+              "type": "Academic",
+              "title": "Compare and contrast different approaches to urban planning in major cities."
+            },
+            {
+              "id": 5,
+              "type": "Academic",
+              "title": "The bar chart shows British Emigration",
+              "data": {
+                "labels": ["2010", "2015", "2020"],
+                "datasets": [
+                  {
+                    "label": "Emigration (in thousands)",
+                    "data": [15, 12, 10],
+                    "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56"],
+                    "borderColor": "#FF6384",
+                    "fill": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 6,
+              "type": "Academic",
+              "title": "The bar chart shows a comparison of the daily routines",
+              "data": {
+                "labels": ["Morning", "Afternoon", "Evening"],
+                "datasets": [
+                  {
+                    "label": "Average time spent (in minutes)",
+                    "data": [120, 90, 180],
+                    "backgroundColor": ["#FFCE56", "#36A2EB", "#FF6384"],
+                    "borderColor": "#FFCE56",
+                    "fill": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 7,
+              "type": "Academic",
+              "title": "The line graph below shows changes in the amount and type of fast food consumed",
+              "data": {
+                "labels": ["2010", "2015", "2020"],
+                "datasets": [
+                  {
+                    "label": "Fast food consumption (in grams)",
+                    "data": [300, 250, 200],
+                    "borderColor": "#36A2EB",
+                    "fill": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 8,
+              "type": "Academic",
+              "title": "The graph below shows the average number of American commuters travelling",
+              "data": {
+                "labels": ["2010", "2015", "2020"],
+                "datasets": [
+                  {
+                    "label": "Average commuters (in thousands)",
+                    "data": [500, 550, 600],
+                    "borderColor": "#4BC0C0",
+                    "backgroundColor": "#4BC0C0",
+                    "fill": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 9,
+              "type": "Academic",
+              "title": "The pie chart below shows the native languages spoken by students",
+              "data": {
+                "labels": ["English", "Spanish", "Chinese", "French"],
+                "datasets": [
+                  {
+                    "label": "Languages",
+                    "data": [60, 20, 10, 10],
+                    "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"]
+                  }
+                ]
+              }
+            },
+            {
+              "id": 10,
+              "type": "Academic",
+              "title": "The pie charts show the main reasons for migration",
+              "data": {
+                "labels": ["Work", "Study", "Family", "Other"],
+                "datasets": [
+                  {
+                    "label": "Reasons",
+                    "data": [40, 30, 20, 10],
+                    "backgroundColor": ["#FFCE56", "#36A2EB", "#FF6384", "#4BC0C0"]
+                  }
+                ]
+              }
+            },
+            {
+              "id": 11,
+              "type": "Academic",
+              "title": "The chart below shows the process of waste paper recycling",
+              "data": {
+                "labels": ["Collection", "Sorting", "Processing"],
+                "datasets": [
+                  {
+                    "label": "Stages",
+                    "data": [40, 30, 30],
+                    "backgroundColor": ["#FFCE56", "#36A2EB", "#FF6384"]
+                  }
+                ]
+              }
+            },
+            {
+              "id": 12,
+              "type": "Academic",
+              "title": "The diagram below shows the water cycle",
+              "data": {
+                "labels": ["Evaporation", "Condensation", "Precipitation"],
+                "datasets": [
+                  {
+                    "label": "Processes",
+                    "data": [40, 30, 30],
+                    "backgroundColor": ["#FFCE56", "#36A2EB", "#FF6384"]
+                  }
+                ]
+              }
+            },
+            {
+              "id": 13,
+              "type": "Academic",
+              "title": "The table below gives information on consumer spending on different items",
+              "data": {
+                "headings": ["Item", "2010", "2015", "2020"],
+                "rows": [
+                  ["Food", 300, 350, 400],
+                  ["Clothing", 150, 200, 250],
+                  ["Electronics", 100, 150, 200]
+                ]
+              }
+            },
+            {
+              "id": 14,
+              "type": "Academic",
+              "title": "The table shows the proportions of schoolchildren attending four school categories",
+              "data": {
+                "headings": ["Category", "2010", "2015", "2020"],
+                "rows": [
+                  ["Public", 40, 35, 30],
+                  ["Private", 30, 35, 40],
+                  ["Charter", 20, 20, 20],
+                  ["Home", 10, 10, 10]
+                ]
+              }
+            },
+            {
+              "id": 15,
+              "type": "Academic",
+              "title": "The map illustrates how Milton changed from a small village",
+              "data": {
+                "markers": [
+                  { "name": "Small village", "coordinates": [51.8787, -0.4200] },
+                  { "name": "Town expansion", "coordinates": [51.8905, -0.4123] }
+                ]
+              }
+            },
+            {
+              "id": 16,
+              "type": "Academic",
+              "title": "The following map shows the current and future developments of Crypto Town Centre",
+              "data": {
+                "markers": [
+                  { "name": "Current", "coordinates": [51.5064, -0.1272] },
+                  { "name": "Future", "coordinates": [51.5064, -0.1272] }
+                ]
+              }
+            },
+            {
+              "id": 17,
+              "type": "Academic",
+              "title": "The graph below gives information about international migration to Canada",
+              "data": {
+                "labels": ["2010", "2015", "2020"],
+                "datasets": [
+                  {
+                    "label": "Migration (in thousands)",
+                    "data": [200, 250, 300],
+                    "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56"],
+                    "borderColor": "#FF6384",
+                    "fill": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 18,
+              "type": "Academic",
+              "title": "The graph shows the cost for watching films",
+              "data": {
+                "labels": ["2010", "2015", "2020"],
+                "datasets": [
+                  {
+                    "label": "Cost (in dollars)",
+                    "data": [10, 12, 15],
+                    "backgroundColor": "#4BC0C0",
+                    "borderColor": "#4BC0C0",
+                    "fill": false
+                  }
+                ]
+              }
             }
           ],
-          "questions": [
+          "letters": [
             {
-              "id": "G1Q1",
-              "type": "multiple_choice",
-              "question": "What is the main theme of the passage on healthy living?",
-              "options": ["Diet tips", "Exercise routines", "Mental well-being", "All of the above"]
+              "id": 1,
+              "description": "You are planning to visit a foreign country. Write a letter to a friend who lives there. In your letter:",
+              "bullet_points": [
+                "explain why you want to visit this country",
+                "ask for advice about where to go",
+                "suggest an activity you could do together"
+              ]
             },
             {
-              "id": "G1Q2",
-              "type": "true_false",
-              "question": "The passage suggests that remote work has no challenges.",
-              "options": ["True", "False"]
+              "id": 2,
+              "description": "You recently bought an item from an online store, but it arrived damaged. Write a letter to the customer service department. In your letter:",
+              "bullet_points": [
+                "describe the item you bought and when you ordered it",
+                "explain what was wrong with it when it arrived",
+                "say what you would like the company to do about it"
+              ]
             },
             {
-              "id": "G1Q3",
-              "type": "matching_information",
-              "question": "Match the following tips with the correct passage: 1) Budget-friendly accommodations, 2) Benefits of remote work, 3) Tips on mental well-being.",
-              "options": ["1) Traveling on a Budget", "2) The Rise of Remote Work", "3) Healthy Living"]
+              "id": 3,
+              "description": "You are going to take a short course at a college in an English-speaking country. Write a letter to the accommodation officer. In your letter:",
+              "bullet_points": [
+                "explain when you will arrive and how long you plan to stay",
+                "describe the type of accommodation you would prefer",
+                "ask about the cost of this accommodation"
+              ]
             },
             {
-              "id": "G1Q4",
-              "type": "summary_completion",
-              "question": "Complete the summary: The passage on traveling on a budget provides advice on finding __________.",
-              "options": ["cheap flights", "luxury hotels", "high-end restaurants", "expensive activities"]
+              "id": 4,
+              "description": "You have recently moved to a different house. Write a letter to an English-speaking friend. In your letter:",
+              "bullet_points": [
+                "describe your new house",
+                "explain why you moved",
+                "invite your friend to visit"
+              ]
             },
             {
-              "id": "G1Q5",
-              "type": "table_completion",
-              "question": "Complete the following table with tips from the passage on healthy living.",
-              "options": ["Diet", "Exercise", "Mental well-being"]
-            },
-            {
-              "id": "G1Q6",
-              "type": "short_answer",
-              "question": "What are the three main components of a healthy lifestyle?"
-            },
-            {
-              "id": "G1Q7",
-              "type": "multiple_choice",
-              "question": "Which of the following is NOT a benefit of remote work mentioned in the passage?",
-              "options": ["Flexibility", "Increased productivity", "Higher costs", "Better work-life balance"]
-            },
-            {
-              "id": "G1Q8",
-              "type": "true_false",
-              "question": "The passage on traveling suggests that traveling on a budget is impossible.",
-              "options": ["True", "False"]
-            },
-            {
-              "id": "G1Q9",
-              "type": "matching_headings",
-              "question": "Match the heading with the correct paragraph: 1) Diet Tips, 2) Exercise Routines, 3) Mental Well-being.",
-              "options": ["1) Diet Tips", "2) Exercise Routines", "3) Mental Well-being"]
-            },
-            {
-              "id": "G1Q10",
-              "type": "flowchart_completion",
-              "question": "Complete the flowchart on remote work benefits with the correct points.",
-              "options": ["Flexibility", "Reduced commute", "Higher productivity", "Work-life balance"]
-            },
-            {
-              "id": "G1Q11",
-              "type": "sentence_completion",
-              "question": "The primary challenge discussed in the passage on remote work is __________.",
-              "options": ["isolation", "distractions", "technology issues", "time management"]
-            },
-            {
-              "id": "G1Q12",
-              "type": "table_completion",
-              "question": "Complete the table with the correct information about budget travel tips.",
-              "options": ["Tip", "Description", "Example"]
-            },
-            {
-              "id": "G1Q13",
-              "type": "multiple_choice",
-              "question": "What is the main theme of the passage on traveling on a budget?",
-              "options": ["Saving money", "Finding luxury hotels", "Booking expensive flights", "Spending more on activities"]
-            },
-            {
-              "id": "G1Q14",
-              "type": "true_false",
-              "question": "The passage on healthy living implies that mental well-being is not important.",
-              "options": ["True", "False"]
-            },
-            {
-              "id": "G1Q15",
-              "type": "matching_information",
-              "question": "Match the following tips with the correct passage: 1) Cheap flights, 2) Benefits of remote work, 3) Tips on exercise routines.",
-              "options": ["1) Traveling on a Budget", "2) The Rise of Remote Work", "3) Healthy Living"]
-            },
-            {
-              "id": "G1Q16",
-              "type": "diagram_completion",
-              "question": "Complete the diagram on diet tips with the correct information.",
-              "options": ["Balanced diet", "Low sugar", "High fiber", "Adequate hydration"]
-            },
-            {
-              "id": "G1Q17",
-              "type": "short_answer",
-              "question": "What are the primary benefits of remote work mentioned in the passage?"
-            },
-            {
-              "id": "G1Q18",
-              "type": "multiple_choice",
-              "question": "Which remote work challenge is highlighted in the passage?",
-              "options": ["Isolation", "Increased commute", "Higher costs", "Reduced productivity"]
-            },
-            {
-              "id": "G1Q19",
-              "type": "true_false",
-              "question": "The passage suggests that traveling on a budget requires extensive planning.",
-              "options": ["True", "False"]
-            },
-            {
-              "id": "G1Q20",
-              "type": "summary_completion",
-              "question": "Complete the summary: The passage on healthy living discusses tips for __________.",
-              "options": ["diet", "exercise", "mental well-being", "all of the above"]
-            },
-            {
-              "id": "G1Q21",
-              "type": "matching_headings",
-              "question": "Match the heading with the correct paragraph: 1) Budget Travel Tips, 2) Finding Cheap Flights, 3) Affordable Accommodations.",
-              "options": ["1) Budget Travel Tips", "2) Finding Cheap Flights", "3) Affordable Accommodations"]
-            },
-            {
-              "id": "G1Q22",
-              "type": "flowchart_completion",
-              "question": "Complete the flowchart on maintaining mental well-being with the correct activities.",
-              "options": ["Meditation", "Exercise", "Healthy diet", "Adequate sleep"]
-            },
-            {
-              "id": "G1Q23",
-              "type": "multiple_choice",
-              "question": "What is a key aspect of a healthy lifestyle mentioned in the passage?",
-              "options": ["Balanced diet", "Sedentary lifestyle", "High sugar intake", "Irregular sleep"]
-            },
-            {
-              "id": "G1Q24",
-              "type": "true_false",
-              "question": "The passage on remote work suggests it has only benefits and no challenges.",
-              "options": ["True", "False"]
-            },
-            {
-              "id": "G1Q25",
-              "type": "matching_information",
-              "question": "Match the following benefits with the correct context: 1) Flexibility, 2) Reduced commute, 3) Higher productivity.",
-              "options": ["1) Remote Work", "2) Remote Work", "3) Remote Work"]
-            },
-            {
-              "id": "G1Q26",
-              "type": "table_completion",
-              "question": "Complete the table with the correct data on budget travel options.",
-              "options": ["Option", "Cost", "Benefits"]
-            },
-            {
-              "id": "G1Q27",
-              "type": "multiple_choice",
-              "question": "Which tip is NOT mentioned in the passage on traveling on a budget?",
-              "options": ["Finding luxury hotels", "Booking cheap flights", "Staying in hostels", "Using public transport"]
-            },
-            {
-              "id": "G1Q28",
-              "type": "true_false",
-              "question": "The passage on healthy living suggests ignoring mental health.",
-              "options": ["True", "False"]
-            },
-            {
-              "id": "G1Q29",
-              "type": "summary_completion",
-              "question": "Complete the summary: The passage on remote work highlights the benefits and __________.",
-              "options": ["challenges", "opportunities", "advantages", "disadvantages"]
-            },
-            {
-              "id": "G1Q30",
-              "type": "short_answer",
-              "question": "What are the main challenges of remote work mentioned in the passage?"
-            },
-            {
-              "id": "G1Q31",
-              "type": "multiple_choice",
-              "question": "Which aspect of healthy living is emphasized in the passage?",
-              "options": ["Regular exercise", "High sugar diet", "Skipping meals", "Irregular sleep patterns"]
-            },
-            {
-              "id": "G1Q32",
-              "type": "true_false",
-              "question": "The passage suggests that budget travel requires sacrificing comfort.",
-              "options": ["True", "False"]
-            },
-            {
-              "id": "G1Q33",
-              "type": "matching_headings",
-              "question": "Match the heading with the correct paragraph: 1) Tips for Healthy Living, 2) Benefits of Remote Work, 3) Traveling on a Budget.",
-              "options": ["1) Tips for Healthy Living", "2) Benefits of Remote Work", "3) Traveling on a Budget"]
-            },
-            {
-              "id": "G1Q34",
-              "type": "flowchart_completion",
-              "question": "Complete the flowchart on the benefits of remote work with the correct information.",
-              "options": ["Flexibility", "Reduced commute", "Higher productivity", "Better work-life balance"]
-            },
-            {
-              "id": "G1Q35",
-              "type": "sentence_completion",
-              "question": "The primary benefit of a balanced diet mentioned in the passage is __________.",
-              "options": ["better health", "increased energy", "weight loss", "all of the above"]
-            },
-            {
-              "id": "G1Q36",
-              "type": "table_completion",
-              "question": "Complete the table with the correct information about remote work challenges.",
-              "options": ["Challenge", "Impact", "Solution"]
-            },
-            {
-              "id": "G1Q37",
-              "type": "multiple_choice",
-              "question": "Which travel tip is highlighted in the passage on traveling on a budget?",
-              "options": ["Booking expensive flights", "Finding luxury hotels", "Using public transport", "Eating at gourmet restaurants"]
-            },
-            {
-              "id": "G1Q38",
-              "type": "true_false",
-              "question": "The passage on remote work suggests it is always easy to manage time effectively.",
-              "options": ["True", "False"]
-            },
-            {
-              "id": "G1Q39",
-              "type": "matching_information",
-              "question": "Match the following tips with the correct passage: 1) Healthy eating, 2) Remote work benefits, 3) Budget travel tips.",
-              "options": ["1) Healthy Living", "2) Remote Work", "3) Traveling on a Budget"]
-            },
-            {
-              "id": "G1Q40",
-              "type": "diagram_completion",
-              "question": "Complete the diagram on budget travel strategies with the correct information.",
-              "options": ["Find cheap flights", "Stay in hostels", "Use public transport", "Plan activities in advance"]
+              "id": 5,
+              "description": "You have been invited to a friend's birthday party, but you will not be able to attend. Write a letter to your friend. In your letter:",
+              "bullet_points": [
+                "apologize for not being able to come",
+                "explain why you cannot attend",
+                "suggest another time to meet up"
+              ]
             }
           ]
-        }
-      ]
-    },
-    "writing": {
-      "essay_topics": [
-        {
-          "id": 1,
-          "type": "General Training",
-          "title": "Discuss the advantages and disadvantages of urbanization."
-        },
-        {
-          "id": 2,
-          "type": "General Training",
-          "title": "Describe a memorable event in your life and explain why it was important to you."
-        },
-        {
-          "id": 3,
-          "type": "Academic",
-          "title": "Discuss the impact of climate change on marine ecosystems."
-        },
-        {
-          "id": 4,
-          "type": "Academic",
-          "title": "Compare and contrast different approaches to urban planning in major cities."
-        }
-      ],
-      "graphs": [
-        {
-          "id": 1,
-          "type": "bar",
-          "title": "Population Growth in Major Cities (2010-2020)",
-          "data": {
-            "labels": ["Tokyo", "Istanbul", "London", "Moscow"],
-            "datasets": [
-              {
-                "label": "Population growth (in thousands)",
-                "data": [822.724, 2605, 1301, 1077],
-                "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"]
-              }
-            ]
-          }
-        },
-        {
-          "id": 2,
-          "type": "line",
-          "title": "Annual Sales Data (2015-2020)",
-          "data": {
-            "labels": ["2015", "2016", "2017", "2018", "2019", "2020"],
-            "datasets": [
-              {
-                "label": "Sales (in thousands)",
-                "data": [30, 40, 35, 50, 60, 70],
-                "borderColor": "#36A2EB",
-                "fill": false
-              }
-            ]
-          }
-        },
-        {
-          "id": 3,
-          "type": "report",
-          "title": "Production growth of electric vehicles in various countries"
-        }
-      ],
-      "letters": [
-        {
-          "id": 1,
-          "description": "You are planning to visit a foreign country. Write a letter to a friend who lives there. In your letter:",
-          "bullet_points": [
-            "explain why you want to visit this country",
-            "ask for advice about where to go",
-            "suggest an activity you could do together"
-          ]
-        },
-        {
-          "id": 2,
-          "description": "You recently bought an item from an online store, but it arrived damaged. Write a letter to the customer service department. In your letter:",
-          "bullet_points": [
-            "describe the item you bought and when you ordered it",
-            "explain what was wrong with it when it arrived",
-            "say what you would like the company to do about it"
-          ]
-        },
-        {
-          "id": 3,
-          "description": "You are going to take a short course at a college in an English-speaking country. Write a letter to the accommodation officer. In your letter:",
-          "bullet_points": [
-            "explain when you will arrive and how long you plan to stay",
-            "describe the type of accommodation you would prefer",
-            "ask about the cost of this accommodation"
-          ]
-        }
-      ]
-    },
+        },        
     "speaking": {
       "questions": [
         {

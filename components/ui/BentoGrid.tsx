@@ -72,7 +72,7 @@ export const BentoGridItem = ({
         setCopied(true);
         // Simulating redirection after 1 second
         setTimeout(() => {
-          window.location.href = "/dashboard"; // Укажите путь, на который нужно перейти
+          window.location.href = "/ielts"; // Укажите путь, на который нужно перейти
         }, 1700);
       })
       .catch((error) => {

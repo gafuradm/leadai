@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { useRouter } from "next/navigation";
-import { auth } from "@/lib/firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { useRouter } from 'next/navigation';
 import ListeningSection from './ListeningSection';
 import ReadingSection from './ReadingSection';
 import WritingSection from './WritingSection';
@@ -89,15 +87,6 @@ const Page = () => {
   const [answers, setAnswers] = useState({});
   const [timedMode, setTimedMode] = useState(null);
   const router = useRouter();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (!currentUser) {
-        router.push("/login");
-      }
-    });
-    return () => unsubscribe();
-  }, [router]);
 
   const handleTestSelection = (test, type = null) => {
     setSelectedTest(test);

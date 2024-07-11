@@ -20,7 +20,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("/cabinet");
+      router.push("/ielts");
     } catch (err) {
       if (
         err.code === "auth/invalid-email" ||
@@ -53,13 +53,8 @@ const LoginPage = () => {
         draggable
         pauseOnHover
       />
-      <div className="absolute inset-0">
-        <Spotlight className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen" fill="white" />
-        <Spotlight className="h-[80vh] w-[50vw] top-10 left-full" fill="purple" />
-        <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
-      </div>
-      <div className="absolute inset-0 bg-white flex items-center justify-center">
-        <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-20 backdrop-filter backdrop-blur-md" />
+      <div className="absolute inset-0 bg-black flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 backdrop-filter backdrop-blur-md" />
       </div>
       <div className="relative z-10 flex justify-center items-center min-h-screen w-full">
         <div className="w-full max-w-sm p-6 mt-16 bg-[#CBACF9] rounded-lg shadow-lg">
@@ -93,7 +88,7 @@ const LoginPage = () => {
                   onClick={togglePasswordVisibility}
                   className="absolute left-2 top-9 p-1"
                 >
-                  {showPassword ? <FaEyeSlash className="text-purple" /> : <FaEye className="text-purple" />}
+                  {showPassword ? <FaEyeSlash className="text-black" /> : <FaEye className="text-black" />}
                 </button>
                 </div>
               </div>

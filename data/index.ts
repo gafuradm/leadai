@@ -1,7 +1,7 @@
 export const navItems = [
   { name: "Home", link: "/" },
-  { name: "Reviews", link: "/reviews" },
-  { name: "Dashboard", link: "/cabinet" },
+  { name: "Give feedback", link: "/feedback" },
+  { name: "Profile", link: "/dashboard" },
 ];
 
 export const gridItems = [

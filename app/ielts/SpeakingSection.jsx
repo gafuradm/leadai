@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { fetchResults } from './chatgpt';
 
@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #FF69B4;
+  color: #FFFFFF;
   text-align: center;
 `;
 
@@ -24,7 +24,7 @@ const Section = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #FF69B4;
+  background-color: #800120;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -71,6 +71,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   const [feedback, setFeedback] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
+  const recognitionRef = useRef(null);
 
   const parts = [
     {
@@ -122,6 +123,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
+    recognitionRef.current = recognition;
 
     recognition.lang = 'en-US';
     recognition.continuous = true;
@@ -139,24 +141,28 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   const stopRecording = async () => {
     setIsRecording(false);
     setIsLoading(true);
-    
+
+    if (recognitionRef.current) {
+      recognitionRef.current.stop();
+    }
+
     if (transcript.trim() === '') {
       alert("No speech detected. Please try again.");
       setIsLoading(false);
       return;
     }
-  
+
     const newAnswers = [...answers, {
       question: parts[currentPart].questions[currentQuestion],
       answer: transcript
     }];
     setAnswers(newAnswers);
-  
+
     const data = {
       questions: [parts[currentPart].questions[currentQuestion]],
       answers: [transcript]
     };
-  
+
     try {
       const result = await fetchResults('speaking', data, 'partial'); // or 'full' if it's a full test
       if (typeof result === 'object' && result.feedback) {
@@ -168,7 +174,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
       console.error("Error fetching results:", error);
       setFeedback("Sorry, there was an error evaluating your answer. Please try again.");
     }
-    
+
     // Generate the video
     try {
       const videoResponse = await fetch('/generate-video', {
@@ -184,9 +190,9 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     } catch (error) {
       console.error("Error generating video:", error);
     }
-  
+
     setIsLoading(false);
-  
+
     if (currentQuestion < parts[currentPart].questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else if (currentPart < parts.length - 1) {
