@@ -64,7 +64,7 @@ const Hero = () => {
             words="Prepare for IELTS quickly and for free without registration"
             className="text-left text-[40px] md:text-5xl lg:text-6xl text-burgundy"
           />
-          <a href="#recent-projects" className="scroll-smooth mt-10">
+          <a href="/ielts" className="scroll-smooth mt-10">
             <MagicButton
               title="Master your IELTS"
               icon={<FaLocationArrow />}
