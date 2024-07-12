@@ -199,9 +199,12 @@ const SpeakingSection = ({ onNext, timedMode }) => {
       setCurrentPart(currentPart + 1);
       setCurrentQuestion(0);
     } else {
-      onNext({ 
-        questions: parts.flatMap(part => part.questions), 
-        answers: newAnswers.map(a => a.answer)
+      onNext({
+        section: 'speaking',
+        data: {
+          questions: parts.flatMap(part => part.questions),
+          answers: newAnswers
+        }
       });
     }
   };

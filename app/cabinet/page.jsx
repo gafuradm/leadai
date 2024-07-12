@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { auth } from "@/lib/firebase";
@@ -7,6 +5,14 @@ import { onAuthStateChanged } from "firebase/auth";
 import MagicButton from "@/components/MagicButton";
 import { Spotlight } from "@/components/ui/Spotlight";
 import { PuffLoader } from "react-spinners";
+import styled from "styled-components"; 
+
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Высота равна высоте экрана */
+`;
 
 const CabinetPage = () => {
   const router = useRouter();
@@ -34,9 +40,9 @@ const CabinetPage = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-white dark:bg-black-100">
+      <LoadingContainer>
         <PuffLoader size={60} color="#4A90E2" />
-      </div>
+      </LoadingContainer>
     );
   }
 

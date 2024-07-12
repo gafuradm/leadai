@@ -117,14 +117,21 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
   };
 
   const handleSubmit = () => {
-    onNext({
-      answers: answers,
-      topics: {
-        task1: task1,
-        task2: task2
-      }
-    });
-  };
+    if (Object.keys(answers).length > 0) {
+      const sectionData = {
+        section: 'writing',
+        data: {
+          task1: task1,
+          task2: task2,
+          answers: answers
+        }
+      };
+      console.log('Writing section data:', sectionData);
+      onNext(sectionData);
+    } else {
+      alert("Please complete at least one task before submitting.");
+    }
+  };    
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);

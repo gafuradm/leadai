@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #FF69B4;
+  color: #800120;
   text-align: center;
 `;
 
@@ -22,7 +22,7 @@ const Section = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #FF69B4;
+  background-color: #800120;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -43,7 +43,7 @@ const Button = styled.button`
 const Timer = styled.div`
   font-size: 24px;
   font-weight: bold;
-  color: #FF69B4;
+  color: #800120;
   text-align: center;
   margin-bottom: 20px;
 `;

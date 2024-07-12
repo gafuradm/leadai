@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import PulseLoader from 'react-spinners/PulseLoader';
 import styled from 'styled-components';
-import { fetchResults, fetchExampleEssay, fetchListeningExamples, fetchSpeakingExamples } from './chatgpt';
+import { fetchResults, fetchExampleEssay, fetchListeningExamples, fetchSpeakingExamples, fetchReadingExamples, fetchWritingExamples } from './chatgpt';
 
 const Container = styled.div`
   padding: 20px;
@@ -66,12 +66,18 @@ const Button = styled.button`
   }
 `;
 
+const DownloadButton = styled(ActionButton)`
+  margin-left: 10px;
+`;
+
 const Results = ({ answers, testType }) => {
   const [result, setResult] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [listeningExamples, setListeningExamples] = useState(null);
   const [speakingExamples, setSpeakingExamples] = useState(null);
+  const [readingExamples, setReadingExamples] = useState(null);
+  const [writingExamples, setWritingExamples] = useState(null);
 
   useEffect(() => {
     const getResults = async () => {
@@ -88,6 +94,7 @@ const Results = ({ answers, testType }) => {
   
         for (const section of sections) {
           if (answers[section] && answers[section].data) {
+            console.log(`Processing section: ${section}`, answers[section].data);
             try {
               const sectionResult = await fetchResults(section, answers[section].data, testType);
               const score = parseScore(sectionResult);
@@ -96,6 +103,29 @@ const Results = ({ answers, testType }) => {
                 validSections++;
               }
               newResults[section] = { feedback: sectionResult, score: score };
+              
+              // Fetch examples based on the section and score
+              if (section === 'listening' || testType === 'full') {
+                const listening = await fetchListeningExamples();
+                setListeningExamples(listening);
+                console.log("Listening examples:", listening);
+              }
+              if (section === 'speaking' || testType === 'full') {
+                const speaking = await fetchSpeakingExamples();
+                setSpeakingExamples(speaking);
+                console.log("Speaking examples:", speaking);
+              }
+              if (section === 'reading' || testType === 'full') {
+                const reading = await fetchReadingExamples(score);
+                setReadingExamples(reading);
+                console.log("Reading examples:", reading);
+              }
+              if (section === 'writing' || testType === 'full') {
+                const writingTopic = answers[section]?.data?.topics?.task2 || 'general writing topic';
+                const writing = await fetchWritingExamples(score, writingTopic);
+                setWritingExamples(writing);
+                console.log("Writing examples:", writing);
+              }
             } catch (error) {
               console.error(`Error processing ${section}:`, error);
               setError(`Error fetching ${section} results: ${error.message}`);
@@ -104,8 +134,8 @@ const Results = ({ answers, testType }) => {
             console.warn(`Missing data for ${section} section`);
           }
         }
-        
-        const overallScore = validSections > 0 ? (totalScore / validSections).toFixed(1) : 0;
+  
+        const overallScore = validSections > 0 ? roundIELTSScore(totalScore / validSections) : 0;
         setResult({ ...newResults, overallScore });
       } catch (err) {
         console.error('Error in getResults:', err);
@@ -114,8 +144,38 @@ const Results = ({ answers, testType }) => {
         setLoading(false);
       }
     };
+  
     getResults();
   }, [answers, testType]);
+
+  const downloadResults = () => {
+    let content = `IELTS Test Results\n\n`;
+    content += `Overall Score: ${result.overallScore}/9\n\n`;
+
+    Object.entries(result).forEach(([section, data]) => {
+      if (section !== 'overallScore') {
+        content += `${section.charAt(0).toUpperCase() + section.slice(1)} Score: ${data.score.toFixed(1)}/40\n`;
+        content += `${section.charAt(0).toUpperCase() + section.slice(1)} Feedback:\n${data.feedback}\n\n`;
+      }
+    });
+
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'IELTS_Test_Results.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
+  const roundIELTSScore = (score) => {
+    const decimalPart = score % 1;
+    if (decimalPart < 0.25) return Math.floor(score);
+    if (decimalPart < 0.75) return Math.floor(score) + 0.5;
+    return Math.ceil(score);
+  };
 
   const parseScore = (content) => {
     if (!content) return 0;
@@ -152,175 +212,45 @@ const Results = ({ answers, testType }) => {
       <Feedback key={section}>
         <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
         <div dangerouslySetInnerHTML={{ __html: feedbackContent }} />
-        {section === 'writing' && sectionResult.exampleEssay && (
-          <>
-            <h3>Example Essay:</h3>
-            <div dangerouslySetInnerHTML={{ __html: sectionResult.exampleEssay }} />
-          </>
-        )}
         <p>Score: {sectionResult.score.toFixed(1)}/40</p>
       </Feedback>
     );
   };
 
-  const renderListeningExamples = () => {
-    if (!listeningExamples) return null;
+  if (loading) {
+    return (
+      <LoadingContainer>
+        <PulseLoader color="#800120" size={15} />
+      </LoadingContainer>
+    );
+  }
 
-    const examples = listeningExamples.split(/Part \d+:/);
-    return examples.slice(1).map((example, index) => {
-      const utterance = new SpeechSynthesisUtterance(example);
-      utterance.lang = 'en-US';
-      
-      return (
-        <Section key={index}>
-          <h3>Listening Practice - Part {index + 1}</h3>
-          <p>{example}</p>
-          <Button onClick={() => window.speechSynthesis.speak(utterance)}>
-            Play Audio
-          </Button>
-        </Section>
-      );
-    });
-  };
-
-  const renderSpeakingExamples = () => {
-    if (!speakingExamples) {
-      console.log("No speaking examples available");
-      return null;
-    }
-  
-    const parts = speakingExamples.split(/Set \d+:/);
-    return parts.slice(1).map((set, setIndex) => {
-      const lines = set.trim().split('\n');
-      const sections = [
-        { title: 'Part 1', start: lines.findIndex(line => line.includes('Part 1')) },
-        { title: 'Part 2', start: lines.findIndex(line => line.includes('Part 2')) },
-        { title: 'Part 3', start: lines.findIndex(line => line.includes('Part 3')) },
-      ];
-  
-      return (
-        <Section key={setIndex}>
-          <h3>Speaking Practice - Set {setIndex + 1}</h3>
-          {sections.map((section, index) => {
-            const nextSection = sections[index + 1];
-            const sectionContent = lines.slice(section.start + 1, nextSection ? nextSection.start : undefined).join('\n');
-            const [question, ...answerParts] = sectionContent.split('Sample answer:');
-            const answer = answerParts.join('Sample answer:').trim();
-  
-            return (
-              <div key={section.title}>
-                <h4>{section.title}</h4>
-                <p>{question.trim()}</p>
-                <Button onClick={() => speak(question.trim())}>
-                  Play Question
-                </Button>
-                <p><strong>Sample answer:</strong></p>
-                <p>{answer}</p>
-                <Button onClick={() => speak(answer)}>
-                  Play Sample Answer
-                </Button>
-              </div>
-            );
-          })}
-        </Section>
-      );
-    });
-  };
-
-  const speak = (text) => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
-    window.speechSynthesis.speak(utterance);
-  };
-
-  const downloadResults = () => {
-    let textContent = "IELTS Test Results\n\n";
-
-    for (const section in result) {
-      if (section !== 'overallScore') {
-        textContent += `${section.charAt(0).toUpperCase() + section.slice(1)} Feedback:\n`;
-        textContent += `${result[section].feedback}\n`;
-        textContent += `Score: ${result[section].score.toFixed(1)}/40\n\n`;
-        if (section === 'writing' && result[section].exampleEssay) {
-          textContent += `Example Essay:\n${result[section].exampleEssay}\n\n`;
-        }
-      }
-    }
-
-    textContent += `Overall Score: ${result.overallScore}/9\n`;
-
-    if (listeningExamples) {
-      textContent += "\nListening Practice Examples:\n\n";
-      textContent += listeningExamples;
-    }
-
-    if (speakingExamples) {
-      textContent += "\nSpeaking Practice Examples:\n\n";
-      textContent += speakingExamples;
-    }
-
-    const blob = new Blob([textContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'results.txt';
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
-  if (loading) return (
-    <LoadingContainer>
-      <PulseLoader color="#FFFFFF" />
-    </LoadingContainer>
-  );
-  if (error) return <Container><p>{error}</p></Container>;
-
-  const chartData = Object.entries(result)
-    .filter(([key]) => key !== 'overallScore')
-    .map(([section, data]) => ({
-      name: section.charAt(0).toUpperCase() + section.slice(1),
-      score: data.score
-    }));
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <Container>
-      <Title>IELTS Test Results</Title>
+      <Title>Test Results</Title>
+      <ScoreChart>
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={Object.entries(result).filter(([key]) => key !== 'overallScore').map(([key, value]) => ({ name: key, score: value.score }))}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="score" fill="#800120" />
+          </BarChart>
+        </ResponsiveContainer>
+      </ScoreChart>
       <Section>
-        <ScoreChart>
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis domain={[0, 40]} />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="score" fill="#FFFFFF" />
-            </BarChart>
-          </ResponsiveContainer>
-        </ScoreChart>
-        {testType === 'full' ? (
-          <h2>Overall Score: {result.overallScore}/9</h2>
-        ) : (
-          <h2>Section Score: {result[testType]?.score.toFixed(1)}/40</h2>
-        )}
+        <h2>Overall Score: {result.overallScore}/9</h2>
+        {Object.keys(result).filter((section) => section !== 'overallScore').map(renderFeedback)}
       </Section>
-      {Object.keys(result)
-        .filter(section => section !== 'overallScore')
-        .map(section => renderFeedback(section))}
-      {(testType === 'full' || testType === 'listening') && (
-        <Section>
-          <h2>Listening Practice</h2>
-          {renderListeningExamples()}
-        </Section>
-      )}
-      {(testType === 'full' || testType === 'speaking') && (
-        <Section>
-          <h2>Speaking Practice</h2>
-          {renderSpeakingExamples()}
-        </Section>
-      )}
       <ButtonContainer>
-        <ActionButton onClick={downloadResults}>Download Results</ActionButton>
+        <Button onClick={() => window.location.href = '/start-education'}>Start Education</Button>
+        <DownloadButton onClick={downloadResults}>Download Results</DownloadButton>
       </ButtonContainer>
     </Container>
   );
