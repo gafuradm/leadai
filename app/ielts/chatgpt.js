@@ -2,17 +2,10 @@ import fetch from 'node-fetch';
 
 export async function fetchResults(section, data, testType) {
   const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-  const systemMessage = testType === 'full'
-    ? `You are an IELTS test evaluator. Provide detailed feedback and a score out of 40 for the ${section} section.
-       Provide feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
-       Give detailed recommendations for improving each section.
-       For writing, analyze essay structure, coherence, grammar, and vocabulary.
-       For speaking, evaluate pronunciation, fluency, coherence, and vocabulary usage.
-       After providing the section feedback, suggest a list of countries and universities (with websites) where the user can apply with the given score in the respective section.`
-    : `You are an IELTS test evaluator. Provide detailed feedback and a score out of 40 for the ${section} section.
-       Provide feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
-       Give detailed recommendations for improving this section.
-       Do not mention other sections or provide university recommendations.`;
+  const systemMessage = `You are an IELTS test evaluator. Provide detailed feedback and a score out of 40 for the ${section} section.
+     Provide feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
+     Give detailed recommendations for improving this section.
+     Always include the score in the format "Score: X.X/40" at the end of your response.`;
 
   const userMessage = `
     Section: ${section}
@@ -21,6 +14,7 @@ export async function fetchResults(section, data, testType) {
       ? `Questions: ${JSON.stringify(data.questions)}\nAnswers: ${JSON.stringify(data.answers)}`
       : `Answers: ${JSON.stringify(data.answers)}`
     }
+    ${section === 'reading' || section === 'listening' ? `Questions: ${JSON.stringify(data.questions)}` : ''}
     ${section === 'writing' ? `Topics: ${JSON.stringify(data.topics)}` : ''}
   `;
 
@@ -32,12 +26,12 @@ export async function fetchResults(section, data, testType) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }
         ],
-        max_tokens: 1000,
+        max_tokens: 2000,
       }),
     });
 

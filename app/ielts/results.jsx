@@ -81,64 +81,32 @@ const Results = ({ answers, testType }) => {
         const sections = testType === 'full' 
           ? ['listening', 'reading', 'writing', 'speaking'] 
           : [testType];
-
-        console.log('Sections:', sections);
-        console.log('Answers:', answers);
-
+  
         const newResults = {};
         let totalScore = 0;
-
+        let validSections = 0;
+  
         for (const section of sections) {
-          if (!answers[section]) {
+          if (answers[section] && answers[section].data) {
+            try {
+              const sectionResult = await fetchResults(section, answers[section].data, testType);
+              const score = parseScore(sectionResult);
+              if (score > 0) {
+                totalScore += score;
+                validSections++;
+              }
+              newResults[section] = { feedback: sectionResult, score: score };
+            } catch (error) {
+              console.error(`Error processing ${section}:`, error);
+              setError(`Error fetching ${section} results: ${error.message}`);
+            }
+          } else {
             console.warn(`Missing data for ${section} section`);
-            continue;
-          }
-          try {
-            let sectionData = answers[section];
-            console.log(`Section data for ${section}:`, sectionData);
-
-            if (section === 'speaking') {
-              sectionData = {
-                questions: sectionData.questions,
-                answers: sectionData.answers
-              };
-            }
-            console.log(`Processed section data for ${section}:`, sectionData);
-
-            const sectionResult = await fetchResults(section, sectionData, testType);
-            console.log(`Result for ${section}:`, sectionResult);
-
-            const score = parseScore(sectionResult);
-            totalScore += score;
-            newResults[section] = { feedback: sectionResult, score: score };
-            
-            if (section === 'writing') {
-              const exampleEssay = await fetchExampleEssay(answers[section].topics);
-              newResults[section].exampleEssay = exampleEssay;
-            }
-          } catch (error) {
-            console.error(`Error processing ${section}:`, error);
-            setError(`Error fetching ${section} results: ${error.message}`);
-            return;
           }
         }
         
-        const overallScore = testType === 'full' 
-          ? (totalScore / sections.length).toFixed(1) 
-          : totalScore.toFixed(1);
-
+        const overallScore = validSections > 0 ? (totalScore / validSections).toFixed(1) : 0;
         setResult({ ...newResults, overallScore });
-
-        if (testType === 'full' || testType === 'listening') {
-          const examples = await fetchListeningExamples();
-          setListeningExamples(examples);
-        }
-
-        if (testType === 'full' || testType === 'speaking') {
-          const examples = await fetchSpeakingExamples();
-          console.log("Speaking examples:", examples);
-          setSpeakingExamples(examples);
-        }
       } catch (err) {
         console.error('Error in getResults:', err);
         setError(`General error fetching results: ${err.message}`);
@@ -151,7 +119,7 @@ const Results = ({ answers, testType }) => {
 
   const parseScore = (content) => {
     if (!content) return 0;
-    const scoreMatch = content.match(/out of 40, the score is (\d+)/);
+    const scoreMatch = content.match(/Score: (\d+(\.\d+)?)/);
     return scoreMatch ? parseFloat(scoreMatch[1]) : 0;
   };
 

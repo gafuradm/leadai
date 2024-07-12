@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #FFFFFF;
+  color: #FF69B4;
   text-align: center;
 `;
 
@@ -28,7 +28,7 @@ const Section = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #800120;
+  background-color: #FF69B4;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -49,7 +49,7 @@ const Button = styled.button`
 const Timer = styled.div`
   font-size: 24px;
   font-weight: bold;
-  color: #800120;
+  color: #FF69B4;
   text-align: center;
   margin-bottom: 20px;
 `;
@@ -65,7 +65,7 @@ const TextSection = styled.div`
 `;
 
 const QuestionsSection = styled.div`
-  border-top: 2px solid #FFFFFF;
+  border-top: 2px solid #FF69B4;
   padding-top: 20px;
 `;
 
@@ -133,15 +133,19 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
   };
 
   const handleSubmit = () => {
-    const sectionData = {
-      section: 'reading',
-      data: {
-        questions: passages.flatMap(passage => passage.questions),
-        answers: answers,
-        passages: passages
-      }
-    };
-    onNext(sectionData);
+    if (Object.keys(answers).length > 0) {
+      const sectionData = {
+        section: 'reading',
+        data: {
+          questions: passages.flatMap(passage => passage.questions),
+          answers: answers,
+          passages: passages
+        }
+      };
+      onNext(sectionData);
+    } else {
+      alert("Please answer at least one question before submitting.");
+    }
   };
 
   const renderQuestion = (question) => {
@@ -200,7 +204,7 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
     return (
       <Container>
         <div className="flex items-center justify-center min-h-screen">
-          <PulseLoader color="#FFFFFF" />
+          <PulseLoader color="#FF69B4" />
         </div>
       </Container>
     );
@@ -225,9 +229,10 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
   const handleNextPage = () => {
     const totalTextPages = Math.ceil(passages[currentPassage].texts.length / textItemsPerPage);
     const totalQuestionPages = Math.ceil(passages[currentPassage].questions.length / itemsPerPage);
-
+  
     if (currentTextPage < totalTextPages - 1) {
       setCurrentTextPage(currentTextPage + 1);
+      setCurrentPage(0);
     } else if (currentPage < totalQuestionPages - 1) {
       setCurrentPage(currentPage + 1);
     } else if (currentPassage < passages.length - 1) {

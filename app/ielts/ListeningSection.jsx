@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #FFFFFF;
+  color: #FF69B4;
   text-align: center;
 `;
 
@@ -22,7 +22,7 @@ const Section = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #800120;
+  background-color: #FF69B4;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -43,7 +43,7 @@ const Button = styled.button`
 const Timer = styled.div`
   font-size: 24px;
   font-weight: bold;
-  color: #800120;
+  color: #FF69B4;
   text-align: center;
   margin-bottom: 20px;
 `;
@@ -98,14 +98,20 @@ const ListeningSection = ({ onNext, timedMode }) => {
   };
 
   const handleSubmit = () => {
-    const sectionData = {
-      section: 'listening',
-      data: {
-        questions: ieltsData.sections.listening.parts.flatMap(part => part.questions),
-        answers: answers
-      }
-    };
-    onNext(sectionData);
+    if (answers.some(answer => answer !== '')) {
+      const sectionData = {
+        section: 'listening',
+        data: {
+          answers: answers,
+          questions: ieltsData.sections.listening.parts.flatMap(part => 
+            part.questions.map(q => ({ id: q.id, question: q.question }))
+          )
+        }
+      };
+      onNext(sectionData);
+    } else {
+      alert("Please answer at least one question before submitting.");
+    }
   };
 
   const speakText = (text) => {
