@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import ReactGA from "react-ga4";
 import ListeningSection from './ListeningSection';
 import ReadingSection from './ReadingSection';
 import WritingSection from './WritingSection';
@@ -88,10 +89,25 @@ const Page = () => {
   const [timedMode, setTimedMode] = useState(null);
   const router = useRouter();
 
+  useEffect(() => {
+    // Initialize Google Analytics
+    ReactGA.initialize("G-TBSYZ03L8M");
+    
+    // Track pageview
+    ReactGA.send({ hitType: "pageview", page: "/ielts" });
+  }, []);
+
   const handleTestSelection = (test, type = null) => {
     setSelectedTest(test);
     setTestType(type);
     setTimedMode(null);
+
+    // Track test selection event
+    ReactGA.event({
+      category: "Test Selection",
+      action: "Selected Test",
+      label: test
+    });
   };
 
   const handleModeSelection = (isTimed) => {
@@ -101,6 +117,13 @@ const Page = () => {
     } else {
       setCurrentSection(selectedTest);
     }
+
+    // Track mode selection event
+    ReactGA.event({
+      category: "Mode Selection",
+      action: "Selected Mode",
+      label: isTimed ? "Timed" : "Untimed"
+    });
   };
 
   const handleSectionComplete = (sectionData) => {
@@ -116,6 +139,13 @@ const Page = () => {
     } else {
       setCurrentSection('results');
     }
+
+    // Track section completion event
+    ReactGA.event({
+      category: "Section Completion",
+      action: "Completed Section",
+      label: currentSection
+    });
   };
 
   const renderCards = (options, handleClick) => (
