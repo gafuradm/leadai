@@ -15,7 +15,13 @@ const SummaryCompletionQuestion = ({ question }) => {
                 type="text"
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
-                style={{ width: '100px', margin: '0 5px' }}
+                style={{ 
+                  width: '100px', 
+                  margin: '0 5px', 
+                  backgroundColor: '#ffffff', // Белый фон
+                  color: '#000000', // Черный текст
+                  border: '1px solid #000000' // Черные границы
+                }}
               />
             )}
           </React.Fragment>
@@ -34,4 +40,3 @@ const SummaryCompletionQuestion = ({ question }) => {
 };
 
 export default SummaryCompletionQuestion;
-

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -6,62 +6,50 @@ const Container = styled.div`
 `;
 
 const Table = styled.table`
-  width: 100%;
   border-collapse: collapse;
 `;
 
-const Th = styled.th`
-  background-color: #f2f2f2;
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-`;
-
-const Td = styled.td`
-  border: 1px solid #ddd;
-  padding: 8px;
+const Cell = styled.td`
+  border: 1px solid black;
+  padding: 5px;
 `;
 
 const TableCompletionQuestion = ({ question, onAnswerChange }) => {
-  if (!question || !question.columns || !question.rows) {
-    console.error('Invalid table completion question structure:', question);
-    return null;
-  }
+  const [answers, setAnswers] = useState({});
 
-  const handleChange = (rowIndex, colIndex, event) => {
-    const updatedAnswers = {
-      ...question.answers,
-      [rowIndex]: {
-        ...question.answers[rowIndex],
-        [colIndex]: event.target.value,
-      },
-    };
-    onAnswerChange(question.id, updatedAnswers);
+  const handleChange = (optionIndex, value) => {
+    const newAnswers = { ...answers, [optionIndex]: value };
+    setAnswers(newAnswers);
+    onAnswerChange(question.id, newAnswers);
   };
+
+  if (!question.options || !Array.isArray(question.options)) {
+    console.error('Invalid question structure for TableCompletionQuestion:', question);
+    return <Container>Error: Invalid question structure</Container>;
+  }
 
   return (
     <Container>
-      <h3>{question.prompt}</h3>
+      <h3>{question.question}</h3>
       <Table>
-        <thead>
-          <tr>
-            {question.columns.map((col, index) => (
-              <Th key={index}>{col}</Th>
-            ))}
-          </tr>
-        </thead>
         <tbody>
-          {question.rows.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {row.map((cell, colIndex) => (
-                <Td key={colIndex}>
-                  <input
-                    type="text"
-                    value={question.answers[rowIndex][colIndex]}
-                    onChange={(event) => handleChange(rowIndex, colIndex, event)}
-                  />
-                </Td>
-              ))}
+          {question.options.map((option, index) => (
+            <tr key={index}>
+              <Cell>{option}</Cell>
+              <Cell>
+                <input
+                  type="text"
+                  onChange={(e) => handleChange(index, e.target.value)}
+                  value={answers[index] || ''}
+                  style={{ 
+                    width: '100px', 
+                    margin: '0 5px', 
+                    backgroundColor: '#ffffff', // Белый фон
+                    color: '#000000', // Черный текст
+                    border: '1px solid #000000' // Черные границы
+                  }}
+                />
+              </Cell>
             </tr>
           ))}
         </tbody>

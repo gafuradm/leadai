@@ -1,27 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
   margin-bottom: 20px;
 `;
 
-const Input = styled.input`
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: white;
-`;
-
 const ShortAnswerQuestion = ({ question, onAnswerChange }) => {
-  const handleInputChange = (e) => {
-    onAnswerChange(question.id, e.target.value);
+  const [answer, setAnswer] = useState('');
+
+  const handleChange = (value) => {
+    setAnswer(value);
+    onAnswerChange(question.id, value);
   };
 
   return (
     <Container>
-      <h3>{question.prompt}</h3>
-      <Input type="text" value={question.answer || ''} onChange={handleInputChange} />
+      <h3>{question.question}</h3>
+      <input
+        type="text"
+        onChange={(e) => handleChange(e.target.value)}
+        value={answer}
+        placeholder="Enter"
+        style={{ 
+          width: '100px', 
+          margin: '0 5px', 
+          backgroundColor: '#ffffff', // Белый фон
+          color: '#000000', // Черный текст
+          border: '1px solid #000000' // Черные границы
+        }}
+      />
     </Container>
   );
 };

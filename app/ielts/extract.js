@@ -1,108 +1,48 @@
-const pdf = require('pdf-parse');
-const fs = require('fs-extra');
+const fs = require('fs');
 const path = require('path');
+const pdfParse = require('pdf-parse');
 
-console.log('Current working directory:', process.cwd());
-console.log('__dirname:', __dirname);
+async function extractTextFromPDF(pdfPath) {
+  const dataBuffer = fs.readFileSync(pdfPath);
+  const data = await pdfParse(dataBuffer);
+  return data.text;
+}
 
-const jsonFilePath = path.resolve(__dirname, './ielts-data.json');
-const pdfDir = path.resolve(__dirname, '../../public/ielts-sample-papers-2');
+async function extractAllPDFs() {
+  const baseDir = path.join(__dirname, '../../public/ielts-sample-papers-2');
+  const categories = fs.readdirSync(baseDir).filter(item => item !== '.DS_Store');
 
-// Функция для извлечения текста из PDF файла
-const extractTextFromPDF = async (pdfPath) => {
-  try {
-    const dataBuffer = await fs.readFile(pdfPath);
-    const data = await pdf(dataBuffer);
-    return data.text;
-  } catch (error) {
-    console.error(`Error extracting text from PDF ${pdfPath}:`, error);
-    throw error;
-  }
-};
+  const extractedData = {};
 
-const updateJSONFile = async (jsonFilePath, newData) => {
-  try {
-    let jsonData;
-    try {
-      jsonData = await fs.readJson(jsonFilePath);
-    } catch (error) {
-      console.log('JSON file does not exist or is empty. Creating a new one.');
-      jsonData = { sections: [] };
-    }
+  for (const category of categories) {
+    const categoryPath = path.join(baseDir, category);
+    if (fs.lstatSync(categoryPath).isDirectory()) {
+      const pdfFiles = fs.readdirSync(categoryPath).filter(file => file.endsWith('.pdf'));
 
-    // Убедимся, что у нас есть массив sections
-    if (!Array.isArray(jsonData.sections)) {
-      jsonData.sections = [];
-    }
+      extractedData[category] = {};
 
-    // Обновление или добавление новых данных
-    newData.forEach((data) => {
-      const existingSection = jsonData.sections.find(section => section.category === data.category);
-      if (existingSection) {
-        existingSection.content = data.content;
-      } else {
-        jsonData.sections.push(data);
-      }
-    });
+      for (const pdfFile of pdfFiles) {
+        const pdfPath = path.join(categoryPath, pdfFile);
+        const text = await extractTextFromPDF(pdfPath);
 
-    await fs.writeJson(jsonFilePath, jsonData, { spaces: 2 });
-    console.log('JSON файл успешно обновлен');
-  } catch (error) {
-    console.error(`Error updating JSON file ${jsonFilePath}:`, error);
-    throw error;
-  }
-};
+        // Assuming the PDF content is already structured with a title, content, and questions
+        // You can enhance this by adding regex parsing to better identify and structure the content
+        const titleMatch = text.match(/Title:\s*(.*)/);
+        const questionsMatch = text.match(/Questions:\s*((.|\n)*)/);
+        
+        const title = titleMatch ? titleMatch[1].trim() : 'Untitled';
+        const questions = questionsMatch ? questionsMatch[1].trim().split('\n').map(q => q.trim()) : [];
 
-const main = async () => {
-  try {
-    console.log('PDF directory:', pdfDir);
-    const exists = await fs.pathExists(pdfDir);
-    console.log('Directory exists:', exists);
-
-    if (!exists) {
-      throw new Error(`Directory ${pdfDir} does not exist`);
-    }
-
-    const categories = await fs.readdir(pdfDir);
-    console.log('Found categories:', categories);
-
-    const newData = [];
-
-    for (const category of categories) {
-      if (category === '.DS_Store') continue; // Пропускаем .DS_Store
-
-      const categoryPath = path.join(pdfDir, category); // Убираем encodeURIComponent
-      console.log('Checking directory:', categoryPath);
-
-      try {
-        const stats = await fs.stat(categoryPath);
-        if (stats.isDirectory()) {
-          const pdfFiles = await fs.readdir(categoryPath);
-          console.log(`Found ${pdfFiles.length} files in ${category}`);
-
-          for (const pdfFile of pdfFiles) {
-            if (path.extname(pdfFile).toLowerCase() === '.pdf') {
-              const pdfPath = path.join(categoryPath, pdfFile);
-              console.log(`Processing file: ${pdfFile} in category: ${category}`);
-              const text = await extractTextFromPDF(pdfPath);
-              newData.push({
-                category,
-                content: text,
-                pdfFile
-              });
-            }
-          }
-        }
-      } catch (error) {
-        console.error(`Error reading directory ${categoryPath}:`, error);
+        extractedData[category][pdfFile] = {
+          title: title,
+          content: text.replace(/Title:\s*.*\n|Questions:\s*((.|\n)*)/, '').trim(),
+          questions: questions
+        };
       }
     }
-
-    console.log('New data:', newData.map(item => ({ category: item.category, pdfFile: item.pdfFile })));
-    await updateJSONFile(jsonFilePath, newData);
-  } catch (error) {
-    console.error('Error in main function:', error);
   }
-};
 
-main();
+  fs.writeFileSync('extractedData.json', JSON.stringify(extractedData, null, 2));
+}
+
+extractAllPDFs().catch(console.error);

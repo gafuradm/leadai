@@ -21,7 +21,11 @@ const MatchingInformationQuestion = ({ question }) => {
           <select 
             value={matches[statement] || ''} 
             onChange={(e) => handleMatch(statement, e.target.value)}
-            style={{ marginLeft: '10px' }}
+            style={{ 
+              marginLeft: '10px',
+              backgroundColor: '#ffffff',
+              color: '#000000'
+            }}
           >
             <option value="">Select an option</option>
             {question.options.map((option, optionIndex) => (
@@ -35,4 +39,3 @@ const MatchingInformationQuestion = ({ question }) => {
 };
 
 export default MatchingInformationQuestion;
-

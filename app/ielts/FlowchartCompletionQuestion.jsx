@@ -1,27 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
   margin-bottom: 20px;
 `;
 
-const Input = styled.input`
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: white;
+const FlowchartItem = styled.div`
+  margin-bottom: 10px;
 `;
 
 const FlowchartCompletionQuestion = ({ question, onAnswerChange }) => {
-  const handleInputChange = (e) => {
-    onAnswerChange(question.id, e.target.value);
+  const [answers, setAnswers] = useState({});
+
+  const handleChange = (optionIndex, value) => {
+    const newAnswers = { ...answers, [optionIndex]: value };
+    setAnswers(newAnswers);
+    onAnswerChange(question.id, newAnswers);
   };
+
+  if (!question.options || !Array.isArray(question.options)) {
+    console.error('Invalid question structure for FlowchartCompletionQuestion:', question);
+    return <Container>Error: Invalid question structure</Container>;
+  }
 
   return (
     <Container>
-      <h3>{question.prompt}</h3>
-      <Input type="text" value={question.answer || ''} onChange={handleInputChange} />
+      <h3>{question.question}</h3>
+      {question.options.map((option, index) => (
+        <FlowchartItem key={index}>
+          <label>{option}: </label>
+          <input
+            type="text"
+            onChange={(e) => handleChange(index, e.target.value)}
+            value={answers[index] || ''}
+            style={{ 
+              width: '100px', 
+              margin: '0 5px', 
+              backgroundColor: '#ffffff', // Белый фон
+              color: '#000000', // Черный текст
+              border: '1px solid #000000' // Черные границы
+            }}
+          />
+        </FlowchartItem>
+      ))}
     </Container>
   );
 };

@@ -1,36 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
   margin-bottom: 20px;
 `;
 
-const Heading = styled.h3`
+const Option = styled.div`
   margin-bottom: 10px;
 `;
 
-const Option = styled.div`
-  margin-bottom: 5px;
-`;
-
 const MatchingHeadingsQuestion = ({ question, onAnswerChange }) => {
-  const handleInputChange = (e, index) => {
-    const newAnswer = [...question.answers];
-    newAnswer[index] = e.target.value;
-    onAnswerChange(question.id, newAnswer);
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+
+  const handleChange = (optionIndex, value) => {
+    const newAnswers = { ...selectedAnswers, [optionIndex]: value };
+    setSelectedAnswers(newAnswers);
+    onAnswerChange(question.id, newAnswers);
   };
+
+  if (!question.options || !Array.isArray(question.options)) {
+    console.error('Invalid question structure for MatchingHeadingsQuestion:', question);
+    return <Container>Error: Invalid question structure</Container>;
+  }
 
   return (
     <Container>
-      <Heading>{question.prompt}</Heading>
-      {question.headings.map((heading, index) => (
+      <h3>{question.question}</h3>
+      {question.options.map((option, index) => (
         <Option key={index}>
-          <strong>{heading}</strong>: {' '}
-          <input
-            type="text"
-            value={question.answers[index]}
-            onChange={(e) => handleInputChange(e, index)}
-          />
+          <p>{option}</p>
+          <select
+            onChange={(e) => handleChange(index, e.target.value)}
+            value={selectedAnswers[index] || ''}
+            style={{ 
+              marginLeft: '10px',
+              backgroundColor: '#ffffff',
+              color: '#000000'
+            }}
+          >
+            <option value="">Select a heading</option>
+            {question.options.map((heading, headingIndex) => (
+              <option key={headingIndex} value={headingIndex}>
+                {heading}
+              </option>
+            ))}
+          </select>
         </Option>
       ))}
     </Container>

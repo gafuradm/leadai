@@ -7,6 +7,12 @@ import SummaryCompletionQuestion from './SummaryCompletionQuestion';
 import DiagramLabelingQuestion from './DiagramLabelingQuestion';
 import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 import { PulseLoader } from 'react-spinners';
+import MatchingHeadingsQuestion from './MatchingHeadingsQuestion';
+import FlowchartCompletionQuestion from './FlowchartCompletionQuestion';
+import SentenceCompletionQuestion from './SentenceCompletionQuestion';
+import TableCompletionQuestion from './TableCompletionQuestion';
+import DiagramCompletionQuestion from './DiagramCompletionQuestion';
+import ShortAnswerQuestion from './ShortAnswerQuestion';
 
 const Container = styled.div`
   max-width: 800px;
@@ -156,7 +162,7 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
       console.error('Invalid question structure:', question);
       return null;
     }
-
+  
     switch (question.type) {
       case 'multiple_choice':
         return <MultipleChoiceQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
@@ -168,6 +174,18 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
         return <SummaryCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
       case 'diagram_labeling':
         return <DiagramLabelingQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+      case 'matching_headings':
+        return <MatchingHeadingsQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+      case 'flowchart_completion':
+        return <FlowchartCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+      case 'sentence_completion':
+        return <SentenceCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+      case 'table_completion':
+        return <TableCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+      case 'diagram_completion':
+        return <DiagramCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+      case 'short_answer':
+        return <ShortAnswerQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
       default:
         console.warn(`Unsupported question type: ${question.type}`);
         return null;
