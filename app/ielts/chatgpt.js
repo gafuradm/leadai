@@ -6,9 +6,9 @@ export async function fetchResults(section, data, testType) {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const systemMessage = `You are an IELTS test evaluator. Provide detailed feedback and a score out of 40 for the ${section} section.
-     Provide feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
-     Give detailed recommendations for improving this section.
+  const systemMessage = `You are an IELTS test evaluator. Provide very detailed feedback and a score out of 40 for the ${section} section.
+     Provide very detailed feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
+     Give very detailed recommendations for improving this section.
      Always include the score in the format "Score: X.X/40" at the end of your response.`;
 
   const userMessage = `
@@ -245,6 +245,44 @@ export async function fetchWritingExamples(score, topic) {
     return responseData.choices[0].message.content;
   } catch (error) {
     console.error('Error fetching writing examples:', error);
+    return null;
+  }
+}
+
+export async function fetchUniversityRecommendations(overallScore) {
+  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+  if (!OPENAI_API_KEY) {
+    throw new Error('OPENAI_API_KEY is not defined');
+  }
+
+  const systemMessage = `You are a university admissions expert. Provide recommendations for universities based on the given IELTS score. Include a mix of universities from different countries and explain why each university might be a good fit. Make sure to include links to the university websites.`;
+  const userMessage = `Based on an overall IELTS score of ${overallScore}, recommend 5 universities that would be suitable for the student. Include the university name, location, a brief explanation of why it's recommended, and a link to the university's official website.`;
+
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-4',
+        messages: [
+          { role: 'system', content: systemMessage },
+          { role: 'user', content: userMessage }
+        ],
+        max_tokens: 1000,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch university recommendations from OpenAI API');
+    }
+
+    const responseData = await response.json();
+    return responseData.choices[0].message.content;
+  } catch (error) {
+    console.error('Error fetching university recommendations:', error);
     return null;
   }
 }

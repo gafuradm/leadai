@@ -2,49 +2,76 @@ import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import PulseLoader from 'react-spinners/PulseLoader';
 import styled from 'styled-components';
-import { fetchResults, fetchExampleEssay, fetchListeningExamples, fetchSpeakingExamples, fetchReadingExamples, fetchWritingExamples } from './chatgpt';
+import { fetchResults, fetchExampleEssay, fetchListeningExamples, fetchSpeakingExamples, fetchReadingExamples, fetchWritingExamples, fetchUniversityRecommendations } from './chatgpt';
 
 const Container = styled.div`
   padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
 `;
 
 const Title = styled.h1`
   text-align: center;
   color: #800120;
   font-weight: bold;
+  font-size: 2.5em;
+  margin-bottom: 30px;
 `;
 
 const Section = styled.div`
-  margin-top: 20px;
+  margin-top: 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 `;
 
 const ScoreChart = styled.div`
   width: 100%;
-  height: 300px;
-  margin-bottom: 20px;
+  height: 400px;
+  margin-bottom: 40px;
 `;
 
 const Feedback = styled.div`
-  margin-bottom: 20px;
-  color: black;
+  margin-bottom: 30px;
+  color: #333;
+  line-height: 1.6;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 40px;
 `;
 
-const ActionButton = styled.button`
+const Button = styled.button`
   background-color: #800120;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
+  border-radius: 4px;
   cursor: pointer;
-  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.1s;
+  font-size: 16px;
+  font-weight: bold;
 
   &:hover {
-    background-color: #FF1493;
+    background-color: #a00130;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+`;
+
+const DownloadButton = styled(Button)`
+  margin-left: 20px;
+  background-color: #14465a;
+
+  &:hover {
+    background-color: #1a5a74;
   }
 `;
 
@@ -55,22 +82,71 @@ const LoadingContainer = styled.div`
   height: 100vh;
 `;
 
-const Button = styled.button`
+const AudioButton = styled(Button)`
   background-color: #800120;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  margin-top: 10px;
 
   &:hover {
     background-color: #14465a;
   }
 `;
 
-const DownloadButton = styled(ActionButton)`
-  margin-left: 10px;
+const ExampleContainer = styled.div`
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+  margin-top: 20px;
+`;
+
+const ExampleTitle = styled.h4`
+  color: #800120;
+  margin-bottom: 10px;
+`;
+
+const ExampleText = styled.p`
+  margin-bottom: 15px;
+`;
+
+const UniversityRecommendations = styled.div`
+  margin-top: 40px;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+`;
+
+const RecommendationTitle = styled.h3`
+  color: #14465a;
+  margin-bottom: 20px;
+`;
+
+const University = styled.div`
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+`;
+
+const UniversityName = styled.h4`
+  color: #800120;
+  margin-bottom: 5px;
+`;
+
+const UniversityLocation = styled.p`
+  font-style: italic;
+  color: #555;
+  margin-bottom: 10px;
+`;
+
+const UniversityLink = styled.a`
+  color: #14465a;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+    color: #1a5a74;
+  }
 `;
 
 const Results = ({ answers, testType }) => {
@@ -81,6 +157,7 @@ const Results = ({ answers, testType }) => {
   const [speakingExamples, setSpeakingExamples] = useState(null);
   const [readingExamples, setReadingExamples] = useState(null);
   const [writingExamples, setWritingExamples] = useState(null);
+  const [universityRecommendations, setUniversityRecommendations] = useState(null);
 
   useEffect(() => {
     const getResults = async () => {
@@ -111,23 +188,19 @@ const Results = ({ answers, testType }) => {
               if (section === 'listening' || testType === 'full') {
                 const listening = await fetchListeningExamples();
                 setListeningExamples(listening);
-                console.log("Listening examples:", listening);
               }
               if (section === 'speaking' || testType === 'full') {
                 const speaking = await fetchSpeakingExamples();
                 setSpeakingExamples(speaking);
-                console.log("Speaking examples:", speaking);
               }
               if (section === 'reading' || testType === 'full') {
                 const reading = await fetchReadingExamples(score);
                 setReadingExamples(reading);
-                console.log("Reading examples:", reading);
               }
               if (section === 'writing' || testType === 'full') {
                 const writingTopic = answers[section]?.data?.topics?.task2 || 'general writing topic';
                 const writing = await fetchWritingExamples(score, writingTopic);
                 setWritingExamples(writing);
-                console.log("Writing examples:", writing);
               }
             } catch (error) {
               console.error(`Error processing ${section}:`, error);
@@ -140,6 +213,11 @@ const Results = ({ answers, testType }) => {
   
         const overallScore = validSections > 0 ? roundIELTSScore(totalScore / validSections) : 0;
         setResult({ ...newResults, overallScore });
+
+        if (testType === 'full') {
+          const recommendations = await fetchUniversityRecommendations(overallScore);
+          setUniversityRecommendations(recommendations);
+        }
       } catch (err) {
         console.error('Error in getResults:', err);
         setError(`General error fetching results: ${err.message}`);
@@ -186,6 +264,77 @@ const Results = ({ answers, testType }) => {
     return scoreMatch ? parseFloat(scoreMatch[1]) : 0;
   };
 
+  const playAudio = (text) => {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'en-US';
+    window.speechSynthesis.speak(speech);
+  };
+
+  const formatListeningExamples = (examples) => {
+    if (!examples) return null;
+    const passages = examples.split(/Passage \d+:/);
+    return (
+      <div>
+        {passages.slice(1).map((passage, index) => (
+          <ExampleContainer key={index}>
+            <ExampleTitle>Passage {index + 1}</ExampleTitle>
+            <ExampleText>{passage.trim()}</ExampleText>
+            <AudioButton onClick={() => playAudio(passage.trim())}>Play Audio</AudioButton>
+          </ExampleContainer>
+        ))}
+      </div>
+    );
+  };
+
+  const formatSpeakingExamples = (examples) => {
+    if (!examples) return null;
+    const parts = examples.split(/Part \d+:/);
+    return (
+      <div>
+        {parts.slice(1).map((part, index) => (
+          <ExampleContainer key={index}>
+            <ExampleTitle>Part {index + 1}</ExampleTitle>
+            <ExampleText>{part.trim()}</ExampleText>
+            <AudioButton onClick={() => playAudio(part.trim())}>Play Audio</AudioButton>
+          </ExampleContainer>
+        ))}
+      </div>
+    );
+  };
+
+  const formatReadingExamples = (examples) => {
+    if (!examples) return null;
+    return <ExampleContainer dangerouslySetInnerHTML={{ __html: examples }} />;
+  };
+
+  const formatWritingExamples = (examples) => {
+    if (!examples) return null;
+    return <ExampleContainer dangerouslySetInnerHTML={{ __html: examples }} />;
+  };
+
+  const renderUniversityRecommendations = () => {
+    if (!universityRecommendations) return null;
+  
+    const recommendations = universityRecommendations.split('\n\n').map(recommendation => {
+      const [name, location, url, ...details] = recommendation.split('\n');
+      return { name, location, url, details: details.join(' ') };
+    });
+  
+    return (
+      <UniversityRecommendations>
+        <RecommendationTitle>Recommended Universities</RecommendationTitle>
+        {recommendations.map((uni, index) => (
+          <University key={index}>
+            <UniversityName>{uni.name}</UniversityName>
+            <UniversityLocation>{uni.location}</UniversityLocation>
+            {uni.url && <UniversityLink href={uni.url} target="_blank" rel="noopener noreferrer">Visit Website</UniversityLink>}
+            <p>{uni.details}</p>
+          </University>
+        ))}
+      </UniversityRecommendations>
+    );
+  };
+
   const renderFeedback = (section) => {
     const sectionResult = result[section];
     if (!sectionResult) return null;
@@ -211,11 +360,33 @@ const Results = ({ answers, testType }) => {
       .replace(/_/g, '')
       .replace(/\n/g, '<br/>');
 
+    let exampleContent = null;
+    switch(section) {
+      case 'listening':
+        exampleContent = formatListeningExamples(listeningExamples);
+        break;
+      case 'speaking':
+        exampleContent = formatSpeakingExamples(speakingExamples);
+        break;
+      case 'reading':
+        exampleContent = formatReadingExamples(readingExamples);
+        break;
+      case 'writing':
+        exampleContent = formatWritingExamples(writingExamples);
+        break;
+    }
+
     return (
       <Feedback key={section}>
         <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
         <div dangerouslySetInnerHTML={{ __html: feedbackContent }} />
         <p>Score: {sectionResult.score.toFixed(1)}/40</p>
+        {exampleContent && (
+          <div>
+            <h3>Practice Materials</h3>
+            {exampleContent}
+          </div>
+        )}
       </Feedback>
     );
   };
@@ -234,7 +405,7 @@ const Results = ({ answers, testType }) => {
 
   return (
     <Container>
-      <Title>Test Results</Title>
+      <Title>IELTS Test Results</Title>
       <ScoreChart>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={Object.entries(result).filter(([key]) => key !== 'overallScore').map(([key, value]) => ({ name: key, score: value.score }))}>
@@ -246,13 +417,14 @@ const Results = ({ answers, testType }) => {
             <Bar dataKey="score" fill="#800120" />
           </BarChart>
         </ResponsiveContainer>
-      </ScoreChart>
+        </ScoreChart>
       <Section>
-        <h2>Overall Score: {result.overallScore}/9</h2>
+        <h2 style={{ color: '#800120', textAlign: 'center' }}><b>Overall Score: {result.overallScore}/9</b></h2>
         {Object.keys(result).filter((section) => section !== 'overallScore').map(renderFeedback)}
       </Section>
+      {testType === 'full' && renderUniversityRecommendations()}
       <ButtonContainer>
-        <Button onClick={() => window.location.href = '/start-education'}>Back to tests</Button>
+        <Button onClick={() => window.location.href = '/start-education'}>Back to Tests</Button>
         <DownloadButton onClick={downloadResults}>Download Results</DownloadButton>
       </ButtonContainer>
     </Container>
