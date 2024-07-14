@@ -8,6 +8,10 @@ import WritingSection from './WritingSection';
 import SpeakingSection from './SpeakingSection';
 import Results from './results';
 import Image from 'next/image';
+import Modal from 'react-modal';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { sendFeedback } from './feedback';
 
 const testOptions = [
   {
@@ -157,8 +161,8 @@ const Page = () => {
           onClick={() => handleClick(option.value)}
         >
           <Image src={option.img} alt={option.title} width={300} height={200} className="mb-4 w-full h-48 object-cover rounded" />
-          <h3 className="text-2xl font-semibold mb-2">{option.title}</h3>
-          <p>{option.des}</p>
+          <h3 className="text-2xl font-semibold mb-2 text-black">{option.title}</h3>
+          <p className="text-black">{option.des}</p>
         </div>
       ))}
     </div>
@@ -183,8 +187,8 @@ const Page = () => {
 
   if (!selectedTest) {
     return (
-      <section className="pt-20 pb-12">
-        <h2 className="text-3xl font-bold text-center mb-8">Choose your IELTS test</h2>
+      <section className="pt-20 pb-12" style={{ backgroundColor: 'white' }}>
+        <h2 className="text-3xl text-black font-bold text-center mb-8">Choose your IELTS test</h2>
         {renderCards(testOptions, handleTestSelection)}
       </section>
     );
@@ -192,8 +196,8 @@ const Page = () => {
 
   if (['full', 'reading', 'writing'].includes(selectedTest) && !testType) {
     return (
-      <section className="pt-20 pb-12">
-        <h2 className="text-3xl font-bold text-center mb-8">Select test type</h2>
+      <section className="pt-20 pb-12" style={{ backgroundColor: 'white' }}>
+        <h2 className="text-3xl text-black font-bold text-center mb-8">Select test type</h2>
         {renderCards(typeOptions, (type) => handleTestSelection(selectedTest, type))}
       </section>
     );
@@ -201,14 +205,18 @@ const Page = () => {
 
   if (timedMode === null) {
     return (
-      <section className="pt-20 pb-12">
-        <h2 className="text-3xl font-bold text-center mb-8">Select mode</h2>
+      <section className="pt-20 pb-12" style={{ backgroundColor: 'white' }}>
+        <h2 className="text-3xl text-black font-bold text-center mb-8">Select mode</h2>
         {renderCards(modeOptions, handleModeSelection)}
       </section>
     );
   }
 
-  return renderSection();
+  return (
+    <div style={{ backgroundColor: 'white' }}>
+      {renderSection()}
+    </div>
+  );
 };
 
 export default Page;

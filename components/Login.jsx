@@ -20,7 +20,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("/ielts");
+      router.push("/cabinet");
     } catch (err) {
       if (
         err.code === "auth/invalid-email" ||
@@ -53,18 +53,18 @@ const LoginPage = () => {
         draggable
         pauseOnHover
       />
-      <div className="absolute inset-0 bg-black flex items-center justify-center">
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 backdrop-filter backdrop-blur-md" />
+      <div className="absolute inset-0 bg-white flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-20 backdrop-filter backdrop-blur-md" />
       </div>
       <div className="relative z-10 flex justify-center items-center min-h-screen w-full">
         <div className="w-full max-w-sm p-6 mt-16 bg-[#CBACF9] rounded-lg shadow-lg">
           <section>
             <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold mb-4">Login</h1>
+              <h1 className="text-2xl font-bold mb-4 text-black">Login</h1>
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-lg font-medium mb-2">Email</label>
+                <label className="block text-lg font-medium mb-2 text-black">Email</label>
                 <input
                   type="email"
                   value={email}
@@ -74,7 +74,7 @@ const LoginPage = () => {
                 />
               </div>
               <div className="relative">
-                <label className="block text-lg font-medium mb-2">Password</label>
+                <label className="block text-lg font-medium mb-2 text-black">Password</label>
                 <div className="flex items-center">
                   <input
                     type={showPassword ? "text" : "password"}
@@ -101,8 +101,8 @@ const LoginPage = () => {
                 />
               </div>
               <div className="flex flex-col items-center space-y-2 mt-2">
-                <a href="/forgot" className="text-gray-400 text-sm mb-1">Forgot your password?</a>
-                <a href="/signup" className="text-gray-400 text-sm">Don&apos;t have an account yet?</a>
+                <a href="/forgot" className="text-gray-400 text-sm mb-1 text-black">Forgot your password?</a>
+                <a href="/signup" className="text-gray-400 text-sm text-black">Don&apos;t have an account yet?</a>
               </div>
             </form>
           </section>

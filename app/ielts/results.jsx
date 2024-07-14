@@ -10,6 +10,8 @@ const Container = styled.div`
 
 const Title = styled.h1`
   text-align: center;
+  color: #800120;
+  font-weight: bold;
 `;
 
 const Section = styled.div`
@@ -24,6 +26,7 @@ const ScoreChart = styled.div`
 
 const Feedback = styled.div`
   margin-bottom: 20px;
+  color: black;
 `;
 
 const ButtonContainer = styled.div`
@@ -249,7 +252,7 @@ const Results = ({ answers, testType }) => {
         {Object.keys(result).filter((section) => section !== 'overallScore').map(renderFeedback)}
       </Section>
       <ButtonContainer>
-        <Button onClick={() => window.location.href = '/start-education'}>Start Education</Button>
+        <Button onClick={() => window.location.href = '/start-education'}>Back to tests</Button>
         <DownloadButton onClick={downloadResults}>Download Results</DownloadButton>
       </ButtonContainer>
     </Container>

@@ -51,12 +51,15 @@ const Timer = styled.div`
 const Question = styled.p`
   font-weight: bold;
   margin-bottom: 10px;
+  color: black;
 `;
 
 const AnswerOption = styled.label`
   display: block;
   margin-bottom: 10px;
+  color: black;
   cursor: pointer;
+  font-weight: bold;
 `;
 
 const Pagination = styled.div`

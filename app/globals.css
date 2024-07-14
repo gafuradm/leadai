@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 0 0% 100%; /* Белый цвет фона для светлой темы */
+    --foreground: 240 10% 3.9%; /* Цвет текста для светлой темы */
 
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -36,13 +36,13 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 100%; /* Белый цвет фона для тёмной темы */
+    --foreground: 0 0% 98%; /* Белый цвет текста для тёмной темы */
 
-    --card: 240 10% 3.9%;
+    --card: 0 0% 100%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 3.9%;
+    --popover: 0 0% 100%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 0 0% 98%;
@@ -64,15 +64,17 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
-}
 
-@layer base {
   * {
     @apply border-border !scroll-smooth;
   }
+
   body {
     @apply bg-background text-foreground;
+    background-color: hsl(var(--background)); /* Использование переменной --background */
+    color: hsl(var(--foreground)); /* Использование переменной --foreground */
   }
+
   button {
     @apply active:outline-none;
   }

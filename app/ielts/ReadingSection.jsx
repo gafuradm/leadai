@@ -62,10 +62,13 @@ const Pagination = styled.div`
 
 const TextSection = styled.div`
   margin-bottom: 20px;
+  color: black;
 `;
 
 const QuestionsSection = styled.div`
   border-top: 2px solid #800120;
+  color: black;
+  font-weight: bold;
   padding-top: 20px;
 `;
 

@@ -26,7 +26,7 @@ const RegisterPage = () => {
       // Обновление профиля пользователя с именем
       await updateProfile(user, { displayName: name });
 
-      router.push("/ielts");
+      router.push("/cabinet");
     } catch (err) {
       if (err.code === 'auth/email-already-in-use') {
         toast.error('This email has already been registered. Try logging in.');
@@ -58,17 +58,17 @@ const RegisterPage = () => {
         pauseOnHover
       />
       <div className="absolute inset-0 dark:bg-black-100 bg-black dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2] flex items-center justify-center">
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+        <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
       <div className="relative z-10 flex justify-center items-center min-h-screen w-full">
         <div className="w-full max-w-sm p-6 mt-16">
-          <section className="rounded-lg shadow-lg">
+          <section className="rounded-lg">
             <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
+              <h1 className="text-2xl font-bold mb-4 text-black">Sign Up</h1>
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-lg font-medium mb-2">Username</label>
+                <label className="block text-lg font-medium mb-2 text-black">Username</label>
                 <input
                   type="text"
                   value={name}
@@ -78,7 +78,7 @@ const RegisterPage = () => {
                 />
               </div>
               <div>
-                <label className="block text-lg font-medium mb-2">Email</label>
+                <label className="block text-lg font-medium mb-2 text-black">Email</label>
                 <input
                   type="email"
                   value={email}
@@ -88,7 +88,7 @@ const RegisterPage = () => {
                 />
               </div>
               <div className="relative">
-                <label className="block text-lg font-medium mb-2">Password</label>
+                <label className="block text-lg font-medium mb-2 text-black">Password</label>
                 <div className="flex items-center">
                   <button
                     type="button"
@@ -115,7 +115,7 @@ const RegisterPage = () => {
                 />
               </div>
               <div className="flex flex-col items-center mt-2">
-                <a href="/login" className="text-gray-400 text-sm">Already have an account?</a>
+                <a href="/login" className="text-gray-400 text-sm text-black">Already have an account?</a>
               </div>
             </form>
           </section>

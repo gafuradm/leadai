@@ -45,7 +45,7 @@ const DashboardPage = () => {
       if (inactivityTimeoutRef.current) {
         clearTimeout(inactivityTimeoutRef.current);
       }
-      inactivityTimeoutRef.current = setTimeout(handleInactive, 3600000); // 1 hour = 3600000 ms
+      inactivityTimeoutRef.current = setTimeout(handleInactive, 3600000);
     };
 
     resetTimeout();
@@ -64,7 +64,7 @@ const DashboardPage = () => {
   }, [router]);
 
   const handleAvatarChange = (e) => {
-    const file = e.target.files[0]; // Corrected file index
+    const file = e.target.files[0];
     if (file) {
       setAvatarFile(file);
       const reader = new FileReader();
@@ -125,7 +125,7 @@ const DashboardPage = () => {
         <div className="w-full max-w-sm p-6 mt-16">
           <section>
             <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold mb-4 text-white">{name}</h1>
+              <h1 className="text-2xl font-bold mb-4 text-black">{name}</h1>
             </div>
             <div className="space-y-6">
               <div className="flex flex-col items-center mb-6">
@@ -146,7 +146,7 @@ const DashboardPage = () => {
                   />
                 </label>
                 <div className="mb-4 w-full">
-                  <label className="block text-lg font-medium text-white">Username</label>
+                  <label className="block text-lg font-medium text-black">Username</label>
                   <input
                     type="text"
                     value={name}
@@ -155,7 +155,7 @@ const DashboardPage = () => {
                   />
                 </div>
                 <div className="mb-4 w-full">
-                  <label className="block text-lg font-medium text-white">Email</label>
+                  <label className="block text-lg font-medium text-black">Email</label>
                   <input
                     type="email"
                     value={email}
@@ -164,7 +164,7 @@ const DashboardPage = () => {
                   />
                 </div>
                 <div className="mb-4 w-full relative">
-                  <label className="block text-lg font-medium text-white">New Password</label>
+                  <label className="block text-lg font-medium text-black">New Password</label>
                   <div className="relative">
                     <div class="flex items-center">
                     <input
@@ -190,7 +190,7 @@ const DashboardPage = () => {
                   otherClasses="mb-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
                   position="left"
                 />
-                <Link href="/login" onClick={handleLogout} className="text-blue-600 hover:text-blue-700 mt-2">
+                <Link href="/login" onClick={handleLogout} className="text-black mt-2">
                   Logout
                 </Link>
               </div>

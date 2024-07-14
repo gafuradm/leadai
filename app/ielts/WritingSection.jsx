@@ -62,11 +62,20 @@ const TextArea = styled.textarea`
   font-size: 16px;
 `;
 
+const TaskTitle = styled.h3`
+  color: #000000;
+  font-weight: bold;
+`;
+
+const TaskDescription = styled.p`
+  color: #000000;
+`;
+
 const WritingSection = ({ testType, onNext, timedMode }) => {
   const [task1, setTask1] = useState(null);
   const [task2, setTask2] = useState(null);
   const [answers, setAnswers] = useState(['', '']);
-  const [timeLeft, setTimeLeft] = useState(60 * 60); // 60 minutes
+  const [timeLeft, setTimeLeft] = useState(60 * 60);
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
@@ -148,10 +157,10 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
       
       {currentPage === 0 && (
         <Section>
-          <h3>Task 1</h3>
+          <TaskTitle>Task 1</TaskTitle>
           {testType === 'academic' && task1 && (
             <>
-              <p>{task1.title}</p>
+              <TaskDescription>{task1.title}</TaskDescription>
               <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
                 {task1.type === 'bar' && <Bar data={task1.data} options={{ maintainAspectRatio: true, responsive: true }} />}
                 {task1.type === 'line' && <Line data={task1.data} options={{ maintainAspectRatio: true, responsive: true }} />}
@@ -159,7 +168,7 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
             </>
           )}
           {testType === 'general' && task1 && (
-            <p>{task1.description}</p>
+            <TaskDescription>{task1.description}</TaskDescription>
           )}
           <TextArea
             value={answers[0]}
@@ -172,8 +181,8 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
 
       {currentPage === 1 && (
         <Section>
-          <h3>Task 2</h3>
-          {task2 && <p>{task2.title}</p>}
+          <TaskTitle>Task 2</TaskTitle>
+          {task2 && <TaskDescription>{task2.title}</TaskDescription>}
           <TextArea
             value={answers[1]}
             onChange={(e) => handleAnswerChange(1, e.target.value)}

@@ -12,7 +12,7 @@ const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Высота равна высоте экрана */
+  height: 100vh;
 `;
 
 const CabinetPage = () => {
@@ -42,16 +42,16 @@ const CabinetPage = () => {
   if (loading) {
     return (
       <LoadingContainer>
-        <PuffLoader size={60} color="#4A90E2" />
+        <PuffLoader size={60} color="#800120" />
       </LoadingContainer>
     );
   }
 
   return user ? (
-    <main className="relative flex flex-col justify-center items-center min-h-screen overflow-hidden bg-black dark:bg-black-100">
+    <main className="relative flex flex-col justify-center items-center min-h-screen overflow-hidden bg-white dark:bg-black-100">
       <div className="relative z-10 w-full max-w-3xl p-6 mt-16">
-        <section className="rounded-lg shadow-lg p-8 bg-gray-100 dark:bg-gray-900">
-          <h1 className="text-2xl font-bold mb-8 text-center">Dashboard</h1>
+        <section className="rounded-lg p-8 bg-gray-100 dark:bg-gray-900">
+          <h1 className="text-2xl font-bold mb-8 text-center text-black">Dashboard</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {tools.map((tool, index) => (
               <MagicButton

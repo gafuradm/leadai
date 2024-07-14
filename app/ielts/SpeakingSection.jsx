@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #FFFFFF;
+  color: black;
   text-align: center;
 `;
 
@@ -62,6 +62,14 @@ const Feedback = styled.div`
   background-color: #444444;
 `;
 
+const Timer = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  color: #800120;
+  text-align: center;
+  margin-bottom: 20px;
+`;
+
 const SpeakingSection = ({ onNext, timedMode }) => {
   const [currentPart, setCurrentPart] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -72,6 +80,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
   const recognitionRef = useRef(null);
+  const [timeLeft, setTimeLeft] = useState(14 * 60); // 14 минут в секундах
 
   const parts = [
     {
@@ -104,6 +113,42 @@ const SpeakingSection = ({ onNext, timedMode }) => {
       speakQuestion(parts[currentPart].questions[currentQuestion]);
     }
   }, [currentPart, currentQuestion]);
+
+  useEffect(() => {
+    if (timedMode) {
+      const timer = setInterval(() => {
+        setTimeLeft(prevTime => {
+          if (prevTime > 0) {
+            return prevTime - 1;
+          } else {
+            clearInterval(timer);
+            handleTimeUp();
+            return 0;
+          }
+        });
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [timedMode]);
+
+  const handleTimeUp = () => {
+    if (recognitionRef.current) {
+      recognitionRef.current.stop();
+    }
+    onNext({
+      section: 'speaking',
+      data: {
+        questions: parts.flatMap(part => part.questions),
+        answers: answers
+      }
+    });
+  };
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  };
 
   const speakQuestion = (text) => {
     const utterance = new SpeechSynthesisUtterance(text);
@@ -164,7 +209,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     };
 
     try {
-      const result = await fetchResults('speaking', data, 'partial'); // or 'full' if it's a full test
+      const result = await fetchResults('speaking', data, 'partial');
       if (typeof result === 'object' && result.feedback) {
         setFeedback(`${result.feedback}\nScore: ${result.score}`);
       } else {
@@ -175,7 +220,6 @@ const SpeakingSection = ({ onNext, timedMode }) => {
       setFeedback("Sorry, there was an error evaluating your answer. Please try again.");
     }
 
-    // Generate the video
     try {
       const videoResponse = await fetch('/generate-video', {
         method: 'POST',
@@ -212,6 +256,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   return (
     <Container>
       <Title>Speaking Section</Title>
+      {timedMode && <Timer>Time left: {formatTime(timeLeft)}</Timer>}
       {currentPart < parts.length ? (
         <Section>
           <h3>{parts[currentPart].name}</h3>

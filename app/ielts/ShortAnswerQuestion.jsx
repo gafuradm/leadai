@@ -10,6 +10,7 @@ const Input = styled.input`
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  color: white;
 `;
 
 const ShortAnswerQuestion = ({ question, onAnswerChange }) => {
