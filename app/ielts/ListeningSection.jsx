@@ -172,7 +172,7 @@ const ListeningSection = ({ onNext, timedMode }) => {
       <Title>Listening Section</Title>
       {timedMode && <Timer>Time left: {formatTime(timeLeft)}</Timer>}
       <Section>
-        <p>Part {currentPart + 1} - Question {currentQuestionIndex + 1}</p>
+        <p style={{ color: 'black' }}>Part {currentPart + 1} - Question {currentQuestionIndex + 1}</p>
         <Button onClick={playCurrentAudio} disabled={isPlaying || hasPlayed}>
           {isPlaying ? 'Playing...' : hasPlayed ? 'Played' : 'Play Audio'}
         </Button>

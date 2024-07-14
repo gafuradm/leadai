@@ -152,7 +152,7 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
 
   return (
     <Container>
-      <TitleStyled>Writing Section</TitleStyled>
+      <TitleStyled style={{ color: 'black' }}>Writing Section</TitleStyled>
       {timedMode && <Timer>Time left: {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</Timer>}
       
       {currentPage === 0 && (
