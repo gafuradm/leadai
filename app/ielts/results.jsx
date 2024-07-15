@@ -232,14 +232,31 @@ const Results = ({ answers, testType }) => {
   const downloadResults = () => {
     let content = `IELTS Test Results\n\n`;
     content += `Overall Score: ${result.overallScore}/9\n\n`;
-
+  
     Object.entries(result).forEach(([section, data]) => {
       if (section !== 'overallScore') {
         content += `${section.charAt(0).toUpperCase() + section.slice(1)} Score: ${data.score.toFixed(1)}/40\n`;
         content += `${section.charAt(0).toUpperCase() + section.slice(1)} Feedback:\n${data.feedback}\n\n`;
       }
     });
-
+  
+    if (listeningExamples) {
+      content += `Listening Practice Materials:\n${listeningExamples}\n\n`;
+    }
+    if (speakingExamples) {
+      content += `Speaking Practice Materials:\n${speakingExamples}\n\n`;
+    }
+    if (readingExamples) {
+      content += `Reading Practice Materials:\n${readingExamples}\n\n`;
+    }
+    if (writingExamples) {
+      content += `Writing Practice Materials:\n${writingExamples}\n\n`;
+    }
+  
+    if (universityRecommendations) {
+      content += `University Recommendations:\n${universityRecommendations}\n\n`;
+    }
+  
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -360,36 +377,36 @@ const Results = ({ answers, testType }) => {
       .replace(/_/g, '')
       .replace(/\n/g, '<br/>');
 
-    let exampleContent = null;
-    switch(section) {
-      case 'listening':
-        exampleContent = formatListeningExamples(listeningExamples);
-        break;
-      case 'speaking':
-        exampleContent = formatSpeakingExamples(speakingExamples);
-        break;
-      case 'reading':
-        exampleContent = formatReadingExamples(readingExamples);
-        break;
-      case 'writing':
-        exampleContent = formatWritingExamples(writingExamples);
-        break;
-    }
+      let exampleContent = null;
+      switch(section) {
+        case 'listening':
+          exampleContent = formatListeningExamples(listeningExamples);
+          break;
+        case 'speaking':
+          exampleContent = formatSpeakingExamples(speakingExamples);
+          break;
+        case 'reading':
+          exampleContent = formatReadingExamples(readingExamples);
+          break;
+        case 'writing':
+          exampleContent = formatWritingExamples(writingExamples);
+          break;
+      }
 
-    return (
-      <Feedback key={section}>
-        <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
-        <div dangerouslySetInnerHTML={{ __html: feedbackContent }} />
-        <p>Score: {sectionResult.score.toFixed(1)}/40</p>
-        {exampleContent && (
-          <div>
-            <h3>Practice Materials</h3>
-            {exampleContent}
-          </div>
-        )}
-      </Feedback>
-    );
-  };
+      return (
+        <Feedback key={section}>
+          <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
+          <div dangerouslySetInnerHTML={{ __html: feedbackContent }} />
+          <p>Score: {sectionResult.score.toFixed(1)}/40</p>
+          {exampleContent && (
+            <div>
+              <h3>Practice Materials</h3>
+              {exampleContent}
+            </div>
+          )}
+        </Feedback>
+      );
+    };
 
   if (loading) {
     return (
