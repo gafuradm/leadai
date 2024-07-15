@@ -60,6 +60,8 @@ const TextArea = styled.textarea`
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  background-color: white;
+  color: black;
 `;
 
 const TaskTitle = styled.h3`

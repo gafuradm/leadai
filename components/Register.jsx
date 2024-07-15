@@ -73,7 +73,7 @@ const RegisterPage = () => {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500 bg-gray-700 text-white"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500 bg-gray-700 bg-white text-black"
                   placeholder="Enter Your username"
                 />
               </div>
@@ -83,7 +83,7 @@ const RegisterPage = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500 bg-gray-700 text-white"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500 bg-gray-700 bg-white text-black"
                   placeholder="Enter Your email"
                 />
               </div>
@@ -95,13 +95,13 @@ const RegisterPage = () => {
                     onClick={togglePasswordVisibility}
                     className="absolute left-2 top-9 p-1"
                   >
-                    {showPassword ? <FaEyeSlash className="text-gray-400" /> : <FaEye className="text-gray-400" />}
+                    {showPassword ? <FaEyeSlash className="text-black" /> : <FaEye className="text-black" />}
                   </button>
                   <input
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500 bg-gray-700 text-white"
+                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500 bg-gray-700 bg-white text-black"
                     placeholder="Enter Your password"
                   />
                 </div>

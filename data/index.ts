@@ -7,7 +7,7 @@ export const navItems = [
 export const gridItems = [
   {
     id: 2,
-    title: "Study from anywhere in the world",
+    title: "study_from_anywhere",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -17,8 +17,8 @@ export const gridItems = [
   },
   {
     id: 5,
-    title: "Don't have time or don't want to pay schools or tutors for IELTS preparation?",
-    description: "International English Language Testing System",
+    title: "no_time_for_schools",
+    description: "international_english_language_testing_system",
     className: "md:col-span-3 md:row-span-3",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
@@ -27,7 +27,7 @@ export const gridItems = [
   },
   {
     id: 6,
-    title: "Accept free help from AI",
+    title: "accept_free_help",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
