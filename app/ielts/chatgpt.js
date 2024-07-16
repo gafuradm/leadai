@@ -30,7 +30,7 @@ export async function fetchResults(section, data, testType) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }
@@ -72,7 +72,7 @@ export async function fetchExampleEssay(topics) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }
@@ -110,12 +110,12 @@ export async function fetchListeningExamples() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }
         ],
-        max_tokens: 2000,
+        max_tokens: 1000,
       }),
     });
 
@@ -152,12 +152,12 @@ export async function fetchSpeakingExamples() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }
         ],
-        max_tokens: 2000,
+        max_tokens: 1000,
       }),
     });
 
@@ -190,12 +190,12 @@ export async function fetchReadingExamples(score) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }
         ],
-        max_tokens: 2000,
+        max_tokens: 1000,
       }),
     });
 
@@ -228,12 +228,12 @@ export async function fetchWritingExamples(score, topic) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }
         ],
-        max_tokens: 2000,
+        max_tokens: 1000,
       }),
     });
 
@@ -266,7 +266,7 @@ export async function fetchUniversityRecommendations(overallScore) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }

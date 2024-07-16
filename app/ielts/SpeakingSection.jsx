@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { fetchResults } from './chatgpt';
+import { Configuration, StreamingAvatarApi } from '@heygen/streaming-avatar';
 
 const Container = styled.div`
   max-width: 800px;
@@ -81,6 +82,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   const [videoUrl, setVideoUrl] = useState('');
   const recognitionRef = useRef(null);
   const [timeLeft, setTimeLeft] = useState(14 * 60); // 14 минут в секундах
+  const [streamingAvatar, setStreamingAvatar] = useState(null);
 
   const parts = [
     {
@@ -131,6 +133,22 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     }
   }, [timedMode]);
 
+  useEffect(() => {
+    const initializeAvatar = async () => {
+      try {
+        const avatarApi = new StreamingAvatarApi(
+          new Configuration({accessToken: 'OTExOGIyZGUzMTcxNDMzNGE3MTdmYjliZmI3NDg0ZTQtMTcyMTEyMTg4OQ=='})
+        );
+        setStreamingAvatar(avatarApi);
+        console.log('Avatar API initialized successfully');
+      } catch (error) {
+        console.error('Error initializing Avatar API:', error);
+      }
+    };
+
+    initializeAvatar();
+  }, []);
+
   const handleTimeUp = () => {
     if (recognitionRef.current) {
       recognitionRef.current.stop();
@@ -160,6 +178,40 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     utterance.rate = 0.9;
     utterance.pitch = 1;
     speechSynthesis.speak(utterance);
+  };
+
+  const startAvatar = async (text) => {
+    if (!streamingAvatar) {
+      console.error('Streaming avatar not initialized');
+      return;
+    }
+  
+    try {
+      const startResponse = await streamingAvatar.createStartAvatar({
+        newSessionRequest: {
+          quality: "low",
+          avatarName: "josh_lite3_20230714",
+          voice: {voiceId: "077ab11b14f04ce0b49b5f6e5cc20979"}
+        }
+      });
+      console.log('Avatar started successfully:', startResponse);
+  
+      const talkResponse = await streamingAvatar.createTalk({
+        talkRequest: {text: text}
+      });
+      console.log('Avatar talk initiated:', talkResponse);
+  
+      if (talkResponse.videoUrl) {
+        setVideoUrl(talkResponse.videoUrl);
+      } else {
+        console.error('No video URL received from the API');
+      }
+    } catch (error) {
+      console.error("Error starting avatar:", error);
+      if (error.response) {
+        console.error("API response:", error.response.data);
+      }
+    }
   };
 
   const startRecording = () => {
@@ -203,6 +255,12 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     }];
     setAnswers(newAnswers);
 
+    if (streamingAvatar) {
+      await startAvatar(transcript);
+    } else {
+      console.error('Streaming avatar not initialized');
+    }
+
     const data = {
       questions: [parts[currentPart].questions[currentQuestion]],
       answers: [transcript]
@@ -218,21 +276,6 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     } catch (error) {
       console.error("Error fetching results:", error);
       setFeedback("Sorry, there was an error evaluating your answer. Please try again.");
-    }
-
-    try {
-      const videoResponse = await fetch('/generate-video', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text: transcript }),
-      });
-
-      const videoData = await videoResponse.json();
-      setVideoUrl(videoData.videoUrl);
-    } catch (error) {
-      console.error("Error generating video:", error);
     }
 
     setIsLoading(false);
@@ -272,7 +315,15 @@ const SpeakingSection = ({ onNext, timedMode }) => {
               <p>{feedback}</p>
             </Feedback>
           )}
-          {videoUrl && <video src={videoUrl} controls />}
+          {videoUrl && (
+            <video 
+              src={videoUrl} 
+              autoPlay 
+              playsInline 
+              controls 
+              style={{width: '100%', maxWidth: '400px', marginTop: '20px'}}
+            />
+          )}
         </Section>
       ) : (
         <p>All parts completed. Your responses have been recorded.</p>
