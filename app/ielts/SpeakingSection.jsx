@@ -134,10 +134,19 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   }, [timedMode]);
 
   useEffect(() => {
-    const avatarApi = new StreamingAvatarApi(
-      new Configuration({accessToken: 'MzE4MjRlZjA0NzAwNGM0Mjg3ZGJjOTc2NjRiOTQ3MzgtMTcyMDUyOTU3OA=='})
-    );
-    setStreamingAvatar(avatarApi);
+    const initializeAvatar = async () => {
+      try {
+        const avatarApi = new StreamingAvatarApi(
+          new Configuration({accessToken: 'OTExOGIyZGUzMTcxNDMzNGE3MTdmYjliZmI3NDg0ZTQtMTcyMTEyMTg4OQ=='})
+        );
+        setStreamingAvatar(avatarApi);
+        console.log('Avatar API initialized successfully');
+      } catch (error) {
+        console.error('Error initializing Avatar API:', error);
+      }
+    };
+
+    initializeAvatar();
   }, []);
 
   const handleTimeUp = () => {
@@ -172,22 +181,36 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   };
 
   const startAvatar = async (text) => {
-    if (!streamingAvatar) return;
-
+    if (!streamingAvatar) {
+      console.error('Streaming avatar not initialized');
+      return;
+    }
+  
     try {
-      await streamingAvatar.createStartAvatar({
+      const startResponse = await streamingAvatar.createStartAvatar({
         newSessionRequest: {
           quality: "low",
-          avatarName: "anna", // Замените на ID желаемого аватара
-          voice: {voiceId: "en-US-1"} // Замените на ID желаемого голоса
+          avatarName: "josh_lite3_20230714",
+          voice: {voiceId: "077ab11b14f04ce0b49b5f6e5cc20979"}
         }
       });
-
-      await streamingAvatar.createTalk({
+      console.log('Avatar started successfully:', startResponse);
+  
+      const talkResponse = await streamingAvatar.createTalk({
         talkRequest: {text: text}
       });
+      console.log('Avatar talk initiated:', talkResponse);
+  
+      if (talkResponse.videoUrl) {
+        setVideoUrl(talkResponse.videoUrl);
+      } else {
+        console.error('No video URL received from the API');
+      }
     } catch (error) {
       console.error("Error starting avatar:", error);
+      if (error.response) {
+        console.error("API response:", error.response.data);
+      }
     }
   };
 
@@ -232,8 +255,11 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     }];
     setAnswers(newAnswers);
 
-    // Start the avatar with the transcript
-    await startAvatar(transcript);
+    if (streamingAvatar) {
+      await startAvatar(transcript);
+    } else {
+      console.error('Streaming avatar not initialized');
+    }
 
     const data = {
       questions: [parts[currentPart].questions[currentQuestion]],
@@ -250,21 +276,6 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     } catch (error) {
       console.error("Error fetching results:", error);
       setFeedback("Sorry, there was an error evaluating your answer. Please try again.");
-    }
-
-    try {
-      const videoResponse = await fetch('/generate-video', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text: transcript }),
-      });
-
-      const videoData = await videoResponse.json();
-      setVideoUrl(videoData.videoUrl);
-    } catch (error) {
-      console.error("Error generating video:", error);
     }
 
     setIsLoading(false);
@@ -304,8 +315,15 @@ const SpeakingSection = ({ onNext, timedMode }) => {
               <p>{feedback}</p>
             </Feedback>
           )}
-          {isRecording && <video id="avatar-video" autoPlay playsInline />}
-          {videoUrl && <video src={videoUrl} controls />}
+          {videoUrl && (
+            <video 
+              src={videoUrl} 
+              autoPlay 
+              playsInline 
+              controls 
+              style={{width: '100%', maxWidth: '400px', marginTop: '20px'}}
+            />
+          )}
         </Section>
       ) : (
         <p>All parts completed. Your responses have been recorded.</p>
