@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { fetchResults } from './chatgpt';
+import { Configuration, StreamingAvatarApi } from '@heygen/streaming-avatar';
 
 const Container = styled.div`
   max-width: 800px;
@@ -81,6 +82,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   const [videoUrl, setVideoUrl] = useState('');
   const recognitionRef = useRef(null);
   const [timeLeft, setTimeLeft] = useState(14 * 60); // 14 минут в секундах
+  const [streamingAvatar, setStreamingAvatar] = useState(null);
 
   const parts = [
     {
@@ -131,6 +133,13 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     }
   }, [timedMode]);
 
+  useEffect(() => {
+    const avatarApi = new StreamingAvatarApi(
+      new Configuration({accessToken: 'MzE4MjRlZjA0NzAwNGM0Mjg3ZGJjOTc2NjRiOTQ3MzgtMTcyMDUyOTU3OA=='})
+    );
+    setStreamingAvatar(avatarApi);
+  }, []);
+
   const handleTimeUp = () => {
     if (recognitionRef.current) {
       recognitionRef.current.stop();
@@ -160,6 +169,26 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     utterance.rate = 0.9;
     utterance.pitch = 1;
     speechSynthesis.speak(utterance);
+  };
+
+  const startAvatar = async (text) => {
+    if (!streamingAvatar) return;
+
+    try {
+      await streamingAvatar.createStartAvatar({
+        newSessionRequest: {
+          quality: "low",
+          avatarName: "anna", // Замените на ID желаемого аватара
+          voice: {voiceId: "en-US-1"} // Замените на ID желаемого голоса
+        }
+      });
+
+      await streamingAvatar.createTalk({
+        talkRequest: {text: text}
+      });
+    } catch (error) {
+      console.error("Error starting avatar:", error);
+    }
   };
 
   const startRecording = () => {
@@ -202,6 +231,9 @@ const SpeakingSection = ({ onNext, timedMode }) => {
       answer: transcript
     }];
     setAnswers(newAnswers);
+
+    // Start the avatar with the transcript
+    await startAvatar(transcript);
 
     const data = {
       questions: [parts[currentPart].questions[currentQuestion]],
@@ -272,6 +304,7 @@ const SpeakingSection = ({ onNext, timedMode }) => {
               <p>{feedback}</p>
             </Feedback>
           )}
+          {isRecording && <video id="avatar-video" autoPlay playsInline />}
           {videoUrl && <video src={videoUrl} controls />}
         </Section>
       ) : (
