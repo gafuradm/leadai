@@ -78,10 +78,9 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   const [answers, setAnswers] = useState([]);
   const [feedback, setFeedback] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const recognitionRef = useRef(null);
-  const [timeLeft, setTimeLeft] = useState(14 * 60);
-  const [videoId, setVideoId] = useState(null);
   const [videoUrl, setVideoUrl] = useState('');
+  const recognitionRef = useRef(null);
+  const [timeLeft, setTimeLeft] = useState(14 * 60); // 14 минут в секундах
 
   const parts = [
     {
@@ -163,87 +162,6 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     speechSynthesis.speak(utterance);
   };
 
-  const createAvatarVideo = async (text) => {
-  try {
-    const response = await fetch('https://api.heygen.com/v2/video/generate', {
-      method: 'POST',
-      headers: {
-        'X-Api-Key': 'ODY4MTlmNDEwZGM1NGIxZWJkMmM5NjUyYTI5MmRlZmYtMTcyMTE5NTExOQ==',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        video_inputs: [
-          {
-            character: {
-              type: "avatar",
-              avatar_id: "Angela-inblackskirt-20220820",
-              avatar_style: "normal"
-            },
-            voice: {
-              type: "text",
-              input_text: text,
-              voice_id: "1bd001e7e50f421d891986aad5158bc8",
-              speed: 1.1
-            }
-          }
-        ],
-        test: false,
-        aspect_ratio: "16:9"
-      })
-    });
-
-    const data = await response.json();
-    console.log('API response data:', data);
-
-    if (data.data && data.data.video_id) {
-      console.log('Video generation initiated, video_id:', data.data.video_id);
-      setVideoId(data.data.video_id);
-      checkVideoStatus(data.data.video_id);
-    } else if (data.error) {
-      console.error('Error in video generation:', data.error);
-    } else {
-      console.error('Unexpected response structure:', data);
-    }
-  } catch (error) {
-    console.error("Error in avatar video generation:", error);
-  }
-};
-
-const checkVideoStatus = async (id) => {
-  try {
-    const response = await fetch(`https://api.heygen.com/v1/video_status.get?video_id=${id}`, {
-      headers: {
-        'X-Api-Key': 'ODY4MTlmNDEwZGM1NGIxZWJkMmM5NjUyYTI5MmRlZmYtMTcyMTE5NTExOQ==',
-      }
-    });
-
-    const data = await response.json();
-    console.log('Video status data:', data);
-
-    if (data.data) {
-      switch(data.data.status) {
-        case 'completed':
-          setVideoUrl(data.data.video_url);
-          break;
-        case 'processing':
-        case 'pending':
-        case 'waiting':
-          // Проверяем статус снова через 5 секунд
-          setTimeout(() => checkVideoStatus(id), 5000);
-          break;
-        default:
-          console.log('Current video status:', data.data.status);
-          // Можно добавить дополнительную логику обработки неизвестных статусов
-          setTimeout(() => checkVideoStatus(id), 5000);
-      }
-    } else {
-      console.error('Unexpected response structure:', data);
-    }
-  } catch (error) {
-    console.error("Error checking video status:", error);
-  }
-};
-
   const startRecording = () => {
     setIsRecording(true);
     setTranscript('');
@@ -285,8 +203,6 @@ const checkVideoStatus = async (id) => {
     }];
     setAnswers(newAnswers);
 
-    await createAvatarVideo(transcript);
-
     const data = {
       questions: [parts[currentPart].questions[currentQuestion]],
       answers: [transcript]
@@ -300,8 +216,23 @@ const checkVideoStatus = async (id) => {
         setFeedback(result.toString());
       }
     } catch (error) {
-      console.error("Error fetching speaking results:", error);
-      setFeedback("Error fetching feedback. Please try again.");
+      console.error("Error fetching results:", error);
+      setFeedback("Sorry, there was an error evaluating your answer. Please try again.");
+    }
+
+    try {
+      const videoResponse = await fetch('/generate-video', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: transcript }),
+      });
+
+      const videoData = await videoResponse.json();
+      setVideoUrl(videoData.videoUrl);
+    } catch (error) {
+      console.error("Error generating video:", error);
     }
 
     setIsLoading(false);
@@ -324,25 +255,27 @@ const checkVideoStatus = async (id) => {
 
   return (
     <Container>
-      <Title>IELTS Speaking Test</Title>
-      <Section>
-        <Question>{parts[currentPart].questions[currentQuestion]}</Question>
-        <Button onClick={startRecording} disabled={isRecording || isLoading}>
-          {isRecording ? 'Recording...' : 'Start Recording'}
-        </Button>
-        <Button onClick={stopRecording} disabled={!isRecording || isLoading}>
-          Stop Recording
-        </Button>
-        {timedMode && <Timer>Time Left: {formatTime(timeLeft)}</Timer>}
-        <Transcript>{transcript}</Transcript>
-        {feedback && <Feedback>{feedback}</Feedback>}
-      </Section>
-      {videoUrl && (
+      <Title>Speaking Section</Title>
+      {timedMode && <Timer>Time left: {formatTime(timeLeft)}</Timer>}
+      {currentPart < parts.length ? (
         <Section>
-          <video controls>
-            <source src={videoUrl} type="video/mp4" />
-          </video>
+          <h3>{parts[currentPart].name}</h3>
+          <Question>{parts[currentPart].questions[currentQuestion]}</Question>
+          <Button onClick={isRecording ? stopRecording : startRecording} disabled={isLoading}>
+            {isRecording ? 'Stop Recording' : 'Start Recording'}
+          </Button>
+          {transcript && <Transcript>Your answer: {transcript}</Transcript>}
+          {isLoading && <p>Evaluating your answer...</p>}
+          {feedback && (
+            <Feedback>
+              <h3>Feedback:</h3>
+              <p>{feedback}</p>
+            </Feedback>
+          )}
+          {videoUrl && <video src={videoUrl} controls />}
         </Section>
+      ) : (
+        <p>All parts completed. Your responses have been recorded.</p>
       )}
     </Container>
   );
