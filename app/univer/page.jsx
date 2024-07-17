@@ -61,18 +61,18 @@ export default function Home() {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-white">
-      <h1 className="text-3xl font-bold mb-4 text-black">Select Your University</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="container mx-auto p-8 bg-white max-w-2xl shadow-lg rounded-lg">
+  <h1 className="text-4xl font-bold mb-8 text-black text-center">Select Your University</h1>
+  <form onSubmit={handleSubmit} className="space-y-6">
         {/* Test type selection */}
         <div className="flex justify-center">
-          <label className="block text-black w-1/2 mr-4">Test or exam:</label>
+          <label className="block text-black w-1/2 mr-4 text-lg font-semibold text-gray-700">Test or exam:</label>
           <select
-            name="test_type"
-            value={userData.test_type}
-            onChange={handleInputChange}
-            className="w-1/2 p-2 border rounded bg-white text-black"
-          >
+  name="test_type"
+  value={userData.test_type}
+  onChange={handleInputChange}
+  className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black bg-white text-black"
+>
             <option value="">Select test or exam</option>
             <option value="IELTS">IELTS</option>
             <option value="TOEFL">TOEFL</option>
@@ -87,7 +87,7 @@ export default function Home() {
         {/* Conditional rendering for test score input */}
         {userData.test_type !== 'None' && (
           <div className="flex justify-center">
-            <label className="block text-black w-1/2 mr-4">Test score:</label>
+            <label className="block text-black w-1/2 mr-4 text-lg font-semibold text-gray-700">Test score:</label>
             <input
               type="text"
               name="test_score"
@@ -100,7 +100,7 @@ export default function Home() {
         )}
         {/* Test details input */}
         <div className="flex justify-center">
-          <label className="block text-black w-1/2 mr-4">Test details:</label>
+          <label className="block text-black w-1/2 mr-4 text-lg font-semibold text-gray-700">Test details:</label>
           <textarea
             name="test_details"
             value={userData.test_details}
@@ -111,7 +111,7 @@ export default function Home() {
         </div>
         {/* Gender input */}
         <div className="flex justify-center">
-          <label className="block text-black w-1/2 mr-4">Gender:</label>
+          <label className="block text-black w-1/2 mr-4 text-lg font-semibold text-gray-700">Gender:</label>
           <input
             type="text"
             name="gender"
@@ -123,7 +123,7 @@ export default function Home() {
         </div>
         {/* Native language input */}
         <div className="flex justify-center">
-          <label className="block text-black w-1/2 mr-4">Native language:</label>
+          <label className="block text-black w-1/2 mr-4 text-lg font-semibold text-gray-700">Native language:</label>
           <input
             type="text"
             name="native_language"
@@ -135,7 +135,7 @@ export default function Home() {
         </div>
         {/* Interests input */}
         <div className="flex justify-center">
-          <label className="block text-black w-1/2 mr-4">Interests:</label>
+          <label className="block text-black w-1/2 mr-4 text-lg font-semibold text-gray-700">Interests:</label>
           <input
             type="text"
             name="interests"
@@ -147,7 +147,7 @@ export default function Home() {
         </div>
         {/* Desired major input */}
         <div className="flex justify-center">
-          <label className="block text-black w-1/2 mr-4">Desired major:</label>
+          <label className="block text-black w-1/2 mr-4 text-lg font-semibold text-gray-700">Desired major:</label>
           <input
             type="text"
             name="desired_major"
@@ -159,7 +159,7 @@ export default function Home() {
         </div>
         {/* Age input */}
         <div className="flex justify-center">
-          <label className="block text-black w-1/2 mr-4">Age:</label>
+          <label className="block text-black w-1/2 mr-4 text-lg font-semibold text-gray-700">Age:</label>
           <input
             type="text"
             name="age"
@@ -171,7 +171,7 @@ export default function Home() {
         </div>
         {/* Desired country input */}
         <div className="flex justify-center">
-          <label className="block text-black w-1/2 mr-4">Desired country of study:</label>
+          <label className="block text-black w-1/2 mr-4 text-lg font-semibold text-gray-700">Desired country of study:</label>
           <input
             type="text"
             name="desired_country"
@@ -182,11 +182,14 @@ export default function Home() {
           />
         </div>
         {/* Submit button */}
-        <div className="flex justify-center">
-          <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 w-1/2">
-            Get recommendations
-          </button>
-        </div>
+        <div className="mt-8">
+      <button 
+        type="submit" 
+        className="w-full bg-black text-white py-3 px-6 rounded-md text-lg font-semibold hover:bg-white transition-colors duration-300 shadow-md"
+      >
+        Get recommendations
+      </button>
+    </div>
       </form>
       {/* Loading spinner */}
       {loading ? (

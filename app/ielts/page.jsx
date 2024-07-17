@@ -25,7 +25,7 @@ const testOptions = [
     id: 2,
     title: "Listening Section",
     des: "Practice your listening skills for IELTS",
-    img: "/aud.jpeg",
+    img: "/mus.png",
     value: 'listening'
   },
   {

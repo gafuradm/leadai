@@ -24,14 +24,14 @@ export const TextGenerateEffect = ({
         delay: stagger(0.2),
       }
     );
-  }, [animate, wordsArray]); // Добавляем wordsArray в зависимости
+  }, [animate, wordsArray]);
 
   const renderWords = () => {
     return (
       <motion.div ref={scope}>
         {wordsArray.map((word, idx) => {
           let textColorClass = idx > 3 ? "text-black" : "text-burgundy";
-  
+
           return (
             <motion.span
               key={word + idx}
@@ -43,10 +43,10 @@ export const TextGenerateEffect = ({
         })}
       </motion.div>
     );
-  };  
+  };
 
   return (
-    <div className={cn("font-bold", className)}>
+    <div className={cn("font-bold", className, "px-4 md:px-0")}>
       <div className="my-4">
         <div className="text-black dark:text-black leading-snug tracking-wide">
           {renderWords()}
