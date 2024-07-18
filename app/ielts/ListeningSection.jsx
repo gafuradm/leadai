@@ -75,8 +75,14 @@ const ListeningSection = ({ onNext, timedMode }) => {
   const [timeLeft, setTimeLeft] = useState(30 * 60);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
+  const [randomQuestions, setRandomQuestions] = useState([]);
 
   useEffect(() => {
+    const selectedQuestions = ieltsData.sections.listening.parts.map(part => {
+      const shuffled = [...part.questions].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, 10);
+    });
+    setRandomQuestions(selectedQuestions);
     setAnswers(new Array(40).fill(''));
   }, []);
 
@@ -106,8 +112,8 @@ const ListeningSection = ({ onNext, timedMode }) => {
         section: 'listening',
         data: {
           answers: answers,
-          questions: ieltsData.sections.listening.parts.flatMap(part => 
-            part.questions.map(q => ({ id: q.id, question: q.question }))
+          questions: randomQuestions.flatMap(part => 
+            part.map(q => ({ id: q.id, question: q.question }))
           )
         }
       };
@@ -129,16 +135,16 @@ const ListeningSection = ({ onNext, timedMode }) => {
 
   const playCurrentAudio = () => {
     if (!isPlaying && !hasPlayed) {
-      const currentQuestion = ieltsData.sections.listening.parts[currentPart].questions[currentQuestionIndex];
+      const currentQuestion = randomQuestions[currentPart][currentQuestionIndex];
       speakText(currentQuestion.audio);
       setIsPlaying(true);
       setHasPlayed(true);
-      setTimeout(() => setIsPlaying(false), currentQuestion.audio.length * 100); // Rough estimate of audio duration
+      setTimeout(() => setIsPlaying(false), currentQuestion.audio.length * 100);
     }
   };
 
   const moveToNextQuestion = () => {
-    if (currentQuestionIndex < ieltsData.sections.listening.parts[currentPart].questions.length - 1) {
+    if (currentQuestionIndex < 9) {
       setCurrentQuestionIndex(prevIndex => prevIndex + 1);
     } else if (currentPart < 3) {
       setCurrentPart(prevPart => prevPart + 1);
@@ -154,7 +160,7 @@ const ListeningSection = ({ onNext, timedMode }) => {
       setCurrentQuestionIndex(prevIndex => prevIndex - 1);
     } else if (currentPart > 0) {
       setCurrentPart(prevPart => prevPart - 1);
-      setCurrentQuestionIndex(ieltsData.sections.listening.parts[currentPart - 1].questions.length - 1);
+      setCurrentQuestionIndex(9);
     }
     setHasPlayed(false);
   };
@@ -165,31 +171,33 @@ const ListeningSection = ({ onNext, timedMode }) => {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
-  const currentQuestion = ieltsData.sections.listening.parts[currentPart].questions[currentQuestionIndex];
+  const currentQuestion = randomQuestions[currentPart] && randomQuestions[currentPart][currentQuestionIndex];
 
   return (
     <Container>
       <Title>Listening Section</Title>
       {timedMode && <Timer>Time left: {formatTime(timeLeft)}</Timer>}
-      <Section>
-        <p style={{ color: 'black' }}>Part {currentPart + 1} - Question {currentQuestionIndex + 1}</p>
-        <Button onClick={playCurrentAudio} disabled={isPlaying || hasPlayed}>
-          {isPlaying ? 'Playing...' : hasPlayed ? 'Played' : 'Play Audio'}
-        </Button>
-        <Question>{currentQuestion.question}</Question>
-        {currentQuestion.answers.map((answer, ansIndex) => (
-          <AnswerOption key={ansIndex}>
-            <input
-              type="radio"
-              name={`question-${currentPart}-${currentQuestionIndex}`}
-              value={answer}
-              checked={answers[currentPart * 10 + currentQuestionIndex] === answer}
-              onChange={() => handleAnswerChange(currentPart * 10 + currentQuestionIndex, answer)}
-            />
-            {answer}
-          </AnswerOption>
-        ))}
-      </Section>
+      {currentQuestion && (
+        <Section>
+          <p style={{ color: 'black' }}>Part {currentPart + 1} - Question {currentQuestionIndex + 1}</p>
+          <Button onClick={playCurrentAudio} disabled={isPlaying || hasPlayed}>
+            {isPlaying ? 'Playing...' : hasPlayed ? 'Played' : 'Play Audio'}
+          </Button>
+          <Question>{currentQuestion.question}</Question>
+          {currentQuestion.answers.map((answer, ansIndex) => (
+            <AnswerOption key={ansIndex}>
+              <input
+                type="radio"
+                name={`question-${currentPart}-${currentQuestionIndex}`}
+                value={answer}
+                checked={answers[currentPart * 10 + currentQuestionIndex] === answer}
+                onChange={() => handleAnswerChange(currentPart * 10 + currentQuestionIndex, answer)}
+              />
+              {answer}
+            </AnswerOption>
+          ))}
+        </Section>
+      )}
       <Pagination>
         <Button onClick={moveToPreviousQuestion} disabled={currentPart === 0 && currentQuestionIndex === 0}>
           Previous

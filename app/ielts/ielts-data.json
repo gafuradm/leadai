@@ -65,7 +65,187 @@
               "question": "What do they agree to do next?",
               "answers": ["Book flights", "Research accommodations", "Buy equipment", "Invite others"],
               "audio": "Alright, let's start looking at cabin rentals online. We should book soon to get a good deal."
-            }
+            },
+            {
+      "id": "L1Q11",
+      "question": "What are the friends' plans for the upcoming holiday?",
+      "answers": ["Camping trip", "Sightseeing tour", "Staycation", "International travel"],
+      "audio": "The friends are discussing options for a camping trip for their upcoming holiday."
+    },
+    {
+      "id": "L1Q12",
+      "question": "What activity do they plan to do during their vacation?",
+      "answers": ["Fishing", "Kayaking", "Scuba diving", "Zip-lining"],
+      "audio": "They're thinking of going fishing during their vacation to relax by the lake."
+    },
+    {
+      "id": "L1Q13",
+      "question": "What is one concern they discuss about their travel plans?",
+      "answers": ["Weather conditions", "Accommodation availability", "Transportation options", "Cost"],
+      "audio": "One of their concerns is the unpredictable weather conditions during their travel."
+    },
+    {
+      "id": "L1Q14",
+      "question": "Where do they consider staying during their vacation?",
+      "answers": ["Beach resort", "Mountain cabin", "City hotel", "Luxury villa"],
+      "audio": "They're considering booking a mountain cabin for their vacation to enjoy nature."
+    },
+    {
+      "id": "L1Q15",
+      "question": "How do they plan to spend their evenings during the vacation?",
+      "answers": ["Bonfire", "Barbecue", "Stargazing", "Board games"],
+      "audio": "They plan to spend their evenings around a bonfire, enjoying the cool mountain air."
+    },
+    {
+      "id": "L1Q16",
+      "question": "What equipment do they plan to bring for outdoor activities?",
+      "answers": ["Tent", "Binoculars", "First aid kit", "Camp stove"],
+      "audio": "They're packing a tent and a first aid kit for their outdoor activities during the trip."
+    },
+    {
+      "id": "L1Q17",
+      "question": "What mode of transportation are they considering for their vacation?",
+      "answers": ["Car rental", "Train journey", "Flight booking", "RV rental"],
+      "audio": "They're leaning towards renting a car for their vacation to have flexibility in their travel."
+    },
+    {
+      "id": "L1Q18",
+      "question": "What activity are they excited to try at their destination?",
+      "answers": ["Horseback riding", "White-water rafting", "Mountain biking", "Rock climbing"],
+      "audio": "They're excited to try white-water rafting at their destination during the vacation."
+    },
+    {
+      "id": "L1Q19",
+      "question": "What safety precaution do they plan to take for their trip?",
+      "answers": ["Travel insurance", "Emergency contact list", "GPS navigation", "Water purification tablets"],
+      "audio": "They plan to purchase travel insurance to ensure safety during their trip."
+    },
+    {
+      "id": "L1Q20",
+      "question": "What local cuisine are they looking forward to trying?",
+      "answers": ["Seafood", "Street food", "Traditional dishes", "Gourmet meals"],
+      "audio": "They're looking forward to trying traditional local dishes during their vacation."
+    },
+    {
+      "id": "L1Q21",
+      "question": "Where do the friends decide to meet up for their next gathering?",
+      "answers": ["Café", "Park", "Restaurant", "Shopping mall"],
+      "audio": "The friends decide to meet up at a café for their next gathering to catch up."
+    },
+    {
+      "id": "L1Q22",
+      "question": "What event are the friends planning to celebrate together?",
+      "answers": ["Birthday", "Anniversary", "Graduation", "Promotion"],
+      "audio": "The friends are planning to celebrate a birthday together with a surprise party."
+    },
+    {
+      "id": "L1Q23",
+      "question": "What topic do the friends discuss during their commute?",
+      "answers": ["Current events", "Favorite movies", "Travel destinations", "New restaurants"],
+      "audio": "During their commute, the friends discuss their favorite movies and upcoming releases."
+    },
+    {
+      "id": "L1Q24",
+      "question": "What gift ideas do the friends brainstorm for a mutual friend?",
+      "answers": ["Books", "Tech gadgets", "Sporting equipment", "Fashion accessories"],
+      "audio": "They're brainstorming gift ideas like tech gadgets for their mutual friend's upcoming birthday."
+    },
+    {
+      "id": "L1Q25",
+      "question": "What do the friends plan for their next weekend outing?",
+      "answers": ["Picnic in the park", "Visit to an art gallery", "Concert attendance", "Day trip to a nearby town"],
+      "audio": "They plan to have a picnic in the park for their next weekend outing to enjoy the outdoors."
+    },
+    {
+      "id": "L1Q26",
+      "question": "What advice do the friends give each other about managing stress?",
+      "answers": ["Yoga", "Mindfulness meditation", "Regular exercise", "Taking breaks"],
+      "audio": "They give each other advice on managing stress, like practicing mindfulness meditation."
+    },
+    {
+      "id": "L1Q27",
+      "question": "What cultural event do the friends plan to attend together?",
+      "answers": ["Music festival", "Art exhibition", "Food fair", "Theater performance"],
+      "audio": "They plan to attend an art exhibition together to explore different artistic styles."
+    },
+    {
+      "id": "L1Q28",
+      "question": "What outdoor activity do the friends enjoy doing together?",
+      "answers": ["Hiking", "Cycling", "Rock climbing", "Skiing"],
+      "audio": "They enjoy hiking together on weekends to explore scenic trails and enjoy nature."
+    },
+    {
+      "id": "L1Q29",
+      "question": "What new hobby are the friends interested in trying together?",
+      "answers": ["Photography", "Cooking classes", "Pottery making", "Dancing lessons"],
+      "audio": "They're interested in trying pottery making together as a new hobby to unleash their creativity."
+    },
+    {
+      "id": "L1Q30",
+      "question": "What cultural tradition are the friends discussing for an upcoming festival?",
+      "answers": ["Traditional dance", "Folk music", "Holiday customs", "Culinary traditions"],
+      "audio": "They're discussing holiday customs and traditional dances for an upcoming cultural festival."
+    },
+    {
+      "id": "L1Q31",
+      "question": "Where do the friends plan to go for their next holiday?",
+      "answers": ["Beach resort", "Mountain cabin", "City sightseeing", "Cultural tour"],
+      "audio": "The friends plan to go to a mountain cabin for their next holiday to enjoy nature and relax."
+    },
+    {
+      "id": "L1Q32",
+      "question": "What new restaurant do the friends want to try together?",
+      "answers": ["Italian cuisine", "Japanese sushi", "Mexican tacos", "French bakery"],
+      "audio": "The friends want to try a new French bakery together to taste delicious pastries and desserts."
+    },
+    {
+      "id": "L1Q33",
+      "question": "What outdoor activity are the friends excited to try next weekend?",
+      "answers": ["Kayaking", "Zip-lining", "Paragliding", "Rock climbing"],
+      "audio": "They're excited to try zip-lining together next weekend for an adrenaline-pumping outdoor adventure."
+    },
+    {
+      "id": "L1Q34",
+      "question": "What music concert are the friends planning to attend together?",
+      "answers": ["Pop band", "Rock festival", "Jazz performance", "Classical orchestra"],
+      "audio": "They're planning to attend a jazz performance together to enjoy smooth rhythms and improvisational music."
+    },
+    {
+      "id": "L1Q35",
+      "question": "What historical site are the friends interested in visiting next?",
+      "answers": ["Ancient ruins", "Medieval castle", "Revolutionary battlefield", "Renaissance palace"],
+      "audio": "They're interested in visiting ancient ruins next to explore the mysteries of the past."
+    },
+    {
+      "id": "L1Q36",
+      "question": "What sports event are the friends looking forward to watching together?",
+      "answers": ["Football match", "Basketball game", "Tennis tournament", "Golf championship"],
+      "audio": "They're looking forward to watching a tennis tournament together to cheer for their favorite players."
+    },
+    {
+      "id": "L1Q37",
+      "question": "What cooking class are the friends considering taking together?",
+      "answers": ["Thai cuisine", "Mediterranean dishes", "Sushi making", "Pastry baking"],
+      "audio": "They're considering taking a sushi making class together to learn the art of preparing Japanese cuisine."
+    },
+    {
+      "id": "L1Q38",
+      "question": "What community event are the friends organizing to support local charities?",
+      "answers": ["Charity run", "Fundraising gala", "Art auction", "Volunteer cleanup"],
+      "audio": "They're organizing a charity run to support local charities and promote community health and well-being."
+    },
+    {
+      "id": "L1Q39",
+      "question": "What film festival are the friends excited to attend together?",
+      "answers": ["International documentary", "Indie cinema", "Animation showcase", "Horror film marathon"],
+      "audio": "They're excited to attend an international documentary film festival together to explore diverse perspectives."
+    },
+    {
+      "id": "L1Q40",
+      "question": "What themed party are the friends planning for their next celebration?",
+      "answers": ["Costume party", "Masquerade ball", "Movie night", "Hawaiian luau"],
+      "audio": "They're planning a costume party for their next celebration to have fun dressing up in creative costumes."
+    }
           ]
         },
         {
@@ -131,7 +311,187 @@
               "question": "What time does the speaker go to bed?",
               "answers": ["9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM"],
               "audio": "I aim to be in bed by 10:30 PM to ensure I get a full night's sleep before the next day begins."
-            }
+            },
+            {
+      "id": "L2Q11",
+      "question": "What does the speaker typically do on weekends?",
+      "answers": ["Hiking", "Reading", "Watching movies", "Meeting friends"],
+      "audio": "On weekends, the speaker usually goes hiking to unwind and enjoy nature."
+    },
+    {
+      "id": "L2Q12",
+      "question": "How does the speaker relax after a stressful day at work?",
+      "answers": ["Yoga", "Meditation", "Cooking", "Listening to music"],
+      "audio": "After a stressful day at work, the speaker relaxes by practicing yoga to calm the mind."
+    },
+    {
+      "id": "L2Q13",
+      "question": "What does the speaker do during their lunch break?",
+      "answers": ["Read a book", "Take a walk", "Call a friend", "Run errands"],
+      "audio": "During their lunch break, the speaker likes to take a walk to recharge for the afternoon."
+    },
+    {
+      "id": "L2Q14",
+      "question": "How does the speaker prepare for the workday in the morning?",
+      "answers": ["Morning jog", "Healthy breakfast", "Reviewing notes", "Listening to podcasts"],
+      "audio": "In the morning, the speaker starts the day with a healthy breakfast to fuel up for work."
+    },
+    {
+      "id": "L2Q15",
+      "question": "What does the speaker do if they finish work early?",
+      "answers": ["Visit a museum", "Attend a yoga class", "Explore a new neighborhood", "Visit friends"],
+      "audio": "If the speaker finishes work early, they often explore a new neighborhood to unwind."
+    },
+    {
+      "id": "L2Q16",
+      "question": "What hobby does the speaker enjoy in their spare time?",
+      "answers": ["Painting", "Gardening", "Playing musical instruments", "Photography"],
+      "audio": "In their spare time, the speaker enjoys painting to express creativity and relax."
+    },
+    {
+      "id": "L2Q17",
+      "question": "What is the speaker's favorite evening activity?",
+      "answers": ["Cooking dinner", "Attending a fitness class", "Watching documentaries", "Joining a book club"],
+      "audio": "The speaker's favorite evening activity is attending a fitness class to stay active."
+    },
+    {
+      "id": "L2Q18",
+      "question": "What does the speaker do to unwind before bedtime?",
+      "answers": ["Read a novel", "Listen to calming music", "Take a warm bath", "Practice mindfulness"],
+      "audio": "To unwind before bedtime, the speaker listens to calming music to relax the mind."
+    },
+    {
+      "id": "L2Q19",
+      "question": "How does the speaker spend their leisure time on Sundays?",
+      "answers": ["Visiting art galleries", "Attending cultural events", "Cooking new recipes", "Volunteering"],
+      "audio": "On Sundays, the speaker enjoys visiting art galleries to appreciate creativity and artistry."
+    },
+    {
+      "id": "L2Q20",
+      "question": "What new skill is the speaker currently learning?",
+      "answers": ["Languages", "Cooking techniques", "Gardening tips", "DIY projects"],
+      "audio": "The speaker is currently learning new cooking techniques to expand culinary skills."
+    },
+    {
+      "id": "L2Q21",
+      "question": "How does the speaker balance work and personal life?",
+      "answers": ["Time management", "Setting boundaries", "Prioritizing tasks", "Taking breaks"],
+      "audio": "The speaker balances work and personal life through effective time management and setting boundaries."
+    },
+    {
+      "id": "L2Q22",
+      "question": "What travel destination is the speaker considering for their next vacation?",
+      "answers": ["Beach resort", "Historical landmarks", "Mountain retreat", "City exploration"],
+      "audio": "The speaker is considering a mountain retreat for their next vacation to unwind and enjoy nature."
+    },
+    {
+      "id": "L2Q23",
+      "question": "What new book or movie recommendation does the speaker share?",
+      "answers": ["Sci-fi novel", "Documentary film", "Romantic comedy", "Thriller"],
+      "audio": "The speaker shares a recommendation for a thought-provoking documentary film on social issues."
+    },
+    {
+      "id": "L2Q24",
+      "question": "What career advice does the speaker offer to aspiring professionals?",
+      "answers": ["Networking tips", "Skill development", "Resume building", "Interview preparation"],
+      "audio": "The speaker offers career advice, emphasizing the importance of networking and skill development."
+    },
+    {
+      "id": "L2Q25",
+      "question": "What fitness routine does the speaker follow for maintaining health?",
+      "answers": ["Running", "Yoga practice", "Strength training", "Swimming"],
+      "audio": "The speaker follows a regular yoga practice for maintaining physical and mental well-being."
+    },
+    {
+      "id": "L2Q26",
+      "question": "What cultural event did the speaker recently attend?",
+      "answers": ["Music festival", "Art exhibition", "Food festival", "Theater performance"],
+      "audio": "The speaker recently attended an art exhibition to appreciate local artists and their creative works."
+    },
+    {
+      "id": "L2Q27",
+      "question": "What renovation project is the speaker planning for their home?",
+      "answers": ["Kitchen remodel", "Backyard garden upgrade", "Home office setup", "Living room makeover"],
+      "audio": "The speaker is planning a backyard garden upgrade to create a tranquil outdoor space at home."
+    },
+    {
+      "id": "L2Q28",
+      "question": "What philanthropic cause does the speaker actively support?",
+      "answers": ["Environmental conservation", "Educational initiatives", "Community health programs", "Animal welfare"],
+      "audio": "The speaker actively supports educational initiatives to empower underprivileged children through learning opportunities."
+    },
+    {
+      "id": "L2Q29",
+      "question": "What cultural tradition does the speaker cherish from their childhood?",
+      "answers": ["Festive celebrations", "Family recipes", "Holiday customs", "Local folklore"],
+      "audio": "The speaker cherishes festive celebrations and family recipes passed down through generations from their childhood."
+    },
+    {
+      "id": "L2Q30",
+      "question": "What DIY project is the speaker excited to start?",
+      "answers": ["Upcycling furniture", "Home decor crafts", "Gardening projects", "Artwork creation"],
+      "audio": "The speaker is excited to start a home decor crafts DIY project to personalize their living space."
+    },
+    {
+      "id": "L2Q31",
+      "question": "How does the speaker unwind after a busy workweek?",
+      "answers": ["Reading novels", "Listening to music", "Taking long walks", "Practicing meditation"],
+      "audio": "The speaker unwinds after a busy workweek by listening to soothing music and practicing meditation."
+    },
+    {
+      "id": "L2Q32",
+      "question": "What household project is the speaker currently working on?",
+      "answers": ["DIY furniture", "Home renovation", "Gardening makeover", "Organizing closets"],
+      "audio": "The speaker is currently working on a home renovation project to create a more functional living space."
+    },
+    {
+      "id": "L2Q33",
+      "question": "What health tip does the speaker share for boosting energy levels?",
+      "answers": ["Hydrating regularly", "Eating nutritious snacks", "Getting enough sleep", "Doing morning exercises"],
+      "audio": "The speaker shares a health tip on staying hydrated regularly to boost energy levels throughout the day."
+    },
+    {
+      "id": "L2Q34",
+      "question": "What volunteer activity is the speaker passionate about?",
+      "answers": ["Animal shelter", "Soup kitchen", "Environmental cleanup", "Community tutoring"],
+      "audio": "The speaker is passionate about volunteering at an animal shelter to help rescue and care for animals in need."
+    },
+    {
+      "id": "L2Q35",
+      "question": "What podcast series does the speaker recommend for personal development?",
+      "answers": ["Mindfulness practices", "Career advice", "Health and fitness tips", "Financial planning"],
+      "audio": "The speaker recommends a podcast series on mindfulness practices for personal development and stress management."
+    },
+    {
+      "id": "L2Q36",
+      "question": "What recipe does the speaker suggest for a quick and healthy meal?",
+      "answers": ["Vegetarian stir-fry", "Quinoa salad", "Fish tacos", "Chicken curry"],
+      "audio": "The speaker suggests a recipe for vegetarian stir-fry as a quick and healthy meal option for busy weekdays."
+    },
+    {
+      "id": "L2Q37",
+      "question": "What home improvement tip does the speaker offer for enhancing living space?",
+      "answers": ["Natural lighting", "Decluttering", "Smart home technology", "Indoor plants"],
+      "audio": "The speaker offers a home improvement tip on using indoor plants to enhance the living space and improve air quality."
+    },
+    {
+      "id": "L2Q38",
+      "question": "What cultural festival does the speaker look forward to attending?",
+      "answers": ["Music and dance", "Food and wine", "Art and craft", "Film and theater"],
+      "audio": "The speaker looks forward to attending a music and dance cultural festival to celebrate diverse traditions and performances."
+    },
+    {
+      "id": "L2Q39",
+      "question": "What book genre does the speaker enjoy reading during leisure time?",
+      "answers": ["Historical fiction", "Science fiction", "Romance novels", "Mystery thrillers"],
+      "audio": "The speaker enjoys reading mystery thrillers during leisure time to immerse themselves in suspenseful plots and intriguing characters."
+    },
+    {
+      "id": "L2Q40",
+      "question": "What DIY project is the speaker planning for home decor?",
+      "answers": ["Wall art", "Upcycled furniture", "Handmade crafts", "Seasonal decorations"],
+      "audio": "The speaker is planning a DIY project for creating handmade crafts to add personalized touches to home decor."
+    }
           ]
         },
         {
@@ -197,7 +557,187 @@
               "question": "What is the group's final recommendation?",
               "answers": ["Implement immediately", "Conduct more research", "Start a pilot program", "Reject the idea"],
               "audio": "Jason: Based on our discussion, I think we should recommend starting a pilot program next semester with a small group of students."
-            }
+            },
+            {
+      "id": "L3Q11",
+      "question": "What educational reform are the students advocating for?",
+      "answers": ["Curriculum changes", "Extracurricular activities", "Student support services", "Teacher training"],
+      "audio": "Students are advocating for curriculum changes to enhance learning opportunities."
+    },
+    {
+      "id": "L3Q12",
+      "question": "How many participants are actively engaged in the group discussion?",
+      "answers": ["Three", "Four", "Five", "Six"],
+      "audio": "There are four participants actively engaged in the group discussion about educational reforms."
+    },
+    {
+      "id": "L3Q13",
+      "question": "What benefits do the students foresee from implementing the proposed reform?",
+      "answers": ["Improved academic performance", "Enhanced student engagement", "Better career readiness", "Cultural diversity"],
+      "audio": "Students foresee improved academic performance from implementing the proposed educational reform."
+    },
+    {
+      "id": "L3Q14",
+      "question": "What challenges do the students identify in implementing the educational reform?",
+      "answers": ["Budget constraints", "Resistance to change", "Logistical issues", "Lack of faculty support"],
+      "audio": "Students identify budget constraints as a significant challenge in implementing the educational reform."
+    },
+    {
+      "id": "L3Q15",
+      "question": "What strategies do the students propose to overcome the challenges?",
+      "answers": ["Fundraising campaigns", "Collaboration with stakeholders", "Advocacy efforts", "Pilot programs"],
+      "audio": "Students propose fundraising campaigns to overcome budget constraints in implementing the educational reform."
+    },
+    {
+      "id": "L3Q16",
+      "question": "What role do students envision for technology in the reformed education system?",
+      "answers": ["Enhanced learning resources", "Digital literacy training", "Remote learning options", "Online assessments"],
+      "audio": "Students envision technology playing a role in providing enhanced learning resources in the reformed education system."
+    },
+    {
+      "id": "L3Q17",
+      "question": "What community involvement do the students propose to support the reform?",
+      "answers": ["Parent-teacher associations", "Local businesses partnerships", "Mentorship programs", "Volunteer initiatives"],
+      "audio": "Students propose parent-teacher associations to involve the community in supporting the educational reform."
+    },
+    {
+      "id": "L3Q18",
+      "question": "What timeline do the students suggest for implementing the educational reform?",
+      "answers": ["One year", "Three years", "Five years", "Ten years"],
+      "audio": "Students suggest a three-year timeline for implementing the proposed educational reform."
+    },
+    {
+      "id": "L3Q19",
+      "question": "What academic resources do the students recommend enhancing?",
+      "answers": ["Library facilities", "Laboratory equipment", "Digital archives", "Tutoring services"],
+      "audio": "Students recommend enhancing library facilities as part of improving academic resources."
+    },
+    {
+      "id": "L3Q20",
+      "question": "What evaluation methods do the students propose for the reformed curriculum?",
+      "answers": ["Student feedback surveys", "Standardized tests", "Performance assessments", "Peer reviews"],
+      "audio": "Students propose performance assessments as an evaluation method for the reformed curriculum."
+    },
+    {
+      "id": "L3Q21",
+      "question": "What educational policy do the students propose for enhancing student well-being?",
+      "answers": ["Mental health support", "Bullying prevention", "Physical activity promotion", "Nutrition education"],
+      "audio": "Students propose mental health support policies to enhance student well-being and academic performance."
+    },
+    {
+      "id": "L3Q22",
+      "question": "What academic competition are the students preparing for as a team?",
+      "answers": ["Science Olympiad", "Debate tournament", "Mathematics challenge", "Robotics competition"],
+      "audio": "Students are preparing for a robotics competition as a team to showcase their engineering and problem-solving skills."
+    },
+    {
+      "id": "L3Q23",
+      "question": "What educational innovation do the students suggest for digital learning?",
+      "answers": ["Interactive simulations", "Virtual reality experiences", "Online collaboration platforms", "Gamified lessons"],
+      "audio": "Students suggest using virtual reality experiences to enhance digital learning and engage students in immersive educational content."
+    },
+    {
+      "id": "L3Q24",
+      "question": "What extracurricular activity do the students propose to foster creativity?",
+      "answers": ["Art club", "Creative writing workshop", "Theater production", "Music band"],
+      "audio": "Students propose establishing an art club to foster creativity and artistic expression among their peers."
+    },
+    {
+      "id": "L3Q25",
+      "question": "What student-led initiative do the students discuss for promoting environmental awareness?",
+      "answers": ["Recycling program", "Community garden project", "Energy conservation campaign", "Wildlife protection initiative"],
+      "audio": "Students discuss launching a recycling program to promote environmental awareness and sustainability practices."
+    },
+    {
+      "id": "L3Q26",
+      "question": "What global issue do the students analyze in their discussion?",
+      "answers": ["Climate change", "Global health crises", "Human rights violations", "International conflicts"],
+      "audio": "Students analyze global health crises and their impact on socio-economic development in different regions."
+    },
+    {
+      "id": "L3Q27",
+      "question": "What teaching method do the students recommend for inclusive education?",
+      "answers": ["Differentiated instruction", "Collaborative learning", "Universal design for learning", "Personalized learning plans"],
+      "audio": "Students recommend using differentiated instruction to cater to diverse learning needs and promote inclusive education."
+    },
+    {
+      "id": "L3Q28",
+      "question": "What study abroad program do the students consider for cultural immersion?",
+      "answers": ["Language exchange program", "International internship", "Field study excursion", "Exchange student program"],
+      "audio": "Students consider participating in a language exchange program for cultural immersion and language proficiency."
+    },
+    {
+      "id": "L3Q29",
+      "question": "What educational initiative do the students propose for promoting STEM careers?",
+      "answers": ["Coding workshops", "Engineering challenges", "Science fairs", "Mathematics tutoring programs"],
+      "audio": "Students propose organizing coding workshops to inspire interest in STEM careers and develop coding skills among students."
+    },
+    {
+      "id": "L3Q30",
+      "question": "What curriculum reform do the students advocate for integrating technology?",
+      "answers": ["Digital literacy courses", "Online learning platforms", "Robotics education", "Computer science curriculum"],
+      "audio": "Students advocate for integrating robotics education into the computer science curriculum to enhance technological skills."
+    },
+    {
+      "id": "L3Q31",
+      "question": "What study abroad program do the students consider for cultural immersion?",
+      "answers": ["Language immersion", "International internship", "Cultural exchange", "Field study excursion"],
+      "audio": "Students consider participating in a language immersion program abroad for cultural immersion and language learning."
+    },
+    {
+      "id": "L3Q32",
+      "question": "What educational reform do the students advocate for inclusive education?",
+      "answers": ["Accessible resources", "Special needs support", "Teacher training", "Curriculum adaptation"],
+      "audio": "Students advocate for accessible resources and curriculum adaptation for inclusive education in schools."
+    },
+    {
+      "id": "L3Q33",
+      "question": "What research project do the students propose for environmental sustainability?",
+      "answers": ["Renewable energy", "Ecosystem conservation", "Climate adaptation", "Sustainable agriculture"],
+      "audio": "Students propose a research project on sustainable agriculture to address environmental sustainability challenges."
+    },
+    {
+      "id": "L3Q34",
+      "question": "What academic conference do the students plan to attend for professional networking?",
+      "answers": ["STEM symposium", "Education summit", "Business forum", "Healthcare conference"],
+      "audio": "Students plan to attend an education summit for professional networking and sharing innovative teaching practices."
+    },
+    {
+      "id": "L3Q35",
+      "question": "What educational technology do the students recommend for interactive learning?",
+      "answers": ["Virtual reality simulations", "Augmented reality apps", "Online collaboration tools", "Gamified lessons"],
+      "audio": "Students recommend using virtual reality simulations for interactive learning experiences and enhancing student engagement."
+    },
+    {
+      "id": "L3Q36",
+      "question": "What community service project do the students organize for social responsibility?",
+      "answers": ["Homeless shelter support", "Environmental cleanup", "Health awareness campaign", "Youth mentoring program"],
+      "audio": "Students organize a health awareness campaign for social responsibility and promoting community well-being."
+    },
+    {
+      "id": "L3Q37",
+      "question": "What student club activity do the students participate in for leadership development?",
+      "answers": ["Debate club", "Volunteer organization", "Entrepreneurship club", "Cultural diversity club"],
+      "audio": "Students participate in an entrepreneurship club for leadership development and fostering innovative business ideas."
+    },
+    {
+      "id": "L3Q38",
+      "question": "What educational initiative do the students propose for digital literacy?",
+      "answers": ["Coding workshops", "Internet safety training", "Online learning platforms", "Technology integration"],
+      "audio": "Students propose coding workshops for promoting digital literacy and developing coding skills among students."
+    },
+    {
+      "id": "L3Q39",
+      "question": "What academic competition do the students prepare for excellence?",
+      "answers": ["Science Olympiad", "Mathematics challenge", "Literature quiz", "Debating championship"],
+      "audio": "Students prepare for a science Olympiad to showcase academic excellence and innovative problem-solving skills."
+    },
+    {
+      "id": "L3Q40",
+      "question": "What educational workshop do the students attend for professional development?",
+      "answers": ["Teacher training seminar", "Career counseling session", "Leadership workshop", "Parental engagement program"],
+      "audio": "Students attend a teacher training seminar for professional development and enhancing teaching strategies."
+    }
           ]
         },
         {
@@ -263,7 +803,187 @@
               "question": "What is the lecturer's conclusion about the future of renewable energy?",
               "answers": ["It will replace fossil fuels entirely", "It will remain a minor energy source", "It will require significant government support", "It will become increasingly competitive"],
               "audio": "In conclusion, while challenges remain, renewable energy sources are becoming increasingly competitive and are likely to play a dominant role in our future energy landscape."
-            }
+            },
+            {
+      "id": "L4Q11",
+      "question": "What environmental issue does the lecturer address?",
+      "answers": ["Water pollution", "Air pollution", "Deforestation", "Wildlife conservation"],
+      "audio": "The lecturer addresses the environmental issue of water pollution and its impact on marine ecosystems."
+    },
+    {
+      "id": "L4Q12",
+      "question": "What technological innovation does the lecturer discuss for sustainable agriculture?",
+      "answers": ["Drip irrigation", "Vertical farming", "Hydroponics", "Crop rotation"],
+      "audio": "The lecturer discusses vertical farming as a technological innovation for sustainable agriculture."
+    },
+    {
+      "id": "L4Q13",
+      "question": "Which region does the lecturer highlight for its successful renewable energy transition?",
+      "answers": ["Scandinavia", "Asia-Pacific", "Latin America", "Middle East"],
+      "audio": "The lecturer highlights Scandinavia for its successful transition to renewable energy sources."
+    },
+    {
+      "id": "L4Q14",
+      "question": "What policy measure does the lecturer advocate for reducing carbon emissions?",
+      "answers": ["Carbon pricing", "Subsidies for renewables", "Cap and trade", "Energy efficiency standards"],
+      "audio": "The lecturer advocates for carbon pricing as a policy measure to reduce carbon emissions."
+    },
+    {
+      "id": "L4Q15",
+      "question": "What educational initiative does the lecturer propose for environmental awareness?",
+      "answers": ["Curriculum integration", "Community outreach programs", "Student eco-clubs", "Green campus initiatives"],
+      "audio": "The lecturer proposes curriculum integration for enhancing environmental awareness among students."
+    },
+    {
+      "id": "L4Q16",
+      "question": "What research area does the lecturer highlight for potential breakthroughs in renewable energy?",
+      "answers": ["Energy storage", "Biofuels", "Wave energy", "Nuclear fusion"],
+      "audio": "The lecturer highlights energy storage as a research area for potential breakthroughs in renewable energy."
+    },
+    {
+      "id": "L4Q17",
+      "question": "What economic benefit of renewable energy does the lecturer emphasize?",
+      "answers": ["Job creation", "Cost savings", "Export revenue", "Economic growth"],
+      "audio": "The lecturer emphasizes job creation as an economic benefit of renewable energy investments."
+    },
+    {
+      "id": "L4Q18",
+      "question": "What role does the lecturer see for governments in promoting renewable energy?",
+      "answers": ["Policy incentives", "Infrastructure investment", "Regulatory frameworks", "Public awareness campaigns"],
+      "audio": "The lecturer sees a role for governments in promoting renewable energy through policy incentives."
+    },
+    {
+      "id": "L4Q19",
+      "question": "What environmental challenge does the lecturer associate with urbanization?",
+      "answers": ["Air quality", "Land degradation", "Water scarcity", "Biodiversity loss"],
+      "audio": "The lecturer associates air quality with urbanization as a significant environmental challenge."
+    },
+    {
+      "id": "L4Q20",
+      "question": "What educational pathway does the lecturer suggest for careers in sustainability?",
+      "answers": ["Environmental science", "Green technology", "Renewable energy engineering", "Sustainable agriculture"],
+      "audio": "The lecturer suggests environmental science as an educational pathway for careers in sustainability."
+    },
+    {
+      "id": "L4Q21",
+      "question": "What environmental issue does the lecturer discuss in relation to urban development?",
+      "answers": ["Urban sprawl", "Pollution hotspots", "Green spaces", "Transportation emissions"],
+      "audio": "The lecturer discusses urban sprawl and its impact on local ecosystems and community health."
+    },
+    {
+      "id": "L4Q22",
+      "question": "What technological advancement does the lecturer highlight for waste management?",
+      "answers": ["Recycling innovations", "Waste-to-energy technologies", "Composting solutions", "Biodegradable materials"],
+      "audio": "The lecturer highlights waste-to-energy technologies as an innovative approach to sustainable waste management."
+    },
+    {
+      "id": "L4Q23",
+      "question": "What renewable energy source does the lecturer emphasize for its efficiency?",
+      "answers": ["Solar power", "Wind turbines", "Hydropower", "Geothermal energy"],
+      "audio": "The lecturer emphasizes solar power for its efficiency and potential to meet growing energy demands sustainably."
+    },
+    {
+      "id": "L4Q24",
+      "question": "What ecological benefit of biodiversity conservation does the lecturer discuss?",
+      "answers": ["Ecosystem resilience", "Species preservation", "Natural habitats", "Food security"],
+      "audio": "The lecturer discusses ecosystem resilience as a key benefit of biodiversity conservation efforts."
+    },
+    {
+      "id": "L4Q25",
+      "question": "What policy initiative does the lecturer propose for sustainable transportation?",
+      "answers": ["Public transit upgrades", "Cycling infrastructure", "Electric vehicle incentives", "Traffic management strategies"],
+      "audio": "The lecturer proposes electric vehicle incentives as a policy initiative to promote sustainable transportation solutions."
+    },
+    {
+      "id": "L4Q26",
+      "question": "What research area does the lecturer suggest for advancing environmental sustainability?",
+      "answers": ["Climate modeling", "Ocean conservation", "Urban ecology", "Green technology innovations"],
+      "audio": "The lecturer suggests investing in green technology innovations for advancing environmental sustainability."
+    },
+    {
+      "id": "L4Q27",
+      "question": "What economic challenge of climate change does the lecturer discuss?",
+      "answers": ["Resource depletion", "Insurance costs", "Supply chain disruptions", "Financial investments"],
+      "audio": "The lecturer discusses supply chain disruptions as an economic challenge of climate change impacting global markets."
+    },
+    {
+      "id": "L4Q28",
+      "question": "What role does the lecturer see for businesses in promoting corporate sustainability?",
+      "answers": ["Green supply chains", "Circular economy practices", "Corporate social responsibility", "Stakeholder engagement"],
+      "audio": "The lecturer sees a role for businesses in promoting corporate sustainability through circular economy practices."
+    },
+    {
+      "id": "L4Q29",
+      "question": "What environmental justice issue does the lecturer highlight in their discussion?",
+      "answers": ["Disproportionate impacts", "Community advocacy", "Legal frameworks", "Environmental policy reform"],
+      "audio": "The lecturer highlights disproportionate impacts on vulnerable communities as an environmental justice issue."
+    },
+    {
+      "id": "L4Q30",
+      "question": "What educational program does the lecturer recommend for climate change awareness?",
+      "answers": ["Environmental studies", "Sustainability education", "Climate adaptation strategies", "Green business practices"],
+      "audio": "The lecturer recommends incorporating climate adaptation strategies into environmental studies for raising awareness."
+    },
+    {
+      "id": "L4Q31",
+      "question": "What environmental challenge does the lecturer discuss in urban areas?",
+      "answers": ["Air pollution", "Water contamination", "Noise pollution", "Soil erosion"],
+      "audio": "The lecturer discusses air pollution as a significant environmental challenge in urban areas affecting public health."
+    },
+    {
+      "id": "L4Q32",
+      "question": "What technological innovation does the lecturer highlight for sustainable agriculture?",
+      "answers": ["Precision farming", "Vertical farming", "Hydroponics systems", "Crop rotation techniques"],
+      "audio": "The lecturer highlights precision farming as a technological innovation for sustainable agriculture and efficient resource use."
+    },
+    {
+      "id": "L4Q33",
+      "question": "What renewable energy solution does the lecturer emphasize for rural communities?",
+      "answers": ["Solar panels", "Wind turbines", "Bioenergy projects", "Geothermal heating"],
+      "audio": "The lecturer emphasizes solar panels as a renewable energy solution for powering rural communities and reducing energy poverty."
+    },
+    {
+      "id": "L4Q34",
+      "question": "What ecological restoration project does the lecturer propose for biodiversity conservation?",
+      "answers": ["Wetland restoration", "Forest regeneration", "Marine conservation", "Species reintroduction"],
+      "audio": "The lecturer proposes wetland restoration as an ecological project for conserving biodiversity and restoring natural habitats."
+    },
+    {
+      "id": "L4Q35",
+      "question": "What transportation policy does the lecturer recommend for reducing carbon emissions?",
+      "answers": ["Public transit incentives", "Carpooling programs", "Bike-sharing schemes", "Electric vehicle infrastructure"],
+      "audio": "The lecturer recommends electric vehicle infrastructure as a transportation policy for reducing carbon emissions and promoting clean mobility."
+    },
+    {
+      "id": "L4Q36",
+      "question": "What research field does the lecturer suggest for advancing sustainable development?",
+      "answers": ["Renewable energy technologies", "Climate adaptation strategies", "Environmental economics", "Green infrastructure"],
+      "audio": "The lecturer suggests investing in green infrastructure for advancing sustainable development and resilience to climate change."
+    },
+    {
+      "id": "L4Q37",
+      "question": "What economic impact of climate change does the lecturer analyze?",
+      "answers": ["Insurance liabilities", "Energy market shifts", "Food security challenges", "Financial investment risks"],
+      "audio": "The lecturer analyzes food security challenges as an economic impact of climate change affecting global agricultural markets."
+    },
+    {
+      "id": "L4Q38",
+      "question": "What corporate strategy does the lecturer promote for environmental responsibility?",
+      "answers": ["Supply chain transparency", "Circular economy principles", "Corporate sustainability reports", "Stakeholder engagement"],
+      "audio": "The lecturer promotes circular economy principles as a corporate strategy for environmental responsibility and resource efficiency."
+    },
+    {
+      "id": "L4Q39",
+      "question": "What environmental policy issue does the lecturer highlight for regulatory reform?",
+      "answers": ["Pollution control measures", "Natural resource management", "Climate mitigation policies", "Greenhouse gas emissions"],
+      "audio": "The lecturer highlights greenhouse gas emissions as an environmental policy issue requiring regulatory reform and international cooperation."
+    },
+    {
+      "id": "L4Q40",
+      "question": "What educational initiative does the lecturer recommend for climate change education?",
+      "answers": ["Environmental literacy", "Sustainable development goals", "Climate resilience training", "Green technology innovations"],
+      "audio": "The lecturer recommends integrating climate resilience training into educational initiatives for raising awareness and fostering sustainable practices."
+    }
           ]
         }
       ]
@@ -283,7 +1003,43 @@
               {
                 "title": "The Human Brain: Mysteries and Discoveries",
                 "content": "The human brain, a marvel of biological engineering, remains one of the most complex and enigmatic organs in the known universe. This passage delves into recent discoveries in neuroscience, the mysteries that continue to puzzle scientists, and the potential future breakthroughs that could revolutionize our understanding of the mind.\n\nThe complexity of the human brain is staggering. With approximately 86 billion neurons forming trillions of connections, the brain is capable of feats that far surpass even the most advanced artificial intelligence systems. Recent advancements in neuroimaging techniques, such as functional magnetic resonance imaging (fMRI) and diffusion tensor imaging (DTI), have allowed scientists to peer into the living brain with unprecedented detail, uncovering new insights into its structure and function.\n\nRecent Discoveries:\n\n1. Neuroplasticity: One of the most significant discoveries in recent decades is the brain's remarkable ability to rewire itself throughout life. This concept, known as neuroplasticity, has overturned the long-held belief that the adult brain is fixed and unchangeable. We now know that the brain can form new neural connections and even generate new neurons in certain regions, offering hope for recovery from brain injuries and potential treatments for neurological disorders.\n\n2. The Connectome: Scientists are working on mapping the complete neural network of the human brain, known as the connectome. This ambitious project aims to create a comprehensive wiring diagram of the brain, which could provide invaluable insights into how neural circuits give rise to cognition and behavior.\n\n3. The Role of Glia: Once thought to be mere support cells, glial cells are now recognized as crucial players in brain function. Astrocytes, a type of glial cell, have been found to play important roles in synaptic transmission and neuronal metabolism, challenging our understanding of how information is processed in the brain.\n\n4. Sleep and Memory Consolidation: Research has revealed the critical role of sleep in memory consolidation and learning. During sleep, the brain appears to replay and strengthen neural patterns associated with newly acquired information, helping to transfer short-term memories into long-term storage.\n\n5. The Gut-Brain Axis: An emerging area of research is exploring the bidirectional communication between the gut microbiome and the brain. This gut-brain axis may influence mood, cognition, and even neurological disorders, highlighting the complex interplay between different systems in the body.\n\nOngoing Mysteries:\n\n1. Consciousness: Perhaps the greatest mystery in neuroscience is the nature of consciousness itself. How does subjective experience arise from the physical processes in the brain? This \"hard problem of consciousness\" continues to elude scientific explanation.\n\n2. Memory Storage: While we've made progress in understanding memory formation, the exact mechanisms by which memories are stored and retrieved remain elusive. How does the brain encode and decode information across distributed neural networks?\n\n3. Individual Differences: Why do individuals with seemingly similar brain structures exhibit such vast differences in personality, cognition, and susceptibility to mental disorders? Understanding the interplay between genes, environment, and neural circuitry in shaping individual differences is an ongoing challenge.\n\n4. The Aging Brain: While we know that cognitive decline is associated with aging, the precise mechanisms underlying this process and why some individuals maintain cognitive function better than others in old age are not fully understood.\n\n5. Dreams: The purpose and mechanisms of dreaming continue to puzzle scientists. While theories abound, from memory consolidation to emotional regulation, the true function of dreams remains a mystery.\n\nFuture Breakthroughs:\n\n1. Brain-Computer Interfaces: Advancements in this field could allow direct communication between the brain and external devices, potentially restoring function to individuals with paralysis or enhancing human cognitive capabilities.\n\n2. Precision Medicine for Brain Disorders: As we gain a better understanding of the genetic and neural basis of brain disorders, we may be able to develop more targeted and effective treatments for conditions like Alzheimer's disease, schizophrenia, and depression.\n\n3. Artificial Neural Networks: Insights from neuroscience are informing the development of more advanced artificial intelligence systems, which in turn may help us better understand the principles of neural computation in the brain.\n\n4. Optogenetics and Chemogenetics: These emerging technologies allow researchers to control specific neural circuits with unprecedented precision, potentially leading to new treatments for neurological and psychiatric disorders.\n\n5. Cognitive Enhancement: As we unravel the mechanisms of learning, memory, and attention, we may develop new methods to enhance cognitive function in both healthy individuals and those with cognitive impairments.\n\nAs we continue to explore the frontiers of neuroscience, each discovery brings us closer to understanding the intricate workings of the human brain. Yet, with each answer come new questions, reminding us of the vast complexity of the organ that defines our humanity. The journey to fully understand the human brain promises to be one of the most exciting and challenging scientific endeavors of the 21st century."
-              }
+              },
+              {
+    "title": "The Impact of Urbanization on Wildlife",
+    "content": "Urbanization, the rapid growth of cities and towns, has profound effects on wildlife and natural habitats worldwide. This passage explores how urban development alters ecosystems, influences wildlife behavior, and poses conservation challenges.\n\nAs human populations continue to migrate to urban areas, natural landscapes are increasingly transformed into built environments. This urban expansion fragments habitats, isolating wildlife populations and limiting their access to essential resources such as food and shelter. Many species struggle to adapt to these changes, leading to declines in population sizes and local extinctions.\n\nUrban areas also introduce new hazards to wildlife, including pollution, vehicle collisions, and predation by domestic pets. These anthropogenic threats further exacerbate the challenges faced by urban wildlife, affecting their health, reproduction, and overall survival.\n\nDespite these challenges, some species have shown remarkable resilience and adaptation to urban environments. Certain bird species, for example, have adjusted their nesting behaviors and diet preferences to thrive in urban landscapes. Researchers are studying these adaptations to better understand how wildlife can coexist with human development.\n\nConservation efforts play a crucial role in mitigating the impacts of urbanization on wildlife. Strategies include creating green corridors to connect fragmented habitats, implementing wildlife-friendly infrastructure designs, and promoting community engagement in urban wildlife conservation.\n\nLooking ahead, the future of urban wildlife depends on our ability to balance urban development with conservation priorities. By integrating ecological principles into urban planning and fostering stewardship of urban green spaces, we can create sustainable cities where wildlife and people thrive together."
+  },
+  {
+    "title": "The Promise of Renewable Energy",
+    "content": "Renewable energy sources, such as solar, wind, and hydroelectric power, hold the promise of a sustainable future. This passage examines the benefits of renewable energy, current trends in adoption, and challenges to widespread implementation.\n\nClimate change and the finite nature of fossil fuels have spurred global interest in renewable energy alternatives. Solar photovoltaic technology, for instance, converts sunlight into electricity with minimal environmental impact, offering a clean and abundant energy source. Wind power harnesses the kinetic energy of wind to generate electricity, contributing to reducing greenhouse gas emissions.\n\nHydroelectric power, derived from flowing water, has long been utilized for electricity generation. Large-scale hydroelectric dams provide reliable energy supply and help regulate water resources, but they can also have significant environmental and social impacts, such as habitat alteration and displacement of communities.\n\nThe transition to renewable energy is accompanied by economic opportunities, including job creation in the renewable energy sector and investment in innovative technologies. Countries around the world are setting ambitious targets for renewable energy deployment, aiming to achieve energy independence and reduce carbon emissions.\n\nHowever, challenges remain in the widespread adoption of renewable energy. Intermittency, the variability of renewable energy sources, poses challenges for grid stability and energy storage. Technological advancements in energy storage systems, such as batteries and grid-scale storage solutions, are crucial for overcoming these challenges.\n\nPolicy frameworks and incentives play a critical role in accelerating the shift towards renewable energy. Governments can promote renewable energy adoption through subsidies, tax incentives, and regulatory support, fostering a conducive environment for investment and innovation.\n\nAs renewable energy technologies continue to evolve and costs decline, they offer a pathway to a sustainable energy future. By diversifying energy sources and reducing dependence on fossil fuels, we can mitigate climate change impacts and create a cleaner, more resilient energy system for future generations."
+  },
+  {
+    "title": "The Art of Storytelling: Tradition and Transformation",
+    "content": "Storytelling, an ancient art form, continues to evolve in the digital age, shaping cultures and fostering connections across generations. This passage explores the transformative power of storytelling, from traditional oral narratives to modern multimedia platforms.\n\nSince ancient times, storytelling has served as a means of passing down knowledge, values, and cultural heritage. Oral traditions preserved history and conveyed moral lessons through myths, legends, and folktales shared within communities. These narratives not only entertained but also strengthened social bonds and transmitted cultural identity.\n\nIn today's interconnected world, storytelling has expanded beyond traditional formats to encompass diverse mediums such as literature, film, digital media, and virtual reality. Digital storytelling platforms allow individuals to create and share personal narratives, amplifying voices and experiences across global audiences.\n\nThe evolution of storytelling reflects broader societal changes and technological advancements. Narrative techniques adapted to film and television have shaped popular culture and influenced collective imagination. Interactive storytelling experiences, such as video games and immersive theatre, offer audiences unprecedented opportunities to engage with narratives in dynamic ways.\n\nStorytelling also plays a pivotal role in advocacy and social change. Through compelling narratives, storytellers raise awareness of pressing issues, inspire empathy, and mobilize communities for action. Documentaries, podcasts, and multimedia projects provide platforms for marginalized voices and amplify diverse perspectives.\n\nAs storytelling continues to evolve, ethical considerations arise regarding representation, authenticity, and cultural appropriation. Responsible storytelling practices involve respecting the voices and experiences of storytellers and communities, ensuring narratives are shared with integrity and sensitivity.\n\nIn an era of rapid technological advancement, storytelling remains a timeless art form that transcends boundaries and connects us through shared human experiences. By embracing diverse storytelling traditions and innovations, we enrich our understanding of the world and celebrate the power of narrative to shape our collective future."
+  },
+  {
+    "title": "The Future of Space Exploration",
+    "content": "Space exploration continues to captivate the imagination of humanity, offering glimpses into the vast unknowns beyond Earth. This passage explores the history of space exploration, current endeavors, and the future prospects of venturing deeper into the cosmos.\n\nThe Space Age dawned with the launch of Sputnik 1 by the Soviet Union in 1957, marking the beginning of human efforts to explore space. Subsequent milestones, such as Yuri Gagarin's historic orbit around Earth and the Apollo moon landings, demonstrated humanity's capability to reach beyond our planet.\n\nToday, space agencies around the world, including NASA, ESA, and Roscosmos, collaborate on ambitious missions to study celestial bodies, understand cosmic phenomena, and prepare for human exploration of Mars and beyond. Robotic probes and telescopes provide unprecedented views of distant planets, moons, and galaxies, expanding our understanding of the universe's origins and evolution.\n\nThe International Space Station (ISS), a symbol of international cooperation in space exploration, serves as a microgravity laboratory for scientific research and technological development. Astronauts aboard the ISS conduct experiments in fields ranging from biology and physics to materials science, paving the way for future long-duration space missions.\n\nLooking ahead, the future of space exploration holds promising advancements and challenges. Proposed missions include crewed missions to Mars, robotic exploration of icy moons like Europa, and ambitious efforts to study exoplanets capable of supporting life. Advances in propulsion technologies, such as ion propulsion and solar sails, may enable faster and more efficient space travel.\n\nSpace exploration also raises ethical and societal questions, including the preservation of celestial environments and the implications of discovering extraterrestrial life. International agreements and ethical frameworks guide responsible exploration and ensure the protection of space environments for future generations.\n\nAs humanity continues its journey into the cosmos, space exploration inspires wonder, drives scientific discovery, and challenges us to push the boundaries of what is possible. Each mission and discovery brings us closer to unraveling the mysteries of the universe and expanding our presence beyond Earth."
+  },
+  {
+    "title": "The Impact of Artificial Intelligence on Society",
+    "content": "Artificial Intelligence (AI) has emerged as a transformative force shaping society, economy, and daily life. This passage examines the evolution of AI technologies, their applications across various sectors, and the ethical considerations surrounding their adoption.\n\nAI, the simulation of human intelligence processes by machines, has evolved from theoretical research to practical applications in fields such as healthcare, finance, transportation, and entertainment. Machine learning algorithms analyze vast datasets to make predictions, optimize operations, and personalize user experiences, revolutionizing industries and driving economic growth.\n\nKey applications of AI include autonomous vehicles capable of navigating complex environments, virtual assistants that streamline information retrieval and task management, and predictive analytics systems that enhance decision-making in business and government. AI-powered innovations promise to improve efficiency, increase productivity, and address societal challenges.\n\nHowever, the widespread adoption of AI raises ethical concerns related to privacy, bias in algorithmic decision-making, and the future of work. AI systems trained on biased data may perpetuate social inequalities, while concerns about data security and autonomy underscore the need for robust governance and regulatory frameworks.\n\nThe ethical implications of AI extend to issues of accountability, transparency, and the impact on human relationships. As AI technologies become more sophisticated, debates continue on their ethical use in warfare, surveillance, and social interactions, prompting calls for ethical AI design and responsible deployment.\n\nLooking forward, the future of AI holds opportunities for innovation and collaboration across disciplines. Research in AI ethics, explainable AI, and human-centered design aims to develop AI systems that align with societal values and promote human well-being. Multistakeholder dialogues and international cooperation are essential to shape a future where AI benefits society while addressing its ethical challenges.\n\nAs AI technologies continue to advance, informed dialogue and proactive governance will be crucial in navigating the complex implications of AI on society. By fostering ethical AI development and promoting inclusive decision-making, we can harness the transformative potential of AI for the collective good."
+  },
+  {
+    "title": "The Renaissance: A Cultural and Intellectual Awakening",
+    "content": "The Renaissance, a period of cultural and intellectual flourishing in Europe, sparked a renewed interest in art, literature, science, and philosophy. This passage explores the origins, key figures, and enduring legacy of the Renaissance, highlighting its transformative impact on Western civilization.\n\nEmerging in Italy during the late 14th century, the Renaissance marked a departure from medieval traditions and a rediscovery of classical Greek and Roman knowledge. Humanism, a philosophical movement emphasizing the value of human potential and achievement, became a driving force behind Renaissance ideals of individualism, creativity, and intellectual curiosity.\n\nProminent figures of the Renaissance, such as Leonardo da Vinci, Michelangelo, and Galileo Galilei, made significant contributions to art, architecture, anatomy, astronomy, and mathematics. Their works exemplified the fusion of artistic expression and scientific inquiry, reflecting the era's belief in the interconnectedness of disciplines.\n\nThe invention of the printing press by Johannes Gutenberg in the mid-15th century revolutionized communication and dissemination of knowledge, facilitating the spread of Renaissance ideas across Europe. Literary works, including Dante's \"Divine Comedy\" and Shakespeare's plays, flourished alongside scientific treatises and philosophical writings.\n\nThe Renaissance era witnessed cultural achievements that continue to influence modern thought and creativity. Innovations in perspective and realism transformed artistic techniques, while advancements in anatomy and astronomy laid the foundation for modern scientific inquiry.\n\nThe legacy of the Renaissance extends beyond Europe, inspiring movements for cultural renewal and intellectual exploration worldwide. Its emphasis on humanism, artistic expression, and empirical inquiry laid the groundwork for the Enlightenment and the Scientific Revolution, shaping the course of Western civilization.\n\nAs we reflect on the Renaissance, its enduring legacy serves as a reminder of the transformative power of knowledge, creativity, and critical thinking. By celebrating the achievements of the Renaissance, we honor the resilience of the human spirit and the pursuit of excellence that continues to define our cultural heritage."
+  },
+  {
+    "title": "Renewable Energy: Shaping the Future of Sustainability",
+    "content": "Renewable energy technologies have emerged as pivotal solutions in addressing global energy challenges and mitigating climate change. This passage explores the rapid growth, benefits, and future potential of renewable energy sources, highlighting their role in advancing sustainability.\n\nThe transition to renewable energy is driven by environmental imperatives, energy security concerns, and technological advancements. Solar photovoltaics, wind turbines, hydropower, and biomass are among the key renewable energy sources rapidly replacing fossil fuels. These technologies harness natural resources such as sunlight, wind, and water to generate clean electricity, reducing greenhouse gas emissions and air pollution.\n\nAdvantages of renewable energy include their abundance, scalability, and potential to create new jobs and economic opportunities. Solar and wind power installations are increasingly cost-competitive with traditional energy sources, attracting investments and driving innovation in energy storage and grid integration.\n\nCountries around the world are setting ambitious renewable energy targets and implementing policies to accelerate deployment. Initiatives include feed-in tariffs, tax incentives, and renewable portfolio standards aimed at diversifying energy sources and reducing dependence on fossil fuels.\n\nLooking forward, the future of renewable energy holds promise for continued growth and innovation. Advances in energy storage technologies, such as batteries and hydrogen fuel cells, are enhancing grid reliability and enabling greater integration of intermittent renewable sources.\n\nChallenges remain, including intermittency, grid infrastructure upgrades, and the need for supportive policies and investments. However, the global shift towards renewable energy represents a transformative opportunity to build a sustainable energy future and mitigate the impacts of climate change.\n\nAs stakeholders collaborate to accelerate the adoption of renewable energy, public awareness and education play a crucial role in promoting energy efficiency and sustainable lifestyles. By embracing renewable energy solutions, we can achieve a resilient and inclusive energy transition that benefits present and future generations."
+  },
+  {
+    "title": "The Rise of Cybersecurity Threats in the Digital Age",
+    "content": "The digital age has ushered in unprecedented connectivity and innovation, but it has also brought about new cybersecurity challenges and threats. This passage examines the evolving landscape of cybersecurity, current vulnerabilities, and strategies for safeguarding digital assets and privacy.\n\nIn an interconnected world, cybersecurity threats pose risks to individuals, organizations, and governments alike. Cyberattacks, ranging from malware and phishing scams to ransomware and data breaches, exploit vulnerabilities in digital infrastructure and systems, causing financial losses and compromising sensitive information.\n\nKey cybersecurity challenges include the rapid expansion of internet-connected devices (IoT), which introduce new entry points for cyber threats, and the sophistication of cybercriminal tactics, such as social engineering and zero-day exploits. As digital footprints grow, protecting data integrity, confidentiality, and availability becomes paramount.\n\nOrganizations across sectors, including finance, healthcare, and government, are investing in cybersecurity measures to mitigate risks and comply with regulatory requirements. These measures include encryption, multifactor authentication, and cybersecurity awareness training to empower users in recognizing and responding to threats.\n\nGovernment agencies and international organizations play a crucial role in cybersecurity governance, setting standards and regulations to promote secure digital environments. Collaborative efforts, such as information sharing and threat intelligence exchanges, enhance collective defense against cyber threats.\n\nLooking ahead, the future of cybersecurity will require continuous innovation and adaptation to address emerging threats. Technologies like artificial intelligence and machine learning are being leveraged to enhance threat detection and incident response, while ethical considerations around data privacy and digital rights remain central to cybersecurity discourse.\n\nBy fostering a culture of cybersecurity awareness and resilience, stakeholders can build trust in digital ecosystems and safeguard critical infrastructure. Empowering individuals and organizations to adopt proactive cybersecurity practices is essential in navigating the complexities of the digital age and protecting global digital assets."
+  },
+  {
+    "title": "The Evolution of Global Trade: From Silk Roads to Digital Economy",
+    "content": "Global trade has evolved significantly throughout history, shaping economies, cultures, and geopolitical landscapes. This passage traces the evolution of trade routes, technological advancements, and the transformative impact of the digital economy on international commerce.\n\nHistorically, trade routes such as the Silk Road facilitated the exchange of goods, ideas, and cultures between civilizations across Asia, Europe, and Africa. These ancient networks laid the foundation for international trade, fostering economic growth and cultural exchange.\n\nThe Age of Exploration expanded global trade routes, connecting continents and enabling the exchange of commodities such as spices, textiles, and precious metals. European maritime powers established colonies and trade networks, driving the growth of global commerce and shaping colonial economies.\n\nIn the 20th century, advancements in transportation and communication revolutionized global trade. Containerization, air freight, and telecommunications accelerated the movement of goods and information, reducing trade barriers and expanding market access.\n\nThe digital revolution of the 21st century has ushered in a new era of global trade characterized by e-commerce, digital payments, and supply chain integration. Online platforms and digital marketplaces connect businesses and consumers worldwide, enabling seamless transactions and fostering entrepreneurship.\n\nEmerging technologies, such as blockchain and artificial intelligence, are reshaping trade finance, logistics, and regulatory compliance. These innovations enhance transparency, traceability, and efficiency in global supply chains, promoting sustainable trade practices and inclusive economic growth.\n\nDespite the opportunities presented by digital trade, challenges remain, including digital divide issues, cybersecurity risks, and regulatory complexities. Addressing these challenges requires international cooperation, policy innovation, and investments in digital infrastructure.\n\nAs global trade continues to evolve, stakeholders must navigate geopolitical uncertainties and socioeconomic impacts while embracing opportunities for innovation and collaboration. By harnessing the transformative potential of digital technologies, we can build a more interconnected and resilient global economy."
+  }
             ],
           "questions": [
             {
@@ -522,7 +1278,715 @@
               "type": "diagram_completion",
               "question": "Complete the diagram on climate change impacts with the correct information.",
               "options": ["Temperature rise", "Sea level rise", "Weather changes", "Ecosystem disruption"]
-            }
+            },
+            {
+      "id": "A2Q1",
+      "type": "multiple_choice",
+      "question": "What is the primary focus of the passage on cybersecurity?",
+      "options": ["Threat detection and prevention", "Renewable energy innovations", "Global economic trends", "Healthcare advancements"]
+    },
+    {
+      "id": "A2Q2",
+      "type": "true_false",
+      "question": "The passage implies that renewable energy sources are less reliable than fossil fuels.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A2Q3",
+      "type": "matching_information",
+      "question": "Match the following statements with the correct passage: 1) Discusses cybersecurity threats, 2) Explores renewable energy technologies, 3) Examines global economic shifts.",
+      "options": ["1) The Rise of Cybersecurity Threats in the Digital Age", "2) Renewable Energy: Shaping the Future of Sustainability", "3) The Evolution of Global Trade"]
+    },
+    {
+      "id": "A2Q4",
+      "type": "summary_completion",
+      "question": "Complete the summary: The passage on cybersecurity highlights the importance of enhancing __________ to mitigate digital risks.",
+      "options": ["cyber defenses", "global cooperation", "technological infrastructure", "financial regulations"]
+    },
+    {
+      "id": "A2Q5",
+      "type": "diagram_labeling",
+      "question": "Label the following diagram with the types of cybersecurity threats mentioned in the passage.",
+      "options": ["Phishing", "Malware", "DDoS", "Ransomware"]
+    },
+    {
+      "id": "A2Q6",
+      "type": "short_answer",
+      "question": "What are two challenges discussed in the passage on renewable energy?"
+    },
+    {
+      "id": "A2Q7",
+      "type": "multiple_choice",
+      "question": "Which of the following is NOT mentioned as a renewable energy technology in the passage?",
+      "options": ["Natural gas", "Wind turbines", "Solar photovoltaics", "Hydropower"]
+    },
+    {
+      "id": "A2Q8",
+      "type": "true_false",
+      "question": "The passage suggests that cybersecurity measures should focus solely on national borders.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A2Q9",
+      "type": "matching_headings",
+      "question": "Match the heading with the correct paragraph: 1) Emerging Cybersecurity Threats, 2) Historical Context of Renewable Energy, 3) Future of Global Trade.",
+      "options": ["1) The Rise of Cybersecurity Threats in the Digital Age", "2) Renewable Energy: Shaping the Future of Sustainability", "3) The Evolution of Global Trade"]
+    },
+    {
+      "id": "A2Q10",
+      "type": "flowchart_completion",
+      "question": "Complete the flowchart on renewable energy adoption with the correct stages.",
+      "options": ["Policy formulation", "Technological deployment", "Public engagement", "Investment strategies"]
+    },
+    {
+      "id": "A2Q11",
+      "type": "sentence_completion",
+      "question": "According to the passage on cybersecurity, what is essential for effective defense against cyber threats?",
+      "options": ["Collaboration between nations", "Isolationist policies", "Increased surveillance", "Decentralized networks"]
+    },
+    {
+      "id": "A2Q12",
+      "type": "table_completion",
+      "question": "Complete the table with the correct information about cybersecurity measures.",
+      "options": ["Measure", "Purpose", "Example"]
+    },
+    {
+      "id": "A2Q13",
+      "type": "multiple_choice",
+      "question": "Which of the following is discussed as a future challenge in renewable energy?",
+      "options": ["Grid integration", "Fossil fuel dominance", "Energy poverty", "Environmental degradation"]
+    },
+    {
+      "id": "A2Q14",
+      "type": "true_false",
+      "question": "The passage on cybersecurity suggests that digital threats are decreasing due to technological advancements.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A2Q15",
+      "type": "matching_information",
+      "question": "Match the following terms with their definitions: 1) Cybersecurity, 2) Renewable energy, 3) Global trade.",
+      "options": ["1) Protection against digital threats", "2) Sustainable energy sources", "3) Exchange of goods and services between nations"]
+    },
+    {
+      "id": "A2Q16",
+      "type": "diagram_completion",
+      "question": "Complete the diagram on cybersecurity threats with the correct information.",
+      "options": ["Phishing", "Malware", "DDoS attacks", "Ransomware"]
+    },
+    {
+      "id": "A2Q17",
+      "type": "short_answer",
+      "question": "What are two advancements discussed in the passage on cybersecurity measures?"
+    },
+    {
+      "id": "A2Q18",
+      "type": "multiple_choice",
+      "question": "Which of the following is a key goal of renewable energy discussed in the passage?",
+      "options": ["Reducing carbon emissions", "Increasing air pollution", "Promoting fossil fuel dependence", "Accelerating climate change"]
+    },
+    {
+      "id": "A2Q19",
+      "type": "true_false",
+      "question": "The passage on cybersecurity states that all digital threats can be completely eradicated with current technology.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A2Q20",
+      "type": "summary_completion",
+      "question": "Complete the summary: The passage on renewable energy emphasizes the need for __________ to achieve sustainable development goals.",
+      "options": ["innovative solutions", "fossil fuel subsidies", "environmental deregulation", "international trade agreements"]
+    },
+    {
+      "id": "A2Q21",
+      "type": "matching_headings",
+      "question": "Match the heading with the correct paragraph: 1) Cybersecurity Threat Landscape, 2) Historical Shifts in Energy Consumption, 3) Future Prospects for Global Trade.",
+      "options": ["1) The Rise of Cybersecurity Threats in the Digital Age", "2) Renewable Energy: Shaping the Future of Sustainability", "3) The Evolution of Global Trade"]
+    },
+    {
+      "id": "A2Q22",
+      "type": "flowchart_completion",
+      "question": "Complete the flowchart on cybersecurity strategies with the correct stages.",
+      "options": ["Threat detection", "Incident response", "Policy formulation", "Public awareness"]
+    },
+    {
+      "id": "A2Q23",
+      "type": "multiple_choice",
+      "question": "What is a significant challenge mentioned in the passage on renewable energy?",
+      "options": ["Intermittency of renewable sources", "Infinite resource availability", "Environmental impact of fossil fuels", "Dependency on foreign imports"]
+    },
+    {
+      "id": "A2Q24",
+      "type": "true_false",
+      "question": "The passage on cybersecurity implies that cybersecurity threats do not pose risks to national security.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A2Q25",
+      "type": "matching_information",
+      "question": "Match the following impacts with the correct cause: 1) Energy poverty, 2) Environmental degradation, 3) Fossil fuel dependence.",
+      "options": ["1) Renewable Energy", "2) Global Trade", "3) Cybersecurity"]
+    },
+    {
+      "id": "A2Q26",
+      "type": "diagram_completion",
+      "question": "Complete the diagram on renewable energy sources with the correct information.",
+      "options": ["Solar photovoltaics", "Wind turbines", "Hydropower", "Biomass"]
+    },
+    {
+      "id": "A2Q27",
+      "type": "short_answer",
+      "question": "What are two strategies discussed in the passage on cybersecurity to enhance digital resilience?"
+    },
+    {
+      "id": "A2Q28",
+      "type": "multiple_choice",
+      "question": "Which factor is driving the shift towards renewable energy according to the passage?",
+      "options": ["Environmental concerns", "Increased reliance on coal", "Technological stagnation", "Financial volatility"]
+    },
+    {
+      "id": "A2Q29",
+      "type": "true_false",
+      "question": "The passage on cybersecurity suggests that cybersecurity measures should focus on national isolationism.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A2Q30",
+      "type": "summary_completion",
+      "question": "Complete the summary: The passage on renewable energy discusses the shift towards __________ as a sustainable solution for future energy needs.",
+      "options": ["renewable sources", "fossil fuel subsidies", "nuclear power plants", "coal-fired power plants"]
+    },
+    {
+      "id": "A2Q31",
+      "type": "matching_headings",
+      "question": "Match the heading with the correct paragraph: 1) Emerging Technologies in Cybersecurity, 2) Historical Energy Transitions, 3) Future Implications of Global Trade.",
+      "options": ["1) The Rise of Cybersecurity Threats in the Digital Age", "2) Renewable Energy: Shaping the Future of Sustainability", "3) The Evolution of Global Trade"]
+    },
+    {
+      "id": "A2Q32",
+      "type": "flowchart_completion",
+      "question": "Complete the flowchart on cybersecurity responses with the correct stages.",
+      "options": ["Incident investigation", "Vulnerability assessment", "Threat mitigation", "Policy enforcement"]
+    },
+    {
+      "id": "A2Q33",
+      "type": "multiple_choice",
+      "question": "What is a key benefit of renewable energy highlighted in the passage?",
+      "options": ["Reduced greenhouse gas emissions", "Increased reliance on fossil fuels", "Higher energy costs", "Limited technological innovation"]
+    },
+    {
+      "id": "A2Q34",
+      "type": "true_false",
+      "question": "The passage on cybersecurity suggests that digital threats are decreasing due to international collaboration.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A2Q35",
+      "type": "matching_information",
+      "question": "Match the following terms with their definitions: 1) Phishing, 2) Ransomware, 3) DDoS attacks.",
+      "options": ["1) Social engineering attack", "2) Malicious software", "3) Denial-of-service attack"]
+    },
+    {
+      "id": "A2Q36",
+      "type": "diagram_completion",
+      "question": "Complete the diagram on cybersecurity threats with the correct information.",
+      "options": ["Phishing", "Malware", "DDoS attacks", "Ransomware"]
+    },
+    {
+      "id": "A2Q37",
+      "type": "short_answer",
+      "question": "What are two advancements mentioned in the passage on cybersecurity technologies?"
+    },
+    {
+      "id": "A2Q38",
+      "type": "multiple_choice",
+      "question": "What role does government policy play in the adoption of renewable energy according to the passage?",
+      "options": ["Incentivizes investment", "Hampers technological development", "Encourages fossil fuel use", "Limits international trade"]
+    },
+    {
+      "id": "A2Q39",
+      "type": "true_false",
+      "question": "The passage on cybersecurity suggests that cyber threats are only a concern for private individuals, not organizations.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A2Q40",
+      "type": "summary_completion",
+      "question": "Complete the summary: The passage on renewable energy highlights the need for __________ to support sustainable development goals worldwide.",
+      "options": ["international cooperation", "fossil fuel subsidies", "decentralized energy systems", "economic protectionism"]
+    },
+    {
+      "id": "A3Q1",
+      "type": "multiple_choice",
+      "question": "What is the primary focus of the passage on artificial intelligence (AI)?",
+      "options": ["Machine learning algorithms", "Geopolitical trends", "Biomedical research", "Industrial manufacturing"]
+    },
+    {
+      "id": "A3Q2",
+      "type": "true_false",
+      "question": "The passage implies that AI can only be applied to specific industries.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A3Q3",
+      "type": "matching_information",
+      "question": "Match the following statements with the correct passage: 1) Discusses AI applications in healthcare, 2) Explores AI's impact on global economies, 3) Examines ethical considerations of AI technology.",
+      "options": ["1) AI in Healthcare: Revolutionizing Patient Care", "2) AI in Economics: Shaping Future Markets", "3) Ethics of Artificial Intelligence in the Digital Age"]
+    },
+    {
+      "id": "A3Q4",
+      "type": "summary_completion",
+      "question": "Complete the summary: The passage on AI highlights the challenges of balancing __________ with technological advancements.",
+      "options": ["ethical concerns", "industrial automation", "economic growth", "scientific research"]
+    },
+    {
+      "id": "A3Q5",
+      "type": "diagram_labeling",
+      "question": "Label the following diagram with the stages of a machine learning process.",
+      "options": ["Data collection", "Model training", "Testing and validation", "Deployment"]
+    },
+    {
+      "id": "A3Q6",
+      "type": "short_answer",
+      "question": "What are two ethical dilemmas discussed in the passage on AI technology?"
+    },
+    {
+      "id": "A3Q7",
+      "type": "multiple_choice",
+      "question": "Which of the following is NOT mentioned as an AI application in the passage?",
+      "options": ["Agricultural robotics", "Autonomous vehicles", "Telecommunications", "Energy management"]
+    },
+    {
+      "id": "A3Q8",
+      "type": "true_false",
+      "question": "The passage suggests that AI development should prioritize speed over accuracy.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A3Q9",
+      "type": "matching_headings",
+      "question": "Match the heading with the correct paragraph: 1) AI in Healthcare, 2) Economic Impacts of AI, 3) Ethical Dimensions of AI.",
+      "options": ["1) AI in Healthcare: Revolutionizing Patient Care", "2) AI in Economics: Shaping Future Markets", "3) Ethics of Artificial Intelligence in the Digital Age"]
+    },
+    {
+      "id": "A3Q10",
+      "type": "flowchart_completion",
+      "question": "Complete the flowchart on AI development with the correct stages.",
+      "options": ["Data preprocessing", "Model training", "Testing and validation", "Deployment"]
+    },
+    {
+      "id": "A3Q11",
+      "type": "sentence_completion",
+      "question": "According to the passage on AI, what is a key factor in ensuring ethical AI deployment?",
+      "options": ["Transparency in decision-making", "Proprietary technology", "Monopoly of AI patents", "Geopolitical alliances"]
+    },
+    {
+      "id": "A3Q12",
+      "type": "table_completion",
+      "question": "Complete the table with the correct information about AI applications.",
+      "options": ["Application", "Industry", "Impact"]
+    },
+    {
+      "id": "A3Q13",
+      "type": "multiple_choice",
+      "question": "Which future trend in AI is discussed in the passage?",
+      "options": ["Ethical AI frameworks", "Global AI monopoly", "AI-induced unemployment", "AI takeover of governments"]
+    },
+    {
+      "id": "A3Q14",
+      "type": "true_false",
+      "question": "The passage on AI suggests that AI technology is inherently biased and cannot be corrected.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A3Q15",
+      "type": "matching_information",
+      "question": "Match the following terms with their definitions: 1) Machine learning, 2) AI bias, 3) Economic displacement.",
+      "options": ["1) Subset of AI enabling systems to learn from data", "2) Prejudice in AI algorithms", "3) Job loss due to technological advances"]
+    },
+    {
+      "id": "A3Q16",
+      "type": "diagram_completion",
+      "question": "Complete the diagram on AI development stages with the correct information.",
+      "options": ["Data collection", "Model training", "Testing and validation", "Deployment"]
+    },
+    {
+      "id": "A3Q17",
+      "type": "short_answer",
+      "question": "What are two challenges discussed in the passage on ethical AI deployment?"
+    },
+    {
+      "id": "A3Q18",
+      "type": "multiple_choice",
+      "question": "Which of the following is a key benefit of AI highlighted in the passage?",
+      "options": ["Enhanced decision-making", "Decreased automation", "Limited data utilization", "Reduced computing power"]
+    },
+    {
+      "id": "A3Q19",
+      "type": "true_false",
+      "question": "The passage on AI suggests that AI technologies are primarily used in agriculture and healthcare.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A3Q20",
+      "type": "summary_completion",
+      "question": "Complete the summary: The passage on AI underscores the importance of addressing __________ to ensure responsible AI development.",
+      "options": ["ethical concerns", "industrial automation", "economic growth", "scientific research"]
+    },
+    {
+      "id": "A3Q21",
+      "type": "matching_headings",
+      "question": "Match the heading with the correct paragraph: 1) AI in Healthcare, 2) Economic Impact of AI, 3) Ethical Challenges of AI.",
+      "options": ["1) AI in Healthcare: Revolutionizing Patient Care", "2) AI in Economics: Shaping Future Markets", "3) Ethics of Artificial Intelligence in the Digital Age"]
+    },
+    {
+      "id": "A3Q22",
+      "type": "flowchart_completion",
+      "question": "Complete the flowchart on AI deployment with the correct stages.",
+      "options": ["Data preprocessing", "Model training", "Testing and validation", "Deployment"]
+    },
+    {
+      "id": "A3Q23",
+      "type": "multiple_choice",
+      "question": "What is a significant challenge mentioned in the passage on economic impacts of AI?",
+      "options": ["Job displacement", "Increased manufacturing costs", "Decreased technological innovation", "Market consolidation"]
+    },
+    {
+      "id": "A3Q24",
+      "type": "true_false",
+      "question": "The passage on AI suggests that ethical concerns in AI development are exaggerated and do not require immediate attention.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A3Q25",
+      "type": "matching_information",
+      "question": "Match the following impacts with the correct cause: 1) AI-driven unemployment, 2) Ethical dilemmas in AI, 3) Economic dominance of AI.",
+      "options": ["1) Economic Impact of AI", "2) Ethics of Artificial Intelligence in the Digital Age", "3) AI in Economics: Shaping Future Markets"]
+    },
+    {
+      "id": "A3Q26",
+      "type": "diagram_completion",
+      "question": "Complete the diagram on AI technologies with the correct information.",
+      "options": ["Machine learning", "Natural language processing", "Computer vision", "Robotics"]
+    },
+    {
+      "id": "A3Q27",
+      "type": "short_answer",
+      "question": "What are two strategies discussed in the passage on addressing AI bias?"
+    },
+    {
+      "id": "A3Q28",
+      "type": "multiple_choice",
+      "question": "What role does AI play in revolutionizing healthcare according to the passage?",
+      "options": ["Improving diagnostics", "Reducing patient care costs", "Increasing manual labor", "Decreasing data security"]
+    },
+    {
+      "id": "A3Q29",
+      "type": "true_false",
+      "question": "The passage on AI suggests that AI technologies have minimal impact on global economic systems.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A3Q30",
+      "type": "summary_completion",
+      "question": "Complete the summary: The passage on AI emphasizes the need for __________ to mitigate the risks associated with AI deployment.",
+      "options": ["ethical guidelines", "technological monopolies", "economic disparities", "global regulations"]
+    },
+    {
+      "id": "A3Q31",
+      "type": "matching_headings",
+      "question": "Match the heading with the correct paragraph: 1) AI in Healthcare, 2) Economic Implications of AI, 3) Ethical Dimensions of AI.",
+      "options": ["1) AI in Healthcare: Revolutionizing Patient Care", "2) AI in Economics: Shaping Future Markets", "3) Ethics of Artificial Intelligence in the Digital Age"]
+    },
+    {
+      "id": "A3Q32",
+      "type": "flowchart_completion",
+      "question": "Complete the flowchart on AI technology with the correct stages.",
+      "options": ["Data collection", "Model training", "Testing and validation", "Deployment"]
+    },
+    {
+      "id": "A3Q33",
+      "type": "multiple_choice",
+      "question": "What is a primary concern discussed in the passage regarding AI bias?",
+      "options": ["Reinforcement of societal biases", "Equal distribution of AI benefits", "Overregulation of AI technologies", "Global standardization of AI algorithms"]
+    },
+    {
+      "id": "A3Q34",
+      "type": "true_false",
+      "question": "The passage on AI suggests that AI technologies are primarily used for entertainment purposes.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A3Q35",
+      "type": "matching_information",
+      "question": "Match the following terms with their definitions: 1) Deep learning, 2) AI governance, 3) Economic disruption.",
+      "options": ["1) Subset of machine learning using neural networks", "2) Regulation and oversight of AI technologies", "3) Negative impact on financial markets"]
+    },
+    {
+      "id": "A3Q36",
+      "type": "diagram_completion",
+      "question": "Complete the diagram on AI applications with the correct information.",
+      "options": ["Natural language processing", "Machine learning", "Computer vision", "Robotics"]
+    },
+    {
+      "id": "A3Q37",
+      "type": "short_answer",
+      "question": "What are two challenges discussed in the passage on AI governance?"
+    },
+    {
+      "id": "A3Q38",
+      "type": "multiple_choice",
+      "question": "Which of the following is a potential future impact of AI mentioned in the passage?",
+      "options": ["Job displacement", "Increased human labor", "Decreased automation", "Reduced reliance on AI"]
+    },
+    {
+      "id": "A3Q39",
+      "type": "true_false",
+      "question": "The passage on AI suggests that AI technologies are less effective in improving healthcare outcomes compared to traditional methods.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A3Q40",
+      "type": "summary_completion",
+      "question": "Complete the summary: The passage on AI underscores the importance of implementing __________ to address the ethical challenges associated with AI technologies.",
+      "options": ["regulatory frameworks", "proprietary algorithms", "technological monopolies", "economic disparities"]
+    },
+    {
+      "id": "A4Q01",
+      "type": "multiple_choice",
+      "question": "What is the primary focus of the passage on renewable energy?",
+      "options": ["Solar power generation", "Fossil fuel extraction", "Nuclear energy research", "Geothermal heating systems"]
+    },
+    {
+      "id": "A4Q02",
+      "type": "true_false",
+      "question": "The passage suggests that renewable energy sources are limited in their availability.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A4Q03",
+      "type": "matching_information",
+      "question": "Match the following statements with the correct passage: 1) Discusses wind energy innovations, 2) Explores the impact of hydroelectric power, 3) Examines advancements in solar technology.",
+      "options": ["1) Innovations in Wind Energy", "2) Hydroelectric Power: Harnessing Water Resources", "3) Solar Technology: Sustainable Energy Solutions"]
+    },
+    {
+      "id": "A4Q04",
+      "type": "summary_completion",
+      "question": "Complete the summary: The passage on renewable energy highlights the importance of reducing __________ to combat climate change.",
+      "options": ["carbon emissions", "nuclear waste", "coal consumption", "oil production"]
+    },
+    {
+      "id": "A4Q05",
+      "type": "diagram_labeling",
+      "question": "Label the following diagram with components of a wind turbine.",
+      "options": ["Rotor blades", "Gearbox", "Nacelle", "Foundation"]
+    },
+    {
+      "id": "A4Q06",
+      "type": "short_answer",
+      "question": "What are two challenges discussed in the passage on renewable energy adoption?"
+    },
+    {
+      "id": "A4Q07",
+      "type": "multiple_choice",
+      "question": "Which of the following is NOT mentioned as a renewable energy source in the passage?",
+      "options": ["Natural gas", "Biomass", "Geothermal", "Hydroelectric"]
+    },
+    {
+      "id": "A4Q08",
+      "type": "true_false",
+      "question": "The passage suggests that renewable energy technologies have reached their peak efficiency and cannot be improved further.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A4Q09",
+      "type": "matching_headings",
+      "question": "Match the heading with the correct paragraph: 1) Wind Energy Innovations, 2) Hydroelectric Power Impact, 3) Solar Technology Advancements.",
+      "options": ["1) Innovations in Wind Energy", "2) Hydroelectric Power: Harnessing Water Resources", "3) Solar Technology: Sustainable Energy Solutions"]
+    },
+    {
+      "id": "A4Q10",
+      "type": "flowchart_completion",
+      "question": "Complete the flowchart on renewable energy development with the correct stages.",
+      "options": ["Research and development", "Implementation", "Policy support", "Market adoption"]
+    },
+    {
+      "id": "A4Q11",
+      "type": "sentence_completion",
+      "question": "The passage on renewable energy emphasizes the need for __________ to ensure sustainable development.",
+      "options": ["government subsidies", "international cooperation", "technological breakthroughs", "public awareness"]
+    },
+    {
+      "id": "A4Q12",
+      "type": "table_completion",
+      "question": "Complete the table with the correct data on renewable energy sources.",
+      "options": ["Source", "Advantages", "Disadvantages"]
+    },
+    {
+      "id": "A4Q13",
+      "type": "multiple_choice",
+      "question": "What is a potential challenge associated with solar energy adoption?",
+      "options": ["High initial costs", "Low efficiency", "Limited geographic availability", "Environmental pollution"]
+    },
+    {
+      "id": "A4Q14",
+      "type": "true_false",
+      "question": "The passage suggests that biomass energy production has no negative environmental impacts.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A4Q15",
+      "type": "matching_information",
+      "question": "Match the following terms with their definitions: 1) Photovoltaic cells, 2) Hydroelectric power, 3) Wind turbines.",
+      "options": ["1) Solar energy conversion technology", "2) Electricity generation from water flow", "3) Energy generation from wind flow"]
+    },
+    {
+      "id": "A4Q16",
+      "type": "diagram_completion",
+      "question": "Complete the diagram on the advantages of renewable energy with the correct information.",
+      "options": ["Sustainable", "Low greenhouse gas emissions", "Cost-effective", "Scalable"]
+    },
+    {
+      "id": "A4Q17",
+      "type": "short_answer",
+      "question": "What are two benefits of hydroelectric power discussed in the passage?"
+    },
+    {
+      "id": "A4Q18",
+      "type": "multiple_choice",
+      "question": "Which renewable energy source is most dependent on geographic location?",
+      "options": ["Solar power", "Hydropower", "Wind energy", "Biomass"]
+    },
+    {
+      "id": "A4Q19",
+      "type": "true_false",
+      "question": "The passage suggests that renewable energy sources do not contribute to reducing greenhouse gas emissions.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A4Q20",
+      "type": "matching_headings",
+      "question": "Match the heading with the correct paragraph: 1) Challenges in Solar Energy Adoption, 2) Benefits of Hydropower, 3) Innovations in Wind Energy.",
+      "options": ["1) Challenges in Solar Energy Adoption", "2) Benefits of Hydropower", "3) Innovations in Wind Energy"]
+    },
+    {
+      "id": "A4Q21",
+      "type": "flowchart_completion",
+      "question": "Complete the flowchart on renewable energy adoption with the correct steps.",
+      "options": ["Research and development", "Policy support", "Investment", "Public awareness"]
+    },
+    {
+      "id": "A4Q22",
+      "type": "sentence_completion",
+      "question": "The passage on renewable energy emphasizes the importance of __________ to overcome barriers to adoption.",
+      "options": ["international cooperation", "government subsidies", "technological innovation", "public resistance"]
+    },
+    {
+      "id": "A4Q23",
+      "type": "table_completion",
+      "question": "Complete the table with the correct data on wind energy benefits.",
+      "options": ["Benefit", "Advantage", "Impact"]
+    },
+    {
+      "id": "A4Q24",
+      "type": "multiple_choice",
+      "question": "What is a limitation of biomass energy discussed in the passage?",
+      "options": ["High environmental impact", "Low energy density", "Limited availability", "Expensive production costs"]
+    },
+    {
+      "id": "A4Q25",
+      "type": "true_false",
+      "question": "The passage suggests that geothermal energy is widely available and accessible in most regions.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A4Q26",
+      "type": "matching_information",
+      "question": "Match the following impacts with the correct renewable energy source: 1) Low greenhouse gas emissions, 2) Environmental footprint, 3) Economic viability.",
+      "options": ["1) Solar power", "2) Biomass energy", "3) Wind power"]
+    },
+    {
+      "id": "A4Q27",
+      "type": "diagram_completion",
+      "question": "Complete the diagram on the challenges of renewable energy adoption with the correct information.",
+      "options": ["Intermittency", "Grid integration", "Storage solutions", "Policy support"]
+    },
+    {
+      "id": "A4Q28",
+      "type": "short_answer",
+      "question": "What are two environmental benefits of solar energy discussed in the passage?"
+    },
+    {
+      "id": "A4Q29",
+      "type": "multiple_choice",
+      "question": "Which renewable energy source is least affected by weather conditions?",
+      "options": ["Geothermal energy", "Hydropower", "Solar power", "Wind energy"]
+    },
+    {
+      "id": "A4Q30",
+      "type": "true_false",
+      "question": "The passage suggests that renewable energy technologies are already fully competitive with fossil fuels in terms of cost.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A4Q31",
+      "type": "matching_headings",
+      "question": "Match the heading with the correct paragraph: 1) Innovations in Biomass Energy, 2) Challenges in Wind Energy Adoption, 3) Benefits of Solar Power.",
+      "options": ["1) Innovations in Biomass Energy", "2) Challenges in Wind Energy Adoption", "3) Benefits of Solar Power"]
+    },
+    {
+      "id": "A4Q32",
+      "type": "flowchart_completion",
+      "question": "Complete the flowchart on renewable energy benefits with the correct advantages.",
+      "options": ["Low greenhouse gas emissions", "Sustainable", "Cost-effective", "Scalable"]
+    },
+    {
+      "id": "A4Q33",
+      "type": "sentence_completion",
+      "question": "The passage on renewable energy highlights the role of __________ in overcoming technological barriers.",
+      "options": ["government policies", "scientific research", "international cooperation", "public awareness"]
+    },
+    {
+      "id": "A4Q34",
+      "type": "table_completion",
+      "question": "Complete the table with the correct data on hydropower.",
+      "options": ["Advantages", "Disadvantages", "Environmental impact"]
+    },
+    {
+      "id": "A4Q35",
+      "type": "multiple_choice",
+      "question": "What is a significant advantage of geothermal energy discussed in the passage?",
+      "options": ["Low operating costs", "High energy density", "Minimal environmental impact", "Universal accessibility"]
+    },
+    {
+      "id": "A4Q36",
+      "type": "true_false",
+      "question": "The passage suggests that renewable energy adoption does not require significant infrastructure investments.",
+      "options": ["True", "False"]
+    },
+    {
+      "id": "A4Q37",
+      "type": "matching_information",
+      "question": "Match the following challenges with the correct renewable energy source: 1) Intermittency issues, 2) Environmental concerns, 3) Technological complexity.",
+      "options": ["1) Solar power", "2) Wind energy", "3) Hydropower"]
+    },
+    {
+      "id": "A4Q38",
+      "type": "diagram_completion",
+      "question": "Complete the diagram on the advantages of hydropower with the correct information.",
+      "options": ["Renewable", "Reliable", "Low greenhouse gas emissions", "Scalable"]
+    },
+    {
+      "id": "A4Q39",
+      "type": "short_answer",
+      "question": "What are two economic benefits of wind energy discussed in the passage?"
+    },
+    {
+      "id": "A4Q40",
+      "type": "multiple_choice",
+      "question": "Which renewable energy source is most dependent on natural weather patterns?",
+      "options": ["Wind energy", "Solar power", "Geothermal energy", "Biomass"]
+    }
           ]
         }
       ],
@@ -540,7 +2004,43 @@
             {
               "title": "Traveling on a Budget",
               "content": "Traveling doesn't have to be expensive. This passage offers advice on how to travel affordably, from finding cheap flights to budget-friendly accommodations and activities."
-            }
+            },
+            {
+      "title": "Digital Privacy in the Modern Age",
+      "content": "With the proliferation of digital devices and online services, maintaining privacy has become increasingly challenging. This passage explores the importance of digital privacy, common threats, and tips for safeguarding personal information."
+    },
+    {
+      "title": "The Evolution of Artificial Intelligence",
+      "content": "Artificial Intelligence (AI) has revolutionized various industries, from healthcare to finance. This passage traces the development of AI, its current applications, and future implications for society."
+    },
+    {
+      "title": "Healthy Sleep Habits for Better Productivity",
+      "content": "Quality sleep is essential for overall well-being and productivity. This passage discusses the importance of sleep, common sleep disorders, and tips for establishing healthy sleep habits."
+    },
+    {
+      "title": "Innovations in Sustainable Agriculture",
+      "content": "Sustainable agriculture practices are crucial for ensuring food security and environmental conservation. This passage highlights innovative methods, such as vertical farming and precision agriculture, that promote sustainable food production."
+    },
+    {
+      "title": "The Future of Space Exploration",
+      "content": "Humanity's exploration of space has led to groundbreaking discoveries and technological advancements. This passage examines current space missions, future exploration plans, and the potential benefits of space exploration for humanity."
+    },
+    {
+      "title": "Effective Time Management Strategies",
+      "content": "Time management is key to achieving personal and professional goals. This passage offers practical strategies for prioritizing tasks, minimizing distractions, and optimizing productivity."
+    },
+    {
+      "title": "Understanding Climate Change Science",
+      "content": "Climate change is one of the most pressing global challenges of our time. This passage explains the science behind climate change, its causes, impacts on ecosystems, and efforts to mitigate its effects."
+    },
+    {
+      "title": "The Impact of Social Media on Society",
+      "content": "Social media platforms have transformed how people communicate and interact globally. This passage explores the positive and negative impacts of social media on society, mental health, and relationships."
+    },
+    {
+      "title": "Career Development in the Digital Age",
+      "content": "Advancements in technology are reshaping the job market and career paths. This passage discusses the importance of digital skills, remote work opportunities, and continuous learning for career development in the digital age."
+    }
           ],
           "questions": [
             {

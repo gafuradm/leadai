@@ -48,6 +48,13 @@ const testOptions = [
     des: "Develop your speaking abilities for IELTS",
     img: "/voc.png",
     value: 'speaking'
+  },
+  {
+    id: 6,
+    title: "University Selection",
+    des: "Choose your dream university",
+    img: "/unive.png",
+    value: 'selection'
   }
 ];
 
@@ -56,14 +63,14 @@ const modeOptions = [
     id: 1,
     title: "Timed Mode",
     des: "Take the test with time constraints, just like the real IELTS",
-    img: "/time3.png",
+    img: "/clock.png",
     value: true
   },
   {
     id: 2,
     title: "Untimed Mode",
     des: "Practice at your own pace without time pressure",
-    img: "/lite.jpeg",
+    img: "/time3.png",
     value: false
   }
 ];
@@ -97,9 +104,15 @@ const Page = () => {
     ReactGA.initialize("G-TBSYZ03L8M");
     
     ReactGA.send({ hitType: "pageview", page: "/ielts" });
+    
   }, []);
 
   const handleTestSelection = (test, type = null) => {
+    if (test === 'selection') {
+    router.push('/univer');
+    return;
+  }
+
     setSelectedTest(test);
     setTestType(type);
     setTimedMode(null);
@@ -190,7 +203,7 @@ const Page = () => {
   if (!selectedTest) {
     return (
       <section className="pt-20 pb-12" style={{ backgroundColor: 'white' }}>
-        <h2 className="text-3xl text-black font-bold text-center mb-8">Choose your IELTS test</h2>
+        <h2 className="text-3xl text-black font-bold text-center mb-8">Your Dashboard</h2>
         {renderCards(testOptions, handleTestSelection)}
       </section>
     );
