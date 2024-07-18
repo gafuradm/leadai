@@ -81,45 +81,40 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    if (testType === 'academic') {
-      const graphs = ieltsData.sections.writing.graphs.filter(g => g.type === 'bar' || g.type === 'line');
-      if (graphs.length > 0) {
+    const selectRandomTasks = () => {
+      if (testType === 'academic') {
+        // Выбираем случайный график для Task 1
+        const graphs = ieltsData.sections.writing.graphs.filter(g => g.type === 'bar' || g.type === 'line');
         const randomGraph = graphs[Math.floor(Math.random() * graphs.length)];
         setTask1(randomGraph);
-      }
-    } else {
-      const letters = ieltsData.sections.writing.letters;
-      if (letters && letters.length > 0) {
+
+        // Выбираем связанную тему эссе для Task 2
+        const relatedEssays = ieltsData.sections.writing.essay_topics.filter(
+          t => t.type === 'Academic' && t.title.toLowerCase().includes(randomGraph.title.toLowerCase().split(' ')[0])
+        );
+        const randomEssay = relatedEssays.length > 0 
+          ? relatedEssays[Math.floor(Math.random() * relatedEssays.length)]
+          : ieltsData.sections.writing.essay_topics.filter(t => t.type === 'Academic')[Math.floor(Math.random() * ieltsData.sections.writing.essay_topics.filter(t => t.type === 'Academic').length)];
+        setTask2(randomEssay);
+      } else {
+        // Выбираем случайное письмо для Task 1
+        const letters = ieltsData.sections.writing.letters;
         const randomLetter = letters[Math.floor(Math.random() * letters.length)];
         setTask1(randomLetter);
-      } else {
-        setTask1({ description: "Write a letter. The details for this task are missing." });
+
+        // Выбираем связанную тему эссе для Task 2
+        const relatedEssays = ieltsData.sections.writing.essay_topics.filter(
+          t => t.type === 'General Training' && t.title.toLowerCase().includes(randomLetter.description.toLowerCase().split(' ')[0])
+        );
+        const randomEssay = relatedEssays.length > 0 
+          ? relatedEssays[Math.floor(Math.random() * relatedEssays.length)]
+          : ieltsData.sections.writing.essay_topics.filter(t => t.type === 'General Training')[Math.floor(Math.random() * ieltsData.sections.writing.essay_topics.filter(t => t.type === 'General Training').length)];
+        setTask2(randomEssay);
       }
-    }
+    };
 
-    const essays = ieltsData.sections.writing.essay_topics.filter(t => t.type === (testType === 'academic' ? 'Academic' : 'General Training'));
-    if (essays.length > 0) {
-      const randomEssay = essays[Math.floor(Math.random() * essays.length)];
-      setTask2(randomEssay);
-    }
+    selectRandomTasks();
   }, [testType]);
-
-  useEffect(() => {
-    if (timedMode) {
-      const timer = setInterval(() => {
-        setTimeLeft((prevTime) => {
-          if (prevTime <= 1) {
-            clearInterval(timer);
-            handleSubmit();
-            return 0;
-          }
-          return prevTime - 1;
-        });
-      }, 1000);
-
-      return () => clearInterval(timer);
-    }
-  }, [timedMode]);
 
   const handleAnswerChange = (taskIndex, answer) => {
     const newAnswers = [...answers];
@@ -170,7 +165,14 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
             </>
           )}
           {testType === 'general' && task1 && (
-            <TaskDescription>{task1.description}</TaskDescription>
+            <>
+              <TaskDescription>{task1.description}</TaskDescription>
+              <ul>
+                {task1.bullet_points.map((point, index) => (
+                  <li key={index}>{point}</li>
+                ))}
+              </ul>
+            </>
           )}
           <TextArea
             value={answers[0]}
@@ -194,10 +196,11 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
             <Button onClick={handlePreviousPage}>Previous</Button>
             <Button onClick={handleSubmit}>Submit</Button>
           </ButtonContainer>
-          </Section>
+        </Section>
       )}
     </Container>
   );
+
 };
 
 export default WritingSection;

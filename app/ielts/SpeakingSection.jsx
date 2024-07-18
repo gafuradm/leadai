@@ -86,28 +86,50 @@ const SpeakingSection = ({ onNext, timedMode }) => {
 
   const parts = [
     {
-      name: "Part 1: Interview",
-      questions: [
-        "Can you tell me about your hometown?",
-        "What do you like to do in your free time?",
-        "Do you work or are you a student?",
-        "What's your favorite season and why?",
-      ]
-    },
-    {
-      name: "Part 2: Cue Card",
-      questions: [
-        "Describe a book you have recently read. You should say:\n- what the book was\n- what it was about\n- why you decided to read it\n- and explain whether you would recommend it to other people.",
-      ]
-    },
-    {
-      name: "Part 3: Discussion",
-      questions: [
-        "Do you think reading habits have changed in recent years?",
-        "How do you think technology will affect books in the future?",
-        "What kinds of books are most popular in your country?",
-      ]
-    }
+    "name": "Part 1: Interview",
+    "questions": [
+      "What are some popular attractions in your hometown?",
+      "Describe a traditional dish from your hometown.",
+      "What do you think makes your hometown unique?",
+      "How do people in your hometown typically spend weekends?",
+      "Is there a special event or festival celebrated in your hometown?",
+      "Can you tell me about your hometown?",
+      "What do you like to do in your free time?",
+      "Do you work or are you a student?",
+      "What's your favorite season and why?",
+      "How has your hometown changed over the years?",
+    ]
+  },
+  {
+    "name": "Part 2: Cue Card",
+    "questions": [
+      "Talk about a book you read in your childhood that you still remember.",
+      "Describe a book you read for academic purposes. What was it about?",
+      "Discuss a book that changed your perspective on a particular topic.",
+      "Describe a book you would like to read in the future and why.",
+      "Talk about a book that you couldn't put down once you started reading it.",
+      "Describe a book you have recently read. You should say:\n- what the book was\n- what it was about\n- why you decided to read it\n- and explain whether you would recommend it to other people.",
+      "Talk about a movie based on a book you have read.",
+      "Describe a character from a book you like. Why do you like this character?",
+      "Discuss a book that made you think deeply about an issue.",
+      "Describe a book that had a strong emotional impact on you.",
+    ]
+  },
+  {
+    "name": "Part 3: Discussion",
+    "questions": [
+      "Talk about the role of libraries in promoting reading habits.",
+      "Should books be adapted into movies or TV series? Why or why not?",
+      "Discuss the influence of bestseller lists on readers' choices.",
+      "What impact does reading have on one's vocabulary and language skills?",
+      "Compare reading physical books versus e-books. Which do you prefer and why?",
+      "Do you think reading habits have changed in recent years?",
+      "How do you think technology will affect books in the future?",
+      "What kinds of books are most popular in your country?",
+      "Discuss the importance of reading for pleasure.",
+      "How can schools encourage children to read more?",
+    ]
+  }
   ];
 
   useEffect(() => {

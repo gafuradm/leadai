@@ -2285,109 +2285,499 @@
       ]
     },
     "writing": {
-      "essay_topics": [
-        {
-          "id": 1,
-          "type": "General Training",
-          "title": "Discuss the advantages and disadvantages of urbanization."
-        },
-        {
-          "id": 2,
-          "type": "General Training",
-          "title": "Describe a memorable event in your life and explain why it was important to you."
-        },
-        {
-          "id": 3,
-          "type": "Academic",
-          "title": "Discuss the impact of climate change on marine ecosystems."
-        },
-        {
-          "id": 4,
-          "type": "Academic",
-          "title": "Compare and contrast different approaches to urban planning in major cities."
-        }
-      ],
-      "graphs": [
-        {
-          "id": 1,
-          "type": "bar",
-          "title": "Population Growth in Major Cities (2010-2020)",
-          "data": {
-            "labels": ["Tokyo", "Istanbul", "London", "Moscow"],
-            "datasets": [
-              {
-                "label": "Population growth (in thousands)",
-                "data": [822.724, 2605, 1301, 1077],
-                "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"]
-              }
-            ]
-          }
-        },
-        {
-          "id": 2,
-          "type": "line",
-          "title": "Annual Sales Data (2015-2020)",
-          "data": {
-            "labels": ["2015", "2016", "2017", "2018", "2019", "2020"],
-            "datasets": [
-              {
-                "label": "Sales (in thousands)",
-                "data": [30, 40, 35, 50, 60, 70],
-                "borderColor": "#36A2EB",
-                "fill": false
-              }
-            ]
-          }
-        },
-        {
-          "id": 3,
-          "type": "report",
-          "title": "Production growth of electric vehicles in various countries"
-        }
-      ],
-      "letters": [
-        {
-          "id": 1,
-          "description": "You are planning to visit a foreign country. Write a letter to a friend who lives there. In your letter:",
-          "bullet_points": [
-            "explain why you want to visit this country",
-            "ask for advice about where to go",
-            "suggest an activity you could do together"
+    "essay_topics": [
+      {
+        "id": 1,
+        "type": "General Training",
+        "title": "Discuss the advantages and disadvantages of urbanization."
+      },
+      {
+        "id": 2,
+        "type": "General Training",
+        "title": "Describe a memorable event in your life and explain why it was important to you."
+      },
+      {
+        "id": 3,
+        "type": "Academic",
+        "title": "Discuss the impact of climate change on marine ecosystems."
+      },
+      {
+        "id": 4,
+        "type": "Academic",
+        "title": "Compare and contrast different approaches to urban planning in major cities."
+      },
+      {
+        "id": 5,
+        "type": "General Training",
+        "title": "Discuss the effects of technology on modern education."
+      },
+      {
+        "id": 6,
+        "type": "General Training",
+        "title": "Describe the advantages and disadvantages of working from home."
+      },
+      {
+        "id": 7,
+        "type": "Academic",
+        "title": "Discuss the role of renewable energy sources in reducing carbon emissions."
+      },
+      {
+        "id": 8,
+        "type": "Academic",
+        "title": "Examine the impact of globalization on cultural diversity."
+      },
+      {
+        "id": 9,
+        "type": "General Training",
+        "title": "Discuss the benefits and drawbacks of living in a big city."
+      },
+      {
+        "id": 10,
+        "type": "General Training",
+        "title": "Describe a recent trend in leisure activities and its impact on society."
+      },
+      {
+        "id": 11,
+        "type": "Academic",
+        "title": "Analyze the factors contributing to the rise of income inequality in developed countries."
+      },
+      {
+        "id": 12,
+        "type": "Academic",
+        "title": "Discuss the ethical implications of genetic engineering in agriculture."
+      },
+      {
+        "id": 13,
+        "type": "General Training",
+        "title": "Discuss the pros and cons of using social media platforms."
+      },
+      {
+        "id": 14,
+        "type": "General Training",
+        "title": "Describe the impact of artificial intelligence on everyday life."
+      },
+      {
+        "id": 15,
+        "type": "Academic",
+        "title": "Compare and contrast the healthcare systems of two different countries."
+      },
+      {
+        "id": 16,
+        "type": "Academic",
+        "title": "Examine the economic consequences of climate change on developing nations."
+      }
+    ],
+    "graphs": [
+      {
+        "id": 1,
+        "type": "bar",
+        "title": "Population Growth in Major Cities (2010-2020)",
+        "data": {
+          "labels": ["Tokyo", "Istanbul", "London", "Moscow"],
+          "datasets": [
+            {
+              "label": "Population growth (in thousands)",
+              "data": [822.724, 2605, 1301, 1077],
+              "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"]
+            }
           ]
-        },
-        {
-          "id": 2,
-          "description": "You recently bought an item from an online store, but it arrived damaged. Write a letter to the customer service department. In your letter:",
-          "bullet_points": [
-            "describe the item you bought and when you ordered it",
-            "explain what was wrong with it when it arrived",
-            "say what you would like the company to do about it"
-          ]
-        },
-        {
-          "id": 3,
-          "description": "You are going to take a short course at a college in an English-speaking country. Write a letter to the accommodation officer. In your letter:",
-          "bullet_points": [
-            "explain when you will arrive and how long you plan to stay",
-            "describe the type of accommodation you would prefer",
-            "ask about the cost of this accommodation"
+        }
+      },
+      {
+        "id": 2,
+        "type": "line",
+        "title": "Annual Sales Data (2015-2020)",
+        "data": {
+          "labels": ["2015", "2016", "2017", "2018", "2019", "2020"],
+          "datasets": [
+            {
+              "label": "Sales (in thousands)",
+              "data": [30, 40, 35, 50, 60, 70],
+              "borderColor": "#36A2EB",
+              "fill": false
+            }
           ]
         }
-      ]
-    },
+      },
+      {
+        "id": 3,
+        "type": "report",
+        "title": "Production growth of electric vehicles in various countries"
+      },
+      {
+        "id": 4,
+        "type": "pie",
+        "title": "Distribution of Renewable Energy Sources",
+        "data": {
+          "labels": ["Solar", "Wind", "Hydro", "Biomass"],
+          "datasets": [
+            {
+              "data": [30, 25, 20, 25],
+              "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"]
+            }
+          ]
+        }
+      },
+      {
+        "id": 5,
+        "type": "scatter",
+        "title": "Correlation between Education Level and Income",
+        "data": {
+          "datasets": [
+            {
+              "label": "Data points",
+              "data": [
+                { "x": 4, "y": 65000 },
+                { "x": 6, "y": 75000 },
+                { "x": 8, "y": 80000 },
+                { "x": 10, "y": 85000 },
+                { "x": 12, "y": 90000 }
+              ],
+              "backgroundColor": "#FF6384"
+            }
+          ]
+        }
+      },
+      {
+        "id": 6,
+        "type": "bar",
+        "title": "Internet Usage Across Different Age Groups",
+        "data": {
+          "labels": ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"],
+          "datasets": [
+            {
+              "label": "Percentage (%)",
+              "data": [95, 88, 75, 60, 45, 30],
+              "backgroundColor": ["#FFCE56", "#4BC0C0", "#FF6384", "#36A2EB", "#9966FF", "#FF9F40"]
+            }
+          ]
+        }
+      },
+      {
+        "id": 7,
+        "type": "line",
+        "title": "Annual GDP Growth (2015-2020)",
+        "data": {
+          "labels": ["2015", "2016", "2017", "2018", "2019", "2020"],
+          "datasets": [
+            {
+              "label": "GDP Growth (%)",
+              "data": [2.5, 2.7, 3.0, 2.8, 2.5, 2.3],
+              "borderColor": "#36A2EB",
+              "fill": false
+            }
+          ]
+        }
+      },
+      {
+        "id": 8,
+        "type": "radar",
+        "title": "Comparison of Environmental Sustainability Measures",
+        "data": {
+          "labels": ["Carbon footprint", "Water usage", "Recycling rate", "Renewable energy use", "Biodiversity index"],
+          "datasets": [
+            {
+              "label": "Country A",
+              "data": [70, 80, 60, 40, 50],
+              "backgroundColor": "rgba(255, 99, 132, 0.2)",
+              "borderColor": "rgba(255, 99, 132, 1)",
+              "pointBackgroundColor": "rgba(255, 99, 132, 1)"
+            },
+            {
+              "label": "Country B",
+              "data": [50, 70, 50, 60, 70],
+              "backgroundColor": "rgba(54, 162, 235, 0.2)",
+              "borderColor": "rgba(54, 162, 235, 1)",
+              "pointBackgroundColor": "rgba(54, 162, 235, 1)"
+            }
+          ]
+        }
+      },
+      {
+        "id": 9,
+        "type": "doughnut",
+        "title": "Distribution of Food Consumption (2020)",
+        "data": {
+          "labels": ["Fruits", "Vegetables", "Meat", "Dairy", "Grains"],
+          "datasets": [
+            {
+              "data": [25, 20, 30, 15, 10],
+              "backgroundColor": ["#FFCE56", "#36A2EB", "#FF6384", "#4BC0C0", "#9966FF"]
+            }
+          ]
+        }
+      },
+      {
+        "id": 10,
+        "type": "bar",
+        "title": "Unemployment Rates Across Different Regions",
+        "data": {
+          "labels": ["North", "South", "East", "West"],
+          "datasets": [
+            {
+              "label": "Unemployment rate (%)",
+              "data": [8, 6, 7, 5],
+              "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"]
+            }
+          ]
+        }
+      },
+      {
+        "id": 11,
+        "type": "line",
+        "title": "Annual Carbon Emissions (2015-2020)",
+        "data": {
+          "labels": ["2015", "2016", "2017", "2018", "2019", "2020"],
+          "datasets": [
+            {
+              "label": "Carbon emissions (in million tonnes)",
+              "data": [500, 480, 460, 440, 420, 400],
+              "borderColor": "#FFCE56",
+              "fill": false
+            }
+          ]
+        }
+      },
+      {
+        "id": 12,
+        "type": "report",
+        "title": "Impact of Artificial Intelligence on Job Market"
+      }
+    ],
+    "letters": [
+      {
+        "id": 1,
+        "description": "You are planning to visit a foreign country. Write a letter to a friend who lives there. In your letter:",
+        "bullet_points": [
+          "explain why you want to visit this country",
+          "ask for advice about where to go",
+          "suggest an activity you could do together"
+        ]
+      },
+      {
+        "id": 2,
+        "description": "You recently bought an item from an online store, but it arrived damaged. Write a letter to the customer service department. In your letter:",
+        "bullet_points": [
+          "describe the item you bought and when you ordered it",
+          "explain what was wrong with it when it arrived",
+          "say what you would like the company to do about it"
+        ]
+      },
+      {
+        "id": 3,
+        "description": "You are going to take a short course at a college in an English-speaking country. Write a letter to the accommodation officer. In your letter:",
+        "bullet_points": [
+          "explain when you will arrive and how long you plan to stay",
+          "describe the type of accommodation you would prefer",
+          "ask about the cost of this accommodation"
+        ]
+      },
+      {
+        "id": 4,
+        "description": "You are interested in applying for a scholarship to study abroad. Write a letter to the scholarship provider. In your letter:",
+        "bullet_points": [
+          "explain why you are interested in the scholarship",
+          "describe your academic achievements and career goals",
+          "ask about the application process and deadlines"
+        ]
+      },
+      {
+        "id": 5,
+        "description": "You have been invited to a friend's wedding in another city. Write a letter to your friend. In your letter:",
+        "bullet_points": [
+          "congratulate your friend on their wedding",
+          "explain why you may or may not be able to attend",
+          "ask for details about the wedding ceremony and reception"
+        ]
+      },
+      {
+        "id": 6,
+        "description": "You are planning a surprise birthday party for your friend. Write a letter to another friend inviting them to the party. In your letter:",
+        "bullet_points": [
+          "explain why you are organizing the party",
+          "give details about the date, time, and location of the party",
+          "ask your friend to bring something specific to the party"
+        ]
+      },
+      {
+        "id": 7,
+        "description": "You have recently moved to a new apartment. Write a letter to your landlord. In your letter:",
+        "bullet_points": [
+          "introduce yourself and mention when you moved in",
+          "describe any issues or repairs needed in the apartment",
+          "ask about the process for paying rent and utility bills"
+        ]
+      },
+      {
+        "id": 8,
+        "description": "You are organizing a charity event to raise funds for a local cause. Write a letter to a potential sponsor. In your letter:",
+        "bullet_points": [
+          "introduce yourself and explain the purpose of the event",
+          "describe how the sponsor's contribution will make a difference",
+          "ask for their support and suggest a meeting to discuss further details"
+        ]
+      },
+      {
+        "id": 9,
+        "description": "You have been offered a job in another city and need to find accommodation. Write a letter to a real estate agent. In your letter:",
+        "bullet_points": [
+          "explain your situation and when you will be moving",
+          "describe the type of accommodation you are looking for",
+          "ask about the availability of suitable properties and rental costs"
+        ]
+      },
+      {
+        "id": 10,
+        "description": "You recently had a bad experience at a restaurant and want to complain. Write a letter to the restaurant manager. In your letter:",
+        "bullet_points": [
+          "describe your experience and what went wrong",
+          "explain how this affected your dining experience",
+          "suggest how the restaurant can improve its service"
+        ]
+      },
+      {
+        "id": 11,
+        "description": "You are planning a road trip with friends and need to rent a car. Write a letter to a car rental company. In your letter:",
+        "bullet_points": [
+          "explain your requirements for the rental car",
+          "ask about the availability of vehicles and rental rates",
+          "request information about insurance coverage and additional charges"
+        ]
+      },
+      {
+        "id": 12,
+        "description": "You are considering joining a local sports club and want more information. Write a letter to the club manager. In your letter:",
+        "bullet_points": [
+          "introduce yourself and explain your interest in joining",
+          "ask about membership options, fees, and facilities",
+          "request details about the schedule of activities and upcoming events"
+        ]
+      }
+    ]
+  },
     "speaking": {
-      "questions": [
-        {
-          "id": 1,
-          "question": "Describe a memorable trip you have taken.",
-          "dialogue": "Candidate: One of the most memorable trips I have taken was to the mountains. The scenery was breathtaking, and I had the opportunity to hike and explore nature. It was a refreshing escape from the hustle and bustle of city life. Examiner: What did you enjoy the most about the trip? Candidate: I enjoyed the tranquility and the chance to disconnect from technology. The fresh air and beautiful landscapes made it a truly unforgettable experience."
-        },
-        {
-          "id": 2,
-          "question": "What is your favorite book and why?",
-          "dialogue": "Candidate: My favorite book is 'To Kill a Mockingbird' by Harper Lee. It's a powerful story about justice and morality, and it has deeply influenced my perspective on social issues. Examiner: Can you tell me about a particular part of the book that stood out to you? Candidate: One part that really stood out was the trial scene, where Atticus Finch defends an innocent man. It highlights the deep-seated prejudices in society and the importance of standing up for what is right."
-        }
-      ]
-    }
+    "questions": [
+      {
+        "id": 1,
+        "question": "Describe a memorable trip you have taken.",
+        "dialogue": "Candidate: One of the most memorable trips I have taken was to the mountains. The scenery was breathtaking, and I had the opportunity to hike and explore nature. It was a refreshing escape from the hustle and bustle of city life. Examiner: What did you enjoy the most about the trip? Candidate: I enjoyed the tranquility and the chance to disconnect from technology. The fresh air and beautiful landscapes made it a truly unforgettable experience."
+      },
+      {
+        "id": 2,
+        "question": "What is your favorite book and why?",
+        "dialogue": "Candidate: My favorite book is 'To Kill a Mockingbird' by Harper Lee. It's a powerful story about justice and morality, and it has deeply influenced my perspective on social issues. Examiner: Can you tell me about a particular part of the book that stood out to you? Candidate: One part that really stood out was the trial scene, where Atticus Finch defends an innocent man. It highlights the deep-seated prejudices in society and the importance of standing up for what is right."
+      },
+      {
+        "id": 3,
+        "question": "Describe a skill you would like to learn.",
+        "dialogue": "Candidate: One skill I would like to learn is photography. I've always been fascinated by capturing moments and telling stories through images. Examiner: Why do you think learning photography is important? Candidate: Learning photography would allow me to express my creativity and perspective visually. It's a form of art that can evoke emotions and convey messages in a powerful way."
+      },
+      {
+        "id": 4,
+        "question": "Talk about an important historical event in your country.",
+        "dialogue": "Candidate: One of the most important historical events in my country was the independence movement. It marked the beginning of our journey towards self-governance and freedom from colonial rule. Examiner: How did this event impact your country's identity? Candidate: The independence movement instilled a sense of national pride and unity among our people. It shaped our cultural heritage and continues to inspire generations."
+      },
+      {
+        "id": 5,
+        "question": "Discuss a recent technological advancement that interests you.",
+        "dialogue": "Candidate: A recent technological advancement that interests me is artificial intelligence. Its potential to revolutionize various industries, from healthcare to transportation, is fascinating. Examiner: How do you think AI will impact society in the future? Candidate: AI has the potential to improve efficiency, create new job opportunities, and enhance decision-making processes. However, ethical considerations about its use and implications are crucial."
+      },
+      {
+        "id": 6,
+        "question": "Describe a time when you had to make an important decision.",
+        "dialogue": "Candidate: One of the important decisions I had to make was choosing my career path. It required careful consideration of my interests, skills, and future goals. Examiner: What factors influenced your decision the most? Candidate: The opportunity to make a meaningful impact in my chosen field and pursue my passion were key factors. It was a defining moment that shaped my professional journey."
+      },
+      {
+        "id": 7,
+        "question": "Talk about a popular festival or celebration in your country.",
+        "dialogue": "Candidate: One of the most popular festivals in my country is Diwali, also known as the Festival of Lights. It symbolizes the victory of light over darkness and is celebrated with fireworks, sweets, and decorations. Examiner: What do people typically do during this festival? Candidate: During Diwali, families gather to exchange gifts, light oil lamps called diyas, and enjoy festive meals together. It's a joyous occasion that brings communities closer."
+      },
+      {
+        "id": 8,
+        "question": "Discuss the importance of learning a foreign language.",
+        "dialogue": "Candidate: Learning a foreign language is important because it opens doors to new cultures, enhances communication skills, and fosters mutual understanding. Examiner: How has learning a foreign language benefited you personally? Candidate: It has allowed me to connect with people from different backgrounds and gain insights into their perspectives. It's a valuable skill that promotes cultural exchange and global cooperation."
+      },
+      {
+        "id": 9,
+        "question": "Describe a hobby you enjoy and why it is important to you.",
+        "dialogue": "Candidate: One of my hobbies that I enjoy is playing musical instruments, particularly the guitar. It's a creative outlet that helps me relax and express my emotions through music. Examiner: How has playing the guitar impacted your life? Candidate: Playing the guitar has taught me patience, discipline, and perseverance. It's a rewarding hobby that brings joy to my life and allows me to connect with others through music."
+      },
+      {
+        "id": 10,
+        "question": "Talk about an environmental issue that concerns you.",
+        "dialogue": "Candidate: An environmental issue that concerns me is deforestation. It poses a threat to biodiversity, contributes to climate change, and disrupts ecosystems. Examiner: What measures do you think should be taken to address deforestation? Candidate: Conservation efforts, sustainable forestry practices, and raising awareness about the importance of preserving forests are crucial. It requires collective action and responsible stewardship of our natural resources."
+      },
+      {
+        "id": 11,
+        "question": "Discuss the impact of social media on society.",
+        "dialogue": "Candidate: Social media has profoundly impacted society by connecting people globally, facilitating information sharing, and influencing public discourse. Examiner: What are some positive and negative effects of social media? Candidate: While it enhances communication and enables activism, social media can also contribute to misinformation, cyberbullying, and privacy concerns. Balancing its benefits and challenges is essential for responsible usage."
+      },
+      {
+        "id": 12,
+        "question": "Describe a recent trend in your country.",
+        "dialogue": "Candidate: A recent trend in my country is the growing interest in sustainable living and eco-friendly practices. More people are adopting renewable energy sources, reducing waste, and supporting environmentally responsible businesses. Examiner: How is this trend influencing your community? Candidate: It's fostering a culture of environmental awareness and encouraging sustainable behaviors among individuals and businesses. It reflects a growing commitment to preserving our planet for future generations."
+      },
+      {
+        "id": 13,
+        "question": "Talk about a place you would like to visit in the future.",
+        "dialogue": "Candidate: One place I would like to visit in the future is Machu Picchu in Peru. It's a remarkable archaeological site nestled in the Andes Mountains, known for its ancient Incan ruins and breathtaking scenery. Examiner: What interests you the most about Machu Picchu? Candidate: I'm fascinated by its rich history, architectural marvels, and the opportunity to immerse myself in the beauty of the Peruvian landscape."
+      },
+      {
+        "id": 14,
+        "question": "Discuss the importance of art in society.",
+        "dialogue": "Candidate: Art plays a crucial role in society by reflecting cultural values, sparking creativity, and fostering emotional expression. Examiner: How does art enrich people's lives? Candidate: It inspires individuals, stimulates critical thinking, and promotes empathy and understanding. Art transcends boundaries and connects people across diverse backgrounds, contributing to a more vibrant and inclusive society."
+      },
+      {
+        "id": 15,
+        "question": "Describe a goal you have achieved and how you accomplished it.",
+        "dialogue": "Candidate: One goal I have achieved is completing a marathon. It required months of training, dedication, and perseverance to reach the finish line. Examiner: What motivated you to pursue this goal? Candidate: The challenge of pushing my limits, improving my fitness, and experiencing the thrill of participating in a major sporting event motivated me. It was a rewarding achievement that taught me the value of determination and resilience."
+      },
+      {
+        "id": 16,
+        "question": "Talk about a technological device you find useful.",
+        "dialogue": "Candidate: A technological device I find useful is my smartphone. It serves multiple functions, from communication and navigation to entertainment and productivity. Examiner: How has your smartphone impacted your daily life? Candidate: It has enhanced efficiency, connectivity, and access to information. However, managing screen time and digital distractions are important considerations for maintaining a healthy balance."
+      },
+      {
+        "id": 17,
+        "question": "Discuss the role of education in personal development.",
+        "dialogue": "Candidate: Education plays a pivotal role in personal development by equipping individuals with knowledge, skills, and opportunities for growth. Examiner: How has education influenced your personal development? Candidate: It has expanded my horizons, fostered critical thinking, and empowered me to pursue my aspirations. Lifelong learning is key to adapting to change and achieving personal fulfillment."
+      },
+      {
+        "id": 18,
+        "question": "Describe a cultural tradition in your country.",
+        "dialogue": "Candidate: One cultural tradition in my country is celebrating Lunar New Year. It's a time-honored festival marked by family reunions, festive decorations, and traditional meals. Examiner: What customs or rituals are associated with Lunar New Year? Candidate: People exchange red envelopes for good luck, clean their homes to ward off bad fortune, and enjoy lion dances and fireworks displays. It's a joyous occasion that symbolizes renewal and prosperity."
+      },
+      {
+        "id": 19,
+        "question": "Talk about the impact of globalization on your country.",
+        "dialogue": "Candidate: Globalization has had a profound impact on my country by promoting economic growth, cultural exchange, and technological advancements. Examiner: How has globalization influenced your community? Candidate: It has increased international trade opportunities, diversified cultural influences, and facilitated knowledge sharing across borders. However, it also poses challenges such as income inequality and cultural homogenization."
+      },
+      {
+        "id": 20,
+        "question": "Discuss the benefits of traveling abroad.",
+        "dialogue": "Candidate: Traveling abroad offers numerous benefits, such as broadening perspectives, fostering cultural awareness, and creating memorable experiences. Examiner: How has traveling abroad enriched your life? Candidate: It has exposed me to diverse cultures, languages, and traditions, promoting empathy and tolerance. Exploring new destinations has expanded my worldview and ignited a passion for global exploration."
+      },
+      {
+        "id": 21,
+        "question": "Describe an invention that has changed people's lives.",
+        "dialogue": "Candidate: One invention that has changed people's lives is the internet. It revolutionized communication, information access, and business operations globally. Examiner: How has the internet impacted your daily life? Candidate: It has facilitated instant communication, online learning opportunities, and e-commerce transactions. However, managing digital privacy and cybersecurity are critical considerations in today's interconnected world."
+      },
+      {
+        "id": 22,
+        "question": "Talk about a recent trend in technology.",
+        "dialogue": "Candidate: A recent trend in technology is the rise of wearable devices, such as smartwatches and fitness trackers. They offer functionalities like monitoring health metrics, receiving notifications, and accessing apps on the go. Examiner: How do wearable devices benefit users? Candidate: Wearable devices promote health awareness, enhance convenience, and integrate seamlessly into daily routines. They empower individuals to track fitness goals and prioritize well-being."
+      },
+      {
+        "id": 23,
+        "question": "Discuss the importance of sports in society.",
+        "dialogue": "Candidate: Sports play a vital role in society by promoting physical fitness, teamwork, and social cohesion. Examiner: How do sports contribute to personal development? Candidate: Engaging in sports fosters discipline, resilience, and leadership skills. It cultivates a sense of community spirit and teaches valuable lessons about perseverance and sportsmanship."
+      },
+      {
+        "id": 24,
+        "question": "Describe a recent trend in fashion.",
+        "dialogue": "Candidate: A recent trend in fashion is sustainable clothing. More people are choosing eco-friendly fabrics, supporting ethical fashion brands, and embracing minimalist wardrobes. Examiner: How is this trend influencing the fashion industry? Candidate: It's driving innovations in eco-conscious designs, promoting transparency in supply chains, and encouraging consumers to make mindful fashion choices. Sustainability is becoming integral to the future of fashion."
+      }
+    ]
+  }
   }
 }
