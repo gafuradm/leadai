@@ -3,6 +3,9 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import PulseLoader from 'react-spinners/PulseLoader';
 import styled from 'styled-components';
 import { fetchResults, fetchExampleEssay, fetchListeningExamples, fetchSpeakingExamples, fetchReadingExamples, fetchWritingExamples, fetchUniversityRecommendations } from './chatgpt';
+import { ref, runTransaction, onValue } from "firebase/database";
+import { db } from './firebase';
+import './firebase';
 
 const Container = styled.div`
   padding: 20px;
@@ -158,6 +161,18 @@ const Results = ({ answers, testType }) => {
   const [readingExamples, setReadingExamples] = useState(null);
   const [writingExamples, setWritingExamples] = useState(null);
   const [universityRecommendations, setUniversityRecommendations] = useState(null);
+  const [resultsLoadCount, setResultsLoadCount] = useState(0);
+
+  useEffect(() => {
+  const countRef = ref(db, 'resultsLoadCount');
+  
+  const unsubscribe = onValue(countRef, (snapshot) => {
+    const count = snapshot.val() || 0;
+    setResultsLoadCount(count);
+  });
+
+  return () => unsubscribe();
+}, []);
 
   useEffect(() => {
     const getResults = async () => {
@@ -213,6 +228,13 @@ const Results = ({ answers, testType }) => {
   
         const overallScore = validSections > 0 ? roundIELTSScore(totalScore / validSections) : 0;
         setResult({ ...newResults, overallScore });
+
+        await updateResultsLoadCount();
+
+      if (testType === 'full') {
+        const recommendations = await fetchUniversityRecommendations(overallScore);
+        setUniversityRecommendations(recommendations);
+      }
 
         if (testType === 'full') {
           const recommendations = await fetchUniversityRecommendations(overallScore);
@@ -274,6 +296,18 @@ const Results = ({ answers, testType }) => {
     if (decimalPart < 0.75) return Math.floor(score) + 0.5;
     return Math.ceil(score);
   };
+
+  const updateResultsLoadCount = async () => {
+  const countRef = ref(db, 'resultsLoadCount');
+  
+  try {
+    await runTransaction(countRef, (currentCount) => {
+      return (currentCount || 0) + 1;
+    });
+  } catch (error) {
+    console.error("Error updating results load count:", error);
+  }
+};
 
   const parseScore = (content) => {
     if (!content) return 0;
@@ -438,6 +472,7 @@ const Results = ({ answers, testType }) => {
       <Section>
         <h2 style={{ color: '#800120', textAlign: 'center' }}><b>Overall Score: {result.overallScore}/9</b></h2>
         {Object.keys(result).filter((section) => section !== 'overallScore').map(renderFeedback)}
+        <p style={{ textAlign: 'center' }}>Total results loaded: {resultsLoadCount}</p>
       </Section>
       {testType === 'full' && renderUniversityRecommendations()}
       <ButtonContainer>

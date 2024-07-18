@@ -18,7 +18,7 @@ const testOptions = [
     id: 1,
     title: "Full IELTS Test",
     des: "Complete all sections of the IELTS test",
-    img: "/rec.jpeg",
+    img: "/full.png",
     value: 'full'
   },
   {
@@ -32,21 +32,21 @@ const testOptions = [
     id: 3,
     title: "Reading Section",
     des: "Improve your reading comprehension for IELTS",
-    img: "/rea.jpeg",
+    img: "/books.png",
     value: 'reading'
   },
   {
     id: 4,
     title: "Writing Section",
     des: "Enhance your writing skills for IELTS",
-    img: "/wri.jpeg",
+    img: "/essa.png",
     value: 'writing'
   },
   {
     id: 5,
     title: "Speaking Section",
     des: "Develop your speaking abilities for IELTS",
-    img: "/spe.jpeg",
+    img: "/voc.png",
     value: 'speaking'
   }
 ];
@@ -56,7 +56,7 @@ const modeOptions = [
     id: 1,
     title: "Timed Mode",
     des: "Take the test with time constraints, just like the real IELTS",
-    img: "/hard.jpeg",
+    img: "/time3.png",
     value: true
   },
   {
@@ -73,14 +73,14 @@ const typeOptions = [
     id: 1,
     title: "Academic",
     des: "For those applying to higher education or professional registration",
-    img: "/academ.jpeg",
+    img: "/hats.png",
     value: 'academic'
   },
   {
     id: 2,
     title: "General Training",
     des: "For those migrating to Australia, Canada, and the UK, or applying for secondary education, training programmes and work experience",
-    img: "/general.jpeg",
+    img: "/brie.png",
     value: 'general'
   }
 ];
@@ -94,10 +94,8 @@ const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // Initialize Google Analytics
     ReactGA.initialize("G-TBSYZ03L8M");
     
-    // Track pageview
     ReactGA.send({ hitType: "pageview", page: "/ielts" });
   }, []);
 
@@ -106,7 +104,6 @@ const Page = () => {
     setTestType(type);
     setTimedMode(null);
 
-    // Track test selection event
     ReactGA.event({
       category: "Test Selection",
       action: "Selected Test",
@@ -122,7 +119,6 @@ const Page = () => {
       setCurrentSection(selectedTest);
     }
 
-    // Track mode selection event
     ReactGA.event({
       category: "Mode Selection",
       action: "Selected Mode",
@@ -144,7 +140,6 @@ const Page = () => {
       setCurrentSection('results');
     }
 
-    // Track section completion event
     ReactGA.event({
       category: "Section Completion",
       action: "Completed Section",
@@ -153,20 +148,27 @@ const Page = () => {
   };
 
   const renderCards = (options, handleClick) => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {options.map((option) => (
-        <div
-          key={option.id}
-          className="cursor-pointer transform hover:scale-105 transition-transform duration-300 bg-gray-800 p-6 rounded-lg shadow-lg"
-          onClick={() => handleClick(option.value)}
-        >
-          <Image src={option.img} alt={option.title} width={300} height={200} className="mb-4 w-full h-48 object-cover rounded" />
-          <h3 className="text-2xl font-semibold mb-2 text-black">{option.title}</h3>
-          <p className="text-black">{option.des}</p>
-        </div>
-      ))}
-    </div>
-  );
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {options.map((option) => (
+      <div
+        key={option.id}
+        className="cursor-pointer transform hover:scale-105 transition-transform duration-300 p-6 rounded-lg shadow-lg"
+        style={{
+                backgroundColor:
+                  options.id === 2 || options.id === 4
+                    ? "#000000"
+                    : "#810021",
+                height: "15em",
+              }}
+        onClick={() => handleClick(option.value)}
+      >
+        <Image src={option.img} alt={option.title} width={300} height={200} className="mb-4 w-20 h-20 object-cover rounded-lg mx-auto" />
+        <h3 className="text-2xl font-semibold mb-2 text-center text-white">{option.title}</h3>
+        <p className="text-sm text-center text-white">{option.des}</p>
+      </div>
+    ))}
+  </div>
+);
 
   const renderSection = () => {
     switch (currentSection) {
