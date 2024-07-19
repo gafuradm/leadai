@@ -6,20 +6,52 @@ export async function fetchResults(section, data, testType) {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const systemMessage = `You are an IELTS test evaluator. Provide very detailed feedback and a score out of 40 for the ${section} section.
+  const calculateScore = (section, correctAnswers) => {
+    const listeningScores = [
+      [39, 9], [37, 8.5], [35, 8], [32, 7.5], [30, 7], [26, 6.5], [23, 6],
+      [18, 5.5], [16, 5], [13, 4.5], [10, 4], [6, 3.5], [4, 3], [2, 2.5], [0, 2]
+    ];
+
+    const readingAcademicScores = [
+      [39, 9], [37, 8.5], [35, 8], [33, 7.5], [30, 7], [27, 6.5], [23, 6],
+      [19, 5.5], [15, 5], [13, 4.5], [10, 4], [8, 3.5], [6, 3], [3, 2.5], [0, 2]
+    ];
+
+    const readingGeneralScores = [
+      [40, 9], [39, 8.5], [38, 8], [36, 7.5], [34, 7], [32, 6.5], [30, 6],
+      [27, 5.5], [23, 5], [19, 4.5], [15, 4], [13, 3.5], [10, 3], [8, 2.5], [6, 2]
+    ];
+
+    let scores;
+    if (section === 'listening') {
+      scores = listeningScores;
+    } else if (section === 'reading') {
+      scores = testType === 'academic' ? readingAcademicScores : readingGeneralScores;
+    } else {
+      return null; // For writing and speaking, we'll rely on the AI's evaluation
+    }
+
+    for (let [threshold, score] of scores) {
+      if (correctAnswers >= threshold) {
+        return score;
+      }
+    }
+    return 0;
+  };
+
+  const systemMessage = `You are an IELTS test evaluator. Provide very detailed feedback for the ${section} section.
+     For listening and reading sections, count the number of correct answers out of 40.
+     For writing and speaking sections, provide a score out of 9 based on the IELTS scoring criteria.
      Provide very detailed feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
      Give very detailed recommendations for improving this section.
-     Always include the score in the format "Score: X.X/40" at the end of your response.`;
+     Always include the raw score (number of correct answers for listening/reading, score out of 9 for writing/speaking) at the end of your response in the format "Raw score: X".`;
 
   const userMessage = `
     Section: ${section}
     Test Type: ${testType}
-    ${section === 'speaking' 
-      ? `Questions: ${JSON.stringify(data.questions)}\nAnswers: ${JSON.stringify(data.answers)}`
-      : `Answers: ${JSON.stringify(data.answers)}`
-    }
-    ${section === 'reading' || section === 'listening' ? `Questions: ${JSON.stringify(data.questions)}` : ''}
-    ${section === 'writing' ? `Topics: ${JSON.stringify(data.topics)}` : ''}
+    Questions: ${JSON.stringify(data.questions)}
+    User Answers: ${JSON.stringify(data.answers)}
+    Correct Answers: ${JSON.stringify(data.correctAnswers)}
   `;
 
   try {
@@ -44,7 +76,24 @@ export async function fetchResults(section, data, testType) {
     }
 
     const responseData = await response.json();
-    return responseData.choices[0].message.content;
+    const aiResponse = responseData.choices[0].message.content;
+
+    // Extract the raw score from the AI's response
+    const rawScoreMatch = aiResponse.match(/Raw score: (\d+(\.\d+)?)/);
+    const rawScore = rawScoreMatch ? parseFloat(rawScoreMatch[1]) : 0;
+
+    // Calculate the band score for listening and reading
+    let bandScore;
+    if (section === 'listening' || section === 'reading') {
+      bandScore = calculateScore(section, Math.round(rawScore));
+    } else {
+      bandScore = rawScore; // For writing and speaking, use the AI's score
+    }
+
+    // Ensure bandScore is never null
+    bandScore = bandScore || 0;
+
+    return `${aiResponse}\n\nBand Score: ${bandScore.toFixed(1)}/9`;
   } catch (error) {
     console.error('Error fetching results:', error);
     throw error;

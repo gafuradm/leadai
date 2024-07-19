@@ -73,7 +73,7 @@ const Timer = styled.div`
 
 const SpeakingSection = ({ onNext, timedMode }) => {
   const [currentPart, setCurrentPart] = useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [answers, setAnswers] = useState([]);
@@ -81,9 +81,9 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
   const recognitionRef = useRef(null);
-  const [timeLeft, setTimeLeft] = useState(14 * 60); // 14 минут в секундах
+  const [timeLeft, setTimeLeft] = useState(14 * 60);
   const [streamingAvatar, setStreamingAvatar] = useState(null);
-
+  const [randomizedQuestions, setRandomizedQuestions] = useState([]);
   const parts = [
     {
     "name": "Part 1: Interview",
@@ -133,10 +133,18 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   ];
 
   useEffect(() => {
-    if (currentPart < parts.length) {
-      speakQuestion(parts[currentPart].questions[currentQuestion]);
+    const shuffledQuestions = parts.map(part => ({
+      ...part,
+      questions: shuffleArray([...part.questions])
+    }));
+    setRandomizedQuestions(shuffledQuestions);
+  }, []);
+
+  useEffect(() => {
+    if (currentPart < randomizedQuestions.length) {
+      speakQuestion(randomizedQuestions[currentPart].questions[currentQuestionIndex]);
     }
-  }, [currentPart, currentQuestion]);
+  }, [currentPart, currentQuestionIndex, randomizedQuestions]);
 
   useEffect(() => {
     if (timedMode) {
@@ -182,6 +190,14 @@ const SpeakingSection = ({ onNext, timedMode }) => {
         answers: answers
       }
     });
+  };
+
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   };
 
   const formatTime = (seconds) => {
@@ -258,74 +274,77 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   };
 
   const stopRecording = async () => {
-    setIsRecording(false);
-    setIsLoading(true);
+  setIsRecording(false);
+  setIsLoading(true);
 
-    if (recognitionRef.current) {
-      recognitionRef.current.stop();
-    }
+  if (recognitionRef.current) {
+    recognitionRef.current.stop();
+  }
 
-    if (transcript.trim() === '') {
-      alert("No speech detected. Please try again.");
-      setIsLoading(false);
-      return;
-    }
-
-    const newAnswers = [...answers, {
-      question: parts[currentPart].questions[currentQuestion],
-      answer: transcript
-    }];
-    setAnswers(newAnswers);
-
-    if (streamingAvatar) {
-      await startAvatar(transcript);
-    } else {
-      console.error('Streaming avatar not initialized');
-    }
-
-    const data = {
-      questions: [parts[currentPart].questions[currentQuestion]],
-      answers: [transcript]
-    };
-
-    try {
-      const result = await fetchResults('speaking', data, 'partial');
-      if (typeof result === 'object' && result.feedback) {
-        setFeedback(`${result.feedback}\nScore: ${result.score}`);
-      } else {
-        setFeedback(result.toString());
-      }
-    } catch (error) {
-      console.error("Error fetching results:", error);
-      setFeedback("Sorry, there was an error evaluating your answer. Please try again.");
-    }
-
+  if (transcript.trim() === '') {
+    alert("No speech detected. Please try again.");
     setIsLoading(false);
+    return;
+  }
 
-    if (currentQuestion < parts[currentPart].questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else if (currentPart < parts.length - 1) {
-      setCurrentPart(currentPart + 1);
-      setCurrentQuestion(0);
-    } else {
-      onNext({
-        section: 'speaking',
-        data: {
-          questions: parts.flatMap(part => part.questions),
-          answers: newAnswers
-        }
-      });
-    }
+  const newAnswers = [...answers, {
+    question: randomizedQuestions[currentPart].questions[currentQuestionIndex],
+    answer: transcript
+  }];
+  setAnswers(newAnswers);
+
+  if (streamingAvatar) {
+    await startAvatar(transcript);
+  } else {
+    console.error('Streaming avatar not initialized');
+  }
+
+  const data = {
+    questions: [randomizedQuestions[currentPart].questions[currentQuestionIndex]],
+    answers: [transcript]
   };
+
+  try {
+    const result = await fetchResults('speaking', data, 'partial');
+    if (typeof result === 'object' && result.feedback) {
+      setFeedback(`${result.feedback}\nScore: ${result.score}`);
+    } else {
+      setFeedback(result.toString());
+    }
+  } catch (error) {
+    console.error("Error fetching results:", error);
+    setFeedback("Sorry, there was an error evaluating your answer. Please try again.");
+  }
+
+  setIsLoading(false);
+
+  if (currentQuestionIndex < randomizedQuestions[currentPart].questions.length - 1) {
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  } else if (currentPart < randomizedQuestions.length - 1) {
+    setCurrentPart(currentPart + 1);
+    setCurrentQuestionIndex(0);
+  } else {
+    onNext({
+      section: 'speaking',
+      data: {
+        questions: randomizedQuestions.flatMap(part => part.questions),
+        answers: newAnswers
+      }
+    });
+  }
+};
 
   return (
     <Container>
       <Title>Speaking Section</Title>
       {timedMode && <Timer>Time left: {formatTime(timeLeft)}</Timer>}
-      {currentPart < parts.length ? (
+      {currentPart < randomizedQuestions.length ? (
         <Section>
-          <h3>{parts[currentPart].name}</h3>
-          <Question>{parts[currentPart].questions[currentQuestion]}</Question>
+          <h3>{randomizedQuestions[currentPart].name}</h3>
+          <Question>{randomizedQuestions[currentPart].questions[currentQuestionIndex]}</Question>
+          {currentPart === 1 && (
+            <p>You have 1 minute to prepare. You should then speak for 1-2 minutes on this topic.</p>
+          )}
           <Button onClick={isRecording ? stopRecording : startRecording} disabled={isLoading}>
             {isRecording ? 'Stop Recording' : 'Start Recording'}
           </Button>

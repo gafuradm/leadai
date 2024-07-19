@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import ReactGA from "react-ga4";
+import ReactGA from "react-ga4";  // Поменяйте "react-ga" на "react-ga4"
 import ListeningSection from './ListeningSection';
 import ReadingSection from './ReadingSection';
 import WritingSection from './WritingSection';
@@ -101,7 +101,7 @@ const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
-    ReactGA.initialize("G-TBSYZ03L8M");
+    ReactGA.initialize("G-TBSYZ03L8M");  // Используйте свой идентификатор Google Analytics
     
     ReactGA.send({ hitType: "pageview", page: "/ielts" });
     

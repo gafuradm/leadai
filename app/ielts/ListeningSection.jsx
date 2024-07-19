@@ -107,21 +107,24 @@ const ListeningSection = ({ onNext, timedMode }) => {
   };
 
   const handleSubmit = () => {
-    if (answers.some(answer => answer !== '')) {
-      const sectionData = {
-        section: 'listening',
-        data: {
-          answers: answers,
-          questions: randomQuestions.flatMap(part => 
-            part.map(q => ({ id: q.id, question: q.question }))
-          )
-        }
-      };
-      onNext(sectionData);
-    } else {
-      alert("Please answer at least one question before submitting.");
-    }
-  };
+  if (answers.some(answer => answer !== '')) {
+    const sectionData = {
+      section: 'listening',
+      data: {
+        answers: answers,
+        questions: randomQuestions.flatMap(part => 
+          part.map(q => ({ id: q.id, question: q.question }))
+        ),
+        correctAnswers: randomQuestions.flatMap(part => 
+          part.map(q => q.correctAnswer)
+        )
+      }
+    };
+    onNext(sectionData);
+  } else {
+    alert("Please answer at least one question before submitting.");
+  }
+};
 
   const speakText = (text) => {
     if ('speechSynthesis' in window) {

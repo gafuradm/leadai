@@ -167,7 +167,7 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
           {testType === 'general' && task1 && (
             <>
               <TaskDescription>{task1.description}</TaskDescription>
-              <ul>
+              <ul style={{ color: 'black' }}>
                 {task1.bullet_points.map((point, index) => (
                   <li key={index}>{point}</li>
                 ))}

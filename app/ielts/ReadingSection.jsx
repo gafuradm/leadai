@@ -85,10 +85,6 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
   const [passages, setPassages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [currentTextPage, setCurrentTextPage] = useState(0);
-  const itemsPerPage = 1; // Количество вопросов на страницу
-  const textItemsPerPage = 3; // Количество абзацев текста на страницу
 
   useEffect(() => {
     const loadData = () => {
@@ -100,16 +96,10 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
 
       const data = ieltsData.sections.reading[testType];
 
-      if (data) {
-        if (Array.isArray(data)) {
-          setPassages(data);
-        } else if (typeof data === 'object') {
-          setPassages([data]);
-        } else {
-          setError(`Invalid data format for test type: ${testType}`);
-        }
+      if (data && Array.isArray(data) && data.length === 3) {
+        setPassages(data);
       } else {
-        setError(`No data available for test type: ${testType}`);
+        setError(`Invalid data format for test type: ${testType}`);
       }
       setIsLoading(false);
     };

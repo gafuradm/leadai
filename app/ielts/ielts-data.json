@@ -2281,7 +2281,718 @@
               "options": ["Find cheap flights", "Stay in hostels", "Use public transport", "Plan activities in advance"]
             }
           ]
-        }
+        },
+        {
+    "id": "G1Q41",
+    "type": "multiple_choice",
+    "question": "What is a key focus of the passage on digital privacy?",
+    "options": ["Data encryption", "Online shopping", "Social media trends", "Work from home policies"]
+  },
+  {
+    "id": "G1Q42",
+    "type": "true_false",
+    "question": "The passage on the evolution of AI suggests that AI has only positive impacts.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q43",
+    "type": "matching_information",
+    "question": "Match the following benefits with the correct passage: 1) Enhanced productivity, 2) Better sleep quality, 3) Advanced AI applications.",
+    "options": ["1) Healthy Sleep Habits for Better Productivity", "2) Healthy Sleep Habits for Better Productivity", "3) The Evolution of Artificial Intelligence"]
+  },
+  {
+    "id": "G1Q44",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on sustainable agriculture highlights innovations such as __________.",
+    "options": ["vertical farming", "artificial intelligence", "digital privacy", "remote work"]
+  },
+  {
+    "id": "G1Q45",
+    "type": "table_completion",
+    "question": "Complete the table with methods discussed in the passage on effective time management.",
+    "options": ["Prioritization", "Minimizing distractions", "Task delegation"]
+  },
+  {
+    "id": "G1Q46",
+    "type": "short_answer",
+    "question": "What are the primary methods suggested for enhancing digital privacy?"
+  },
+  {
+    "id": "G1Q47",
+    "type": "multiple_choice",
+    "question": "Which technology is mentioned in the passage about the future of space exploration?",
+    "options": ["Space probes", "Artificial intelligence", "Robotic surgery", "Vertical farming"]
+  },
+  {
+    "id": "G1Q48",
+    "type": "true_false",
+    "question": "The passage on social media suggests that it has no impact on mental health.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q49",
+    "type": "matching_headings",
+    "question": "Match the heading with the correct paragraph: 1) Remote Work Trends, 2) Healthy Sleep Tips, 3) Innovations in Farming.",
+    "options": ["1) The Rise of Remote Work", "2) Healthy Sleep Habits for Better Productivity", "3) Innovations in Sustainable Agriculture"]
+  },
+  {
+    "id": "G1Q50",
+    "type": "flowchart_completion",
+    "question": "Complete the flowchart on the impacts of climate change with the correct effects.",
+    "options": ["Rising temperatures", "Melting ice caps", "Extreme weather events"]
+  },
+  {
+    "id": "G1Q51",
+    "type": "sentence_completion",
+    "question": "The passage on career development emphasizes the importance of __________.",
+    "options": ["digital skills", "traditional education", "physical fitness", "high income"]
+  },
+  {
+    "id": "G1Q52",
+    "type": "table_completion",
+    "question": "Complete the table with the key aspects of digital privacy mentioned in the passage.",
+    "options": ["Threats", "Protective measures", "Privacy laws"]
+  },
+  {
+    "id": "G1Q53",
+    "type": "multiple_choice",
+    "question": "What is the main focus of the passage on healthy sleep habits?",
+    "options": ["Improving sleep quality", "Managing stress", "Boosting productivity", "Maintaining diet"]
+  },
+  {
+    "id": "G1Q54",
+    "type": "true_false",
+    "question": "The passage on space exploration indicates that it has no practical benefits for humanity.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q55",
+    "type": "matching_information",
+    "question": "Match the following concepts with the correct passage: 1) AI advancements, 2) Remote work flexibility, 3) Budget travel strategies.",
+    "options": ["1) The Evolution of Artificial Intelligence", "2) The Rise of Remote Work", "3) Traveling on a Budget"]
+  },
+  {
+    "id": "G1Q56",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on digital privacy addresses the issue of __________.",
+    "options": ["data breaches", "remote work challenges", "healthy sleep", "budget travel"]
+  },
+  {
+    "id": "G1Q57",
+    "type": "diagram_completion",
+    "question": "Complete the diagram on career development with the key elements mentioned.",
+    "options": ["Continuous learning", "Networking", "Digital skills"]
+  },
+  {
+    "id": "G1Q58",
+    "type": "short_answer",
+    "question": "What are the suggested practices for effective time management?"
+  },
+  {
+    "id": "G1Q59",
+    "type": "multiple_choice",
+    "question": "Which of the following is a suggested tip for budget travel?",
+    "options": ["Booking luxury hotels", "Using public transportation", "Eating at fine-dining restaurants", "Booking expensive flights"]
+  },
+  {
+    "id": "G1Q60",
+    "type": "true_false",
+    "question": "The passage on climate change suggests that its impacts are reversible with current technology.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q61",
+    "type": "matching_headings",
+    "question": "Match the heading with the correct paragraph: 1) The Future of AI, 2) Managing Remote Work Challenges, 3) Effective Travel Tips.",
+    "options": ["1) The Evolution of Artificial Intelligence", "2) The Rise of Remote Work", "3) Traveling on a Budget"]
+  },
+  {
+    "id": "G1Q62",
+    "type": "flowchart_completion",
+    "question": "Complete the flowchart on the benefits of healthy sleep with the correct outcomes.",
+    "options": ["Improved productivity", "Better mood", "Enhanced cognitive function"]
+  },
+  {
+    "id": "G1Q63",
+    "type": "sentence_completion",
+    "question": "The primary goal of sustainable agriculture mentioned in the passage is __________.",
+    "options": ["environmental conservation", "increasing crop yields", "reducing labor costs", "expanding farmland"]
+  },
+  {
+    "id": "G1Q64",
+    "type": "table_completion",
+    "question": "Complete the table with the key aspects of space exploration discussed in the passage.",
+    "options": ["Current missions", "Future plans", "Technological advancements"]
+  },
+  {
+    "id": "G1Q65",
+    "type": "multiple_choice",
+    "question": "What is a suggested strategy for maintaining digital privacy?",
+    "options": ["Using strong passwords", "Sharing personal information", "Ignoring privacy settings", "Using public Wi-Fi"]
+  },
+  {
+    "id": "G1Q66",
+    "type": "true_false",
+    "question": "The passage on sustainable agriculture suggests that vertical farming is an outdated method.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q67",
+    "type": "matching_information",
+    "question": "Match the following tips with the correct passage: 1) Sleep hygiene, 2) Space missions, 3) Budget accommodations.",
+    "options": ["1) Healthy Sleep Habits for Better Productivity", "2) The Future of Space Exploration", "3) Traveling on a Budget"]
+  },
+  {
+    "id": "G1Q68",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on AI focuses on its __________.",
+    "options": ["current applications", "budget travel strategies", "remote work benefits", "climate change effects"]
+  },
+  {
+    "id": "G1Q69",
+    "type": "diagram_completion",
+    "question": "Complete the diagram on effective time management strategies with the correct practices.",
+    "options": ["Task prioritization", "Setting deadlines", "Avoiding multitasking"]
+  },
+  {
+    "id": "G1Q70",
+    "type": "short_answer",
+    "question": "What are the main challenges associated with remote work as discussed in the passage?"
+  },
+  {
+    "id": "G1Q71",
+    "type": "multiple_choice",
+    "question": "Which of the following is NOT mentioned as a benefit of a balanced diet?",
+    "options": ["Weight loss", "Improved mental health", "Reduced risk of chronic diseases", "Increased energy"]
+  },
+  {
+    "id": "G1Q72",
+    "type": "true_false",
+    "question": "The passage on space exploration suggests that it has no impact on technology development.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q73",
+    "type": "matching_headings",
+    "question": "Match the heading with the correct paragraph: 1) Strategies for Digital Privacy, 2) Future Space Technologies, 3) Tips for Better Sleep.",
+    "options": ["1) Digital Privacy Insights", "2) Advancements in Space Exploration", "3) Healthy Sleep Tips"]
+  },
+  {
+    "id": "G1Q74",
+    "type": "flowchart_completion",
+    "question": "Complete the flowchart on digital privacy protection with the correct actions.",
+    "options": ["Regular updates", "Using encryption", "Monitoring account activity"]
+  },
+  {
+    "id": "G1Q75",
+    "type": "sentence_completion",
+    "question": "The passage on remote work highlights the importance of __________.",
+    "options": ["work-life balance", "advanced technology", "traditional office spaces", "extensive travel"]
+  },
+  {
+    "id": "G1Q76",
+    "type": "table_completion",
+    "question": "Complete the table with the key factors affecting mental health as mentioned in the passage.",
+    "options": ["Stress levels", "Social interactions", "Physical health"]
+  },
+  {
+    "id": "G1Q77",
+    "type": "multiple_choice",
+    "question": "Which of the following is a key factor in effective time management?",
+    "options": ["Avoiding deadlines", "Delegating tasks", "Overcommitting", "Ignoring priorities"]
+  },
+  {
+    "id": "G1Q78",
+    "type": "true_false",
+    "question": "The passage on healthy sleep suggests that sleep deprivation has no significant long-term effects.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q79",
+    "type": "matching_information",
+    "question": "Match the following challenges with the correct passage: 1) Remote work, 2) Sleep quality, 3) Space travel.",
+    "options": ["1) Remote Work Challenges", "2) Importance of Quality Sleep", "3) Future of Space Exploration"]
+  },
+  {
+    "id": "G1Q80",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on digital privacy emphasizes the role of __________.",
+    "options": ["data security measures", "remote work policies", "diet and nutrition", "space travel advancements"]
+  },
+  {
+    "id": "G1Q81",
+    "type": "multiple_choice",
+    "question": "What is a key strategy mentioned in the passage for improving public speaking skills?",
+    "options": ["Practice regularly", "Avoid eye contact", "Read from notes", "Speak quickly"]
+  },
+  {
+    "id": "G1Q82",
+    "type": "true_false",
+    "question": "The passage on sustainable living suggests that reducing meat consumption can lower carbon emissions.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q83",
+    "type": "matching_information",
+    "question": "Match the following benefits with the correct passage: 1) Increased productivity, 2) Better health, 3) Reduced stress.",
+    "options": ["1) Effective Work Habits", "2) Healthy Lifestyle Choices", "3) Stress Management Techniques"]
+  },
+  {
+    "id": "G1Q84",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on digital marketing emphasizes the importance of __________.",
+    "options": ["target audience analysis", "product development", "pricing strategies", "physical advertising"]
+  },
+  {
+    "id": "G1Q85",
+    "type": "table_completion",
+    "question": "Complete the table with the key elements of successful entrepreneurship discussed in the passage.",
+    "options": ["Innovation", "Risk-taking", "Networking"]
+  },
+  {
+    "id": "G1Q86",
+    "type": "short_answer",
+    "question": "What are the main challenges of remote learning mentioned in the passage?"
+  },
+  {
+    "id": "G1Q87",
+    "type": "multiple_choice",
+    "question": "Which of the following strategies is recommended for effective time management?",
+    "options": ["Setting clear goals", "Ignoring deadlines", "Multitasking excessively", "Procrastinating"]
+  },
+  {
+    "id": "G1Q88",
+    "type": "true_false",
+    "question": "The passage on career advancement suggests that networking is more important than technical skills.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q89",
+    "type": "matching_headings",
+    "question": "Match the heading with the correct paragraph: 1) Benefits of Exercise, 2) Managing Work-Life Balance, 3) Innovations in Technology.",
+    "options": ["1) Health and Wellness", "2) Balancing Professional and Personal Life", "3) Emerging Tech Trends"]
+  },
+  {
+    "id": "G1Q90",
+    "type": "flowchart_completion",
+    "question": "Complete the flowchart on the steps for developing a successful business idea with the correct actions.",
+    "options": ["Market research", "Business planning", "Funding acquisition"]
+  },
+  {
+    "id": "G1Q91",
+    "type": "sentence_completion",
+    "question": "The passage on time management highlights the importance of __________.",
+    "options": ["prioritizing tasks", "avoiding schedules", "overloading tasks", "delaying deadlines"]
+  },
+  {
+    "id": "G1Q92",
+    "type": "table_completion",
+    "question": "Complete the table with the essential skills for effective leadership.",
+    "options": ["Communication", "Decision-making", "Empathy"]
+  },
+  {
+    "id": "G1Q93",
+    "type": "multiple_choice",
+    "question": "Which topic is NOT covered in the passage about modern education?",
+    "options": ["Technological advancements", "Traditional teaching methods", "Online learning platforms", "Educational policy changes"]
+  },
+  {
+    "id": "G1Q94",
+    "type": "true_false",
+    "question": "The passage on financial management states that saving is more crucial than investing for long-term wealth.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q95",
+    "type": "matching_information",
+    "question": "Match the following approaches with the correct passage: 1) Enhancing productivity, 2) Improving interpersonal skills, 3) Effective budgeting.",
+    "options": ["1) Time Management Tips", "2) Communication Skills Development", "3) Financial Management Strategies"]
+  },
+  {
+    "id": "G1Q96",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on environmental conservation emphasizes __________.",
+    "options": ["sustainable practices", "economic growth", "technological advancements", "individual achievements"]
+  },
+  {
+    "id": "G1Q97",
+    "type": "diagram_completion",
+    "question": "Complete the diagram on the elements of effective team collaboration.",
+    "options": ["Clear communication", "Mutual respect", "Shared goals"]
+  },
+  {
+    "id": "G1Q98",
+    "type": "short_answer",
+    "question": "What are the key strategies for improving public speaking skills mentioned in the passage?"
+  },
+  {
+    "id": "G1Q99",
+    "type": "multiple_choice",
+    "question": "Which aspect of project management is NOT discussed in the passage?",
+    "options": ["Risk assessment", "Team dynamics", "Customer satisfaction", "Legal compliance"]
+  },
+  {
+    "id": "G1Q100",
+    "type": "true_false",
+    "question": "The passage on innovation suggests that creativity is the only factor for successful new product development.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q101",
+    "type": "matching_headings",
+    "question": "Match the heading with the correct paragraph: 1) Effective Budgeting Techniques, 2) The Role of Technology in Education, 3) Strategies for Reducing Stress.",
+    "options": ["1) Managing Finances Wisely", "2) Educational Technology Advances", "3) Coping with Stress"]
+  },
+  {
+    "id": "G1Q102",
+    "type": "flowchart_completion",
+    "question": "Complete the flowchart on the process of launching a startup with the correct steps.",
+    "options": ["Market analysis", "Business plan creation", "Product development"]
+  },
+  {
+    "id": "G1Q103",
+    "type": "sentence_completion",
+    "question": "The passage on environmental conservation stresses the need for __________.",
+    "options": ["sustainable living", "industrial expansion", "rapid urbanization", "increased consumption"]
+  },
+  {
+    "id": "G1Q104",
+    "type": "table_completion",
+    "question": "Complete the table with the key components of effective communication skills.",
+    "options": ["Active listening", "Clarity", "Feedback"]
+  },
+  {
+    "id": "G1Q105",
+    "type": "multiple_choice",
+    "question": "Which topic is NOT addressed in the passage about healthy lifestyle choices?",
+    "options": ["Exercise routines", "Dietary guidelines", "Mental health support", "Cosmetic surgery"]
+  },
+  {
+    "id": "G1Q106",
+    "type": "true_false",
+    "question": "The passage on technological advancements suggests that all new technologies are beneficial without drawbacks.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q107",
+    "type": "matching_information",
+    "question": "Match the following goals with the correct passage: 1) Effective communication, 2) Enhancing productivity, 3) Improving mental health.",
+    "options": ["1) Workplace Communication", "2) Time Management Strategies", "3) Mental Wellness Tips"]
+  },
+  {
+    "id": "G1Q108",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on digital transformation highlights the role of __________.",
+    "options": ["technology adoption", "traditional methods", "manual processes", "regulatory compliance"]
+  },
+  {
+    "id": "G1Q109",
+    "type": "diagram_completion",
+    "question": "Complete the diagram on the stages of product development.",
+    "options": ["Idea generation", "Prototype development", "Market testing"]
+  },
+  {
+    "id": "G1Q110",
+    "type": "short_answer",
+    "question": "What are the primary challenges of digital transformation mentioned in the passage?"
+  },
+  {
+    "id": "G1Q111",
+    "type": "multiple_choice",
+    "question": "Which of the following is NOT a benefit of mindfulness according to the passage?",
+    "options": ["Reduced stress", "Improved focus", "Increased physical strength", "Better emotional regulation"]
+  },
+  {
+    "id": "G1Q112",
+    "type": "true_false",
+    "question": "The passage on educational reforms suggests that technology will completely replace traditional teaching methods.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q113",
+    "type": "matching_headings",
+    "question": "Match the heading with the correct paragraph: 1) Benefits of Mindfulness, 2) Future Trends in Education, 3) Effective Marketing Strategies.",
+    "options": ["1) Enhancing Mental Well-being", "2) Evolving Educational Practices", "3) Promoting Products Effectively"]
+  },
+  {
+    "id": "G1Q114",
+    "type": "flowchart_completion",
+    "question": "Complete the flowchart on the steps to creating a successful marketing campaign.",
+    "options": ["Market research", "Campaign planning", "Performance evaluation"]
+  },
+  {
+    "id": "G1Q115",
+    "type": "sentence_completion",
+    "question": "The passage on innovation highlights the importance of __________.",
+    "options": ["creativity", "conformity", "standardization", "regulation"]
+  },
+  {
+    "id": "G1Q116",
+    "type": "table_completion",
+    "question": "Complete the table with the essential skills for effective team leadership.",
+    "options": ["Motivation", "Delegation", "Conflict resolution"]
+  },
+  {
+    "id": "G1Q117",
+    "type": "multiple_choice",
+    "question": "Which area is NOT covered in the passage about modern work environments?",
+    "options": ["Remote work challenges", "Office ergonomics", "Employee benefits", "Traditional office layouts"]
+  },
+  {
+    "id": "G1Q118",
+    "type": "true_false",
+    "question": "The passage on public health policies suggests that preventive measures are less important than reactive treatments.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q119",
+    "type": "matching_information",
+    "question": "Match the following topics with the correct passage: 1) Climate change, 2) Economic growth, 3) Technological innovation.",
+    "options": ["1) Environmental Issues", "2) Economic Strategies", "3) Technology Advancements"]
+  },
+  {
+    "id": "G1Q120",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on remote work suggests that __________.",
+    "options": ["flexibility is key", "traditional offices are better", "team collaboration is unnecessary", "work hours should be fixed"]
+  },
+  {
+    "id": "G1Q121",
+    "type": "multiple_choice",
+    "question": "Which practice is NOT recommended for enhancing productivity according to the passage?",
+    "options": ["Setting clear goals", "Taking regular breaks", "Avoiding distractions", "Multitasking excessively"]
+  },
+  {
+    "id": "G1Q122",
+    "type": "true_false",
+    "question": "The passage on financial literacy argues that budgeting is essential for long-term financial stability.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q123",
+    "type": "matching_information",
+    "question": "Match the following strategies with the correct passage: 1) Improving customer service, 2) Enhancing employee engagement, 3) Streamlining operations.",
+    "options": ["1) Customer Relations", "2) Employee Motivation", "3) Operational Efficiency"]
+  },
+  {
+    "id": "G1Q124",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on renewable energy emphasizes the importance of __________.",
+    "options": ["sustainable resources", "fossil fuels", "traditional energy sources", "non-renewable materials"]
+  },
+  {
+    "id": "G1Q125",
+    "type": "table_completion",
+    "question": "Complete the table with the key benefits of regular exercise.",
+    "options": ["Improved cardiovascular health", "Increased energy levels", "Better mood"]
+  },
+  {
+    "id": "G1Q126",
+    "type": "short_answer",
+    "question": "What are the primary benefits of using social media for business as mentioned in the passage?"
+  },
+  {
+    "id": "G1Q127",
+    "type": "multiple_choice",
+    "question": "Which aspect is NOT discussed in the passage on effective leadership?",
+    "options": ["Vision and strategy", "Team empowerment", "Delegation of tasks", "Technical expertise"]
+  },
+  {
+    "id": "G1Q128",
+    "type": "true_false",
+    "question": "The passage on public speaking states that rehearsing in front of a mirror is a useful technique.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q129",
+    "type": "matching_headings",
+    "question": "Match the heading with the correct paragraph: 1) Enhancing Team Collaboration, 2) Benefits of Regular Reading, 3) Strategies for Financial Growth.",
+    "options": ["1) Improving Workplace Dynamics", "2) Cognitive Development", "3) Wealth Management"]
+  },
+  {
+    "id": "G1Q130",
+    "type": "flowchart_completion",
+    "question": "Complete the flowchart on the steps for implementing a new project with the correct actions.",
+    "options": ["Planning phase", "Execution phase", "Review phase"]
+  },
+  {
+    "id": "G1Q131",
+    "type": "sentence_completion",
+    "question": "The passage on digital marketing stresses the importance of __________.",
+    "options": ["data analysis", "traditional advertising", "offline strategies", "generic content"]
+  },
+  {
+    "id": "G1Q132",
+    "type": "table_completion",
+    "question": "Complete the table with the essential elements of a successful business strategy.",
+    "options": ["Market research", "Competitive analysis", "Clear objectives"]
+  },
+  {
+    "id": "G1Q133",
+    "type": "multiple_choice",
+    "question": "Which challenge is NOT highlighted in the passage about remote work?",
+    "options": ["Isolation", "Communication barriers", "Flexible work hours", "Work-life balance"]
+  },
+  {
+    "id": "G1Q134",
+    "type": "true_false",
+    "question": "The passage on career development suggests that soft skills are as important as technical skills.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q135",
+    "type": "matching_information",
+    "question": "Match the following trends with the correct passage: 1) Growth of e-commerce, 2) Rise of remote work, 3) Advancements in AI.",
+    "options": ["1) Digital Economy", "2) Work Environment Changes", "3) Technology Innovations"]
+  },
+  {
+    "id": "G1Q136",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on work-life balance emphasizes the need for __________.",
+    "options": ["setting boundaries", "working longer hours", "increasing work pressure", "minimizing personal time"]
+  },
+  {
+    "id": "G1Q137",
+    "type": "diagram_completion",
+    "question": "Complete the diagram on the steps of effective project management.",
+    "options": ["Initiation", "Planning", "Execution", "Closure"]
+  },
+  {
+    "id": "G1Q138",
+    "type": "short_answer",
+    "question": "What are the key factors for maintaining a healthy work environment mentioned in the passage?"
+  },
+  {
+    "id": "G1Q139",
+    "type": "multiple_choice",
+    "question": "Which of the following is NOT a benefit of adopting a healthy lifestyle according to the passage?",
+    "options": ["Improved physical health", "Enhanced mental clarity", "Increased productivity", "Reduced social interactions"]
+  },
+  {
+    "id": "G1Q140",
+    "type": "true_false",
+    "question": "The passage on technology adoption suggests that all technological advancements are beneficial for businesses.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q141",
+    "type": "matching_headings",
+    "question": "Match the heading with the correct paragraph: 1) Effective Stress Management, 2) Benefits of Continued Learning, 3) Modern Approaches to Leadership.",
+    "options": ["1) Coping Strategies", "2) Lifelong Learning", "3) Leadership Techniques"]
+  },
+  {
+    "id": "G1Q142",
+    "type": "flowchart_completion",
+    "question": "Complete the flowchart on the process of conducting market research.",
+    "options": ["Data collection", "Analysis", "Reporting"]
+  },
+  {
+    "id": "G1Q143",
+    "type": "sentence_completion",
+    "question": "The passage on workplace diversity highlights the need for __________.",
+    "options": ["inclusive practices", "uniformity", "single culture", "standardization"]
+  },
+  {
+    "id": "G1Q144",
+    "type": "table_completion",
+    "question": "Complete the table with the key characteristics of effective leadership.",
+    "options": ["Vision", "Integrity", "Communication"]
+  },
+  {
+    "id": "G1Q145",
+    "type": "multiple_choice",
+    "question": "Which aspect is NOT covered in the passage on digital transformation?",
+    "options": ["Data security", "Organizational change", "Customer service improvement", "Traditional marketing strategies"]
+  },
+  {
+    "id": "G1Q146",
+    "type": "true_false",
+    "question": "The passage on innovation suggests that incremental improvements are less valuable than radical changes.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q147",
+    "type": "matching_information",
+    "question": "Match the following aspects with the correct passage: 1) Benefits of Networking, 2) Essentials of Time Management, 3) Strategies for Effective Learning.",
+    "options": ["1) Building Professional Connections", "2) Prioritization and Scheduling", "3) Study Techniques"]
+  },
+  {
+    "id": "G1Q148",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on leadership styles emphasizes __________.",
+    "options": ["adaptability", "rigid structures", "micromanagement", "single approach"]
+  },
+  {
+    "id": "G1Q149",
+    "type": "diagram_completion",
+    "question": "Complete the diagram on the elements of a successful marketing strategy.",
+    "options": ["Target audience", "Value proposition", "Marketing channels"]
+  },
+  {
+    "id": "G1Q150",
+    "type": "short_answer",
+    "question": "What are the main challenges of remote team management mentioned in the passage?"
+  },
+  {
+    "id": "G1Q151",
+    "type": "multiple_choice",
+    "question": "Which of the following is NOT discussed as a key element of effective communication in the passage?",
+    "options": ["Active listening", "Clear articulation", "Frequent interruptions", "Empathy"]
+  },
+  {
+    "id": "G1Q152",
+    "type": "true_false",
+    "question": "The passage on public health emphasizes that vaccination is the only solution to preventing infectious diseases.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q153",
+    "type": "matching_headings",
+    "question": "Match the heading with the correct paragraph: 1) Benefits of Renewable Energy, 2) Effective Budgeting Practices, 3) Strategies for Career Development.",
+    "options": ["1) Sustainable Energy Sources", "2) Financial Management", "3) Professional Growth"]
+  },
+  {
+    "id": "G1Q154",
+    "type": "flowchart_completion",
+    "question": "Complete the flowchart on the steps to launching a new product.",
+    "options": ["Concept development", "Market testing", "Product launch"]
+  },
+  {
+    "id": "G1Q155",
+    "type": "sentence_completion",
+    "question": "The passage on team dynamics stresses the importance of __________.",
+    "options": ["collaboration", "competition", "hierarchy", "secrecy"]
+  },
+  {
+    "id": "G1Q156",
+    "type": "table_completion",
+    "question": "Complete the table with the key components of a business plan.",
+    "options": ["Executive summary", "Market analysis", "Financial projections"]
+  },
+  {
+    "id": "G1Q157",
+    "type": "multiple_choice",
+    "question": "Which element is NOT discussed in the passage about effective time management?",
+    "options": ["Setting deadlines", "Prioritizing tasks", "Procrastination", "Time tracking"]
+  },
+  {
+    "id": "G1Q158",
+    "type": "true_false",
+    "question": "The passage on customer service highlights that personalizing interactions can lead to higher customer satisfaction.",
+    "options": ["True", "False"]
+  },
+  {
+    "id": "G1Q159",
+    "type": "matching_information",
+    "question": "Match the following concepts with the correct passage: 1) Strategies for Conflict Resolution, 2) Techniques for Effective Negotiation, 3) Approaches to Enhancing Team Collaboration.",
+    "options": ["1) Resolving Disputes", "2) Negotiation Tactics", "3) Team Dynamics"]
+  },
+  {
+    "id": "G1Q160",
+    "type": "summary_completion",
+    "question": "Complete the summary: The passage on customer engagement emphasizes the importance of __________.",
+    "options": ["building relationships", "reducing interaction", "standardizing communication", "minimizing feedback"]
+  }
       ]
     },
     "writing": {
@@ -2652,130 +3363,6 @@
           "ask about membership options, fees, and facilities",
           "request details about the schedule of activities and upcoming events"
         ]
-      }
-    ]
-  },
-    "speaking": {
-    "questions": [
-      {
-        "id": 1,
-        "question": "Describe a memorable trip you have taken.",
-        "dialogue": "Candidate: One of the most memorable trips I have taken was to the mountains. The scenery was breathtaking, and I had the opportunity to hike and explore nature. It was a refreshing escape from the hustle and bustle of city life. Examiner: What did you enjoy the most about the trip? Candidate: I enjoyed the tranquility and the chance to disconnect from technology. The fresh air and beautiful landscapes made it a truly unforgettable experience."
-      },
-      {
-        "id": 2,
-        "question": "What is your favorite book and why?",
-        "dialogue": "Candidate: My favorite book is 'To Kill a Mockingbird' by Harper Lee. It's a powerful story about justice and morality, and it has deeply influenced my perspective on social issues. Examiner: Can you tell me about a particular part of the book that stood out to you? Candidate: One part that really stood out was the trial scene, where Atticus Finch defends an innocent man. It highlights the deep-seated prejudices in society and the importance of standing up for what is right."
-      },
-      {
-        "id": 3,
-        "question": "Describe a skill you would like to learn.",
-        "dialogue": "Candidate: One skill I would like to learn is photography. I've always been fascinated by capturing moments and telling stories through images. Examiner: Why do you think learning photography is important? Candidate: Learning photography would allow me to express my creativity and perspective visually. It's a form of art that can evoke emotions and convey messages in a powerful way."
-      },
-      {
-        "id": 4,
-        "question": "Talk about an important historical event in your country.",
-        "dialogue": "Candidate: One of the most important historical events in my country was the independence movement. It marked the beginning of our journey towards self-governance and freedom from colonial rule. Examiner: How did this event impact your country's identity? Candidate: The independence movement instilled a sense of national pride and unity among our people. It shaped our cultural heritage and continues to inspire generations."
-      },
-      {
-        "id": 5,
-        "question": "Discuss a recent technological advancement that interests you.",
-        "dialogue": "Candidate: A recent technological advancement that interests me is artificial intelligence. Its potential to revolutionize various industries, from healthcare to transportation, is fascinating. Examiner: How do you think AI will impact society in the future? Candidate: AI has the potential to improve efficiency, create new job opportunities, and enhance decision-making processes. However, ethical considerations about its use and implications are crucial."
-      },
-      {
-        "id": 6,
-        "question": "Describe a time when you had to make an important decision.",
-        "dialogue": "Candidate: One of the important decisions I had to make was choosing my career path. It required careful consideration of my interests, skills, and future goals. Examiner: What factors influenced your decision the most? Candidate: The opportunity to make a meaningful impact in my chosen field and pursue my passion were key factors. It was a defining moment that shaped my professional journey."
-      },
-      {
-        "id": 7,
-        "question": "Talk about a popular festival or celebration in your country.",
-        "dialogue": "Candidate: One of the most popular festivals in my country is Diwali, also known as the Festival of Lights. It symbolizes the victory of light over darkness and is celebrated with fireworks, sweets, and decorations. Examiner: What do people typically do during this festival? Candidate: During Diwali, families gather to exchange gifts, light oil lamps called diyas, and enjoy festive meals together. It's a joyous occasion that brings communities closer."
-      },
-      {
-        "id": 8,
-        "question": "Discuss the importance of learning a foreign language.",
-        "dialogue": "Candidate: Learning a foreign language is important because it opens doors to new cultures, enhances communication skills, and fosters mutual understanding. Examiner: How has learning a foreign language benefited you personally? Candidate: It has allowed me to connect with people from different backgrounds and gain insights into their perspectives. It's a valuable skill that promotes cultural exchange and global cooperation."
-      },
-      {
-        "id": 9,
-        "question": "Describe a hobby you enjoy and why it is important to you.",
-        "dialogue": "Candidate: One of my hobbies that I enjoy is playing musical instruments, particularly the guitar. It's a creative outlet that helps me relax and express my emotions through music. Examiner: How has playing the guitar impacted your life? Candidate: Playing the guitar has taught me patience, discipline, and perseverance. It's a rewarding hobby that brings joy to my life and allows me to connect with others through music."
-      },
-      {
-        "id": 10,
-        "question": "Talk about an environmental issue that concerns you.",
-        "dialogue": "Candidate: An environmental issue that concerns me is deforestation. It poses a threat to biodiversity, contributes to climate change, and disrupts ecosystems. Examiner: What measures do you think should be taken to address deforestation? Candidate: Conservation efforts, sustainable forestry practices, and raising awareness about the importance of preserving forests are crucial. It requires collective action and responsible stewardship of our natural resources."
-      },
-      {
-        "id": 11,
-        "question": "Discuss the impact of social media on society.",
-        "dialogue": "Candidate: Social media has profoundly impacted society by connecting people globally, facilitating information sharing, and influencing public discourse. Examiner: What are some positive and negative effects of social media? Candidate: While it enhances communication and enables activism, social media can also contribute to misinformation, cyberbullying, and privacy concerns. Balancing its benefits and challenges is essential for responsible usage."
-      },
-      {
-        "id": 12,
-        "question": "Describe a recent trend in your country.",
-        "dialogue": "Candidate: A recent trend in my country is the growing interest in sustainable living and eco-friendly practices. More people are adopting renewable energy sources, reducing waste, and supporting environmentally responsible businesses. Examiner: How is this trend influencing your community? Candidate: It's fostering a culture of environmental awareness and encouraging sustainable behaviors among individuals and businesses. It reflects a growing commitment to preserving our planet for future generations."
-      },
-      {
-        "id": 13,
-        "question": "Talk about a place you would like to visit in the future.",
-        "dialogue": "Candidate: One place I would like to visit in the future is Machu Picchu in Peru. It's a remarkable archaeological site nestled in the Andes Mountains, known for its ancient Incan ruins and breathtaking scenery. Examiner: What interests you the most about Machu Picchu? Candidate: I'm fascinated by its rich history, architectural marvels, and the opportunity to immerse myself in the beauty of the Peruvian landscape."
-      },
-      {
-        "id": 14,
-        "question": "Discuss the importance of art in society.",
-        "dialogue": "Candidate: Art plays a crucial role in society by reflecting cultural values, sparking creativity, and fostering emotional expression. Examiner: How does art enrich people's lives? Candidate: It inspires individuals, stimulates critical thinking, and promotes empathy and understanding. Art transcends boundaries and connects people across diverse backgrounds, contributing to a more vibrant and inclusive society."
-      },
-      {
-        "id": 15,
-        "question": "Describe a goal you have achieved and how you accomplished it.",
-        "dialogue": "Candidate: One goal I have achieved is completing a marathon. It required months of training, dedication, and perseverance to reach the finish line. Examiner: What motivated you to pursue this goal? Candidate: The challenge of pushing my limits, improving my fitness, and experiencing the thrill of participating in a major sporting event motivated me. It was a rewarding achievement that taught me the value of determination and resilience."
-      },
-      {
-        "id": 16,
-        "question": "Talk about a technological device you find useful.",
-        "dialogue": "Candidate: A technological device I find useful is my smartphone. It serves multiple functions, from communication and navigation to entertainment and productivity. Examiner: How has your smartphone impacted your daily life? Candidate: It has enhanced efficiency, connectivity, and access to information. However, managing screen time and digital distractions are important considerations for maintaining a healthy balance."
-      },
-      {
-        "id": 17,
-        "question": "Discuss the role of education in personal development.",
-        "dialogue": "Candidate: Education plays a pivotal role in personal development by equipping individuals with knowledge, skills, and opportunities for growth. Examiner: How has education influenced your personal development? Candidate: It has expanded my horizons, fostered critical thinking, and empowered me to pursue my aspirations. Lifelong learning is key to adapting to change and achieving personal fulfillment."
-      },
-      {
-        "id": 18,
-        "question": "Describe a cultural tradition in your country.",
-        "dialogue": "Candidate: One cultural tradition in my country is celebrating Lunar New Year. It's a time-honored festival marked by family reunions, festive decorations, and traditional meals. Examiner: What customs or rituals are associated with Lunar New Year? Candidate: People exchange red envelopes for good luck, clean their homes to ward off bad fortune, and enjoy lion dances and fireworks displays. It's a joyous occasion that symbolizes renewal and prosperity."
-      },
-      {
-        "id": 19,
-        "question": "Talk about the impact of globalization on your country.",
-        "dialogue": "Candidate: Globalization has had a profound impact on my country by promoting economic growth, cultural exchange, and technological advancements. Examiner: How has globalization influenced your community? Candidate: It has increased international trade opportunities, diversified cultural influences, and facilitated knowledge sharing across borders. However, it also poses challenges such as income inequality and cultural homogenization."
-      },
-      {
-        "id": 20,
-        "question": "Discuss the benefits of traveling abroad.",
-        "dialogue": "Candidate: Traveling abroad offers numerous benefits, such as broadening perspectives, fostering cultural awareness, and creating memorable experiences. Examiner: How has traveling abroad enriched your life? Candidate: It has exposed me to diverse cultures, languages, and traditions, promoting empathy and tolerance. Exploring new destinations has expanded my worldview and ignited a passion for global exploration."
-      },
-      {
-        "id": 21,
-        "question": "Describe an invention that has changed people's lives.",
-        "dialogue": "Candidate: One invention that has changed people's lives is the internet. It revolutionized communication, information access, and business operations globally. Examiner: How has the internet impacted your daily life? Candidate: It has facilitated instant communication, online learning opportunities, and e-commerce transactions. However, managing digital privacy and cybersecurity are critical considerations in today's interconnected world."
-      },
-      {
-        "id": 22,
-        "question": "Talk about a recent trend in technology.",
-        "dialogue": "Candidate: A recent trend in technology is the rise of wearable devices, such as smartwatches and fitness trackers. They offer functionalities like monitoring health metrics, receiving notifications, and accessing apps on the go. Examiner: How do wearable devices benefit users? Candidate: Wearable devices promote health awareness, enhance convenience, and integrate seamlessly into daily routines. They empower individuals to track fitness goals and prioritize well-being."
-      },
-      {
-        "id": 23,
-        "question": "Discuss the importance of sports in society.",
-        "dialogue": "Candidate: Sports play a vital role in society by promoting physical fitness, teamwork, and social cohesion. Examiner: How do sports contribute to personal development? Candidate: Engaging in sports fosters discipline, resilience, and leadership skills. It cultivates a sense of community spirit and teaches valuable lessons about perseverance and sportsmanship."
-      },
-      {
-        "id": 24,
-        "question": "Describe a recent trend in fashion.",
-        "dialogue": "Candidate: A recent trend in fashion is sustainable clothing. More people are choosing eco-friendly fabrics, supporting ethical fashion brands, and embracing minimalist wardrobes. Examiner: How is this trend influencing the fashion industry? Candidate: It's driving innovations in eco-conscious designs, promoting transparency in supply chains, and encouraging consumers to make mindful fashion choices. Sustainability is becoming integral to the future of fashion."
       }
     ]
   }

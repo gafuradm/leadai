@@ -176,80 +176,80 @@ const Results = ({ answers, testType }) => {
 
   useEffect(() => {
     const getResults = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const sections = testType === 'full' 
-          ? ['listening', 'reading', 'writing', 'speaking'] 
-          : [testType];
-  
-        const newResults = {};
-        let totalScore = 0;
-        let validSections = 0;
-  
-        for (const section of sections) {
-          if (answers[section] && answers[section].data) {
-            console.log(`Processing section: ${section}`, answers[section].data);
-            try {
-              const sectionResult = await fetchResults(section, answers[section].data, testType);
-              const score = parseScore(sectionResult);
-              if (score > 0) {
-                totalScore += score;
-                validSections++;
-              }
-              newResults[section] = { feedback: sectionResult, score: score };
-              
-              // Fetch examples based on the section and score
-              if (section === 'listening' || testType === 'full') {
-                const listening = await fetchListeningExamples();
-                setListeningExamples(listening);
-              }
-              if (section === 'speaking' || testType === 'full') {
-                const speaking = await fetchSpeakingExamples();
-                setSpeakingExamples(speaking);
-              }
-              if (section === 'reading' || testType === 'full') {
-                const reading = await fetchReadingExamples(score);
-                setReadingExamples(reading);
-              }
-              if (section === 'writing' || testType === 'full') {
-                const writingTopic = answers[section]?.data?.topics?.task2 || 'general writing topic';
-                const writing = await fetchWritingExamples(score, writingTopic);
-                setWritingExamples(writing);
-              }
-            } catch (error) {
-              console.error(`Error processing ${section}:`, error);
-              setError(`Error fetching ${section} results: ${error.message}`);
-            }
-          } else {
-            console.warn(`Missing data for ${section} section`);
+  try {
+    setLoading(true);
+    setError(null);
+    const sections = testType === 'full' 
+      ? ['listening', 'reading', 'writing', 'speaking'] 
+      : [testType];
+
+    const newResults = {};
+    let totalScore = 0;
+    let validSections = 0;
+
+    for (const section of sections) {
+      if (answers[section] && answers[section].data) {
+        console.log(`Processing section: ${section}`, answers[section].data);
+        try {
+          const sectionResult = await fetchResults(section, answers[section].data, testType);
+          const score = extractScoreFromResult(sectionResult);
+          if (score > 0) {
+            totalScore += score;
+            validSections++;
           }
+          newResults[section] = { feedback: sectionResult, score: score };
+          
+          // Fetch examples based on the section and score
+          if (section === 'listening' || testType === 'full') {
+            const listening = await fetchListeningExamples();
+            setListeningExamples(listening);
+          }
+          if (section === 'speaking' || testType === 'full') {
+            const speaking = await fetchSpeakingExamples();
+            setSpeakingExamples(speaking);
+          }
+          if (section === 'reading' || testType === 'full') {
+            const reading = await fetchReadingExamples(score);
+            setReadingExamples(reading);
+          }
+          if (section === 'writing' || testType === 'full') {
+            const writingTopic = answers[section]?.data?.topics?.task2 || 'general writing topic';
+            const writing = await fetchWritingExamples(score, writingTopic);
+            setWritingExamples(writing);
+          }
+        } catch (error) {
+          console.error(`Error processing ${section}:`, error);
+          setError(`Error fetching ${section} results: ${error.message}`);
         }
-  
-        const overallScore = validSections > 0 ? roundIELTSScore(totalScore / validSections) : 0;
-        setResult({ ...newResults, overallScore });
-
-        await updateResultsLoadCount();
-
-      if (testType === 'full') {
-        const recommendations = await fetchUniversityRecommendations(overallScore);
-        setUniversityRecommendations(recommendations);
+      } else {
+        console.warn(`Missing data for ${section} section`);
       }
+    }
 
-        if (testType === 'full') {
-          const recommendations = await fetchUniversityRecommendations(overallScore);
-          setUniversityRecommendations(recommendations);
-        }
-      } catch (err) {
-        console.error('Error in getResults:', err);
-        setError(`General error fetching results: ${err.message}`);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const overallScore = validSections > 0 ? roundIELTSScore(totalScore / validSections) : 0;
+    setResult({ ...newResults, overallScore });
+
+    await updateResultsLoadCount();
+
+    if (testType === 'full') {
+      const recommendations = await fetchUniversityRecommendations(overallScore);
+      setUniversityRecommendations(recommendations);
+    }
+  } catch (err) {
+    console.error('Error in getResults:', err);
+    setError(`General error fetching results: ${err.message}`);
+  } finally {
+    setLoading(false);
+  }
+};
   
     getResults();
   }, [answers, testType]);
+
+  const extractScoreFromResult = (result) => {
+  const match = result.match(/Band Score: ([\d.]+)\/9/);
+  return match ? parseFloat(match[1]) : 0;
+};
 
   const downloadResults = () => {
     let content = `IELTS Test Results\n\n`;
@@ -387,29 +387,29 @@ const Results = ({ answers, testType }) => {
   };
 
   const renderFeedback = (section) => {
-    const sectionResult = result[section];
-    if (!sectionResult) return null;
-    
-    const feedbackContent = sectionResult.feedback
-      .replace(/### Detailed Feedback and Score/g, '<h3>Detailed Feedback and Score</h3>')
-      .replace(/- \*\*/g, '<li><strong>')
-      .replace(/\*\* \- /g, '</strong> - ')
-      .replace(/<li><strong>/g, '<ul><li><strong>')
-      .replace(/<\/strong> - ([^<]+)(\n|$)/g, '</strong> - $1</li>')
-      .replace(/Materials to Improve Listening Skills:/g, '<h3>Materials to Improve Listening Skills:</h3>')
-      .replace(/### Reading Practice Material/g, '<h3>Reading Practice Material</h3>')
-      .replace(/### Listening Practice Script/g, '<h3>Listening Practice Script</h3>')
-      .replace(/### Writing Practice Material/g, '<h3>Writing Practice Material</h3>')
-      .replace(/### Speaking Practice Material/g, '<h3>Speaking Practice Material</h3>')
-      .replace(/\*\*Text:\*\*/g, '<h4>Text:</h4>')
-      .replace(/\*\*Comprehension Questions:\*\*/g, '<h4>Comprehension Questions:</h4>')
-      .replace(/\*\*Script:\*\*/g, '<h4>Script:</h4>')
-      .replace(/\*\*Questions:\*\*/g, '<h4>Questions:</h4>')
-      .replace(/\*\*Essay Example:\*\*/g, '<h4>Essay Example:</h4>')
-      .replace(/\*\*Letter Example:\*\*/g, '<h4>Letter Example:</h4>')
-      .replace(/\*\*Dialogue Example:\*\*/g, '<h4>Dialogue Example:</h4>')
-      .replace(/_/g, '')
-      .replace(/\n/g, '<br/>');
+  const sectionResult = result[section];
+  if (!sectionResult) return null;
+  
+  const feedbackContent = sectionResult.feedback
+    .replace(/### Detailed Feedback and Score/g, '<h3>Detailed Feedback and Score</h3>')
+    .replace(/- \*\*/g, '<li><strong>')
+    .replace(/\*\* \- /g, '</strong> - ')
+    .replace(/<li><strong>/g, '<ul><li><strong>')
+    .replace(/<\/strong> - ([^<]+)(\n|$)/g, '</strong> - $1</li>')
+    .replace(/Materials to Improve Listening Skills:/g, '<h3>Materials to Improve Listening Skills:</h3>')
+    .replace(/### Reading Practice Material/g, '<h3>Reading Practice Material</h3>')
+    .replace(/### Listening Practice Script/g, '<h3>Listening Practice Script</h3>')
+    .replace(/### Writing Practice Material/g, '<h3>Writing Practice Material</h3>')
+    .replace(/### Speaking Practice Material/g, '<h3>Speaking Practice Material</h3>')
+    .replace(/\*\*Text:\*\*/g, '<h4>Text:</h4>')
+    .replace(/\*\*Comprehension Questions:\*\*/g, '<h4>Comprehension Questions:</h4>')
+    .replace(/\*\*Script:\*\*/g, '<h4>Script:</h4>')
+    .replace(/\*\*Questions:\*\*/g, '<h4>Questions:</h4>')
+    .replace(/\*\*Essay Example:\*\*/g, '<h4>Essay Example:</h4>')
+    .replace(/\*\*Letter Example:\*\*/g, '<h4>Letter Example:</h4>')
+    .replace(/\*\*Dialogue Example:\*\*/g, '<h4>Dialogue Example:</h4>')
+    .replace(/_/g, '')
+    .replace(/\n/g, '<br/>');
 
       let exampleContent = null;
       switch(section) {
@@ -428,18 +428,18 @@ const Results = ({ answers, testType }) => {
       }
 
       return (
-        <Feedback key={section}>
-          <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
-          <div dangerouslySetInnerHTML={{ __html: feedbackContent }} />
-          <p>Score: {sectionResult.score.toFixed(1)}/40</p>
-          {exampleContent && (
-            <div>
-              <h3>Practice Materials</h3>
-              {exampleContent}
-            </div>
-          )}
-        </Feedback>
-      );
+    <Feedback key={section}>
+      <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
+      <div dangerouslySetInnerHTML={{ __html: feedbackContent }} />
+      <p>Score: {sectionResult.score.toFixed(1)}/9</p>
+      {exampleContent && (
+        <div>
+          <h3>Practice Materials</h3>
+          {exampleContent}
+        </div>
+      )}
+    </Feedback>
+  );
     };
 
   if (loading) {
@@ -476,7 +476,7 @@ const Results = ({ answers, testType }) => {
       </Section>
       {testType === 'full' && renderUniversityRecommendations()}
       <ButtonContainer>
-        <Button onClick={() => window.location.href = '/start-education'}>Back to Tests</Button>
+        <Button onClick={() => window.location.href = '/ielts'}>Back to Dashboard</Button>
         <DownloadButton onClick={downloadResults}>Download Results</DownloadButton>
       </ButtonContainer>
     </Container>
