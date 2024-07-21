@@ -6,6 +6,31 @@ export async function fetchResults(section, data, testType) {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
+  const convertRawScore = (rawScore, section) => {
+    const listeningTable = [
+      [39, 9], [37, 8.5], [35, 8], [32, 7.5], [30, 7], [26, 6.5], [23, 6],
+      [18, 5.5], [16, 5], [13, 4.5], [10, 4], [7, 3.5], [5, 3], [3, 2.5], [1, 2], [0, 1]
+    ];
+
+    const readingAcademicTable = [
+      [39, 9], [37, 8.5], [35, 8], [33, 7.5], [30, 7], [27, 6.5], [23, 6],
+      [19, 5.5], [15, 5], [13, 4.5], [10, 4], [8, 3.5], [6, 3], [3, 2.5], [1, 2], [0, 1]
+    ];
+
+    const readingGeneralTable = [
+      [40, 9], [39, 8.5], [37, 8], [36, 7.5], [34, 7], [32, 6.5], [30, 6],
+      [27, 5.5], [23, 5], [19, 4.5], [15, 4], [12, 3.5], [9, 3], [6, 2.5], [3, 2], [0, 1]
+    ];
+
+    const table = section === 'listening' ? listeningTable :
+                  (testType === 'academic' ? readingAcademicTable : readingGeneralTable);
+
+    for (let [threshold, score] of table) {
+      if (rawScore >= threshold) return score;
+    }
+    return 0;
+  };
+
   const systemMessage = `You are an IELTS test evaluator. Provide very detailed feedback and a score out of 40 for the ${section} section.
      Provide very detailed feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
      Give very detailed recommendations for improving this section.
@@ -44,7 +69,18 @@ export async function fetchResults(section, data, testType) {
     }
 
     const responseData = await response.json();
-    return responseData.choices[0].message.content;
+    let content = responseData.choices[0].message.content;
+
+    if (section === 'listening' || section === 'reading') {
+      const rawScoreMatch = content.match(/Score: (\d+(\.\d+)?)/);
+      if (rawScoreMatch) {
+        const rawScore = parseFloat(rawScoreMatch[1]);
+        const convertedScore = convertRawScore(rawScore, section);
+        content = content.replace(/Score: (\d+(\.\d+)?)/, `Raw Score: ${rawScore}/40\nConverted Score: ${convertedScore}/9`);
+      }
+    }
+
+    return content;
   } catch (error) {
     console.error('Error fetching results:', error);
     throw error;

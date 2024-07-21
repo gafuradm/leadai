@@ -1,34 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const TrueFalseQuestion = ({ question }) => {
-  const [answer, setAnswer] = useState('');
-
+const TrueFalseQuestion = ({ question, onAnswerChange }) => {
   return (
     <div className="true-false-question">
       <h3>{question.question}</h3>
-      <div>
-        <label>
-          <input 
-            type="radio" 
-            name={question.id} 
-            value="True" 
-            checked={answer === 'True'}
-            onChange={(e) => setAnswer(e.target.value)}
-          /> True
+      {question.options.map(option => (
+        <label key={option} style={{ display: 'block', marginBottom: '5px' }}>
+          <input
+            type="radio"
+            name={question.id}
+            value={option}
+            onChange={() => onAnswerChange(question.id, option)}
+          />
+          {option}
         </label>
-        <label style={{ marginLeft: '10px' }}>
-          <input 
-            type="radio" 
-            name={question.id} 
-            value="False" 
-            checked={answer === 'False'}
-            onChange={(e) => setAnswer(e.target.value)}
-          /> False
-        </label>
-      </div>
+      ))}
     </div>
   );
 };
 
 export default TrueFalseQuestion;
-
