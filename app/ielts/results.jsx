@@ -234,7 +234,8 @@ const Results = ({ answers, testType }) => {
         }
       }
 
-      const overallScore = validSections > 0 ? Math.round((totalScore / validSections) * 2) / 2 : 0;
+      const averageScore = validSections > 0 ? totalScore / validSections : 0;
+      const overallScore = Math.round(averageScore * 2) / 2;
       setResult({ ...newResults, overallScore });
 
       await updateResultsLoadCount();
@@ -338,16 +339,16 @@ const Results = ({ answers, testType }) => {
 
 const parseScore = (content, section) => {
   if (!content) return 0;
-  const scoreMatch = content.match(/Score: (\d+(\.\d+)?)/);
+  let scoreMatch;
+  if (section === 'listening' || section === 'reading') {
+    scoreMatch = content.match(/Converted Score: (\d+(\.\d+)?)/);
+  } else {
+    scoreMatch = content.match(/Score: (\d+(\.\d+)?)/);
+  }
   if (!scoreMatch) return 0;
   
-  const rawScore = parseFloat(scoreMatch[1]);
-  
-  if (section === 'listening' || section === 'reading') {
-    return convertRawScore(rawScore, section);
-  }
-  
-  return rawScore;
+  const score = parseFloat(scoreMatch[1]);
+  return Math.min(Math.max(score, 0), 9); // Ensure score is between 0 and 9
 };
 
   const playAudio = (text) => {

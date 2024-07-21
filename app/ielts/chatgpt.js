@@ -31,10 +31,13 @@ export async function fetchResults(section, data, testType) {
     return 0;
   };
 
-  const systemMessage = `You are an IELTS test evaluator. Provide very detailed feedback and a score out of 40 for the ${section} section.
-     Provide very detailed feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
-     Give very detailed recommendations for improving this section.
-     Always include the score in the format "Score: X.X/40" at the end of your response.`;
+  const systemMessage = `You are an IELTS test evaluator. Provide very detailed feedback and a score for the ${section} section.
+ ${section === 'listening' || section === 'reading' 
+   ? 'Provide a score out of 40.'
+   : 'Provide a score out of 9 (can use 0.5 increments).'}
+ Provide very detailed feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
+ Give very detailed recommendations for improving this section.
+ Always include the score in the format "Score: X.X/${section === 'listening' || section === 'reading' ? '40' : '9'}" at the end of your response.`;
 
   const userMessage = `
     Section: ${section}
@@ -70,15 +73,18 @@ export async function fetchResults(section, data, testType) {
 
     const responseData = await response.json();
     let content = responseData.choices[0].message.content;
-
-    if (section === 'listening' || section === 'reading') {
-      const rawScoreMatch = content.match(/Score: (\d+(\.\d+)?)/);
-      if (rawScoreMatch) {
-        const rawScore = parseFloat(rawScoreMatch[1]);
-        const convertedScore = convertRawScore(rawScore, section);
-        content = content.replace(/Score: (\d+(\.\d+)?)/, `Raw Score: ${rawScore}/40\nConverted Score: ${convertedScore}/9`);
-      }
-    }
+const rawScoreMatch = content.match(/Score: (\d+(\.\d+)?)/);
+if (rawScoreMatch) {
+  const rawScore = parseFloat(rawScoreMatch[1]);
+  let convertedScore;
+  if (section === 'listening' || section === 'reading') {
+    convertedScore = convertRawScore(rawScore, section);
+    content = content.replace(/Score: (\d+(\.\d+)?)/, `Raw Score: ${rawScore}/40\nConverted Score: ${convertedScore}/9`);
+  } else {
+    convertedScore = Math.min(Math.max(rawScore, 0), 9); // Ensure score is between 0 and 9
+    content = content.replace(/Score: (\d+(\.\d+)?)/, `Score: ${convertedScore}/9`);
+  }
+}
 
     return content;
   } catch (error) {
