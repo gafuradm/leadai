@@ -5,14 +5,15 @@ import { fetchResults } from './chatgpt';
 const AssistantContainer = styled.div`
   margin-top: 40px;
   padding: 20px;
-  background-color: #f0f8ff;
+  background-color: #800120;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 `;
 
 const AssistantTitle = styled.h3`
-  color: #14465a;
+  color: #ffffff;
   margin-bottom: 20px;
+  font-weight: bold;
 `;
 
 const ChatContainer = styled.div`
@@ -29,10 +30,11 @@ const Message = styled.div`
   padding: 8px;
   border-radius: 4px;
   ${props => props.isUser ? `
-    background-color: #e6f3ff;
+    background-color: #800120;
     text-align: right;
   ` : `
-    background-color: #f0f0f0;
+    background-color: #ffffff;
+    color: black;
   `}
 `;
 
@@ -42,6 +44,8 @@ const Input = styled.input`
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  background-color: white;
+  color: black;
 `;
 
 const ButtonContainer = styled.div`
@@ -50,7 +54,7 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #14465a;
+  background-color: #000000;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -59,7 +63,30 @@ const Button = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #1a5a74;
+    color: black;
+    background-color: #ffffff;
+  }
+`;
+
+const LoadingDots = styled.span`
+  &::after {
+    content: ' .';
+    animation: dots 1s steps(5, end) infinite;
+  }
+
+  @keyframes dots {
+    0%, 20% {
+      content: ' .';
+    }
+    40% {
+      content: ' ..';
+    }
+    60% {
+      content: ' ...';
+    }
+    80%, 100% {
+      content: '';
+    }
   }
 `;
 
@@ -67,6 +94,7 @@ const AIAssistant = ({ result }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
@@ -81,11 +109,12 @@ const AIAssistant = ({ result }) => {
     const userMessage = { text: input, isUser: true };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
+    setIsLoading(true);
 
     try {
-      const response = await fetchResults('ai_assistant', { 
-        message: input, 
-        context: result 
+      const response = await fetchResults('ai_assistant', {
+        message: input,
+        context: result
       }, 'full');
       
       const assistantResponse = { text: response, isUser: false };
@@ -94,6 +123,8 @@ const AIAssistant = ({ result }) => {
       console.error('Error getting AI response:', error);
       const errorMessage = { text: 'Sorry, I encountered an error. Please try again.', isUser: false };
       setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -102,6 +133,7 @@ const AIAssistant = ({ result }) => {
       const lastAssistantMessage = messages.filter(m => !m.isUser).pop();
       if (lastAssistantMessage) {
         const utterance = new SpeechSynthesisUtterance(lastAssistantMessage.text);
+        utterance.lang = 'en-US';  // Устанавливаем стандартный английский акцент
         utterance.onstart = () => setIsSpeaking(true);
         utterance.onend = () => setIsSpeaking(false);
         speechSynthesis.speak(utterance);
@@ -120,16 +152,22 @@ const AIAssistant = ({ result }) => {
             {message.text}
           </Message>
         ))}
+        {isLoading && (
+          <Message isUser={false}>
+            Thinking<LoadingDots />
+          </Message>
+        )}
       </ChatContainer>
       <Input
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Ask a question about your IELTS results..."
+        disabled={isLoading}
       />
       <ButtonContainer>
-        <Button onClick={handleSendMessage}>Send</Button>
-        <Button onClick={handleSpeak} disabled={isSpeaking}>
+        <Button onClick={handleSendMessage} disabled={isLoading}>Send</Button>
+        <Button onClick={handleSpeak} disabled={isSpeaking || isLoading}>
           {isSpeaking ? 'Speaking...' : 'Speak Last Response'}
         </Button>
       </ButtonContainer>
