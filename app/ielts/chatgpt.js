@@ -6,6 +6,10 @@ export async function fetchResults(section, data, testType) {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
+  if (section === 'ai_assistant') {
+    return await fetchAIAssistantResponse(data.message, data.context);
+  }
+
   const convertRawScore = (rawScore, section) => {
     const listeningTable = [
       [39, 9], [37, 8.5], [35, 8], [32, 7.5], [30, 7], [26, 6.5], [23, 6],
@@ -32,12 +36,12 @@ export async function fetchResults(section, data, testType) {
   };
 
   const systemMessage = `You are an IELTS test evaluator. Provide very detailed feedback and a score for the ${section} section.
- ${section === 'listening' || section === 'reading' 
-   ? 'Provide a score out of 40.'
-   : 'Provide a score out of 9 (can use 0.5 increments).'}
- Provide very detailed feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
- Give very detailed recommendations for improving this section.
- Always include the score in the format "Score: X.X/${section === 'listening' || section === 'reading' ? '40' : '9'}" at the end of your response.`;
+    ${section === 'listening' || section === 'reading' 
+      ? 'Provide a score out of 40.'
+      : 'Provide a score out of 9 (can use 0.5 increments).'}
+    Provide very detailed feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
+    Give very detailed recommendations for improving this section.
+    Always include the score in the format "Score: X.X/${section === 'listening' || section === 'reading' ? '40' : '9'}" at the end of your response.`;
 
   const userMessage = `
     Section: ${section}
@@ -326,5 +330,44 @@ export async function fetchUniversityRecommendations(overallScore) {
   } catch (error) {
     console.error('Error fetching university recommendations:', error);
     return null;
+  }
+}
+
+export async function fetchAIAssistantResponse(message, context) {
+  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+  if (!OPENAI_API_KEY) {
+    throw new Error('OPENAI_API_KEY is not defined');
+  }
+
+  const systemMessage = `You are an AI assistant helping a student understand their IELTS test results. 
+    The student's overall score is ${context.overallScore}. 
+    Provide helpful and encouraging advice based on their scores and questions.`;
+
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o',
+        messages: [
+          { role: 'system', content: systemMessage },
+          { role: 'user', content: message }
+        ],
+        max_tokens: 1000,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch from OpenAI API');
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
   }
 }

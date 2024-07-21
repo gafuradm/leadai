@@ -6,6 +6,7 @@ import { fetchResults, fetchExampleEssay, fetchListeningExamples, fetchSpeakingE
 import { ref, runTransaction, onValue } from "firebase/database";
 import { db } from './firebase';
 import './firebase';
+import AIAssistant from './AIAssistant';
 
 const Container = styled.div`
   padding: 20px;
@@ -509,6 +510,7 @@ const parseScore = (content, section) => {
         {Object.keys(result).filter((section) => section !== 'overallScore').map(renderFeedback)}
       </Section>
       {testType === 'full' && renderUniversityRecommendations()}
+      <AIAssistant result={result} />
       <ButtonContainer>
         <Button onClick={() => window.location.href = '/start-education'}>Back to Tests</Button>
         <DownloadButton onClick={downloadResults}>Download Results</DownloadButton>
