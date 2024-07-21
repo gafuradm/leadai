@@ -85,27 +85,56 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
   const [passages, setPassages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentTextPage, setCurrentTextPage] = useState(0);
+  const itemsPerPage = 1; // Количество вопросов на страницу
+  const textItemsPerPage = 3; // Количество абзацев текста на страницу
+  const [randomizedTexts, setRandomizedTexts] = useState([]);
+  const [selectedPassages, setSelectedPassages] = useState([]);
+  const [selectedTexts, setSelectedTexts] = useState([]);
 
   useEffect(() => {
-    const loadData = () => {
-      if (!ieltsData || !ieltsData.sections || !ieltsData.sections.reading) {
-        setError('Invalid data structure in ielts-data.json');
-        setIsLoading(false);
-        return;
-      }
-
-      const data = ieltsData.sections.reading[testType];
-
-      if (data && Array.isArray(data) && data.length === 3) {
-        setPassages(data);
-      } else {
-        setError(`Invalid data format for test type: ${testType}`);
-      }
+  const loadData = () => {
+    if (!ieltsData || !ieltsData.sections || !ieltsData.sections.reading) {
+      setError('Invalid data structure in ielts-data.json');
       setIsLoading(false);
-    };
+      return;
+    }
 
-    loadData();
-  }, [testType]);
+    const data = ieltsData.sections.reading[testType];
+
+    if (data && data.texts && data.questionSets) {
+      // Создаем массив индексов
+      const indices = Array.from({ length: data.texts.length }, (_, i) => i);
+      // Перемешиваем индексы
+      const shuffledIndices = shuffleArray(indices);
+      // Выбираем первые 3 индекса
+      const selectedIndices = shuffledIndices.slice(0, 3);
+
+      // Создаем новые пассажи с выбранными текстами и соответствующими наборами вопросов
+      const formattedPassages = selectedIndices.map(index => ({
+        text: data.texts[index],
+        questions: data.questionSets[index].questions
+      }));
+
+      setSelectedPassages(formattedPassages);
+      setPassages(formattedPassages);
+    } else {
+      setError(`Invalid data format for test type: ${testType}`);
+    }
+    setIsLoading(false);
+  };
+
+  loadData();
+}, [testType]);
+
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
 
   useEffect(() => {
     if (timedMode) {
@@ -125,91 +154,93 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
   }, [timedMode]);
 
   const handleAnswerChange = (questionId, answer) => {
-    setAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [questionId]: answer,
-    }));
-  };
+  setAnswers(prevAnswers => ({
+    ...prevAnswers,
+    [questionId]: answer,
+  }));
+};
 
-  const handleSubmit = () => {
-    if (Object.keys(answers).length > 0) {
-      const sectionData = {
-        section: 'reading',
-        data: {
-          questions: passages.flatMap(passage => passage.questions),
-          answers: answers,
-          passages: passages
-        }
-      };
-      onNext(sectionData);
-    } else {
-      alert("Please answer at least one question before submitting.");
-    }
-  };
+const handleSubmit = () => {
+  if (Object.values(answers).some(answer => answer !== undefined && answer !== null)) {
+    const sectionData = {
+      section: 'reading',
+      data: {
+        questions: passages.flatMap(passage => passage.questions),
+        answers: answers,
+        passages: passages
+      }
+    };
+    onNext(sectionData);
+  } else {
+    alert("Please answer at least one question before submitting.");
+  }
+};
 
-  const renderQuestion = (question) => {
-    if (!question || !question.type) {
-      console.error('Invalid question structure:', question);
-      return null;
-    }
+const renderQuestion = (question) => {
+  if (!question || !question.type) {
+    console.error('Invalid question structure:', question);
+    return null;
+  }
   
-    switch (question.type) {
-      case 'multiple_choice':
-        return <MultipleChoiceQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
-      case 'true_false':
-        return <TrueFalseQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
-      case 'matching_information':
-        return <MatchingInformationQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
-      case 'summary_completion':
-        return <SummaryCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
-      case 'diagram_labeling':
-        return <DiagramLabelingQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
-      case 'matching_headings':
-        return <MatchingHeadingsQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
-      case 'flowchart_completion':
-        return <FlowchartCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
-      case 'sentence_completion':
-        return <SentenceCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
-      case 'table_completion':
-        return <TableCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
-      case 'diagram_completion':
-        return <DiagramCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
-      case 'short_answer':
-        return <ShortAnswerQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
-      default:
-        console.warn(`Unsupported question type: ${question.type}`);
-        return null;
-    }
-  };
+  switch (question.type) {
+    case 'multiple_choice':
+      return <MultipleChoiceQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+    case 'true_false':
+      return <TrueFalseQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+    case 'matching_information':
+      return <MatchingInformationQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+    case 'summary_completion':
+      return <SummaryCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+    case 'diagram_labeling':
+      return <DiagramLabelingQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+    case 'matching_headings':
+      return <MatchingHeadingsQuestion 
+        key={question.id} 
+        question={{...question, options: question.options.map(opt => opt.statement)}} 
+        onAnswerChange={handleAnswerChange} 
+      />;
+    case 'flowchart_completion':
+      return <FlowchartCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+    case 'sentence_completion':
+      return <SentenceCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+    case 'table_completion':
+      return <TableCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+    case 'diagram_completion':
+      return <DiagramCompletionQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+    case 'short_answer':
+      return <ShortAnswerQuestion key={question.id} question={question} onAnswerChange={handleAnswerChange} />;
+    default:
+      console.warn(`Unsupported question type: ${question.type}`);
+      return null;
+  }
+};
 
   const renderPassage = (passage) => {
-    if (!passage || !passage.texts || !Array.isArray(passage.texts)) {
-      console.error('Invalid passage structure:', passage);
-      return <div>Error: Invalid passage data</div>;
-    }
+  if (!passage || !passage.text || !passage.questions) {
+    console.error('Invalid passage structure:', passage);
+    return <div>Error: Invalid passage data</div>;
+  }
 
-    const startTextIndex = currentTextPage * textItemsPerPage;
-    const currentTextItems = passage.texts.slice(startTextIndex, startTextIndex + textItemsPerPage);
+  const currentTextItem = passage.text;
 
-    const startIndex = currentPage * itemsPerPage;
-    const currentItems = passage.questions.slice(startIndex, startIndex + itemsPerPage);
+  const startIndex = currentPage * itemsPerPage;
+  const currentItems = passage.questions.slice(startIndex, startIndex + itemsPerPage);
 
-    return (
-      <Section>
-        <TextSection>
-          {currentTextItems.map((text, index) => (
-            <div key={index}>
-              <h3>{text.title}</h3>
-              <p>{text.content}</p>
-            </div>
-          ))}
-        </TextSection>
-        <QuestionsSection>
-          {currentItems.map(renderQuestion)}
-        </QuestionsSection>
-      </Section>
-    );
-  };
+  return (
+    <Section>
+      <TextSection>
+        <div>
+          <h3>{currentTextItem.title}</h3>
+          <p>{currentTextItem.content}</p>
+        </div>
+      </TextSection>
+      <QuestionsSection>
+        {currentItems.map(renderQuestion)}
+      </QuestionsSection>
+    </Section>
+  );
+};
+
 
   if (isLoading) {
     return (
@@ -238,14 +269,14 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
   };
 
   const handleNextPage = () => {
-    const totalTextPages = Math.ceil(passages[currentPassage].texts.length / textItemsPerPage);
+    const totalTextPages = passages[currentPassage].text ? 1 : 0;
     const totalQuestionPages = Math.ceil(passages[currentPassage].questions.length / itemsPerPage);
   
-    if (currentTextPage < totalTextPages - 1) {
+    if (currentPage < totalQuestionPages - 1) {
+      setCurrentPage(currentPage + 1);
+    } else if (currentTextPage < totalTextPages - 1) {
       setCurrentTextPage(currentTextPage + 1);
       setCurrentPage(0);
-    } else if (currentPage < totalQuestionPages - 1) {
-      setCurrentPage(currentPage + 1);
     } else if (currentPassage < passages.length - 1) {
       setCurrentPassage(currentPassage + 1);
       setCurrentTextPage(0);
@@ -264,15 +295,14 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
           {timeLeft % 60}
         </Timer>
       )}
-      {renderPassage(passages[currentPassage])}
+      {selectedPassages.length > 0 && renderPassage(selectedPassages[currentPassage])}
       <Pagination>
-        <Button onClick={handlePreviousPage} disabled={currentTextPage === 0 && currentPage === 0}>
+        <Button onClick={handlePreviousPage} disabled={currentPage === 0 && currentPassage === 0}>
           Previous
         </Button>
-        <Button
-          onClick={handleNextPage}
-        >
-          {currentTextPage < Math.ceil(passages[currentPassage].texts.length / textItemsPerPage) - 1 || currentPage < Math.ceil(passages[currentPassage].questions.length / itemsPerPage) - 1 ? 'Next Page' : currentPassage < passages.length - 1 ? 'Next Passage' : 'Finish'}
+        <Button onClick={handleNextPage}>
+          {currentPage < Math.ceil(selectedPassages[currentPassage]?.questions.length / itemsPerPage) - 1 ? 'Next Questions' : 
+           currentPassage < selectedPassages.length - 1 ? 'Next Passage' : 'Finish'}
         </Button>
       </Pagination>
     </Container>

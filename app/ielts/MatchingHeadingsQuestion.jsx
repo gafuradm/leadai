@@ -27,8 +27,8 @@ const MatchingHeadingsQuestion = ({ question, onAnswerChange }) => {
     <Container>
       <h3>{question.question}</h3>
       {question.options.map((option, index) => (
-        <Option key={index}>
-          <p>{option}</p>
+  <Option key={index}>
+    <p>{typeof option === 'object' ? option.statement : option}</p>
           <select
             onChange={(e) => handleChange(index, e.target.value)}
             value={selectedAnswers[index] || ''}

@@ -6,6 +6,7 @@ import { fetchResults, fetchExampleEssay, fetchListeningExamples, fetchSpeakingE
 import { ref, runTransaction, onValue } from "firebase/database";
 import { db } from './firebase';
 import './firebase';
+import AIAssistant from './AIAssistant';
 
 const Container = styled.div`
   padding: 20px;
@@ -175,81 +176,85 @@ const Results = ({ answers, testType }) => {
 }, []);
 
   useEffect(() => {
-    const getResults = async () => {
-  try {
-    setLoading(true);
-    setError(null);
-    const sections = testType === 'full' 
-      ? ['listening', 'reading', 'writing', 'speaking'] 
-      : [testType];
+  const getResults = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const sections = testType === 'full' 
+        ? ['listening', 'reading', 'speaking'] 
+        : [testType];
 
-    const newResults = {};
-    let totalScore = 0;
-    let validSections = 0;
+      const newResults = {};
+      let totalScore = 0;
+      let validSections = 0;
 
-    for (const section of sections) {
-      if (answers[section] && answers[section].data) {
-        console.log(`Processing section: ${section}`, answers[section].data);
-        try {
-          const sectionResult = await fetchResults(section, answers[section].data, testType);
-          const score = extractScoreFromResult(sectionResult);
-          if (score > 0) {
-            totalScore += score;
-            validSections++;
+      for (const section of sections) {
+        if (answers[section] && answers[section].data) {
+          console.log(`Processing section: ${section}`, answers[section].data);
+          try {
+            const sectionResult = await fetchResults(section, answers[section].data, testType);
+            const score = parseScore(sectionResult, section);
+            if (score > 0) {
+              totalScore += score;
+              validSections++;
+            }
+            newResults[section] = { feedback: sectionResult, score: score };
+            
+            if (section === 'listening' || section === 'reading') {
+              const rawScoreMatch = sectionResult.match(/Score: (\d+(\.\d+)?)/);
+              if (rawScoreMatch) {
+                const rawScore = parseFloat(rawScoreMatch[1]);
+                newResults[section].rawScore = rawScore;
+              }
+            }
+
+            // Fetch examples based on the section and score
+            if (section === 'listening' || testType === 'full') {
+              const listening = await fetchListeningExamples();
+              setListeningExamples(listening);
+            }
+            if (section === 'speaking' || testType === 'full') {
+              const speaking = await fetchSpeakingExamples();
+              setSpeakingExamples(speaking);
+            }
+            if (section === 'reading' || testType === 'full') {
+              const reading = await fetchReadingExamples(score);
+              setReadingExamples(reading);
+            }
+            if (section === 'writing' || testType === 'full') {
+              const writingTopic = answers[section]?.data?.topics?.task2 || 'general writing topic';
+              const writing = await fetchWritingExamples(score, writingTopic);
+              setWritingExamples(writing);
+            }
+          } catch (error) {
+            console.error(`Error processing ${section}:`, error);
+            setError(`Error fetching ${section}.message}`);
           }
-          newResults[section] = { feedback: sectionResult, score: score };
-          
-          // Fetch examples based on the section and score
-          if (section === 'listening' || testType === 'full') {
-            const listening = await fetchListeningExamples();
-            setListeningExamples(listening);
-          }
-          if (section === 'speaking' || testType === 'full') {
-            const speaking = await fetchSpeakingExamples();
-            setSpeakingExamples(speaking);
-          }
-          if (section === 'reading' || testType === 'full') {
-            const reading = await fetchReadingExamples(score);
-            setReadingExamples(reading);
-          }
-          if (section === 'writing' || testType === 'full') {
-            const writingTopic = answers[section]?.data?.topics?.task2 || 'general writing topic';
-            const writing = await fetchWritingExamples(score, writingTopic);
-            setWritingExamples(writing);
-          }
-        } catch (error) {
-          console.error(`Error processing ${section}:`, error);
-          setError(`Error fetching ${section} results: ${error.message}`);
+        } else {
+          console.warn(`Missing data for ${section} section`);
         }
-      } else {
-        console.warn(`Missing data for ${section} section`);
       }
+
+      const averageScore = validSections > 0 ? totalScore / validSections : 0;
+      const overallScore = Math.round(averageScore * 2) / 2;
+      setResult({ ...newResults, overallScore });
+
+      await updateResultsLoadCount();
+
+      if (testType === 'full') {
+        const recommendations = await fetchUniversityRecommendations(overallScore);
+        setUniversityRecommendations(recommendations);
+      }
+    } catch (err) {
+      console.error('Error in getResults:', err);
+      setError(`General: ${err.message}`);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    const overallScore = validSections > 0 ? roundIELTSScore(totalScore / validSections) : 0;
-    setResult({ ...newResults, overallScore });
-
-    await updateResultsLoadCount();
-
-    if (testType === 'full') {
-      const recommendations = await fetchUniversityRecommendations(overallScore);
-      setUniversityRecommendations(recommendations);
-    }
-  } catch (err) {
-    console.error('Error in getResults:', err);
-    setError(`General error fetching results: ${err.message}`);
-  } finally {
-    setLoading(false);
-  }
-};
-  
-    getResults();
-  }, [answers, testType]);
-
-  const extractScoreFromResult = (result) => {
-  const match = result.match(/Band Score: ([\d.]+)\/9/);
-  return match ? parseFloat(match[1]) : 0;
-};
+  getResults();
+}, [answers, testType]);
 
   const downloadResults = () => {
     let content = `IELTS Test Results\n\n`;
@@ -257,7 +262,6 @@ const Results = ({ answers, testType }) => {
   
     Object.entries(result).forEach(([section, data]) => {
       if (section !== 'overallScore') {
-        content += `${section.charAt(0).toUpperCase() + section.slice(1)} Score: ${data.score.toFixed(1)}/40\n`;
         content += `${section.charAt(0).toUpperCase() + section.slice(1)} Feedback:\n${data.feedback}\n\n`;
       }
     });
@@ -309,11 +313,44 @@ const Results = ({ answers, testType }) => {
   }
 };
 
-  const parseScore = (content) => {
-    if (!content) return 0;
-    const scoreMatch = content.match(/Score: (\d+(\.\d+)?)/);
-    return scoreMatch ? parseFloat(scoreMatch[1]) : 0;
-  };
+  const convertRawScore = (rawScore, section) => {
+  const listeningTable = [
+    [39, 9], [37, 8.5], [35, 8], [32, 7.5], [30, 7], [26, 6.5], [23, 6],
+    [18, 5.5], [16, 5], [13, 4.5], [10, 4], [7, 3.5], [5, 3], [3, 2.5], [1, 2], [0, 1]
+  ];
+
+  const readingAcademicTable = [
+    [39, 9], [37, 8.5], [35, 8], [33, 7.5], [30, 7], [27, 6.5], [23, 6],
+    [19, 5.5], [15, 5], [13, 4.5], [10, 4], [8, 3.5], [6, 3], [3, 2.5], [1, 2], [0, 1]
+  ];
+
+  const readingGeneralTable = [
+    [40, 9], [39, 8.5], [37, 8], [36, 7.5], [34, 7], [32, 6.5], [30, 6],
+    [27, 5.5], [23, 5], [19, 4.5], [15, 4], [12, 3.5], [9, 3], [6, 2.5], [3, 2], [0, 1]
+  ];
+
+  const table = section === 'listening' ? listeningTable :
+                (testType === 'academic' ? readingAcademicTable : readingGeneralTable);
+
+  for (let [threshold, score] of table) {
+    if (rawScore >= threshold) return score;
+  }
+  return 0;
+};
+
+const parseScore = (content, section) => {
+  if (!content) return 0;
+  let scoreMatch;
+  if (section === 'listening' || section === 'reading') {
+    scoreMatch = content.match(/Converted Score: (\d+(\.\d+)?)/);
+  } else {
+    scoreMatch = content.match(/Score: (\d+(\.\d+)?)/);
+  }
+  if (!scoreMatch) return 0;
+  
+  const score = parseFloat(scoreMatch[1]);
+  return Math.min(Math.max(score, 0), 9); // Ensure score is between 0 and 9
+};
 
   const playAudio = (text) => {
     const speech = new SpeechSynthesisUtterance(text);
@@ -387,29 +424,29 @@ const Results = ({ answers, testType }) => {
   };
 
   const renderFeedback = (section) => {
-  const sectionResult = result[section];
-  if (!sectionResult) return null;
-  
-  const feedbackContent = sectionResult.feedback
-    .replace(/### Detailed Feedback and Score/g, '<h3>Detailed Feedback and Score</h3>')
-    .replace(/- \*\*/g, '<li><strong>')
-    .replace(/\*\* \- /g, '</strong> - ')
-    .replace(/<li><strong>/g, '<ul><li><strong>')
-    .replace(/<\/strong> - ([^<]+)(\n|$)/g, '</strong> - $1</li>')
-    .replace(/Materials to Improve Listening Skills:/g, '<h3>Materials to Improve Listening Skills:</h3>')
-    .replace(/### Reading Practice Material/g, '<h3>Reading Practice Material</h3>')
-    .replace(/### Listening Practice Script/g, '<h3>Listening Practice Script</h3>')
-    .replace(/### Writing Practice Material/g, '<h3>Writing Practice Material</h3>')
-    .replace(/### Speaking Practice Material/g, '<h3>Speaking Practice Material</h3>')
-    .replace(/\*\*Text:\*\*/g, '<h4>Text:</h4>')
-    .replace(/\*\*Comprehension Questions:\*\*/g, '<h4>Comprehension Questions:</h4>')
-    .replace(/\*\*Script:\*\*/g, '<h4>Script:</h4>')
-    .replace(/\*\*Questions:\*\*/g, '<h4>Questions:</h4>')
-    .replace(/\*\*Essay Example:\*\*/g, '<h4>Essay Example:</h4>')
-    .replace(/\*\*Letter Example:\*\*/g, '<h4>Letter Example:</h4>')
-    .replace(/\*\*Dialogue Example:\*\*/g, '<h4>Dialogue Example:</h4>')
-    .replace(/_/g, '')
-    .replace(/\n/g, '<br/>');
+    const sectionResult = result[section];
+    if (!sectionResult) return null;
+    
+    const feedbackContent = sectionResult.feedback
+      .replace(/### Detailed Feedback and Score/g, '<h3>Detailed Feedback and Score</h3>')
+      .replace(/- \*\*/g, '<li><strong>')
+      .replace(/\*\* \- /g, '</strong> - ')
+      .replace(/<li><strong>/g, '<ul><li><strong>')
+      .replace(/<\/strong> - ([^<]+)(\n|$)/g, '</strong> - $1</li>')
+      .replace(/Materials to Improve Listening Skills:/g, '<h3>Materials to Improve Listening Skills:</h3>')
+      .replace(/### Reading Practice Material/g, '<h3>Reading Practice Material</h3>')
+      .replace(/### Listening Practice Script/g, '<h3>Listening Practice Script</h3>')
+      .replace(/### Writing Practice Material/g, '<h3>Writing Practice Material</h3>')
+      .replace(/### Speaking Practice Material/g, '<h3>Speaking Practice Material</h3>')
+      .replace(/\*\*Text:\*\*/g, '<h4>Text:</h4>')
+      .replace(/\*\*Comprehension Questions:\*\*/g, '<h4>Comprehension Questions:</h4>')
+      .replace(/\*\*Script:\*\*/g, '<h4>Script:</h4>')
+      .replace(/\*\*Questions:\*\*/g, '<h4>Questions:</h4>')
+      .replace(/\*\*Essay Example:\*\*/g, '<h4>Essay Example:</h4>')
+      .replace(/\*\*Letter Example:\*\*/g, '<h4>Letter Example:</h4>')
+      .replace(/\*\*Dialogue Example:\*\*/g, '<h4>Dialogue Example:</h4>')
+      .replace(/_/g, '')
+      .replace(/\n/g, '<br/>');
 
       let exampleContent = null;
       switch(section) {
@@ -428,18 +465,17 @@ const Results = ({ answers, testType }) => {
       }
 
       return (
-    <Feedback key={section}>
-      <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
-      <div dangerouslySetInnerHTML={{ __html: feedbackContent }} />
-      <p>Score: {sectionResult.score.toFixed(1)}/9</p>
-      {exampleContent && (
-        <div>
-          <h3>Practice Materials</h3>
-          {exampleContent}
-        </div>
-      )}
-    </Feedback>
-  );
+        <Feedback key={section}>
+          <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
+          <div dangerouslySetInnerHTML={{ __html: feedbackContent }} />
+          {exampleContent && (
+            <div>
+              <h3>Practice Materials</h3>
+              {exampleContent}
+            </div>
+          )}
+        </Feedback>
+      );
     };
 
   if (loading) {
@@ -472,11 +508,11 @@ const Results = ({ answers, testType }) => {
       <Section>
         <h2 style={{ color: '#800120', textAlign: 'center' }}><b>Overall Score: {result.overallScore}/9</b></h2>
         {Object.keys(result).filter((section) => section !== 'overallScore').map(renderFeedback)}
-        <p style={{ textAlign: 'center' }}>Total results loaded: {resultsLoadCount}</p>
       </Section>
       {testType === 'full' && renderUniversityRecommendations()}
+      <AIAssistant result={result} />
       <ButtonContainer>
-        <Button onClick={() => window.location.href = '/ielts'}>Back to Dashboard</Button>
+        <Button onClick={() => window.location.href = '/start-education'}>Back to Tests</Button>
         <DownloadButton onClick={downloadResults}>Download Results</DownloadButton>
       </ButtonContainer>
     </Container>

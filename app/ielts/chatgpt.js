@@ -6,52 +6,52 @@ export async function fetchResults(section, data, testType) {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const calculateScore = (section, correctAnswers) => {
-    const listeningScores = [
+  if (section === 'ai_assistant') {
+    return await fetchAIAssistantResponse(data.message, data.context);
+  }
+
+  const convertRawScore = (rawScore, section) => {
+    const listeningTable = [
       [39, 9], [37, 8.5], [35, 8], [32, 7.5], [30, 7], [26, 6.5], [23, 6],
-      [18, 5.5], [16, 5], [13, 4.5], [10, 4], [6, 3.5], [4, 3], [2, 2.5], [0, 2]
+      [18, 5.5], [16, 5], [13, 4.5], [10, 4], [7, 3.5], [5, 3], [3, 2.5], [1, 2], [0, 1]
     ];
 
-    const readingAcademicScores = [
+    const readingAcademicTable = [
       [39, 9], [37, 8.5], [35, 8], [33, 7.5], [30, 7], [27, 6.5], [23, 6],
-      [19, 5.5], [15, 5], [13, 4.5], [10, 4], [8, 3.5], [6, 3], [3, 2.5], [0, 2]
+      [19, 5.5], [15, 5], [13, 4.5], [10, 4], [8, 3.5], [6, 3], [3, 2.5], [1, 2], [0, 1]
     ];
 
-    const readingGeneralScores = [
-      [40, 9], [39, 8.5], [38, 8], [36, 7.5], [34, 7], [32, 6.5], [30, 6],
-      [27, 5.5], [23, 5], [19, 4.5], [15, 4], [13, 3.5], [10, 3], [8, 2.5], [6, 2]
+    const readingGeneralTable = [
+      [40, 9], [39, 8.5], [37, 8], [36, 7.5], [34, 7], [32, 6.5], [30, 6],
+      [27, 5.5], [23, 5], [19, 4.5], [15, 4], [12, 3.5], [9, 3], [6, 2.5], [3, 2], [0, 1]
     ];
 
-    let scores;
-    if (section === 'listening') {
-      scores = listeningScores;
-    } else if (section === 'reading') {
-      scores = testType === 'academic' ? readingAcademicScores : readingGeneralScores;
-    } else {
-      return null; // For writing and speaking, we'll rely on the AI's evaluation
-    }
+    const table = section === 'listening' ? listeningTable :
+                  (testType === 'academic' ? readingAcademicTable : readingGeneralTable);
 
-    for (let [threshold, score] of scores) {
-      if (correctAnswers >= threshold) {
-        return score;
-      }
+    for (let [threshold, score] of table) {
+      if (rawScore >= threshold) return score;
     }
     return 0;
   };
 
-  const systemMessage = `You are an IELTS test evaluator. Provide very detailed feedback for the ${section} section.
-     For listening and reading sections, count the number of correct answers out of 40.
-     For writing and speaking sections, provide a score out of 9 based on the IELTS scoring criteria.
-     Provide very detailed feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
-     Give very detailed recommendations for improving this section.
-     Always include the raw score (number of correct answers for listening/reading, score out of 9 for writing/speaking) at the end of your response in the format "Raw score: X".`;
+  const systemMessage = `You are an IELTS test evaluator. Provide very detailed feedback and a score for the ${section} section.
+    ${section === 'listening' || section === 'reading' 
+      ? 'Provide a score out of 40.'
+      : 'Provide a score out of 9 (can use 0.5 increments).'}
+    Provide very detailed feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
+    Give very detailed recommendations for improving this section.
+    Always include the score in the format "Score: X.X/${section === 'listening' || section === 'reading' ? '40' : '9'}" at the end of your response.`;
 
   const userMessage = `
     Section: ${section}
     Test Type: ${testType}
-    Questions: ${JSON.stringify(data.questions)}
-    User Answers: ${JSON.stringify(data.answers)}
-    Correct Answers: ${JSON.stringify(data.correctAnswers)}
+    ${section === 'speaking' 
+      ? `Questions: ${JSON.stringify(data.questions)}\nAnswers: ${JSON.stringify(data.answers)}`
+      : `Answers: ${JSON.stringify(data.answers)}`
+    }
+    ${section === 'reading' || section === 'listening' ? `Questions: ${JSON.stringify(data.questions)}` : ''}
+    ${section === 'writing' ? `Topics: ${JSON.stringify(data.topics)}` : ''}
   `;
 
   try {
@@ -76,24 +76,21 @@ export async function fetchResults(section, data, testType) {
     }
 
     const responseData = await response.json();
-    const aiResponse = responseData.choices[0].message.content;
+    let content = responseData.choices[0].message.content;
+const rawScoreMatch = content.match(/Score: (\d+(\.\d+)?)/);
+if (rawScoreMatch) {
+  const rawScore = parseFloat(rawScoreMatch[1]);
+  let convertedScore;
+  if (section === 'listening' || section === 'reading') {
+    convertedScore = convertRawScore(rawScore, section);
+    content = content.replace(/Score: (\d+(\.\d+)?)/, `Raw Score: ${rawScore}/40\nConverted Score: ${convertedScore}/9`);
+  } else {
+    convertedScore = Math.min(Math.max(rawScore, 0), 9); // Ensure score is between 0 and 9
+    content = content.replace(/Score: (\d+(\.\d+)?)/, `Score: ${convertedScore}/9`);
+  }
+}
 
-    // Extract the raw score from the AI's response
-    const rawScoreMatch = aiResponse.match(/Raw score: (\d+(\.\d+)?)/);
-    const rawScore = rawScoreMatch ? parseFloat(rawScoreMatch[1]) : 0;
-
-    // Calculate the band score for listening and reading
-    let bandScore;
-    if (section === 'listening' || section === 'reading') {
-      bandScore = calculateScore(section, Math.round(rawScore));
-    } else {
-      bandScore = rawScore; // For writing and speaking, use the AI's score
-    }
-
-    // Ensure bandScore is never null
-    bandScore = bandScore || 0;
-
-    return `${aiResponse}\n\nBand Score: ${bandScore.toFixed(1)}/9`;
+    return content;
   } catch (error) {
     console.error('Error fetching results:', error);
     throw error;
@@ -333,5 +330,44 @@ export async function fetchUniversityRecommendations(overallScore) {
   } catch (error) {
     console.error('Error fetching university recommendations:', error);
     return null;
+  }
+}
+
+export async function fetchAIAssistantResponse(message, context) {
+  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+  if (!OPENAI_API_KEY) {
+    throw new Error('OPENAI_API_KEY is not defined');
+  }
+
+  const systemMessage = `You are an AI assistant helping a student understand their IELTS test results. 
+    The student's overall score is ${context.overallScore}. 
+    Provide helpful and encouraging advice based on their scores and questions.`;
+
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o',
+        messages: [
+          { role: 'system', content: systemMessage },
+          { role: 'user', content: message }
+        ],
+        max_tokens: 1000,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch from OpenAI API');
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
   }
 }
