@@ -1,13 +1,12 @@
 [functions]
   node_bundler = "esbuild"
   external_node_modules = ["@keyv/redis"]
+  included_files = ["node_modules/keyv/**/*"]
+  timeout = 30
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
 [build]
   command = "npm run build"
   publish = ".next"
-
-[functions]
-  included_files = ["node_modules/keyv/**/*"]
-  timeout = 30
