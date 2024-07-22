@@ -46,7 +46,7 @@ export async function POST(req) {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch from OpenAI API: ${response.status} ${response.statusText}`);
+      throw new Error('Failed to fetch from OpenAI API');
     }
 
     const responseData = await response.json();
