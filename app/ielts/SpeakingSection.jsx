@@ -71,6 +71,13 @@ const Timer = styled.div`
   margin-bottom: 20px;
 `;
 
+const InstructionSection = styled.div`
+  border-radius: 8px;
+  background-color: #000000;
+  padding: 20px;
+  margin-bottom: 20px;
+`;
+
 const SpeakingSection = ({ onNext, timedMode }) => {
   const [currentPart, setCurrentPart] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -553,6 +560,20 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     <Container>
       <Title>Speaking Section</Title>
       {timedMode && <Timer>Time left: {formatTime(timeLeft)}</Timer>}
+      <InstructionSection>
+          <h2>Instructions:</h2>
+          <p>
+            Please read the task carefully and complete the required writing tasks.
+            Once you have completed writing your answers, click 'Next' to proceed to the next task.
+            You can navigate between tasks using the 'Previous' and 'Next' buttons.
+            When you have finished all tasks, click 'Submit' to finish.
+          </p>
+          {timedMode && (
+            <p>
+              You have 14 minutes for this section. Your responses will be automatically submitted when time runs out.
+            </p>
+          )}
+        </InstructionSection>
       {currentPart < selectedQuestions.length ? (
   <Section>
     <h3>{parts[currentPart].name}</h3>

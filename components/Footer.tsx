@@ -1,8 +1,11 @@
 import { FaLocationArrow } from "react-icons/fa6";
 import { socialMedia } from "@/data";
 import MagicButton from "./MagicButton";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   const handleSocialMediaClick = (url: string) => {
     window.location.href = url;
   };
@@ -17,14 +20,13 @@ const Footer = () => {
           className="w-full h-full opacity-50"
         />
       </div>
-
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw] text-black">
-          Take IELTS for free right now{" "}
+          {t("take_ielts_free_now")}
         </h1>
         <a href="/dashboard">
           <MagicButton
-            title="Get started"
+            title={t("get_started")}
             icon={<FaLocationArrow />}
             position="right"
           />
@@ -32,10 +34,8 @@ const Footer = () => {
       </div>
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
         <p className="md:text-base text-sm md:font-normal font-light text-black">
-          Copyright © 2024 Aleigh Dinara, Damirkyzy Sulamif, Damiruly Gafur
-          participant of NFactorial Incubator 2024
+          {t("copyright_notice")}
         </p>
-
         <div className="flex items-center md:gap-3 gap-6">
           {socialMedia.map((info) => (
             <a

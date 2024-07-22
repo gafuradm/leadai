@@ -55,6 +55,20 @@ const testOptions = [
     des: "Choose your dream university",
     img: "/unive.png",
     value: 'selection'
+  },
+  {
+    id: 7,
+    title: "Essay Assessment",
+    des: "Upload your essay and get detailed recommendations from AI",
+    img: "/pencil.png",
+    value: 'essay'
+  },
+  {
+    id: 8,
+    title: "Speech Assessment",
+    des: "Say something and the AI ​​will evaluate your speech skills",
+    img: "/voice.png",
+    value: 'voice'
   }
 ];
 
@@ -110,6 +124,12 @@ const Page = () => {
   const handleTestSelection = (test, type = null) => {
     if (test === 'selection') {
     router.push('/univer');
+    return;
+  } else if (test === 'essay') {
+    router.push('/essay');
+    return;
+  } else if (test === 'voice') {
+    router.push('/voice');
     return;
   }
 

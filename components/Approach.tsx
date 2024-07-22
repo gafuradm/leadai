@@ -1,17 +1,20 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
+import { useTranslation } from "react-i18next";
 
 const Approach = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="w-full py-20">
       <h1 className="heading text-black text-4xl font-bold text-center mb-12">
-        What else will you get using LeadAI?
+        {t("what_else_leadai_offers")}
       </h1>
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         <Card
-          title="Free university selection"
-          des="Leverage the power of AI to find the perfect university for you based on your academic performance, personal preferences, and future career goals. Our system analyzes a wide range of factors to recommend institutions that align with your unique profile."
+          titleKey="free_university_selection_title"
+          desKey="free_university_selection_des"
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
@@ -19,8 +22,8 @@ const Approach = () => {
           />
         </Card>
         <Card
-          title="Personalized study advice"
-          des="Take a comprehensive survey designed to assess your interests, strengths, and preferred study environments. Based on your responses, receive tailored recommendations for the best study destinations that match your profile and aspirations."
+          titleKey="personalized_study_advice_title"
+          desKey="personalized_study_advice_des"
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -33,8 +36,8 @@ const Approach = () => {
           />
         </Card>
         <Card
-          title="Tailored applicant assistance"
-          des="Receive detailed, personalized advice to enhance your application process. Our AI identifies your strengths and areas for improvement, offering guidance on how to showcase your abilities effectively and increase your chances of success."
+          titleKey="tailored_applicant_assistance_title"
+          desKey="tailored_applicant_assistance_des"
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -50,15 +53,17 @@ const Approach = () => {
 export default Approach;
 
 const Card = ({
-  title,
+  titleKey,
   children,
-  des,
+  desKey,
 }: {
-  title: string;
+  titleKey: string;
   children?: React.ReactNode;
-  des: string;
+  desKey: string;
 }) => {
   const [hovered, setHovered] = React.useState(false);
+  const { t } = useTranslation();
+
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -82,15 +87,14 @@ const Card = ({
           </motion.div>
         )}
       </AnimatePresence>
-
       <motion.div
         className="relative z-20 text-center"
         initial={{ y: 0 }}
         animate={{ y: hovered ? -20 : 0 }}
         transition={{ duration: 0.3 }}
       >
-        <h2 className="text-white text-3xl font-bold mb-4">{title}</h2>
-        <b className="text-base text-white mt-4 opacity-100">{des}</b>
+        <h2 className="text-white text-3xl font-bold mb-4">{t(titleKey)}</h2>
+        <b className="text-base text-white mt-4 opacity-100">{t(desKey)}</b>
       </motion.div>
     </div>
   );

@@ -31,7 +31,7 @@ export default function Home() {
   // Handle form submission and fetch recommendations
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setRecommendations("Loading recommendations...");
+    setRecommendations("Preparing your recommendations...");
     setLoading(true);
     try {
       const response = await fetch('/api/getRecommendations', {
@@ -199,10 +199,11 @@ export default function Home() {
 
       {/* Loading spinner */}
       {loading && (
-        <div className="flex justify-center mt-8">
-          <PulseLoader color="#800120" />
-        </div>
-      )}
+  <div className="flex flex-col items-center justify-center mt-8">
+    <PulseLoader color="#800120" />
+    <h1 className="text-center mt-4" style={{ color: '#000000' }}><b>Preparing your recommendations...</b></h1>
+  </div>
+)}
 
       {/* Recommendations */}
       {!loading && recommendations && (

@@ -73,6 +73,13 @@ const TaskDescription = styled.p`
   color: #000000;
 `;
 
+const InstructionSection = styled.div`
+  border-radius: 8px;
+  background-color: #000000;
+  padding: 20px;
+  margin-bottom: 20px;
+`;
+
 const WritingSection = ({ testType, onNext, timedMode }) => {
   const [task1, setTask1] = useState(null);
   const [task2, setTask2] = useState(null);
@@ -173,7 +180,20 @@ useEffect(() => {
     <Container>
       <TitleStyled style={{ color: 'black' }}>Writing Section</TitleStyled>
       {timedMode && <Timer>Time left: {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</Timer>}
-      
+        <InstructionSection>
+          <h2>Instructions:</h2>
+          <p>
+            Please read the task carefully and complete the required writing tasks.
+            Once you have completed writing your answers, click 'Next' to proceed to the next task.
+            You can navigate between tasks using the 'Previous' and 'Next' buttons.
+            When you have finished all tasks, click 'Submit' to finish.
+          </p>
+          {timedMode && (
+            <p>
+              You have 60 minutes for this section. Your responses will be automatically submitted when time runs out.
+            </p>
+          )}
+        </InstructionSection>
       {currentPage === 0 && (
         <Section>
           <TaskTitle>Task 1</TaskTitle>

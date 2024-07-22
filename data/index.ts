@@ -27,7 +27,7 @@ export const gridItems = [
   },
   {
     id: 6,
-    title: "accept_free_help",
+    title: "accept_free_help_one",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -173,7 +173,7 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
-    url: "https://github.com/gafuradm"
+    url: "https://github.com/gafuradm",
   },
   {
     id: 2,
@@ -183,6 +183,6 @@ export const socialMedia = [
   {
     id: 3,
     img: "/ins.svg",
-    url: "https://www.instagram.com/lead_ai/"
-  }
+    url: "https://www.instagram.com/lead_ai/",
+  },
 ];

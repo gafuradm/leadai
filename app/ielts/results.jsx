@@ -480,8 +480,9 @@ const parseScore = (content, section) => {
 
   if (loading) {
     return (
-      <LoadingContainer>
+      <LoadingContainer className="flex flex-col items-center justify-center mt-">
         <PulseLoader color="#800120" size={15} />
+        <h1 className="text-center mt-4" style={{ color: '#000000' }}><b>Preparing your results...</b></h1>
       </LoadingContainer>
     );
   }

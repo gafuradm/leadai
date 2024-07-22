@@ -68,6 +68,13 @@ const Pagination = styled.div`
   margin-top: 20px;
 `;
 
+const InstructionSection = styled.div`
+  border-radius: 8px;
+  background-color: #000000;
+  padding: 20px;
+  margin-bottom: 20px;
+`;
+
 const ListeningSection = ({ onNext, timedMode }) => {
   const [answers, setAnswers] = useState([]);
   const [currentPart, setCurrentPart] = useState(0);
@@ -186,6 +193,19 @@ const ListeningSection = ({ onNext, timedMode }) => {
     <Container>
       <Title>Listening Section</Title>
       {timedMode && <Timer>Time left: {formatTime(timeLeft)}</Timer>}
+      <InstructionSection>
+        <h2>Instructions:</h2>
+        <p>
+          You will hear a recording. Listen carefully and answer the questions.
+          You can navigate between questions using the 'Next' and 'Previous' buttons.
+          Once you have completed all questions and are ready to submit, click 'Finish'.
+        </p>
+        {timedMode && (
+          <p>
+            You have 30 minutes for this section. After 30 minutes, your results will be automatically submitted.
+          </p>
+        )}
+      </InstructionSection>
       {currentQuestion && (
         <Section>
           <p style={{ color: 'black' }}>Part {currentPart + 1} - Question {currentQuestionIndex + 1}</p>
