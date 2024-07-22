@@ -116,6 +116,28 @@ const WritingSection = ({ testType, onNext, timedMode }) => {
     selectRandomTasks();
   }, [testType]);
 
+  useEffect(() => {
+  let timer;
+  if (timedMode && timeLeft > 0) {
+    timer = setInterval(() => {
+      setTimeLeft((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+  }
+  return () => clearInterval(timer);
+}, [timedMode, timeLeft]);
+
+useEffect(() => {
+  if (timedMode && timeLeft === 0) {
+    handleSubmit();
+  }
+}, [timedMode, timeLeft]);
+
   const handleAnswerChange = (taskIndex, answer) => {
     const newAnswers = [...answers];
     newAnswers[taskIndex] = answer;

@@ -153,6 +153,12 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
     }
   }, [timedMode]);
 
+  useEffect(() => {
+  if (timedMode && timeLeft === 0) {
+    handleSubmit();
+  }
+}, [timedMode, timeLeft]);
+
   const handleAnswerChange = (questionId, answer) => {
   setAnswers(prevAnswers => ({
     ...prevAnswers,

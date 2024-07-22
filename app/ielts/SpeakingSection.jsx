@@ -367,6 +367,12 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     initializeAvatar();
   }, []);
 
+  useEffect(() => {
+  if (timedMode && timeLeft === 0) {
+    handleSubmit();
+  }
+}, [timedMode, timeLeft]);
+
   const getRandomQuestions = () => {
   const randomQuestions = [];
   

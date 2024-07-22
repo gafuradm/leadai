@@ -100,6 +100,12 @@ const ListeningSection = ({ onNext, timedMode }) => {
     }
   }, [timeLeft, currentPart, timedMode]);
 
+  useEffect(() => {
+  if (timedMode && timeLeft === 0) {
+    handleSubmit();
+  }
+}, [timedMode, timeLeft]);
+
   const handleAnswerChange = (index, answer) => {
     const newAnswers = [...answers];
     newAnswers[index] = answer;

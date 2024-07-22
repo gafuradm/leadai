@@ -103,7 +103,7 @@ export async function fetchExampleEssay(topics) {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const systemMessage = `You are an IELTS writing expert. Generate an example essay based on the given topic and question. The essay should demonstrate excellent structure, coherence, grammar, and vocabulary usage appropriate for a high IELTS score.`;
+  const systemMessage = `You are an IELTS writing expert. Generate an example essay based on the given topic and question. The essay should demonstrate excellent structure, coherence, grammar, and vocabulary usage appropriate for a high IELTS score. Generate practical materials even if the user has not scored a single point.`;
   const userMessage = `
     Task 1 Topic: ${JSON.stringify(topics.task1)}
     Task 2 Topic: ${JSON.stringify(topics.task2)}
@@ -145,7 +145,7 @@ export async function fetchListeningExamples() {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const systemMessage = `You are an IELTS listening expert. Generate 4 short listening passages (one for each part of the IELTS listening test) with corresponding questions. Each passage should be about 30-60 seconds long when spoken.`;
+  const systemMessage = `You are an IELTS listening expert. Generate 4 short listening passages (one for each part of the IELTS listening test) with corresponding questions. Each passage should be about 30-60 seconds long when spoken. Generate practical materials even if the user has not scored a single point.`;
   const userMessage = `Please generate 4 listening passages with questions for IELTS practice.`;
 
   try {
@@ -187,7 +187,8 @@ export async function fetchSpeakingExamples() {
     1. A question for Part 1 (simple personal questions)
     2. A task for Part 2 (a longer speech on a given topic)
     3. A follow-up question for Part 3 (more abstract questions related to Part 2)
-    For each part, also provide a sample answer.`;
+    For each part, also provide a sample answer.
+    Generate practical materials even if the user has not scored a single point.`;
   const userMessage = `Generate IELTS speaking practice materials.`;
 
   try {
@@ -225,7 +226,7 @@ export async function fetchReadingExamples(score) {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const systemMessage = `You are an IELTS reading expert. Generate a reading passage with questions suitable for a student with an IELTS reading score of ${score}. The passage should be about 300 words long, followed by 5 questions of various types (multiple choice, true/false/not given, matching, etc.).`;
+  const systemMessage = `You are an IELTS reading expert. Generate a reading passage with questions suitable for a student with an IELTS reading score of ${score}. The passage should be about 300 words long, followed by 5 questions of various types (multiple choice, true/false/not given, matching, etc.). Generate practical materials even if the user has not scored a single point.`;
   const userMessage = `Please generate an IELTS reading practice passage with questions for a student with a score of ${score}.`;
 
   try {
@@ -263,7 +264,7 @@ export async function fetchWritingExamples(score, topic) {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const systemMessage = `You are an IELTS writing expert. Generate an example essay based on the given topic. The essay should be written at a level suitable for a student with an IELTS writing score of ${score}. It should demonstrate good structure, coherence, grammar, and vocabulary usage.`;
+  const systemMessage = `You are an IELTS writing expert. Generate an example essay based on the given topic. The essay should be written at a level suitable for a student with an IELTS writing score of ${score}. It should demonstrate good structure, coherence, grammar, and vocabulary usage. Generate practical materials even if the user has not scored a single point.`;
   const userMessage = `Please write an example essay for the following topic: ${topic}. The essay should be suitable for a student with an IELTS writing score of ${score}.`;
 
   try {
@@ -339,7 +340,7 @@ export async function fetchAIAssistantResponse(message, context) {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const systemMessage = `You are an AI assistant helping a student understand their IELTS test results. 
+  const systemMessage = `You are an AI friendly assistant named LeadAI helping a student understand their IELTS test results. 
     The student's overall score is ${context.overallScore}. 
     Provide helpful and encouraging advice based on their scores and questions.`;
 
