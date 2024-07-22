@@ -34,7 +34,7 @@ export default function Home() {
     setRecommendations("Loading recommendations...");
     setLoading(true);
     try {
-      const response = await fetch('/api/getRecommendations', {
+      const response = await fetch('../api/getRecommendations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData)
