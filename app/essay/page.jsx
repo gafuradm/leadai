@@ -165,12 +165,14 @@ export default function Home() {
           border: 1px solid #bdc3c7;
           border-radius: 4px;
           font-size: 1rem;
+          background-color: white;
+          color: black;
         }
 
         button {
           padding: 0.5rem 1rem;
           font-size: 1rem;
-          background-color: #3498db;
+          background-color: #800120;
           color: white;
           border: none;
           border-radius: 4px;
@@ -179,7 +181,7 @@ export default function Home() {
         }
 
         button:hover {
-          background-color: #2980b9;
+          background-color: #800120;
         }
 
         button:disabled {
@@ -204,7 +206,7 @@ export default function Home() {
         .score {
           font-size: 1.2rem;
           font-weight: bold;
-          color: #27ae60;
+          color: #800120;
         }
 
         h2, h3 {

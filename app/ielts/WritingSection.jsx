@@ -184,9 +184,9 @@ useEffect(() => {
           <h2>Instructions:</h2>
           <p>
             Please read the task carefully and complete the required writing tasks.
-            Once you have completed writing your answers, click 'Next' to proceed to the next task.
-            You can navigate between tasks using the 'Previous' and 'Next' buttons.
-            When you have finished all tasks, click 'Submit' to finish.
+            Once you have completed writing your answers, click Next to proceed to the next task.
+            You can navigate between tasks using the Previous and Next buttons.
+            When you have finished all tasks, click Submit to finish.
           </p>
           {timedMode && (
             <p>

@@ -197,8 +197,8 @@ const ListeningSection = ({ onNext, timedMode }) => {
         <h2>Instructions:</h2>
         <p>
           You will hear a recording. Listen carefully and answer the questions.
-          You can navigate between questions using the 'Next' and 'Previous' buttons.
-          Once you have completed all questions and are ready to submit, click 'Finish'.
+          You can navigate between questions using the Next and Previous buttons.
+          Once you have completed all questions and are ready to submit, click Finish.
         </p>
         {timedMode && (
           <p>
