@@ -75,7 +75,7 @@ const TaskDescription = styled.p`
 
 const InstructionSection = styled.div`
   border-radius: 8px;
-  background-color: #000000;
+  background-color: #800120;
   padding: 20px;
   margin-bottom: 20px;
 `;
