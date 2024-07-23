@@ -263,9 +263,9 @@ const ReadingSection = ({ onNext, testType, timedMode }) => {
   <h2>Instructions:</h2>
   <p>
     Please read the passage carefully and answer the following questions.
-    You may navigate between questions using the 'Previous' and 'Next' buttons.
-    You can also navigate between passages using the 'Next Passage' button.
-    Once you have completed all questions and are ready to submit, click 'Finish'.
+    You may navigate between questions using the Previous and Next buttons.
+    You can also navigate between passages using the Next Passage button.
+    Once you have completed all questions and are ready to submit, click Finish.
     You have 60 minutes for each section. After 60 minutes, your results will be automatically submitted.
   </p>
 </InstructionSection>
