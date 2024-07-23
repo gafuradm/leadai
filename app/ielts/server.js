@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
 const app = express();
 
 // Middleware
@@ -10,7 +9,6 @@ app.use(express.json());
 
 // MongoDB connection
 const MONGODB_URI = 'mongodb+srv://Cluster93803:admin@cluster93803.dqtj5jy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster93803';
-
 mongoose.connect(MONGODB_URI, {});
 
 const connection = mongoose.connection;

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 let Counter = require('../models/Counter');
 
-router.route('https://leadai.netlify.app/ielts').get(async (req, res) => {
+router.route('/ielts').get(async (req, res) => {
   try {
     let counter = await Counter.findOne({ name: 'resultsLoadCount' });
     if (!counter) {
@@ -14,7 +14,7 @@ router.route('https://leadai.netlify.app/ielts').get(async (req, res) => {
   }
 });
 
-router.route('https://leadai.netlify.app/ielts').post(async (req, res) => {
+router.route('/ielts').post(async (req, res) => {
   try {
     const counter = await Counter.findOneAndUpdate(
       { name: 'resultsLoadCount' },
