@@ -3,10 +3,8 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import PulseLoader from 'react-spinners/PulseLoader';
 import styled from 'styled-components';
 import { fetchResults, fetchExampleEssay, fetchListeningExamples, fetchSpeakingExamples, fetchReadingExamples, fetchWritingExamples, fetchUniversityRecommendations } from './chatgpt';
-import { ref, runTransaction, onValue } from "firebase/database";
-import { db } from './firebase';
-import './firebase';
 import AIAssistant from './AIAssistant';
+import axios from 'axios';
 
 const Container = styled.div`
   padding: 20px;
@@ -165,21 +163,23 @@ const Results = ({ answers, testType }) => {
   const [resultsLoadCount, setResultsLoadCount] = useState(0);
 
   useEffect(() => {
-  const countRef = ref(db, 'resultsLoadCount');
-  
-  const unsubscribe = onValue(countRef, (snapshot) => {
-    const count = snapshot.val() || 0;
-    setResultsLoadCount(count);
-  });
+  const fetchResultsLoadCount = async () => {
+    try {
+      const response = await axios.get('https://leadai.netlify.app/ielts');
+      setResultsLoadCount(response.data.count);
+    } catch (error) {
+      console.error("Error fetching results load count:", error);
+    }
+  };
 
-  return () => unsubscribe();
+  fetchResultsLoadCount();
 }, []);
 
   useEffect(() => {
-  const getResults = async () => {
-    try {
-      setLoading(true);
-      setError(null);
+    const getResults = async () => {
+      try {
+        setLoading(true);
+        setError(null);
       const sections = testType === 'full' 
         ? ['listening', 'reading', 'speaking'] 
         : [testType];
@@ -246,15 +246,15 @@ const Results = ({ answers, testType }) => {
         setUniversityRecommendations(recommendations);
       }
     } catch (err) {
-      console.error('Error in getResults:', err);
-      setError(`General: ${err.message}`);
-    } finally {
-      setLoading(false);
-    }
-  };
+        console.error('Error in getResults:', err);
+        setError(`General: ${err.message}`);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  getResults();
-}, [answers, testType]);
+    getResults();
+  }, [answers, testType]);
 
   const downloadResults = () => {
     let content = `IELTS Test Results\n\n`;
@@ -302,12 +302,9 @@ const Results = ({ answers, testType }) => {
   };
 
   const updateResultsLoadCount = async () => {
-  const countRef = ref(db, 'resultsLoadCount');
-  
   try {
-    await runTransaction(countRef, (currentCount) => {
-      return (currentCount || 0) + 1;
-    });
+    const response = await axios.post('https://leadai.netlify.app/ielts');
+    setResultsLoadCount(response.data.count);
   } catch (error) {
     console.error("Error updating results load count:", error);
   }
@@ -509,6 +506,7 @@ const parseScore = (content, section) => {
       <Section>
         <h2 style={{ color: '#800120', textAlign: 'center' }}><b>Overall Score: {result.overallScore}/9</b></h2>
         {Object.keys(result).filter((section) => section !== 'overallScore').map(renderFeedback)}
+        <div>Number of tests completed: {resultsLoadCount}</div>
       </Section>
       {testType === 'full' && renderUniversityRecommendations()}
       <AIAssistant result={result} />
