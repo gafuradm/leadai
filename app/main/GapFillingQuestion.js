@@ -20,22 +20,17 @@ const Input = styled.input`
   background-color: white;
 `;
 
-const GapFillingQuestion = ({ question, onAnswerChange, savedAnswer }) => {
-  const [answer, setAnswer] = useState('');
-
-  useEffect(() => {
-    if (savedAnswer) {
-      setAnswer(savedAnswer);
-    }
-  }, [savedAnswer]);
+const GapFillingQuestion = ({ question, savedAnswer, onAnswerChange }) => {
+  const [answer, setAnswer] = useState(savedAnswer || '');
 
   const handleChange = (e) => {
-    setAnswer(e.target.value);
-    onAnswerChange(e.target.value);
+    const newAnswer = e.target.value;
+    setAnswer(newAnswer);
+    onAnswerChange(newAnswer);
   };
-
-  const parts = question.question.split('_______');
-  const hint = question.hint || "Fill in the gap"; // Добавляем подсказку
+  
+  const parts = question.question.split('__');
+  const placeholder = question.hint || "Fill in the gap";
 
   return (
     <QuestionContainer>
@@ -45,7 +40,7 @@ const GapFillingQuestion = ({ question, onAnswerChange, savedAnswer }) => {
           type="text"
           value={answer}
           onChange={handleChange}
-          placeholder={hint}
+          placeholder={placeholder}
         />
         {parts[1]}
       </QuestionText>

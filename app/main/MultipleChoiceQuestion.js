@@ -29,12 +29,13 @@ const RadioInput = styled.input`
   margin-right: 10px;
 `;
 
-const MultipleChoiceQuestion = ({ question, onAnswerChange }) => {
-  const [selectedOption, setSelectedOption] = useState('');
+const MultipleChoiceQuestion = ({ question, savedAnswer, onAnswerChange }) => {
+  const [selectedOption, setSelectedOption] = useState(savedAnswer || '');
 
   const handleOptionChange = (e) => {
-    setSelectedOption(e.target.value);
-    onAnswerChange(e.target.value);
+    const value = e.target.value;
+    setSelectedOption(value);
+    onAnswerChange(value);
   };
 
   return (

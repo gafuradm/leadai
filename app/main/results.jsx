@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import PulseLoader from 'react-spinners/PulseLoader';
 import styled from 'styled-components';
-import { fetchResults, fetchExampleEssay, fetchListeningExamples, fetchSpeakingExamples, fetchReadingExamples, fetchWritingExamples, fetchUniversityRecommendations } from './chatgpt';
+import { fetchResults, fetchListeningExamples, fetchSpeakingExamples, fetchReadingExamples, fetchWritingExamples, fetchUniversityRecommendations } from './chatgpt';
 import AIAssistant from './AIAssistant';
 import axios from 'axios';
 
@@ -201,9 +201,9 @@ const Results = ({ answers, testType }) => {
 
             // Fetch examples based on the section and score
             if (section === 'listening' || testType === 'full') {
-              const listening = await fetchListeningExamples();
-              setListeningExamples(listening);
-            }
+  const listening = await fetchListeningExamples(score);
+  setListeningExamples(listening);
+}
             if (section === 'speaking' || testType === 'full') {
               const speaking = await fetchSpeakingExamples();
               setSpeakingExamples(speaking);

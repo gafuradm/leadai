@@ -47,8 +47,8 @@ const Select = styled.select`
   }
 `;
 
-const MatchingQuestion = ({ question, onAnswerChange }) => {
-  const [matches, setMatches] = useState({});
+const MatchingQuestion = ({ question, savedAnswer, onAnswerChange }) => {
+  const [matches, setMatches] = useState(savedAnswer ? JSON.parse(savedAnswer) : {});
 
   const handleChange = (index, value) => {
     const newMatches = { ...matches, [index]: value };

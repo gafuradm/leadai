@@ -65,17 +65,15 @@ const InstructionSection = styled.div`
 `;
 
 const ListeningSection = ({ onNext, timedMode }) => {
-  const [currentPart, setCurrentPart] = useState(0);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(30 * 60); // 30 minutes in seconds
+  const [timeLeft, setTimeLeft] = useState(30 * 60);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
   const [audioTexts, setAudioTexts] = useState([]);
   const [questionSets, setQuestionSets] = useState([]);
-  const [answers, setAnswers] = useState([]);
+  const [currentPart, setCurrentPart] = useState(0);
+  const [answers, setAnswers] = useState({});
 
   useEffect(() => {
-  // Simulate loading audio texts and question sets
   const loadedData = [
   {
     type: "daily_life_conversation",
@@ -255,15 +253,15 @@ const ListeningSection = ({ onNext, timedMode }) => {
         answer: "qubits"
       },
       {
-  id: "q6",
-  type: "matching",
-  question: "Match the following fields with their potential quantum computing applications:",
-  options: [
-    { field: "Cryptography", application: "Unbreakable encryption" },
-    { field: "Drug discovery", application: "Simulating molecular interactions" },
-    { field: "Optimization", application: "Solving complex logistics problems" }
-  ]
-},
+        id: "q6",
+        type: "matching",
+        question: "Match the following fields with their potential quantum computing applications:",
+        options: [
+          { field: "Cryptography", application: "Unbreakable encryption" },
+          { field: "Optimization", application: "Solving complex logistics problems" },
+          { field: "Artificial Intelligence", application: "Enhanced machine learning algorithms" }
+        ]
+      },
       {
         id: "q7",
         type: "multiple_choice",
@@ -518,10 +516,7 @@ const ListeningSection = ({ onNext, timedMode }) => {
   }
 ]
 
-  // Shuffle the loaded data
   const shuffledData = shuffleArray([...loadedData]);
-  
-  // Select the first 4 items (or however many you need)
   const selectedData = shuffledData.slice(0, 4);
 
   setAudioTexts(selectedData.map(item => item.audioText));
@@ -550,19 +545,28 @@ const ListeningSection = ({ onNext, timedMode }) => {
     return array;
   };
 
-const handleAnswerChange = (index, answer) => {
-  const newAnswers = [...answers];
-  newAnswers[index] = answer;
-  setAnswers(newAnswers);
+const handleAnswerChange = (partIndex, questionIndex, answer) => {
+  setAnswers(prev => ({
+    ...prev,
+    [partIndex]: {
+      ...(prev[partIndex] || {}),
+      [questionIndex]: answer
+    }
+  }));
 };
 
 const handleSubmit = () => {
-  if (Array.isArray(answers) && answers.some(answer => answer !== '')) {
+  const allAnswers = Object.values(answers).flatMap(partAnswers => Object.values(partAnswers));
+  const answeredQuestions = allAnswers.filter(answer => 
+    answer !== '' && answer !== undefined && answer !== '{}' && answer !== null
+  ).length;
+
+  if (answeredQuestions > 0) {
     const sectionData = {
       section: 'listening',
       data: {
         answers: answers,
-        questions: questionSets.flat(),
+        questions: questionSets,
         audioTexts: audioTexts
       }
     };
@@ -572,45 +576,27 @@ const handleSubmit = () => {
   }
 };
 
-  const speakText = (text) => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      window.speechSynthesis.speak(utterance);
-    } else {
-      alert("Sorry, your browser doesn't support text to speech!");
-    }
-  };
-
   const playCurrentAudio = () => {
   if (!isPlaying && !hasPlayed) {
-    speakText(audioTexts[currentPart]);
-    setIsPlaying(true);
-    setHasPlayed(true);
-    setTimeout(() => setIsPlaying(false), audioTexts[currentPart].length * 100);
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(audioTexts[currentPart]);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.8;
+
+    utterance.onstart = () => {
+      setIsPlaying(true);
+    };
+
+    utterance.onend = () => {
+      setIsPlaying(false);
+      setHasPlayed(true);
+      window.speechSynthesis.cancel();
+    };
+
+    window.speechSynthesis.speak(utterance);
   }
 };
-
-  const moveToNextQuestion = () => {
-    if (currentQuestionIndex < 9) {
-      setCurrentQuestionIndex(prevIndex => prevIndex + 1);
-    } else if (currentPart < 3) {
-      setCurrentPart(prevPart => prevPart + 1);
-      setCurrentQuestionIndex(0);
-      setHasPlayed(false);
-    } else {
-      handleSubmit();
-    }
-  };
-
-  const moveToPreviousQuestion = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(prevIndex => prevIndex - 1);
-    } else if (currentPart > 0) {
-      setCurrentPart(prevPart => prevPart - 1);
-      setCurrentQuestionIndex(9);
-    }
-  };
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
@@ -618,31 +604,50 @@ const handleSubmit = () => {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
-  const renderQuestion = (question) => {
-  const currentQuestionSet = questionSets[currentPart];
-  const currentQuestion = currentQuestionSet[currentQuestionIndex];
+  const renderQuestions = () => {
+  if (!questionSets || !questionSets[currentPart]) {
+    return <p>Loading questions...</p>;
+  }
+  return questionSets[currentPart].map((question, index) => (
+    <Section key={`${currentPart}-${index}`}>
+      <p style={{ color: "#000000" }}>Question {index + 1} of 10</p>
+      {renderQuestion(question, index)}
+    </Section>
+  ));
+};
 
-  switch (currentQuestion.type) {
+  const renderQuestion = (question, questionIndex) => {
+  const savedAnswer = answers[currentPart]?.[questionIndex];
+  switch (question.type) {
     case 'multiple_choice':
       return <MultipleChoiceQuestion 
-        key={currentQuestion.id} 
-        question={currentQuestion} 
-        onAnswerChange={(answer) => handleAnswerChange(currentPart * 10 + currentQuestionIndex, answer)} 
+        key={`${currentPart}-${questionIndex}`}
+        question={question} 
+        savedAnswer={savedAnswer}
+        onAnswerChange={(answer) => handleAnswerChange(currentPart, questionIndex, answer)} 
       />;
-      case 'gap_filling':
-        return <GapFillingQuestion key={question.id} question={question} onAnswerChange={(answer) => handleAnswerChange(currentPart * 10 + currentQuestionIndex, answer)} />;
-      case 'matching':
-        return <MatchingQuestion key={question.id} question={question} onAnswerChange={(answer) => handleAnswerChange(currentPart * 10 + currentQuestionIndex, answer)} />;
-      default:
-        return null;
-    }
-  };
-
-  const currentQuestion = questionSets[currentPart] && questionSets[currentPart][currentQuestionIndex];
+    case 'gap_filling':
+      return <GapFillingQuestion 
+        key={`${currentPart}-${questionIndex}`}
+        question={question} 
+        savedAnswer={savedAnswer}
+        onAnswerChange={(answer) => handleAnswerChange(currentPart, questionIndex, answer)} 
+      />;
+    case 'matching':
+      return <MatchingQuestion 
+        key={`${currentPart}-${questionIndex}`}
+        question={question} 
+        savedAnswer={savedAnswer}
+        onAnswerChange={(answer) => handleAnswerChange(currentPart, questionIndex, answer)} 
+      />;
+    default:
+      return null;
+  }
+};
 
   return (
     <Container>
-      <Title>Listening Section</Title>
+      <Title>Listening Section - Part {currentPart + 1}</Title>
       {timedMode && <Timer>Time left: {formatTime(timeLeft)}</Timer>}
       <InstructionSection>
         <h2>Instructions:</h2>
@@ -657,21 +662,25 @@ const handleSubmit = () => {
           </p>
         )}
       </InstructionSection>
-      {currentQuestion && (
-        <Section>
-          <p style={{ color: "#000000" }}>Part {currentPart + 1} - Question {currentQuestionIndex + 1}</p>
-          <Button onClick={playCurrentAudio} disabled={isPlaying || hasPlayed}>
-            {isPlaying ? 'Playing...' : hasPlayed ? 'Played' : 'Play Audio'}
-          </Button>
-          {renderQuestion(currentQuestion)}
-        </Section>
-      )}
-      <Pagination>
-        <Button onClick={moveToPreviousQuestion} disabled={currentPart === 0 && currentQuestionIndex === 0}>
-          Previous
+      <Section>
+        <Button onClick={playCurrentAudio} disabled={isPlaying || hasPlayed}>
+          {isPlaying ? 'Playing...' : hasPlayed ? 'Played' : 'Play Audio'}
         </Button>
-        <Button onClick={moveToNextQuestion}>
-          {currentPart === 3 && currentQuestionIndex === 9 ? 'Finish' : 'Next Question'}
+      </Section>
+      {renderQuestions()}
+      <Pagination>
+        <Button onClick={() => setCurrentPart(prev => Math.max(0, prev - 1))} disabled={currentPart === 0}>
+          Previous Part
+        </Button>
+        <Button onClick={() => {
+          if (currentPart < 3) {
+            setCurrentPart(prev => prev + 1);
+            setHasPlayed(false);
+          } else {
+            handleSubmit();
+          }
+        }}>
+          {currentPart === 3 ? 'Finish' : 'Next Part'}
         </Button>
       </Pagination>
     </Container>

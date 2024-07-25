@@ -126,7 +126,7 @@ Example Feedback Structure:
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }
         ],
-        max_tokens: 2000,
+        max_tokens: 3000,
       }),
     });
 
@@ -156,49 +156,7 @@ if (rawScoreMatch) {
   }
 }
 
-export async function fetchExampleEssay(topics) {
-  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-  if (!OPENAI_API_KEY) {
-    throw new Error('OPENAI_API_KEY is not defined');
-  }
-
-  const systemMessage = `You are an IELTS writing expert. Generate an example essay based on the given topic and question. The essay should demonstrate excellent structure, coherence, grammar, and vocabulary usage appropriate for a high IELTS score. Generate practical materials even if the user has not scored a single point.`;
-  const userMessage = `
-    Task 1 Topic: ${JSON.stringify(topics.task1)}
-    Task 2 Topic: ${JSON.stringify(topics.task2)}
-    Please write an example essay for Task 2.
-  `;
-
-  try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${OPENAI_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o',
-        messages: [
-          { role: 'system', content: systemMessage },
-          { role: 'user', content: userMessage }
-        ],
-        max_tokens: 1000,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch example essay from OpenAI API');
-    }
-
-    const responseData = await response.json();
-    return responseData.choices[0].message.content;
-  } catch (error) {
-    console.error('Error fetching example essay:', error);
-    throw error;
-  }
-}
-
-export async function fetchListeningExamples() {
+export async function fetchListeningExamples(score) {
   const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
   if (!OPENAI_API_KEY) {
     throw new Error('OPENAI_API_KEY is not defined');
@@ -220,7 +178,7 @@ export async function fetchListeningExamples() {
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }
         ],
-        max_tokens: 2500,
+        max_tokens: 3000,
       }),
     });
 
