@@ -13,8 +13,8 @@ const Hero = () => {
   };
 
   const closeDropdown = (language: string) => {
-    // Добавлено: аннотация типа string
     i18n.changeLanguage(language);
+    localStorage.setItem("selectedLanguage", language);
     setIsDropdownOpen(false);
   };
 
@@ -42,7 +42,7 @@ const Hero = () => {
             <img
               src={`/${i18n.language}.png`}
               alt="Current Language"
-              className="h-6 w-9"
+              className="h-8 w-9"
             />
             <span>{i18n.language.toUpperCase()}</span>
           </button>
@@ -53,35 +53,35 @@ const Hero = () => {
                   className="flex items-center p-2 cursor-pointer hover:bg-gray-200"
                   onClick={() => closeDropdown("en")}
                 >
-                  <img src="/en.png" alt="English" className="h-6 w-9 mr-2" />
+                  <img src="/en.png" alt="English" className="h-8 w-9 mr-2" />
                   <span className="text-black">EN</span>
                 </li>
                 <li
                   className="flex items-center p-2 cursor-pointer hover:bg-gray-200"
                   onClick={() => closeDropdown("ru")}
                 >
-                  <img src="/ru.png" alt="Russian" className="h-6 w-9 mr-2" />
+                  <img src="/ru.png" alt="Russian" className="h-8 w-9 mr-2" />
                   <span className="text-black">RU</span>
                 </li>
                 <li
                   className="flex items-center p-2 cursor-pointer hover:bg-gray-200"
                   onClick={() => closeDropdown("zh")}
                 >
-                  <img src="/zh.png" alt="Chinese" className="h-6 w-9 mr-2" />
+                  <img src="/zh.png" alt="Chinese" className="h-8 w-9 mr-2" />
                   <span className="text-black">ZH</span>
                 </li>
                 <li
                   className="flex items-center p-2 cursor-pointer hover:bg-gray-200"
                   onClick={() => closeDropdown("kk")}
                 >
-                  <img src="/kk.png" alt="Kazakh" className="h-6 w-9 mr-2" />
+                  <img src="/kk.png" alt="Kazakh" className="h-8 w-9 mr-2" />
                   <span className="text-black">KK</span>
                 </li>
                 <li
                   className="flex items-center p-2 cursor-pointer hover:bg-gray-200"
                   onClick={() => closeDropdown("ar")}
                 >
-                  <img src="/ar.png" alt="Arabic" className="h-6 w-9 mr-2" />
+                  <img src="/ar.png" alt="Arabic" className="h-8 w-9 mr-2" />
                   <span className="text-black">AR</span>
                 </li>
               </ul>
@@ -98,7 +98,10 @@ const Hero = () => {
             words={t("prepare_message")}
             className="text-left text-[40px] md:text-5xl lg:text-6xl text-burgundy"
           />
-          <a href="/ielts" className="scroll-smooth mt-10">
+          <a
+            href={`/main?lang=${i18n.language}`}
+            className="scroll-smooth mt-10"
+          >
             <MagicButton
               title={t("master_ielts")}
               icon={<FaLocationArrow />}

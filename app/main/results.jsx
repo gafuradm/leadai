@@ -165,7 +165,7 @@ const Results = ({ answers, testType }) => {
   useEffect(() => {
   const fetchResultsLoadCount = async () => {
     try {
-      const response = await axios.get('https://leadai.netlify.app/ielts');
+      const response = await axios.get('https://leadai.netlify.app/main');
       setResultsLoadCount(response.data.count);
     } catch (error) {
       console.error("Error fetching results load count:", error);
@@ -189,24 +189,15 @@ const Results = ({ answers, testType }) => {
       let validSections = 0;
 
       for (const section of sections) {
-        if (answers[section] && answers[section].data) {
-          console.log(`Processing section: ${section}`, answers[section].data);
-          try {
-            const sectionResult = await fetchResults(section, answers[section].data, testType);
-            const score = parseScore(sectionResult, section);
-            if (score > 0) {
-              totalScore += score;
-              validSections++;
-            }
-            newResults[section] = { feedback: sectionResult, score: score };
-            
-            if (section === 'listening' || section === 'reading') {
-              const rawScoreMatch = sectionResult.match(/Score: (\d+(\.\d+)?)/);
-              if (rawScoreMatch) {
-                const rawScore = parseFloat(rawScoreMatch[1]);
-                newResults[section].rawScore = rawScore;
-              }
-            }
+      if (answers[section] && answers[section].data) {
+        try {
+          const sectionResult = await fetchResults(section, answers[section].data, testType);
+          const score = parseScore(sectionResult, section);
+          if (score > 0) {
+            totalScore += score;
+            validSections++;
+          }
+          newResults[section] = { feedback: sectionResult, score: score };
 
             // Fetch examples based on the section and score
             if (section === 'listening' || testType === 'full') {
@@ -227,17 +218,17 @@ const Results = ({ answers, testType }) => {
               setWritingExamples(writing);
             }
           } catch (error) {
-            console.error(`Error processing ${section}:`, error);
-            setError(`Error fetching ${section}.message}`);
-          }
-        } else {
-          console.warn(`Missing data for ${section} section`);
+          console.error(`Error processing ${section}:`, error);
+          setError(`Error fetching ${section}.message}`);
         }
+      } else {
+        console.warn(`Missing data for ${section} section`);
+      }
       }
 
       const averageScore = validSections > 0 ? totalScore / validSections : 0;
-      const overallScore = Math.round(averageScore * 2) / 2;
-      setResult({ ...newResults, overallScore });
+const overallScore = roundIELTSScore(averageScore);
+setResult({ ...newResults, overallScore });
 
       await updateResultsLoadCount();
 
@@ -254,7 +245,7 @@ const Results = ({ answers, testType }) => {
     };
 
     getResults();
-  }, [answers, testType]);
+}, [answers, testType]);
 
   const downloadResults = () => {
     let content = `IELTS Test Results\n\n`;
@@ -303,7 +294,7 @@ const Results = ({ answers, testType }) => {
 
   const updateResultsLoadCount = async () => {
   try {
-    const response = await axios.post('https://leadai.netlify.app/ielts');
+    const response = await axios.post('https://leadai.netlify.app/main');
     setResultsLoadCount(response.data.count);
   } catch (error) {
     console.error("Error updating results load count:", error);
@@ -423,6 +414,8 @@ const parseScore = (content, section) => {
   const renderFeedback = (section) => {
     const sectionResult = result[section];
     if (!sectionResult) return null;
+  
+    const score = parseScore(sectionResult.feedback, section);
     
     const feedbackContent = sectionResult.feedback
       .replace(/### Detailed Feedback and Score/g, '<h3>Detailed Feedback and Score</h3>')
@@ -462,8 +455,9 @@ const parseScore = (content, section) => {
       }
 
       return (
-        <Feedback key={section}>
-          <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
+    <Feedback key={section}>
+      <h2>{section.charAt(0).toUpperCase() + section.slice(1)} Feedback</h2>
+      <p><strong>Score: {score}/9</strong></p>
           <div dangerouslySetInnerHTML={{ __html: feedbackContent }} />
           {exampleContent && (
             <div>
@@ -492,21 +486,20 @@ const parseScore = (content, section) => {
     <Container>
       <Title>IELTS Test Results</Title>
       <ScoreChart>
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={Object.entries(result).filter(([key]) => key !== 'overallScore').map(([key, value]) => ({ name: key, score: value.score }))}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="score" fill="#800120" />
-          </BarChart>
-        </ResponsiveContainer>
-        </ScoreChart>
+  <ResponsiveContainer width="100%" height="100%">
+    <BarChart data={Object.entries(result).filter(([key]) => key !== 'overallScore').map(([key, value]) => ({ name: key, score: value.score }))}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis domain={[0, 9]} />
+      <Tooltip />
+      <Legend />
+      <Bar dataKey="score" fill="#800120" />
+    </BarChart>
+  </ResponsiveContainer>
+</ScoreChart>
       <Section>
         <h2 style={{ color: '#800120', textAlign: 'center' }}><b>Overall Score: {result.overallScore}/9</b></h2>
         {Object.keys(result).filter((section) => section !== 'overallScore').map(renderFeedback)}
-        <div>Number of tests completed: {resultsLoadCount}</div>
       </Section>
       {testType === 'full' && renderUniversityRecommendations()}
       <AIAssistant result={result} />

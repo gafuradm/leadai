@@ -36,7 +36,7 @@ const CabinetPage = () => {
   }, [router]);
 
   const tools = [
-    { name: "IELTS Preparation", route: "/ielts" },
+    { name: "IELTS Preparation", route: "/main" },
     { name: "Selecting Your university", route: "/univer" }
   ];
 

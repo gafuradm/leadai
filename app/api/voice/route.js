@@ -35,11 +35,28 @@ async function analyzeSpeech(speech) {
   const completion = await openai.chat.completions.create({
     model: "gpt-4",
     messages: [
-      { role: "system", content: "You are a helpful assistant that analyzes speeches. Provide your analysis in a structured format with a detailed evaluation, score out of 100, and specific recommendations for improvement." },
+      { role: "system", content: "You are a helpful assistant that analyzes speeches. Provide your analysis in a structured format with a detailed evaluation, score out of 100, and specific recommendations for improvement. Format your response with clear paragraph breaks and a distinct score line." },
       { role: "user", content: `Please analyze the following speech and provide a detailed evaluation, score out of 100, and specific recommendations for improvement:\n\n${speech}` }
     ],
   });
-  return completion.choices[0].message.content;
+  
+  let content = completion.choices[0].message.content;
+  
+  // Extract the score
+  const scoreMatch = content.match(/Score:\s*(\d+)/i);
+  const score = scoreMatch ? scoreMatch[1] : "N/A";
+  
+  // Remove the score from the content and split into paragraphs
+  content = content.replace(/(?:Overall|Score):\s*\d+(?:\s*\/\s*100)?/gi, '').trim();
+  const paragraphs = content.split('\n\n');
+  
+  // Reconstruct the response with clear paragraph breaks and a distinct score line
+  const formattedResponse = [
+    `Score: ${score} out of 100`,
+    ...paragraphs.map(p => p.trim()),
+  ].join('\n\n');
+  
+  return formattedResponse;
 }
 
 async function generateTopic() {

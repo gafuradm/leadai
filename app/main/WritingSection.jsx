@@ -62,6 +62,7 @@ const TextArea = styled.textarea`
   font-size: 16px;
   background-color: white;
   color: black;
+  height: 250px;
 `;
 
 const TaskTitle = styled.h3`

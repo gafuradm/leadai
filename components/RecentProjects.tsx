@@ -8,7 +8,7 @@ export const projects = [
     desKey: "listening_section_des",
     img: "/mus.png",
     iconLists: [],
-    link: "/ielts",
+    link: "/main",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ export const projects = [
     desKey: "reading_section_des",
     img: "/books.png",
     iconLists: [],
-    link: "/ielts",
+    link: "/main",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const projects = [
     desKey: "writing_section_des",
     img: "/essa.png",
     iconLists: [],
-    link: "/ielts",
+    link: "/main",
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ export const projects = [
     desKey: "speaking_section_des",
     img: "/voc.png",
     iconLists: [],
-    link: "/ielts",
+    link: "/main",
   },
   {
     id: 5,
@@ -40,7 +40,7 @@ export const projects = [
     desKey: "ielts_recommendations_des",
     img: "/tips.png",
     iconLists: [],
-    link: "/ielts",
+    link: "/main",
   },
   {
     id: 6,
@@ -48,7 +48,7 @@ export const projects = [
     desKey: "applying_to_university_des",
     img: "/univ.png",
     iconLists: [],
-    link: "/ielts",
+    link: "/main",
   },
 ];
 

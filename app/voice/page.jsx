@@ -80,7 +80,7 @@ export default function VoicePage() {
         <button onClick={handleTopicGenerate} disabled={isLoading}>
           Generate Topic
         </button>
-        {topic && <p className="topic" style={{ color: "#000000" }}>Topic: {topic}</p>}
+        {topic && <p className="topic">Topic: {topic}</p>}
       </div>
 
       <div className="speech-recorder">
@@ -88,23 +88,25 @@ export default function VoicePage() {
           {isRecording ? 'Stop Recording' : 'Start Recording'}
         </button>
         {transcript && (
-          <>
-            <p style={{ color: "#000000" }}>Transcript: {transcript}</p>
-            <button onClick={handleAnalysis} disabled={isLoading}>
-              Analyze Speech
-            </button>
-          </>
-        )}
+  <>
+    <p className="transcript">Transcript: {transcript}</p>
+    <button onClick={handleAnalysis} disabled={isLoading}>
+      Analyze Speech
+    </button>
+  </>
+)}
       </div>
 
-      {isLoading && <p className="loading" style={{ color: "#000000" }}>Processing...</p>}
+      {isLoading && <p className="loading">Processing...</p>}
 
       {analysis && (
-        <div className="analysis">
-          <h2>Speech Analysis</h2>
-          <p>{analysis}</p>
-        </div>
-      )}
+  <div className="analysis">
+    <h2>Speech Analysis:</h2>
+    {analysis.split('\n\n').map((paragraph, index) => (
+      <p key={index}>{paragraph}</p>
+    ))}
+  </div>
+)}
 
       <style jsx>{`
         .container {
@@ -117,10 +119,20 @@ export default function VoicePage() {
           text-align: center;
           color: #800120;
           font-weight: bold;
+          font-size: 2.5rem;  // Increased font size
         }
         .topic-generator, .speech-recorder {
           margin-bottom: 2rem;
         }
+        .topic {
+          margin-top: 1rem;  // Increased top margin
+          color: #000000;
+        }
+        .transcript {
+    margin-top: 1rem;
+    margin-bottom: 2rem; // Increased bottom margin
+    color: #000000;
+  }
         button {
           background-color: #800120;
           color: white;
@@ -135,13 +147,20 @@ export default function VoicePage() {
         .loading {
           text-align: center;
           font-style: italic;
-          color: black
-        }
-        .analysis {
-          background-color: #f0f0f0;
           color: black;
-          padding: 1rem;
-          border-radius: 5px;
+        }
+  .analysis {
+    background-color: #f0f0f0;
+    color: black;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 2rem; // Added top margin
+  }
+        .analysis h2 {
+          margin-bottom: 1rem;
+        }
+        .analysis p {
+          margin-bottom: 1rem;
         }
       `}</style>
     </div>

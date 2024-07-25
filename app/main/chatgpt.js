@@ -35,13 +35,72 @@ export async function fetchResults(section, data, testType) {
     return 0;
   };
 
-  const systemMessage = `You are an IELTS test evaluator. Provide very detailed feedback and a score for the ${section} section.
-    ${section === 'listening' || section === 'reading' 
-      ? 'Provide a score out of 40.'
-      : 'Provide a score out of 9 (can use 0.5 increments).'}
-    Provide very detailed feedback on correct and incorrect answers, highlighting mistakes, suggestions for improvement, and specific aspects to focus on.
-    Give very detailed recommendations for improving this section.
-    Always include the score in the format "Score: X.X/${section === 'listening' || section === 'reading' ? '40' : '9'}" at the end of your response.`;
+  const systemMessage = `You are an IELTS test evaluator. Provide detailed, informative, and personalized feedback and a score for the ${section} section. Use this scoring system:
+
+Scoring system:
+- Listening and Reading: Raw score out of 40, then converted to band score (0-9).
+- Speaking and Writing: Direct band score (0-9).
+- Overall score: Average of all four sections, rounded to nearest 0.5.
+
+Conversion table for Listening and Reading:
+39-40: 9.0 | 37-38: 8.5 | 35-36: 8.0 | 32-34: 7.5 | 30-31: 7.0
+26-29: 6.5 | 23-25: 6.0 | 18-22: 5.5 | 16-17: 5.0 | 13-15: 4.5
+10-12: 4.0 | 8-9: 3.5 | 6-7: 3.0 | 4-5: 2.5 | 2-3: 2.0 | 1: 1.0
+
+For Speaking and Writing, use the IELTS 9-band scale criteria.
+
+Instructions:
+1. Analyze each answer carefully, highlighting specific mistakes and areas for improvement.
+2. Provide detailed, personalized recommendations based on the user's performance in this section.
+3. Include specific exercises or resources that would be most beneficial for this user.
+4. ALWAYS provide practical materials tailored to the user's performance level.
+5. For Listening and Reading:
+   a. First, provide the raw score out of 40.
+   b. Then, convert this to the band score using the conversion table.
+   c. Present both scores clearly: "Raw Score: X/40, Band Score: Y.Y/9"
+6. For Speaking and Writing, provide the band score directly.
+7. At the end of your response, clearly state the final score for this section as follows:
+   - For Listening and Reading: "Final Score: [Raw Score]/40 (Band Score: [Converted Score]/9)"
+   - For Speaking and Writing: "Final Score: [Band Score]/9"
+
+${section === 'listening' || section === 'reading'
+  ? 'Remember to provide both the raw score out of 40 and the converted band score out of 9.'
+  : 'Provide a score out of 9 (can use 0.5 increments).'}
+
+Examples of analysis:
+- **Question Analysis**: Analyze each question, providing the user's answer, the correct answer, and detailed feedback.
+- **Summary of Performance**: Summarize the raw score computation and provide the final converted band score.
+- **Recommendations**: Provide tailored exercises or resources based on the user's performance.
+
+Example Feedback Structure:
+1. **Q1: [Question Text]**
+   - Question Type: [Type]
+   - Your Answer: [User's Answer]
+   - Correct Answer: [Correct Answer]
+   - Feedback: [Detailed feedback]
+
+2. **Q2: [Question Text]**
+   - Question Type: [Type]
+   - Your Answer: [User's Answer]
+   - Correct Answer: [Correct Answer]
+   - Feedback: [Detailed feedback]
+
+#### Summary of Performance:
+- Raw Score Computation:
+  - Total Questions: [Total]
+  - Correct Answers: [Number]
+  - Attempted but Incorrect: [Number]
+  - Not Attempted: [Number]
+
+- Raw Score: [Raw Score]/40
+- Band Score: [Converted Score]/9
+
+### Recommended Resources and Exercises:
+1. **[Question Type]**: [Practice suggestion]
+2. **[Question Type]**: [Practice suggestion]
+
+**Final Score: [Final Score]**
+`;
 
   const userMessage = `
     Section: ${section}
@@ -67,7 +126,7 @@ export async function fetchResults(section, data, testType) {
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }
         ],
-        max_tokens: 1000,
+        max_tokens: 2000,
       }),
     });
 
@@ -145,8 +204,8 @@ export async function fetchListeningExamples() {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const systemMessage = `You are an IELTS listening expert. Generate 4 short listening passages (one for each part of the IELTS listening test) with corresponding questions. Each passage should be about 30-60 seconds long when spoken. Generate practical materials even if the user has not scored a single point.`;
-  const userMessage = `Please generate 4 listening passages with questions for IELTS practice.`;
+  const systemMessage = `You are an IELTS listening expert. You MUST generate 4 short listening passages (one for each part of the IELTS listening test) with corresponding questions despite the score the user scored. Each passage should be about 30-60 seconds long when spoken. Generate practical materials even if the user has not scored a single point.`;
+  const userMessage = `You MUST generate 4 listening passages with questions for IELTS practice.`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -161,7 +220,7 @@ export async function fetchListeningExamples() {
           { role: 'system', content: systemMessage },
           { role: 'user', content: userMessage }
         ],
-        max_tokens: 1000,
+        max_tokens: 2500,
       }),
     });
 
@@ -183,13 +242,13 @@ export async function fetchSpeakingExamples() {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const systemMessage = `You are an IELTS speaking expert. Generate 3 sets of speaking practice materials. Each set should include:
+  const systemMessage = `You are an IELTS speaking expert. You MUST generate 3 sets of speaking practice materials. Each set should include:
     1. A question for Part 1 (simple personal questions)
     2. A task for Part 2 (a longer speech on a given topic)
     3. A follow-up question for Part 3 (more abstract questions related to Part 2)
     For each part, also provide a sample answer.
     Generate practical materials even if the user has not scored a single point.`;
-  const userMessage = `Generate IELTS speaking practice materials.`;
+  const userMessage = `You MUST generate IELTS speaking practice materials.`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -226,8 +285,8 @@ export async function fetchReadingExamples(score) {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const systemMessage = `You are an IELTS reading expert. Generate a reading passage with questions suitable for a student with an IELTS reading score of ${score}. The passage should be about 300 words long, followed by 5 questions of various types (multiple choice, true/false/not given, matching, etc.). Generate practical materials even if the user has not scored a single point.`;
-  const userMessage = `Please generate an IELTS reading practice passage with questions for a student with a score of ${score}.`;
+  const systemMessage = `You are an IELTS reading expert. You MUST generate a reading passage with questions suitable for a student with an IELTS reading score of ${score}. The passage should be about 300 words long, followed by 5 questions of various types (multiple choice, true/false/not given, matching, etc.). Generate practical materials even if the user has not scored a single point.`;
+  const userMessage = `You MUST generate an IELTS reading practice passage with questions for a student with a score of ${score}.`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -264,8 +323,8 @@ export async function fetchWritingExamples(score, topic) {
     throw new Error('OPENAI_API_KEY is not defined');
   }
 
-  const systemMessage = `You are an IELTS writing expert. Generate an example essay based on the given topic. The essay should be written at a level suitable for a student with an IELTS writing score of ${score}. It should demonstrate good structure, coherence, grammar, and vocabulary usage. Generate practical materials even if the user has not scored a single point.`;
-  const userMessage = `Please write an example essay for the following topic: ${topic}. The essay should be suitable for a student with an IELTS writing score of ${score}.`;
+  const systemMessage = `You are an IELTS writing expert. You MUST generate an example essay based on the given topic. The essay should be written at a level suitable for a student with an IELTS writing score of ${score}. It should demonstrate good structure, coherence, grammar, and vocabulary usage. Generate practical materials even if the user has not scored a single point.`;
+  const userMessage = `You MUST write an example essay for the following topic: ${topic}. The essay should be suitable for a student with an IELTS writing score of ${score}.`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -341,8 +400,12 @@ export async function fetchAIAssistantResponse(message, context) {
   }
 
   const systemMessage = `You are an AI friendly assistant named LeadAI helping a student understand their IELTS test results. 
-    The student's overall score is ${context.overallScore}. 
-    Provide helpful and encouraging advice based on their scores and questions.`;
+    The student's scores and feedback are as follows:
+    ${Object.entries(context).map(([section, data]) => 
+      `${section.toUpperCase()}: Score ${data.score}/9
+       Feedback: ${data.feedback}`
+    ).join('\n')}
+    Provide helpful and encouraging advice based on their scores, specific mistakes, and questions.`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
