@@ -64,7 +64,7 @@ const RecentProjects = () => {
         {projects.map((project) => (
           <Link key={project.id} href={project.link} passHref>
             <div
-              className="cursor-pointer transform hover:scale-105 transition-transform duration-300 p-6 rounded-lg shadow-lg"
+              className="cursor-pointer transform hover:scale-105 transition-transform duration-300 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center"
               style={{
                 backgroundColor:
                   project.id === 2 || project.id === 4 || project.id === 6
@@ -76,14 +76,12 @@ const RecentProjects = () => {
               <img
                 src={project.img}
                 alt={t(project.titleKey)}
-                className="mb-4 w-20 h-20 object-cover rounded-lg mx-auto"
+                className="mb-4 w-20 h-20 object-cover rounded-lg"
               />
-              <h3 className="text-2xl font-semibold mb-2 text-center text-white">
+              <h3 className="text-2xl font-semibold mb-2 text-white">
                 {t(project.titleKey)}
               </h3>
-              <p className="text-sm text-center text-white">
-                {t(project.desKey)}
-              </p>
+              <p className="text-sm text-white max-w-xs">{t(project.desKey)}</p>
             </div>
           </Link>
         ))}
