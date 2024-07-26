@@ -66,12 +66,15 @@ const InstructionSection = styled.div`
 
 const ListeningSection = ({ onNext, timedMode }) => {
   const [timeLeft, setTimeLeft] = useState(30 * 60);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
   const [audioTexts, setAudioTexts] = useState([]);
   const [questionSets, setQuestionSets] = useState([]);
   const [currentPart, setCurrentPart] = useState(0);
   const [answers, setAnswers] = useState({});
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
+  const [utterance, setUtterance] = useState(null);
+  const [isAudioFinished, setIsAudioFinished] = useState(false);
 
   useEffect(() => {
   const loadedData = [
@@ -523,6 +526,16 @@ const ListeningSection = ({ onNext, timedMode }) => {
   setQuestionSets(selectedData.map(item => item.questions));
 }, []);
 
+useEffect(() => {
+  return () => {
+    window.speechSynthesis.cancel();
+    setIsPlaying(false);
+    setHasStartedPlaying(false);
+    setUtterance(null);
+    setIsAudioFinished(true);
+  };
+}, []);
+
   useEffect(() => {
     if (timedMode) {
       const timer = setInterval(() => {
@@ -576,26 +589,46 @@ const handleSubmit = () => {
   }
 };
 
-  const playCurrentAudio = () => {
-  if (!isPlaying && !hasPlayed) {
-    window.speechSynthesis.cancel();
+const playCurrentAudio = () => {
+  if (!isPlaying) {
+    if (!hasStartedPlaying || isAudioFinished) {
+      // Create a new utterance if we haven't started playing yet or if the audio has finished
+      const newUtterance = new SpeechSynthesisUtterance(audioTexts[currentPart]);
+      newUtterance.lang = 'en-US';
+      newUtterance.rate = 0.8;
 
-    const utterance = new SpeechSynthesisUtterance(audioTexts[currentPart]);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.8;
+      newUtterance.onstart = () => {
+        setIsPlaying(true);
+        setHasStartedPlaying(true);
+        setIsAudioFinished(false);
+      };
 
-    utterance.onstart = () => {
+      newUtterance.onend = () => {
+        setIsPlaying(false);
+        setUtterance(null);
+        setIsAudioFinished(true);
+      };
+
+      setUtterance(newUtterance);
+      window.speechSynthesis.speak(newUtterance);
+    } else {
+      // Resume playing if we've already started and not finished
+      window.speechSynthesis.resume();
       setIsPlaying(true);
-    };
-
-    utterance.onend = () => {
-      setIsPlaying(false);
-      setHasPlayed(true);
-      window.speechSynthesis.cancel();
-    };
-
-    window.speechSynthesis.speak(utterance);
+    }
+  } else {
+    // Pause the audio if it's currently playing
+    window.speechSynthesis.pause();
+    setIsPlaying(false);
   }
+};
+
+const stopAudio = () => {
+  window.speechSynthesis.cancel();
+  setIsPlaying(false);
+  setHasStartedPlaying(false);
+  setUtterance(null);
+  setIsAudioFinished(true);
 };
 
   const formatTime = (seconds) => {
@@ -663,9 +696,9 @@ const handleSubmit = () => {
         )}
       </InstructionSection>
       <Section>
-        <Button onClick={playCurrentAudio} disabled={isPlaying || hasPlayed}>
-          {isPlaying ? 'Playing...' : hasPlayed ? 'Played' : 'Play Audio'}
-        </Button>
+        <Button onClick={playCurrentAudio}>
+  {isPlaying ? 'Pause' : (isAudioFinished ? 'Play Audio' : (hasStartedPlaying ? 'Resume' : 'Play Audio'))}
+</Button>
       </Section>
       {renderQuestions()}
       <Pagination>
