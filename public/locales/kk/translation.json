@@ -118,7 +118,20 @@
 "dont_have_account": "Әлі тіркелмегенсіз бе?",
 "select_mode": "Режимді таңдаңыз",
   "select_test_type": "Тест түрін таңдаңыз",
-  "preparation_options": "Университетке дайындық",
- "ielts_tests": "IELTS тесттері"
+  "preparation_options": "Бағалау құралдары",
+ "ielts_tests": "Тесттер",
+ "full_toefl_test": "Толық TOEFL тесті",
+  "full_toefl_test_des": "Толық TOEFL тәжірибелік тесті.",
+  "listening_section_toefl": "Listening бөлімі (TOEFL)",
+  "listening_section_toefl_des": "TOEFL тестінің Listening бөлімінде жаттығыңыз.",
+  "reading_section_toefl": "Reading бөлімі (TOEFL)",
+  "reading_section_toefl_des": "TOEFL тестінің Reading бөлімінде жаттығыңыз.",
+  "writing_section_toefl": "Writing бөлімі (TOEFL)",
+  "writing_section_toefl_des": "TOEFL тестінің Writing бөлімінде жаттығыңыз.",
+  "speaking_section_toefl": "Speaking бөлімі (TOEFL)",
+  "speaking_section_toefl_des": "TOEFL тестінің Speaking бөлімінде жаттығыңыз.",
+  "toefl_tests": "TOEFL тесттері",
+  "programming_learning": "Бағдарламалау үйрену",
+  "programming_learning_des": "Интерактивті жаттығулар мен оқулықтар арқылы бағдарламалау дағдыларыңызды тексеріңіз."
     }
   

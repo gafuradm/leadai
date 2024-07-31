@@ -118,7 +118,20 @@
 "dont_have_account": "还没有账户？",
 "select_mode": "选择模式",
   "select_test_type": "选择测试类型",
-  "preparation_options": "大学准备",
-"ielts_tests": "雅思考试"
+  "preparation_options": "评估工具",
+"ielts_tests": "测试",
+"full_toefl_test": "完整托福测试",
+  "full_toefl_test_des": "完整的托福模拟测试。",
+  "listening_section_toefl": "听力部分 (TOEFL)",
+  "listening_section_toefl_des": "练习托福测试的听力部分。",
+  "reading_section_toefl": "阅读部分 (TOEFL)",
+  "reading_section_toefl_des": "练习托福测试的阅读部分。",
+  "writing_section_toefl": "写作部分 (TOEFL)",
+  "writing_section_toefl_des": "练习托福测试的写作部分。",
+  "speaking_section_toefl": "口语部分 (TOEFL)",
+  "speaking_section_toefl_des": "练习托福测试的口语部分。",
+  "toefl_tests": "托福测试",
+  "programming_learning": "编程学习",
+  "programming_learning_des": "通过互动练习和教程测试您的编程技能。"
     }
   

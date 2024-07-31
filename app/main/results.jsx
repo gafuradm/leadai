@@ -152,6 +152,7 @@ const UniversityLink = styled.a`
 `;
 
 const Results = ({ answers, testType }) => {
+
   const [result, setResult] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -483,32 +484,38 @@ const parseScore = (content, section) => {
   }
 
   return (
-    <Container>
-      <Title>IELTS Test Results</Title>
-      <ScoreChart>
-  <ResponsiveContainer width="100%" height="100%">
-    <BarChart data={Object.entries(result).filter(([key]) => key !== 'overallScore').map(([key, value]) => ({ name: key, score: value.score }))}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis domain={[0, 9]} />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="score" fill="#800120" />
-    </BarChart>
-  </ResponsiveContainer>
-</ScoreChart>
-      <Section>
-        <h2 style={{ color: '#800120', textAlign: 'center' }}><b>Overall Score: {result.overallScore}/9</b></h2>
-        {Object.keys(result).filter((section) => section !== 'overallScore').map(renderFeedback)}
-      </Section>
-      {testType === 'full' && renderUniversityRecommendations()}
-      <AIAssistant result={result} />
-      <ButtonContainer>
-        <Button onClick={() => window.location.href = '/start-education'}>Back to Tests</Button>
-        <DownloadButton onClick={downloadResults}>Download Results</DownloadButton>
-      </ButtonContainer>
-    </Container>
-  );
+  <Container>
+    <Title>{testType === 'IELTS'} Test Results</Title>
+    {testType === 'toefl' ? (
+      renderTOEFLResults()
+    ) : (
+      <>
+        <ScoreChart>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={Object.entries(result).filter(([key]) => key !== 'overallScore').map(([key, value]) => ({ name: key, score: value.score }))}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis domain={[0, 9]} />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="score" fill="#800120" />
+            </BarChart>
+          </ResponsiveContainer>
+        </ScoreChart>
+        <Section>
+          <h2 style={{ color: '#800120', textAlign: 'center' }}><b>Overall Score: {result.overallScore}/9</b></h2>
+          {Object.keys(result).filter((section) => section !== 'overallScore').map(renderFeedback)}
+        </Section>
+      </>
+    )}
+    {testType === 'full' && renderUniversityRecommendations()}
+    <AIAssistant result={result} />
+    <ButtonContainer>
+      <Button onClick={() => window.location.href = '/main'}>Back to Dashboard</Button>
+      <DownloadButton onClick={downloadResults}>Download Results</DownloadButton>
+    </ButtonContainer>
+  </Container>
+);
 };
 
 export default Results;

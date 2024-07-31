@@ -118,6 +118,19 @@
   "dont_have_account": "Don't have and account yet?",
   "select_mode": "Select mode",
   "select_test_type": "Select test type",
-  "preparation_options": "Preparation for University",
-  "ielts_tests": "IELTS Tests"
+  "preparation_options": "Evaluation tools",
+  "ielts_tests": "Tests",
+  "full_toefl_test": "Full TOEFL Test",
+  "full_toefl_test_des": "Complete TOEFL practice test.",
+  "listening_section_toefl": "Listening Section (TOEFL)",
+  "listening_section_toefl_des": "Practice the listening section of the TOEFL test.",
+  "reading_section_toefl": "Reading Section (TOEFL)",
+  "reading_section_toefl_des": "Practice the reading section of the TOEFL test.",
+  "writing_section_toefl": "Writing Section (TOEFL)",
+  "writing_section_toefl_des": "Practice the writing section of the TOEFL test.",
+  "speaking_section_toefl": "Speaking Section (TOEFL)",
+  "speaking_section_toefl_des": "Practice the speaking section of the TOEFL test.",
+  "toefl_tests": "TOEFL Tests",
+  "programming_learning": "Programming Learning",
+  "programming_learning_des": "Test your programming skills with interactive exercises and tutorials."
 }

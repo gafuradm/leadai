@@ -118,6 +118,19 @@
 "dont_have_account": "Еще нет аккаунта?",
   "select_mode": "Выберите режим",
   "select_test_type": "Выберите тип теста",
-  "preparation_options": "Подготовка к поступлению в университет",
- "ielts_tests": "Тесты IELTS"
+  "preparation_options": "Инструменты оценки",
+ "ielts_tests": "Тесты",
+ "full_toefl_test": "Полный тест TOEFL",
+  "full_toefl_test_des": "Полный тест по TOEFL.",
+  "listening_section_toefl": "Секция Listening (TOEFL)",
+  "listening_section_toefl_des": "Практикуйтесь в секции Listening теста TOEFL.",
+  "reading_section_toefl": "Секция Reading (TOEFL)",
+  "reading_section_toefl_des": "Практикуйтесь в секции Reading теста TOEFL.",
+  "writing_section_toefl": "Секция Writing (TOEFL)",
+  "writing_section_toefl_des": "Практикуйтесь в секции Writing теста TOEFL.",
+  "speaking_section_toefl": "Секция Speaking (TOEFL)",
+  "speaking_section_toefl_des": "Практикуйтесь в секции Speaking теста TOEFL.",
+  "toefl_tests": "Тесты TOEFL",
+  "programming_learning": "Обучение программированию",
+  "programming_learning_des": "Проверьте свои навыки программирования с помощью интерактивных упражнений и учебных материалов."
   }

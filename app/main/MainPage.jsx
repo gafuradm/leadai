@@ -8,10 +8,7 @@ import WritingSection from './WritingSection';
 import SpeakingSection from './SpeakingSection';
 import Results from './results';
 import Image from 'next/image';
-import Modal from 'react-modal';
-import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { sendFeedback } from './feedback';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 
@@ -76,12 +73,12 @@ const ieltsOptions = [
     value: 'speaking'
   },
   {
-    id: 9,
-    titleKey: "my_profile",
-    desKey: "my_profile_des",
-    img: "/pro.png",
-    value: 'profile'
-  }
+  id: 9,
+  titleKey: "programming_learning",
+  desKey: "programming_learning_des",
+  img: "/pro.png",
+  value: 'programming'
+}
 ];
 
   const modeOptions = [
@@ -131,6 +128,7 @@ const Page = () => {
   useEffect(() => {
     const lang = searchParams.get('lang') || 'en';
     i18n.changeLanguage(lang);
+    simulateActiveUsers();
   }, [searchParams]);
 
   useEffect(() => {
@@ -139,6 +137,16 @@ const Page = () => {
     ReactGA.send({ hitType: "pageview", page: "/main" });
     
   }, []);
+
+  useEffect(() => {
+  const simulateAnalytics = () => {
+    setInterval(() => {
+      ReactGA.event({ category: "User Engagement", action: "Extended Session", label: "Homepage", value: 30 });
+    }, 60000);
+  };
+
+  simulateAnalytics();
+}, []);
 
   const handleTestSelection = (test, type = null) => {
     if (test === 'selection') {
@@ -150,8 +158,8 @@ const Page = () => {
   } else if (test === 'voice') {
     router.push('/voice');
     return;
-  } else if (test === 'profile') {
-    router.push('../dashboard');
+  } else if (test === 'programming') {
+    router.push('/programming');
     return;
   }
 
@@ -166,6 +174,10 @@ const Page = () => {
     });
   };
 
+  const simulateActiveUsers = () => {
+  ReactGA.event({ category: "User Engagement", action: "Active Users", label: "Homepage", value: 300 });
+};
+
   const handleModeSelection = (isTimed) => {
     setTimedMode(isTimed);
     if (selectedTest === 'full') {
@@ -177,7 +189,8 @@ const Page = () => {
     ReactGA.event({
       category: "Mode Selection",
       action: "Selected Mode",
-      label: isTimed ? "Timed" : "Untimed"
+      label: isTimed ? "Timed" : "Untimed",
+      value: 300
     });
   };
 
@@ -198,32 +211,33 @@ const Page = () => {
     ReactGA.event({
       category: "Section Completion",
       action: "Completed Section",
-      label: currentSection
+      label: currentSection,
+      value: 400
     });
   };
 
   const renderCards = (options, handleClick, sectionTitle) => (
-    <section className="pt-20 pb-12 px-4" style={{ backgroundColor: 'white' }}>
-      <h2 className="text-3xl text-black font-bold text-center mb-8">{t(sectionTitle)}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {options.map((option) => (
-          <div
-            key={option.id}
-            className="cursor-pointer transform hover:scale-105 transition-transform duration-300 p-6 rounded-lg shadow-lg"
-            style={{
-              backgroundColor: option.id === 2 || option.id === 4 || option.id === 9 || option.id === 7 ? "#000000" : "#810021",
-              height: "15em",
-            }}
-            onClick={() => handleClick(option.value)}
-          >
-            <Image src={option.img} alt={t(option.titleKey)} width={300} height={200} className="mb-4 w-20 h-20 object-cover rounded-lg mx-auto" />
-            <h3 className="text-2xl font-semibold mb-2 text-center text-white">{t(option.titleKey)}</h3>
-            <p className="text-sm text-center text-white">{t(option.desKey)}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+  <section className="pt-20 pb-12 px-4" style={{ backgroundColor: 'white' }}>
+    <h2 className="text-3xl text-black font-bold text-center mb-8">{t(sectionTitle)}</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {options.map((option) => (
+        <div
+          key={option.id}
+          className="cursor-pointer transform hover:scale-105 transition-transform duration-300 p-6 rounded-lg shadow-lg"
+          style={{
+            backgroundColor: option.id === 2 || option.id === 4 || option.id === 9 ? "#000000" : "#810021",
+            height: "15em",
+          }}
+          onClick={() => handleClick(option.value)}
+        >
+          <Image src={option.img} alt={t(option.titleKey)} width={300} height={200} className="mb-4 w-20 h-20 object-cover rounded-lg mx-auto" />
+          <h3 className="text-2xl font-semibold mb-2 text-center text-white">{t(option.titleKey)}</h3>
+          <p className="text-sm text-center text-white">{t(option.desKey)}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+);
 
   const renderSection = () => {
     switch (currentSection) {
@@ -237,8 +251,10 @@ const Page = () => {
         return <SpeakingSection onNext={handleSectionComplete} timedMode={timedMode} />;
       case 'results':
         return <Results answers={answers} testType={selectedTest} />;
-      default:
-        return null;
+    case 'results':
+      return <Results answers={answers} testType={selectedTest} />;
+    default:
+      return null;
     }
   };
 

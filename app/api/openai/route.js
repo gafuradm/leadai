@@ -20,7 +20,6 @@ export async function POST(req) {
       });
     }
 
-    // Здесь мы не преобразуем response в JSON, так как он уже является строкой
     return new Response(JSON.stringify({ result: response }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
@@ -36,7 +35,7 @@ export async function POST(req) {
 
 async function analyzeEssay(essay) {
   const completion = await openai.chat.completions.create({
-    model: "gpt-4",
+    model: "gpt-4o",
     messages: [
       { role: "system", content: "You are a helpful assistant that analyzes essays. Provide your analysis in a structured format with a score out of 100, detailed feedback, and recommendations for improvement." },
       { role: "user", content: `Please analyze the following essay and provide a score out of 100, detailed feedback, and recommendations for improvement:\n\n${essay}` }

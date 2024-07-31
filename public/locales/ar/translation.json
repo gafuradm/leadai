@@ -118,7 +118,20 @@
 "dont_have_account": "لا تمتلك حسابًا بعد؟",
 "select_mode": "حدد الوضع",
   "select_test_type": "حدد نوع الاختبار",
-  "preparation_options": "التحضير للجامعة",
- "ielts_tests": "اختبارات الآيلتس"
+  "preparation_options": "أدوات التقييم",
+ "ielts_tests": "الاختبارات",
+ "full_toefl_test": "اختبار TOEFL الكامل",
+  "full_toefl_test_des": "اختبار كامل لممارسة TOEFL.",
+  "listening_section_toefl": "قسم الاستماع (TOEFL)",
+  "listening_section_toefl_des": "تدرب على قسم الاستماع لاختبار TOEFL.",
+  "reading_section_toefl": "قسم القراءة (TOEFL)",
+  "reading_section_toefl_des": "تدرب على قسم القراءة لاختبار TOEFL.",
+  "writing_section_toefl": "قسم الكتابة (TOEFL)",
+  "writing_section_toefl_des": "تدرب على قسم الكتابة لاختبار TOEFL.",
+  "speaking_section_toefl": "قسم التحدث (TOEFL)",
+  "speaking_section_toefl_des": "تدرب على قسم التحدث لاختبار TOEFL.",
+  "toefl_tests": "اختبارات TOEFL",
+  "programming_learning": "تعلم البرمجة",
+  "programming_learning_des": "اختبر مهاراتك في البرمجة من خلال التمارين التفاعلية والدروس التعليمية."
   }
   
