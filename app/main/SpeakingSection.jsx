@@ -189,50 +189,66 @@ const SpeakingSection = ({ onNext, timedMode }) => {
     ]
   },
   {
-    name: "Part 2: Long Turn (Cue Card)",
-    questions: [
-      "Describe a book you have recently read. You should say:",
-      "- what the book was",
-      "- what it was about",
-      "- why you decided to read it",
-      "- and explain whether you would recommend it to other people.",
-      "Describe a movie that made a strong impression on you. You should say:",
-      "- what the movie was",
-      "- what it was about",
-      "- why it made a strong impression on you",
-      "- and explain whether you would recommend it to other people.",
-      "Talk about a skill you would like to learn in the future. You should say:",
-      "- what skill it is",
-      "- why you want to learn it",
-      "- how you plan to learn it",
-      "- and explain how it could benefit you.",
-      "Describe a historical event that you find interesting. You should say:",
-      "- what event it was",
-      "- when and where it happened",
-      "- why you find it interesting",
-      "- and discuss its significance.",
-      "Discuss a famous person from your country. You should say:",
-      "- who the person is",
-      "- what they are famous for",
-      "- why they are important to your country",
-      "- and explain their impact.",
+  "name": "Part 2: Long Turn (Cue Card)",
+  "questions": [
+    [
       "Describe a place you would like to visit in the future. You should say:",
       "- what place it is",
       "- where it is located",
       "- why you want to visit it",
-      "- and explain what you would like to do there.",
+      "- and explain what you would like to do there."
+    ],
+    [
+      "Describe a book you have recently read. You should say:",
+      "- what the book was",
+      "- what it was about",
+      "- why you decided to read it",
+      "- and explain whether you would recommend it to other people."
+    ],
+    [
+      "Describe a movie that made a strong impression on you. You should say:",
+      "- what the movie was",
+      "- what it was about",
+      "- why it made a strong impression on you",
+      "- and explain whether you would recommend it to other people."
+    ],
+    [
+      "Talk about a skill you would like to learn in the future. You should say:",
+      "- what skill it is",
+      "- why you want to learn it",
+      "- how you plan to learn it",
+      "- and explain how it could benefit you."
+    ],
+    [
+      "Describe a historical event that you find interesting. You should say:",
+      "- what event it was",
+      "- when and where it happened",
+      "- why you find it interesting",
+      "- and discuss its significance."
+    ],
+    [
+      "Discuss a famous person from your country. You should say:",
+      "- who the person is",
+      "- what they are famous for",
+      "- why they are important to your country",
+      "- and explain their impact."
+    ],
+    [
       "Talk about a festival or celebration that you enjoy participating in. You should say:",
       "- what the festival/celebration is",
       "- when and where it takes place",
       "- why you enjoy participating in it",
-      "- and discuss its cultural significance.",
+      "- and discuss its cultural significance."
+    ],
+    [
       "Describe an important decision you made in your life. You should say:",
       "- what the decision was",
       "- when you made it",
       "- why it was important",
       "- and explain how it has affected your life."
     ]
-  },
+  ]
+},
   {
     name: "Part 3: Discussion",
     questions: [
@@ -387,10 +403,10 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   const part1Questions = shuffleArray([...parts[0].questions]).slice(0, 5);
   randomQuestions.push(part1Questions);
   
-  // Part 2: 1 random topic with all subpoints
+  // Part 2: 1 random topic
   const part2QuestionIndex = Math.floor(Math.random() * parts[1].questions.length);
-  const part2Question = parts[1].questions.slice(part2QuestionIndex, part2QuestionIndex + 5);
-  randomQuestions.push(part2Question);
+  const part2Question = parts[1].questions[part2QuestionIndex];
+  randomQuestions.push([part2Question]);
   
   // Part 3: 5 random questions
   const part3Questions = shuffleArray([...parts[2].questions]).slice(0, 5);
@@ -557,61 +573,62 @@ const SpeakingSection = ({ onNext, timedMode }) => {
   };
 
   return (
-    <Container>
-      <Title>Speaking Section</Title>
-      {timedMode && <Timer>Time left: {formatTime(timeLeft)}</Timer>}
-      <InstructionSection>
-          <h2>Instructions:</h2>
-          <p>
-            Please read the task carefully and complete the required writing tasks.
-            Once you have completed writing your answers, click Next to proceed to the next task.
-            You can navigate between tasks using the Previous and Next buttons.
-            When you have finished all tasks, click Submit to finish.
-          </p>
-          {timedMode && (
-            <p>
-              You have 14 minutes for this section. Your responses will be automatically submitted when time runs out.
-            </p>
-          )}
-        </InstructionSection>
-      {currentPart < selectedQuestions.length ? (
-  <Section>
-    <h3>{parts[currentPart].name}</h3>
-    {currentPart === 1 ? (
-      <>
-        {selectedQuestions[currentPart].map((subQuestion, index) => (
-          <Question key={index}>{subQuestion}</Question>
-        ))}
-      </>
-    ) : (
-      <Question>{selectedQuestions[currentPart][currentQuestionIndex]}</Question>
-    )}
-    <Button onClick={isRecording ? stopRecording : startRecording} disabled={isLoading}>
-      {isRecording ? 'Stop Recording' : 'Start Recording'}
-    </Button>
-          {transcript && <Transcript>Your answer: {transcript}</Transcript>}
-          {isLoading && <p>Evaluating your answer...</p>}
-          {feedback && (
-            <Feedback>
-              <h3>Feedback:</h3>
-              <p>{feedback}</p>
-            </Feedback>
-          )}
-          {videoUrl && (
-            <video 
-              src={videoUrl} 
-              autoPlay 
-              playsInline 
-              controls 
-              style={{width: '100%', maxWidth: '400px', marginTop: '20px'}}
-            />
-          )}
-        </Section>
-      ) : (
-        <p>All parts completed. Your responses have been recorded.</p>
+  <Container>
+    <Title>Speaking Section</Title>
+    {timedMode && <Timer>Time left: {formatTime(timeLeft)}</Timer>}
+    <InstructionSection>
+      <h2>Instructions:</h2>
+      <p>
+        Listen carefully to each question and respond.
+    Your answers will be automatically recorded and evaluated.
+    After each answer, you will receive feedback.
+    Continue answering the questions until the test is complete.
+      </p>
+      {timedMode && (
+        <p>
+          You have 14 minutes for this section. Your responses will be automatically submitted when time runs out.
+        </p>
       )}
-    </Container>
-  );
+    </InstructionSection>
+    {currentPart < selectedQuestions.length ? (
+      <Section>
+        <h3>{parts[currentPart].name}</h3>
+        {currentPart === 1 ? (
+          <>
+            <Question>{selectedQuestions[currentPart][0][0]}</Question>
+            {selectedQuestions[currentPart][0].slice(1).map((instruction, index) => (
+              <p key={index}>{instruction}</p>
+            ))}
+          </>
+        ) : (
+          <Question>{selectedQuestions[currentPart][currentQuestionIndex]}</Question>
+        )}
+        <Button onClick={isRecording ? stopRecording : startRecording} disabled={isLoading}>
+          {isRecording ? 'Stop Recording' : 'Start Recording'}
+        </Button>
+        {transcript && <Transcript>Your answer: {transcript}</Transcript>}
+        {isLoading && <p>Evaluating your answer...</p>}
+        {feedback && (
+          <Feedback>
+            <h3>Feedback:</h3>
+            <p>{feedback}</p>
+          </Feedback>
+        )}
+        {videoUrl && (
+          <video 
+            src={videoUrl} 
+            autoPlay 
+            playsInline 
+            controls 
+            style={{width: '100%', maxWidth: '400px', marginTop: '20px'}}
+          />
+        )}
+      </Section>
+    ) : (
+      <p>All parts completed. Your responses have been recorded.</p>
+    )}
+  </Container>
+);
 };
 
 export default SpeakingSection;

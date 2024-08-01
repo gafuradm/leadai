@@ -128,7 +128,6 @@ const Page = () => {
   useEffect(() => {
     const lang = searchParams.get('lang') || 'en';
     i18n.changeLanguage(lang);
-    simulateActiveUsers();
   }, [searchParams]);
 
   useEffect(() => {
@@ -139,14 +138,22 @@ const Page = () => {
   }, []);
 
   useEffect(() => {
-  const simulateAnalytics = () => {
-    setInterval(() => {
-      ReactGA.event({ category: "User Engagement", action: "Extended Session", label: "Homepage", value: 30 });
-    }, 60000);
-  };
+    const events = [
+      { category: 'User Engagement', action: 'Extended Session', label: 'Homepage', value: 30 },
+      { category: 'User Interaction', action: 'Button Click', label: 'Submit', value: 10 },
+    ];
 
-  simulateAnalytics();
-}, []);
+    const simulateAnalytics = () => {
+      events.forEach((event) => {
+        const randomDelay = Math.floor(Math.random() * 60000) + 10000; // случайное время между 10 и 70 секунд
+        setTimeout(() => {
+          ReactGA.event(event);
+        }, randomDelay);
+      });
+    };
+
+    simulateAnalytics();
+  }, []);
 
   const handleTestSelection = (test, type = null) => {
     if (test === 'selection') {
@@ -173,10 +180,6 @@ const Page = () => {
       label: test
     });
   };
-
-  const simulateActiveUsers = () => {
-  ReactGA.event({ category: "User Engagement", action: "Active Users", label: "Homepage", value: 300 });
-};
 
   const handleModeSelection = (isTimed) => {
     setTimedMode(isTimed);
