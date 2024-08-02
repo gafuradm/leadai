@@ -137,24 +137,6 @@ const Page = () => {
     
   }, []);
 
-  useEffect(() => {
-    const events = [
-      { category: 'User Engagement', action: 'Extended Session', label: 'Homepage', value: 30 },
-      { category: 'User Interaction', action: 'Button Click', label: 'Submit', value: 10 },
-    ];
-
-    const simulateAnalytics = () => {
-      events.forEach((event) => {
-        const randomDelay = Math.floor(Math.random() * 60000) + 10000; // случайное время между 10 и 70 секунд
-        setTimeout(() => {
-          ReactGA.event(event);
-        }, randomDelay);
-      });
-    };
-
-    simulateAnalytics();
-  }, []);
-
   const handleTestSelection = (test, type = null) => {
     if (test === 'selection') {
     router.push('/univer');
@@ -192,8 +174,7 @@ const Page = () => {
     ReactGA.event({
       category: "Mode Selection",
       action: "Selected Mode",
-      label: isTimed ? "Timed" : "Untimed",
-      value: 300
+      label: isTimed ? "Timed" : "Untimed"
     });
   };
 
@@ -214,8 +195,7 @@ const Page = () => {
     ReactGA.event({
       category: "Section Completion",
       action: "Completed Section",
-      label: currentSection,
-      value: 400
+      label: currentSection
     });
   };
 

@@ -6,22 +6,30 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const topics = [
-  'Android разработка',
-  'Веб разработка',
-  'iOS разработка',
-  'Разработка ПО для ПК',
-  'Кроссплатформенная разработка (Flutter)',
-  'Другое'
+  'Android Development',
+  'Web Development',
+  'iOS Development',
+  'PC Software Development',
+  'Cross-platform Development (Flutter)',
+  'Python',
+  'JavaScript',
+  'Website Layout',
+  'PHP',
+  'Java + Kotlin',
+  'C#',
+  'C + C++',
+  'Go',
+  'Ruby'
 ];
 
 const durations = [
-  { name: 'Ультрабуллет', time: '1 неделя' },
-  { name: 'Буллет', time: '2 недели' },
-  { name: 'Блиц', time: '1 месяц' },
-  { name: 'Рапид', time: '2 месяца' },
-  { name: 'Медиум', time: '3 месяца' },
-  { name: 'Классика', time: '6 месяцев' },
-  { name: 'Про', time: '9 месяцев' }
+  { name: 'Ultra Bullet', time: '1 week' },
+  { name: 'Bullet', time: '2 weeks' },
+  { name: 'Blitz', time: '1 month' },
+  { name: 'Rapid', time: '2 months' },
+  { name: 'Medium', time: '3 months' },
+  { name: 'Classic', time: '6 months' },
+  { name: 'Full', time: '9 months' }
 ];
 
 export default function ProgrammingPage() {
@@ -48,7 +56,7 @@ export default function ProgrammingPage() {
           setSelectedDuration(selectedDuration || null);
           setMessages(messages || [{
             role: 'assistant',
-            content: "Привет, я Лидер! Чему ты хочешь научиться?"
+            content: "Hello, I'm Leader! What do you want to learn?"
           }]);
           setCurrentDay(currentDay || 1);
           setCurrentModule(currentModule || 1);
@@ -58,16 +66,15 @@ export default function ProgrammingPage() {
       } else {
         setMessages([{
           role: 'assistant',
-          content: "Привет, я Лидер! Чему ты хочешь научиться?"
+          content: "Hello, I'm Leader! What do you want to learn?"
         }]);
       }
     } catch (error) {
       console.error('Error loading saved state:', error);
-      // Сброс к начальному состоянию в случае ошибки
       setStage('topic');
       setMessages([{
         role: 'assistant',
-        content: "Привет, я Лидер! Чему ты хочешь научиться?"
+        content: "Hello, I'm Leader! What do you want to learn?"
       }]);
     }
   }, []);
@@ -76,7 +83,7 @@ export default function ProgrammingPage() {
     const saveStateTimer = setTimeout(() => {
       const stateToSave = { stage, selectedTopic, selectedDuration, messages, currentDay, currentModule };
       localStorage.setItem('programmingChatState', JSON.stringify(stateToSave));
-    }, 300); // 300 мс задержка
+    }, 300);
 
     return () => clearTimeout(saveStateTimer);
   }, [stage, selectedTopic, selectedDuration, messages, currentDay, currentModule]);
@@ -89,7 +96,7 @@ export default function ProgrammingPage() {
   const handleTopicSelect = (topic) => {
     setSelectedTopic(topic);
     setStage('duration');
-    appendMessage('assistant', `Отлично! Вы выбрали ${topic}. Теперь выберите продолжительность обучения.`);
+    appendMessage('assistant', `Great! You've chosen ${topic}. Now select the learning duration.`);
   };
 
   const handleDurationSelect = (duration) => {
@@ -118,10 +125,10 @@ export default function ProgrammingPage() {
 
       const data = await response.json();
       appendMessage('assistant', data.content);
-      appendMessage('assistant', "Если вы готовы начать обучение, напишите 'Готов начать'.");
+      appendMessage('assistant', "If you're ready to start learning, type 'Ready to start'.");
     } catch (error) {
       console.error('Error generating plan:', error);
-      appendMessage('assistant', 'Извините, произошла ошибка при создании плана. Пожалуйста, попробуйте еще раз.');
+      appendMessage('assistant', 'Sorry, there was an error creating the plan. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -151,7 +158,7 @@ export default function ProgrammingPage() {
       appendMessage('assistant', data.content);
     } catch (error) {
       console.error('Error starting learning:', error);
-      appendMessage('assistant', 'Извините, произошла ошибка при начале обучения. Пожалуйста, попробуйте еще раз.');
+      appendMessage('assistant', 'Sorry, there was an error starting the learning process. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -166,7 +173,7 @@ export default function ProgrammingPage() {
     setIsLoading(true);
     setIsTyping(true);
 
-    if (input.toLowerCase() === 'готов начать' && stage === 'plan') {
+    if (input.toLowerCase() === 'ready to start' && stage === 'plan') {
       setStage('learning');
       await startLearning();
     } else {
@@ -199,14 +206,14 @@ export default function ProgrammingPage() {
           setCurrentDay(1);
         }
         if (data.isTest) {
-          appendMessage('assistant', "Теперь давайте проведем небольшой тест по пройденному материалу.");
+          appendMessage('assistant', "Now let's take a short test on the material we've covered.");
         }
         if (data.isInterview) {
-          appendMessage('assistant', "Давайте проведем мини-интервью для закрепления знаний.");
+          appendMessage('assistant', "Let's conduct a mini-interview to reinforce your knowledge.");
         }
       } catch (error) {
         console.error('Error sending message:', error);
-        appendMessage('assistant', 'Извините, произошла ошибка при обработке вашего сообщения. Пожалуйста, попробуйте еще раз.');
+        appendMessage('assistant', 'Sorry, there was an error processing your message. Please try again.');
       } finally {
         setIsLoading(false);
         setIsTyping(false);
@@ -239,8 +246,14 @@ export default function ProgrammingPage() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <div className="bg-[#800120] text-white p-4 shadow-md">
-        <h1 className="text-xl font-bold text-white">Лидер - ваш помощник в программировании</h1>
+      <div className="bg-[#800120] text-white p-4 shadow-md flex items-center">
+        <img
+          src="/favicon.png"
+          alt="Leader Avatar"
+          style={{ height: '32px', width: '32px' }}
+          className="rounded-full"
+        />
+        <h1 className="text-xl font-bold ml-6" style={{ color: "#800120" }}>Leader - Your Programming Assistant</h1>
       </div>
       <div className="flex-1 overflow-hidden flex flex-col">
         <div className="flex-1 overflow-y-auto p-4">
@@ -258,14 +271,27 @@ export default function ProgrammingPage() {
                   } message-bubble`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-sm mr-2 text-[#800120]">
-                      {message.role === 'user' ? 'Вы' : 'Лидер'}
-                    </span>
+                    {message.role === 'assistant' && (
+                      <img
+                        src="/favicon.png"
+                        alt="Leader Avatar"
+                        style={{ height: '24px', width: '24px' }}
+                        className="rounded-full mr-2"
+                      />
+                    )}
+                    {message.role === 'user' && (
+                      <img
+                        src="/usr.png"
+                        alt="User Avatar"
+                        style={{ height: '24px', width: '24px' }}
+                        className="rounded-full ml-2 mr-2"
+                      />
+                    )}
                     <span className="text-xs text-gray-500">
                       {message.timestamp}
                     </span>
                   </div>
-                  <div className="text-sm">
+                  <div className="text-sm mt-2">
                     {renderMessageContent(message.content)}
                   </div>
                 </div>
@@ -275,7 +301,12 @@ export default function ProgrammingPage() {
               <div className="flex justify-start">
                 <div className="bg-white text-black border border-gray-300 rounded-lg p-3 message-bubble">
                   <div className="flex items-center">
-                    <span className="font-bold text-sm mr-2 text-[#800120]">Лидер</span>
+                    <img
+                      src="/favicon.png"
+                      alt="Leader Avatar"
+                      style={{ height: '24px', width: '24px' }}
+                      className="rounded-full mr-2"
+                    />
                     <span className="typing-animation">
                       <span className="dot"></span>
                       <span className="dot"></span>
@@ -294,7 +325,7 @@ export default function ProgrammingPage() {
           <input
             type="text"
             className="flex-1 px-3 py-2 focus:outline-none bg-white text-black placeholder-gray-500"
-            placeholder="Введите сообщение..."
+            placeholder="Enter a message..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             disabled={isLoading}
@@ -304,7 +335,7 @@ export default function ProgrammingPage() {
             className="px-3 py-2 bg-[#800120] text-white hover:bg-[#600010] focus:outline-none flex-shrink-0"
             disabled={isLoading}
           >
-            <FaPaperPlane className="text-white" />
+            <FaPaperPlane style={{ color: "#800120" }}/>
           </button>
         </div>
       </form>
