@@ -138,30 +138,26 @@ const Page = () => {
   }, []);
 
   const handleTestSelection = (test, type = null) => {
-    if (test === 'selection') {
+  setSelectedTest(test);
+  setTestType(type);
+  setTimedMode(null);
+
+  ReactGA.event({
+    category: "Test Selection",
+    action: "Selected Test",
+    label: test
+  });
+
+  if (test === 'selection') {
     router.push('/univer');
-    return;
   } else if (test === 'essay') {
     router.push('/essay');
-    return;
   } else if (test === 'voice') {
     router.push('/voice');
-    return;
   } else if (test === 'programming') {
     router.push('/programming');
-    return;
   }
-
-    setSelectedTest(test);
-    setTestType(type);
-    setTimedMode(null);
-
-    ReactGA.event({
-      category: "Test Selection",
-      action: "Selected Test",
-      label: test
-    });
-  };
+};
 
   const handleModeSelection = (isTimed) => {
     setTimedMode(isTimed);
