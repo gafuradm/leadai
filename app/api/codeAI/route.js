@@ -11,7 +11,7 @@ export async function POST(req) {
 
   try {
     const userData = await req.json();
-    const systemMessage = `You are an expert programming instructor. Provide detailed learning plans, theory, practical tasks, and answer questions about programming topics. Tailor your responses to the user's selected programming topic and learning duration. When appropriate, provide tests and conduct mini-interviews to assess the user's progress. Always remember the context of the conversation and the user's progress. If the user submits code or answers, evaluate them and provide feedback.
+    const systemMessage = `You are a ChatGPT. Always remember the context of the conversation and the user's progress. If the user submits code or answers, evaluate them and provide feedback.
 
 Current learning state:
 Topic: ${userData.selectedTopic}
