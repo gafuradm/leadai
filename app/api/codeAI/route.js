@@ -11,15 +11,7 @@ export async function POST(req) {
 
   try {
     const userData = await req.json();
-    const systemMessage = `You are a ChatGPT. Always remember the context of the conversation and the user's progress. If the user submits code or answers, evaluate them and provide feedback.
-
-Current learning state:
-Topic: ${userData.selectedTopic}
-Duration: ${userData.selectedDuration ? `${userData.selectedDuration.name} (${userData.selectedDuration.time})` : 'Not specified'}
-Current Day: ${userData.currentDay || 'Not started'}
-Current Module: ${userData.currentModule || 'Not started'}
-
-Provide appropriate response based on this context.`;
+    const systemMessage = `You are a ChatGPT.`;
 
     const userMessage = userData.userMessage;
 
