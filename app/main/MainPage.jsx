@@ -12,30 +12,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 
-const preparationOptions = [
-  {
-    id: 6,
-    titleKey: "university_selection",
-    desKey: "university_selection_des",
-    img: "/unive.png",
-    value: 'selection'
-  },
-  {
-    id: 7,
-    titleKey: "essay_assessment",
-    desKey: "essay_assessment_des",
-    img: "/pencil.png",
-    value: 'essay'
-  },
-  {
-    id: 8,
-    titleKey: "speech_assessment",
-    desKey: "speech_assessment_des",
-    img: "/voice.png",
-    value: 'voice'
-  }
-];
-
 const ieltsOptions = [
   {
     id: 1,
@@ -71,49 +47,42 @@ const ieltsOptions = [
     desKey: "speaking_section_des_one",
     img: "/voc.png",
     value: 'speaking'
-  },
-  {
-  id: 9,
-  titleKey: "programming_learning",
-  desKey: "programming_learning_des",
-  img: "/pro.png",
-  value: 'programming'
-}
+  }
 ];
 
-  const modeOptions = [
-    {
-      id: 1,
-      titleKey: "timed_mode",
-      desKey: "timed_mode_des",
-      img: "/clock.png",
-      value: true
-    },
-    {
-      id: 2,
-      titleKey: "untimed_mode",
-      desKey: "untimed_mode_des",
-      img: "/time3.png",
-      value: false
-    }
-  ];
+const modeOptions = [
+  {
+    id: 1,
+    titleKey: "timed_mode",
+    desKey: "timed_mode_des",
+    img: "/clock.png",
+    value: true
+  },
+  {
+    id: 2,
+    titleKey: "untimed_mode",
+    desKey: "untimed_mode_des",
+    img: "/time3.png",
+    value: false
+  }
+];
 
-  const typeOptions = [
-    {
-      id: 1,
-      titleKey: "academic_type",
-      desKey: "academic_type_des",
-      img: "/hats.png",
-      value: 'academic'
-    },
-    {
-      id: 2,
-      titleKey: "general_training_type",
-      desKey: "general_training_type_des",
-      img: "/brie.png",
-      value: 'general'
-    }
-  ];
+const typeOptions = [
+  {
+    id: 1,
+    titleKey: "academic_type",
+    desKey: "academic_type_des",
+    img: "/hats.png",
+    value: 'academic'
+  },
+  {
+    id: 2,
+    titleKey: "general_training_type",
+    desKey: "general_training_type_des",
+    img: "/brie.png",
+    value: 'general'
+  }
+];
 
 const Page = () => {
   const [selectedTest, setSelectedTest] = useState(null);
@@ -132,32 +101,20 @@ const Page = () => {
 
   useEffect(() => {
     ReactGA.initialize("G-TBSYZ03L8M");
-    
     ReactGA.send({ hitType: "pageview", page: "/main" });
-    
   }, []);
 
   const handleTestSelection = (test, type = null) => {
-  setSelectedTest(test);
-  setTestType(type);
-  setTimedMode(null);
+    setSelectedTest(test);
+    setTestType(type);
+    setTimedMode(null);
 
-  ReactGA.event({
-    category: "Test Selection",
-    action: "Selected Test",
-    label: test
-  });
-
-  if (test === 'selection') {
-    router.push('/univer');
-  } else if (test === 'essay') {
-    router.push('/essay');
-  } else if (test === 'voice') {
-    router.push('/voice');
-  } else if (test === 'programming') {
-    router.push('/programming');
-  }
-};
+    ReactGA.event({
+      category: "Test Selection",
+      action: "Selected Test",
+      label: test
+    });
+  };
 
   const handleModeSelection = (isTimed) => {
     setTimedMode(isTimed);
@@ -196,27 +153,27 @@ const Page = () => {
   };
 
   const renderCards = (options, handleClick, sectionTitle) => (
-  <section className="pt-20 pb-12 px-4" style={{ backgroundColor: 'white' }}>
-    <h2 className="text-3xl text-black font-bold text-center mb-8">{t(sectionTitle)}</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {options.map((option) => (
-        <div
-          key={option.id}
-          className="cursor-pointer transform hover:scale-105 transition-transform duration-300 p-6 rounded-lg shadow-lg"
-          style={{
-            backgroundColor: option.id === 2 || option.id === 4 || option.id === 9 ? "#000000" : "#810021",
-            height: "15em",
-          }}
-          onClick={() => handleClick(option.value)}
-        >
-          <Image src={option.img} alt={t(option.titleKey)} width={300} height={200} className="mb-4 w-20 h-20 object-cover rounded-lg mx-auto" />
-          <h3 className="text-2xl font-semibold mb-2 text-center text-white">{t(option.titleKey)}</h3>
-          <p className="text-sm text-center text-white">{t(option.desKey)}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-);
+    <section className="pt-20 pb-12 px-4" style={{ backgroundColor: 'white' }}>
+      <h2 className="text-3xl text-black font-bold text-center mb-8">{t(sectionTitle)}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {options.map((option) => (
+          <div
+            key={option.id}
+            className="cursor-pointer transform hover:scale-105 transition-transform duration-300 p-6 rounded-lg shadow-lg"
+            style={{
+              backgroundColor: "#810021",
+              height: "15em",
+            }}
+            onClick={() => handleClick(option.value)}
+          >
+            <Image src={option.img} alt={t(option.titleKey)} width={300} height={200} className="mb-4 w-20 h-20 object-cover rounded-lg mx-auto" />
+            <h3 className="text-2xl font-semibold mb-2 text-center text-white">{t(option.titleKey)}</h3>
+            <p className="text-sm text-center text-white">{t(option.desKey)}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 
   const renderSection = () => {
     switch (currentSection) {
@@ -230,10 +187,8 @@ const Page = () => {
         return <SpeakingSection onNext={handleSectionComplete} timedMode={timedMode} />;
       case 'results':
         return <Results answers={answers} testType={selectedTest} />;
-    case 'results':
-      return <Results answers={answers} testType={selectedTest} />;
-    default:
-      return null;
+      default:
+        return null;
     }
   };
 
@@ -241,7 +196,6 @@ const Page = () => {
     return (
       <div style={{ backgroundColor: 'white' }}>
         {renderCards(ieltsOptions, handleTestSelection, "ielts_tests")}
-        {renderCards(preparationOptions, handleTestSelection, "preparation_options")}
       </div>
     );
   }
